@@ -1,15 +1,15 @@
 ---
-import { Image } from "astro:assets";
+import { Image, Picture } from "astro:assets";
 import HomeHeader from "../components/header/HomeHeader.astro";
 import Layout from "../layouts/Layout.astro";
 import Schedule from "../components/home/Schedule.astro";
 import Button from "../components/ui/inputs/Button.astro";
-import lisAndAlbImg from "../img/flick-alberto-and-lis-1.png";
-import mem1Img from "../img/mem-1.jpg";
-import mem2Img from "../img/mem-2.png";
-import mem3Img from "../img/mem-3.jpg";
-import lisCoach from "../img/lis-coach.jpg";
-import albertoCoach from "../img/alberto-coach.jpg";
+import lisAndAlbImg from "../assets/flick-alberto-and-lis-1.png";
+import mem1Img from "../assets/mem-1.jpg";
+import mem2Img from "../assets/mem-2.png";
+import mem3Img from "../assets/mem-3.jpg";
+import lisCoach from "../assets/lis-coach.jpg";
+import albertoCoach from "../assets/alberto-coach.jpg";
 import Footer from "../components/footer/Footer.astro";
 
 const maxWidth = "max-w-355";
@@ -35,7 +35,7 @@ const maxWidth = "max-w-355";
         enthusiasts of all levels to reach their full potential'
       </p>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <Image
+        <Picture
           src={lisAndAlbImg}
           alt="Alberto explaining to a group"
           class="border-8 border-flick-dark w-full"
@@ -89,7 +89,7 @@ const maxWidth = "max-w-355";
       class="flex flex-col items-center text-center gap-10 pt-20 pb-20 xl:pb-25 bg-no-repeat text-flick-black"
       style={`
         background:
-          url('../src/img/home-flick-league.png') center center;
+          url('../src/assets/home-flick-league.png') center center;
         background-size: cover;
         background-repeat: no-repeat;
         `}
@@ -111,7 +111,7 @@ const maxWidth = "max-w-355";
       class="flex flex-col items-center text-center gap-10 pt-20 pb-28"
       style={`
         background: 
-          url('../src/img/home-flick-tournament.png') center center;
+          url('../src/assets/home-flick-tournament.png') center center;
         background-size: cover;
         background-repeat: no-repeat;
         `}
@@ -134,7 +134,7 @@ const maxWidth = "max-w-355";
         <div
           class="hidden 2xl:block xl:absolute xl:-top-10 m-auto size-125 rounded-4xl overflow-hidden border-10 border-black/10"
         >
-          <Image
+          <Picture
             src={mem2Img}
             alt="Membership image two"
             class="relative bottom-50 h-200 max-w-fit right-12.5"
@@ -143,7 +143,7 @@ const maxWidth = "max-w-355";
         <div
           class="hidden 2xl:block xl:absolute xl:right-0 top-15 m-auto size-125 rounded-4xl overflow-hidden border-10 border-black/10"
         >
-          <Image
+          <Picture
             src={mem1Img}
             alt="Membership image one"
             class="relative bottom-102.5 h-300 max-w-fit right-67.5"
@@ -152,7 +152,7 @@ const maxWidth = "max-w-355";
         <div
           class="2xl:absolute xl:right-38 xl:-bottom-10 m-auto size-125 rounded-4xl overflow-hidden border-10 border-black/10"
         >
-          <Image
+          <Picture
             src={mem3Img}
             alt="Membership image three"
             class="relative bottom-62.5 h-225 max-w-fit right-100"
@@ -183,7 +183,7 @@ const maxWidth = "max-w-355";
     <div class="grid grid-cols-1 xl:grid-cols-2 gap-10">
       <div class="flex flex-col gap-5">
         <div class="size-120 overflow-hidden rounded-[30px]">
-          <Image
+          <Picture
             src={albertoCoach}
             alt="Alberto coach"
             class="relative max-w-fit h-120 w-213.75 -left-42.5"
@@ -196,7 +196,7 @@ const maxWidth = "max-w-355";
       </div>
       <div class="flex flex-col gap-5">
         <div class="size-120 overflow-hidden rounded-[30px]">
-          <Image
+          <Picture
             src={lisCoach}
             alt="Lis coach"
             class="relative max-w-fit h-120 w-213.75 -left-37.5"
