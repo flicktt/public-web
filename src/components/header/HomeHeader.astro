@@ -2,10 +2,12 @@
 import HeaderNav from "./HeaderNav.astro";
 import BannerButton from "../ui/inputs/BannerButton.astro";
 import BannerLogo from "../../assets/logo-no-sub.svg";
+import BannerBackground from "../../assets/banner-image.png";
 ---
 
 <header
-  class="p-4 h-190 bg-[url(../src/assets/banner-image.png)] bg-center bg-cover bg-no-repeat"
+  class={`p-4 h-190 bg-center bg-cover bg-no-repeat`}
+  style={`background-image: url(${BannerBackground.src})`}
 >
   <div
     class="flex flex-col items-center justify-between border-2 border-solid border-flick-yellow rounded-md py-4 px-7 h-full"
