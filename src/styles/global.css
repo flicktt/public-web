@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-flick-yellow: #E4B363;
+  --color-flick-black: #1E1E1E;
+  --color-flick-dark: #2D2E2D;
+  --font-briolage-grot: "Bricolage Grotesque", sans-serif;
+}
+
+@layer base {
+  h2 {
+    font-weight: var(--font-weight-bold);
+    font-size: 110px;
+  }
+
+  h3 {
+    font-weight: var(--font-weight-bold);
+    font-size: 70px;
+  }
+}
+
+@layer components {
+  .bg-home-kids {
+    background:
+      linear-gradient(63deg, #283B79 23%, transparent 23%) 7px 0,
+      linear-gradient(63deg, transparent 74%, #283B79 78%),
+      linear-gradient(63deg, transparent 34%, #283B79 38%, #283B79 58%, transparent 62%),
+      rgba(0, 0, 0, 0.10);
+    background-size: 16px 48px;
+  }
+
+  .bg-membership {
+    background: #2D2E2D;
+    background:
+      linear-gradient(115deg, transparent 75%, rgba(0, 0, 0, .1) 75%) 0 0,
+      linear-gradient(245deg, transparent 75%, rgba(0, 0, 0, .1) 75%) 0 0,
+      linear-gradient(115deg, transparent 75%, rgba(0, 0, 0, .1) 75%) 15px -30px,
+      linear-gradient(245deg, transparent 75%, rgba(0, 0, 0, .1) 75%) 15px -30px,
+      #2D2E2D;
+    background-size: 30px 60px;
+  }
+}

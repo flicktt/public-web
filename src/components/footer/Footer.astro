@@ -1,0 +1,48 @@
+---
+import FooterLogo from "../../svg/logo-club.svg";
+---
+
+<footer class="bg-[#111111] p-7.5 text-xl">
+  <div class="grid grid-cols-1 gap-8 sm:gap-2.5 sm:grid-cols-2">
+    <div class="order-2 self-end sm:max-w-75 sm:order-1">
+      <a href="/">
+        <FooterLogo />
+      </a>
+    </div>
+    <div class="order-1 flex flex-col gap-10 text-right sm:order-2">
+      <div class="flex flex-col">
+        <p class="font-bold">Address</p>
+        <p>
+          Decathlon Surrey Quays
+          <br />
+          9 Maritime Street
+          <br />
+          London<br />
+          SE16 7FU
+        </p>
+      </div>
+      <div class="flex flex-col">
+        <a class="underline" href="mailto:flickservices@gmail.com"
+          >flickservices@gmail.com</a
+        >
+        <a
+          class="underline"
+          href="https://www.instagram.com/flickttlondon/"
+          target="_blank">Instagram</a
+        >
+      </div>
+      <div class="flex flex-col xl:flex-row xl:justify-between">
+        <p>© 2026 by Flick TT Ltd.</p>
+        <p>Website by Siddhartha</p>
+        <a class="cursor-pointer" id="scrollToTop">BACK TO TOP ↑</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const scrollToTopEl = document.getElementById("scrollToTop");
+  scrollToTopEl?.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
