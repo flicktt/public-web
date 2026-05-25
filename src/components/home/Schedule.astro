@@ -14,212 +14,216 @@ const bgColourMap = {
 
 <div class="p-10 text-center rounded-xl border-flick-yellow border">
   <h3 class="font-light text-6xl text-flick-yellow">Schedule</h3>
-  <div class="grid grid-cols-3 md:grid-cols-7 gap-3 mt-10">
-    <ScheduleDay day="Mon">
-      <div
-        class={`px-4 grow flex flex-col justify-center rounded-t-lg ${bgColourMap.clubTable}`}
-      >
-        <p class="text-xl font-semibold">Club Table (Off-Peak)</p>
-        <p class="text-sm">09:00 - 16:00</p>
-      </div>
-      <div
-        class={`px-4 grow flex flex-col justify-center ${bgColourMap.clubTable}`}
-      >
-        <p class="text-xl font-semibold">Club Table (Peak)</p>
-        <p class="text-sm">16:00 - 18:00</p>
-      </div>
-      <div
-        class={`px-4 h-[40%] flex flex-col rounded-b-lg justify-center ${bgColourMap.openSession}`}
-      >
-        <p class="text-xl font-semibold">Open Session</p>
-        <p class="text-sm">18:00 - 22:00</p>
-      </div>
-    </ScheduleDay>
-    <ScheduleDay day="Tue">
-      <div
-        class={`grow px-4 flex flex-col justify-center rounded-t-lg ${bgColourMap.clubTable}`}
-      >
-        <p class="text-xl font-semibold">Club Table (Off-Peak)</p>
-        <p class="text-sm">09:00 - 16:00</p>
-      </div>
-      <div
-        class={`grow px-4 flex flex-col justify-center ${bgColourMap.clubTable}`}
-      >
-        <p class="text-xl font-semibold">Club Table (Peak)</p>
-        <p class="text-sm">16:00 - 18:00</p>
-      </div>
-      <div class="flex flex-col gap-2.5 h-[40%]">
+  <div class="overflow-x-scroll lg:overflow-x-hidden">
+    <div
+      class="lg:w-full grid grid-cols-7 w-max lg:flex flex-wrap justify-center gap-y-8 gap-x-3 mt-10"
+    >
+      <ScheduleDay day="Mon">
+        <div
+          class={`px-4 grow flex flex-col justify-center rounded-t-lg ${bgColourMap.clubTable}`}
+        >
+          <p class="text-xl font-semibold">Club Table (Off-Peak)</p>
+          <p class="text-sm">09:00 - 16:00</p>
+        </div>
+        <div
+          class={`px-4 grow flex flex-col justify-center ${bgColourMap.clubTable}`}
+        >
+          <p class="text-xl font-semibold">Club Table (Peak)</p>
+          <p class="text-sm">16:00 - 18:00</p>
+        </div>
+        <div
+          class={`px-4 h-[40%] flex flex-col rounded-b-lg justify-center ${bgColourMap.openSession}`}
+        >
+          <p class="text-xl font-semibold">Open Session</p>
+          <p class="text-sm">18:00 - 22:00</p>
+        </div>
+      </ScheduleDay>
+      <ScheduleDay day="Tue">
+        <div
+          class={`grow px-4 flex flex-col justify-center rounded-t-lg ${bgColourMap.clubTable}`}
+        >
+          <p class="text-xl font-semibold">Club Table (Off-Peak)</p>
+          <p class="text-sm">09:00 - 16:00</p>
+        </div>
+        <div
+          class={`grow px-4 flex flex-col justify-center ${bgColourMap.clubTable}`}
+        >
+          <p class="text-xl font-semibold">Club Table (Peak)</p>
+          <p class="text-sm">16:00 - 18:00</p>
+        </div>
+        <div class="flex flex-col gap-2.5 h-[40%]">
+          <div
+            class={`grow px-4 flex flex-col justify-center ${bgColourMap.lvl23}`}
+          >
+            <p class="font-semibold">Level 2-3 Group Session</p>
+            <p class="text-sm">18:00 - 20:00</p>
+          </div>
+          <div
+            class={`grow px-4 flex flex-col rounded-b-lg justify-center ${bgColourMap.lvl34}`}
+          >
+            <p class="font-semibold">Level 3-4-5 Group Session</p>
+            <p class="text-sm">20:00 - 22:00</p>
+          </div>
+        </div>
+      </ScheduleDay>
+      <ScheduleDay day="Wed">
+        <div
+          class={`grow px-4 flex flex-col justify-center rounded-t-lg ${bgColourMap.clubTable}`}
+        >
+          <p class="text-sm font-semibold">Club Table (Off-Peak)</p>
+          <p class="text-xs">09:00 - 10:00</p>
+        </div>
+        <div
+          class={`grow-2 px-4 flex flex-col justify-center ${bgColourMap.lvlAll}`}
+        >
+          <p class="font-semibold">Adult All-Level Group Session</p>
+          <p class="text-sm">10:00 - 12:00</p>
+        </div>
+        <div
+          class={`grow px-4 flex flex-col justify-center ${bgColourMap.clubTable}`}
+        >
+          <p class="text-sm font-semibold">Club Table (Off-Peak)</p>
+          <p class="text-xs">12:00 - 16:00</p>
+        </div>
+        <div
+          class={`grow px-4 flex flex-col justify-center ${bgColourMap.clubTable}`}
+        >
+          <p class="text-sm font-semibold">Club Table (Peak)</p>
+          <p class="text-xs">18:00 - 18:00</p>
+        </div>
+        <div
+          class={`px-4 h-[40%] flex flex-col rounded-b-lg justify-center ${bgColourMap.openSession}`}
+        >
+          <p class="text-xl font-semibold">Open Session</p>
+          <p class="text-xs">18:00 - 22:00</p>
+        </div>
+      </ScheduleDay>
+      <ScheduleDay day="Thu">
+        <div
+          class={`grow px-4 flex flex-col justify-center rounded-t-lg ${bgColourMap.clubTable}`}
+        >
+          <p class="text-xl font-semibold">Club Table (Off-Peak)</p>
+          <p class="text-sm">09:00 - 16:00</p>
+        </div>
+        <div
+          class={`grow px-4 flex flex-col justify-center ${bgColourMap.clubTable}`}
+        >
+          <p class="text-xl font-semibold">Club Table (Peak)</p>
+          <p class="text-sm">16:00 - 18:00</p>
+        </div>
+        <div class="flex flex-col gap-2.5 h-[40%]">
+          <div
+            class={`h-[50%] px-4 flex flex-col justify-center ${bgColourMap.lvl34}`}
+          >
+            <p class="font-semibold">Level 3-4 Group Session</p>
+            <p class="text-sm">18:00 - 20:00</p>
+          </div>
+          <div
+            class={`h-[50%] px-4 flex flex-col rounded-b-lg justify-center bg-[#4A67C7]/50`}
+          >
+            <p class="font-semibold">Level 1-2 Group Session</p>
+            <p class="text-sm">20:00 - 22:00</p>
+          </div>
+        </div>
+      </ScheduleDay>
+      <ScheduleDay day="Fri">
+        <div
+          class={`grow px-4 flex flex-col justify-center rounded-t-lg ${bgColourMap.clubTable}`}
+        >
+          <p class="text-xl font-semibold">Club Table (Off-Peak)</p>
+          <p class="text-sm">09:00 - 16:00</p>
+        </div>
+        <div
+          class={`grow px-4 flex flex-col justify-center ${bgColourMap.clubTable}`}
+        >
+          <p class="text-xl font-semibold">Club Table (Peak)</p>
+          <p class="text-sm">16:00 - 18:00</p>
+        </div>
+        <div class="flex flex-col gap-2.5 h-[40%]">
+          <div
+            class={`h-[50%] px-4 flex flex-col justify-center ${bgColourMap.clubLeague} text-black`}
+          >
+            <p class="font-semibold">Flick TT League Open Matching</p>
+            <p class="text-sm">18:00 - 20:00</p>
+          </div>
+          <div
+            class={`h-[50%] px-4 flex flex-col rounded-b-lg justify-center ${bgColourMap.openSession}`}
+          >
+            <p class="font-semibold">Open Session</p>
+            <p class="text-sm">20:00 - 22:00</p>
+          </div>
+        </div>
+      </ScheduleDay>
+      <ScheduleDay day="Sat">
+        <div
+          class={`grow px-4 flex flex-col justify-center rounded-t-lg ${bgColourMap.clubTable}`}
+        >
+          <p class="font-semibold">Club Table (Peak) / Training Robot</p>
+          <p class="text-sm">09:00 - 12:00</p>
+        </div>
+        <div
+          class={`grow px-4 flex flex-col justify-center ${bgColourMap.lvl12}`}
+        >
+          <p class="font-semibold">Level 1-2 Group Session</p>
+          <p class="text-sm">12:00 - 14:00</p>
+        </div>
+        <div
+          class={`grow px-4 flex flex-col justify-center ${bgColourMap.clubTable}`}
+        >
+          <p class="font-semibold">Club Table (Peak) / Training Robot</p>
+          <p class="text-sm">14:00 - 15:00</p>
+        </div>
         <div
           class={`grow px-4 flex flex-col justify-center ${bgColourMap.lvl23}`}
         >
-          <p class="font-semibold">Level 2-3 Group Session</p>
-          <p class="text-sm">18:00 - 20:00</p>
+          <p class="font-semibold">Under 18 All-Level Group Session</p>
+          <p class="text-sm">15:00 - 17:00</p>
         </div>
         <div
-          class={`grow px-4 flex flex-col rounded-b-lg justify-center ${bgColourMap.lvl34}`}
+          class={`grow px-4 flex flex-col justify-center ${bgColourMap.clubTable}`}
         >
-          <p class="font-semibold">Level 3-4-5 Group Session</p>
-          <p class="text-sm">20:00 - 22:00</p>
+          <p class="font-semibold">Club Table (Peak)</p>
+          <p class="text-sm">17:00 - 18:00</p>
         </div>
-      </div>
-    </ScheduleDay>
-    <ScheduleDay day="Wed">
-      <div
-        class={`grow px-4 flex flex-col justify-center rounded-t-lg ${bgColourMap.clubTable}`}
-      >
-        <p class="text-sm font-semibold">Club Table (Off-Peak)</p>
-        <p class="text-xs">09:00 - 10:00</p>
-      </div>
-      <div
-        class={`grow-2 px-4 flex flex-col justify-center ${bgColourMap.lvlAll}`}
-      >
-        <p class="font-semibold">Adult All-Level Group Session</p>
-        <p class="text-sm">10:00 - 12:00</p>
-      </div>
-      <div
-        class={`grow px-4 flex flex-col justify-center ${bgColourMap.clubTable}`}
-      >
-        <p class="text-sm font-semibold">Club Table (Off-Peak)</p>
-        <p class="text-xs">12:00 - 16:00</p>
-      </div>
-      <div
-        class={`grow px-4 flex flex-col justify-center ${bgColourMap.clubTable}`}
-      >
-        <p class="text-sm font-semibold">Club Table (Peak)</p>
-        <p class="text-xs">18:00 - 18:00</p>
-      </div>
-      <div
-        class={`px-4 h-[40%] flex flex-col rounded-b-lg justify-center ${bgColourMap.openSession}`}
-      >
-        <p class="text-xl font-semibold">Open Session</p>
-        <p class="text-xs">18:00 - 22:00</p>
-      </div>
-    </ScheduleDay>
-    <ScheduleDay day="Thu">
-      <div
-        class={`grow px-4 flex flex-col justify-center rounded-t-lg ${bgColourMap.clubTable}`}
-      >
-        <p class="text-xl font-semibold">Club Table (Off-Peak)</p>
-        <p class="text-sm">09:00 - 16:00</p>
-      </div>
-      <div
-        class={`grow px-4 flex flex-col justify-center ${bgColourMap.clubTable}`}
-      >
-        <p class="text-xl font-semibold">Club Table (Peak)</p>
-        <p class="text-sm">16:00 - 18:00</p>
-      </div>
-      <div class="flex flex-col gap-2.5 h-[40%]">
         <div
-          class={`h-[50%] px-4 flex flex-col justify-center ${bgColourMap.lvl34}`}
+          class={`grow px-4 flex flex-col rounded-b-lg justify-center bg-[#041B68]/50`}
         >
           <p class="font-semibold">Level 3-4 Group Session</p>
           <p class="text-sm">18:00 - 20:00</p>
         </div>
+      </ScheduleDay>
+      <ScheduleDay day="Sun">
         <div
-          class={`h-[50%] px-4 flex flex-col rounded-b-lg justify-center bg-[#4A67C7]/50`}
+          class={`grow px-4 flex flex-col justify-center rounded-t-lg ${bgColourMap.clubTable}`}
         >
-          <p class="font-semibold">Level 1-2 Group Session</p>
-          <p class="text-sm">20:00 - 22:00</p>
+          <p class="font-semibold">Club Table (Peak)</p>
+          <p class="text-sm">09:00 - 10:00</p>
         </div>
-      </div>
-    </ScheduleDay>
-    <ScheduleDay day="Fri">
-      <div
-        class={`grow px-4 flex flex-col justify-center rounded-t-lg ${bgColourMap.clubTable}`}
-      >
-        <p class="text-xl font-semibold">Club Table (Off-Peak)</p>
-        <p class="text-sm">09:00 - 16:00</p>
-      </div>
-      <div
-        class={`grow px-4 flex flex-col justify-center ${bgColourMap.clubTable}`}
-      >
-        <p class="text-xl font-semibold">Club Table (Peak)</p>
-        <p class="text-sm">16:00 - 18:00</p>
-      </div>
-      <div class="flex flex-col gap-2.5 h-[40%]">
         <div
-          class={`h-[50%] px-4 flex flex-col justify-center ${bgColourMap.clubLeague} text-black`}
+          class={`grow px-4 flex flex-col justify-center ${bgColourMap.clubLeague} text-black`}
+        >
+          <p class="font-semibold">Flick TT League Grouped Matching</p>
+          <p class="text-sm">10:00 - 12:00</p>
+        </div>
+        <div
+          class={`grow px-4 flex flex-col justify-center ${bgColourMap.clubLeague} text-black`}
         >
           <p class="font-semibold">Flick TT League Open Matching</p>
-          <p class="text-sm">18:00 - 20:00</p>
+          <p class="text-sm">12:00 - 14:00</p>
         </div>
         <div
-          class={`h-[50%] px-4 flex flex-col rounded-b-lg justify-center ${bgColourMap.openSession}`}
+          class={`grow px-4 flex flex-col justify-center ${bgColourMap.clubTable}`}
         >
-          <p class="font-semibold">Open Session</p>
-          <p class="text-sm">20:00 - 22:00</p>
+          <p class="font-semibold">Club Table (Peak)</p>
+          <p class="text-sm">14:00 - 15:00</p>
         </div>
-      </div>
-    </ScheduleDay>
-    <ScheduleDay day="Sat">
-      <div
-        class={`grow px-4 flex flex-col justify-center rounded-t-lg ${bgColourMap.clubTable}`}
-      >
-        <p class="font-semibold">Club Table (Peak) / Training Robot</p>
-        <p class="text-sm">09:00 - 12:00</p>
-      </div>
-      <div
-        class={`grow px-4 flex flex-col justify-center ${bgColourMap.lvl12}`}
-      >
-        <p class="font-semibold">Level 1-2 Group Session</p>
-        <p class="text-sm">12:00 - 14:00</p>
-      </div>
-      <div
-        class={`grow px-4 flex flex-col justify-center ${bgColourMap.clubTable}`}
-      >
-        <p class="font-semibold">Club Table (Peak) / Training Robot</p>
-        <p class="text-sm">14:00 - 15:00</p>
-      </div>
-      <div
-        class={`grow px-4 flex flex-col justify-center ${bgColourMap.lvl23}`}
-      >
-        <p class="font-semibold">Under 18 All-Level Group Session</p>
-        <p class="text-sm">15:00 - 17:00</p>
-      </div>
-      <div
-        class={`grow px-4 flex flex-col justify-center ${bgColourMap.clubTable}`}
-      >
-        <p class="font-semibold">Club Table (Peak)</p>
-        <p class="text-sm">17:00 - 18:00</p>
-      </div>
-      <div
-        class={`grow px-4 flex flex-col rounded-b-lg justify-center bg-[#041B68]/50`}
-      >
-        <p class="font-semibold">Level 3-4 Group Session</p>
-        <p class="text-sm">18:00 - 20:00</p>
-      </div>
-    </ScheduleDay>
-    <ScheduleDay day="Sun">
-      <div
-        class={`grow px-4 flex flex-col justify-center rounded-t-lg ${bgColourMap.clubTable}`}
-      >
-        <p class="font-semibold">Club Table (Peak)</p>
-        <p class="text-sm">09:00 - 10:00</p>
-      </div>
-      <div
-        class={`grow px-4 flex flex-col justify-center ${bgColourMap.clubLeague} text-black`}
-      >
-        <p class="font-semibold">Flick TT League Grouped Matching</p>
-        <p class="text-sm">10:00 - 12:00</p>
-      </div>
-      <div
-        class={`grow px-4 flex flex-col justify-center ${bgColourMap.clubLeague} text-black`}
-      >
-        <p class="font-semibold">Flick TT League Open Matching</p>
-        <p class="text-sm">12:00 - 14:00</p>
-      </div>
-      <div
-        class={`grow px-4 flex flex-col justify-center ${bgColourMap.clubTable}`}
-      >
-        <p class="font-semibold">Club Table (Peak)</p>
-        <p class="text-sm">14:00 - 15:00</p>
-      </div>
-      <div
-        class={`grow px-4 flex flex-col rounded-b-lg justify-center bg-[#283B79]/50`}
-      >
-        <p class="font-semibold">Level 2-3 Group Session</p>
-        <p class="text-sm">15:00 - 17:00</p>
-      </div>
-    </ScheduleDay>
+        <div
+          class={`grow px-4 flex flex-col rounded-b-lg justify-center bg-[#283B79]/50`}
+        >
+          <p class="font-semibold">Level 2-3 Group Session</p>
+          <p class="text-sm">15:00 - 17:00</p>
+        </div>
+      </ScheduleDay>
+    </div>
   </div>
 </div>

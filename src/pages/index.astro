@@ -19,22 +19,24 @@ const maxWidth = "max-w-355";
 
 <Layout title="Flick TT - Home">
   <HomeHeader />
-  <div class={`${maxWidth} px-12 py-30 m-auto`}>
+  <div class={`${maxWidth} px-12 py-15 sm:py-30 m-auto`}>
     <div class="flex flex-col gap-11">
       <hgroup class="m-auto max-w-2xl text-center">
-        <h1 class="uppercase font-bold text-5xl md:text-6xl">
+        <h1 class="uppercase font-bold text-4xl sm:text-5xl md:text-6xl">
           Table Tennis For
           <span
-            class="text-flick-yellow font-extrabold text-7xl md:text-[110px] tracking-wider"
+            class="text-flick-yellow font-extrabold text-5xl sm:text-8xl md:text-[110px] tracking-wider"
           >
             Everybody
           </span>
         </h1>
-        <p class="font-medium text-5xl">A TT Club Based In London</p>
+        <p class="font-medium text-4xl md:text-5xl">
+          A TT Club Based In London
+        </p>
       </hgroup>
-      <p class="text-center font-light text-5xl">
+      <p class="text-center font-light text text-4xl sm:text-5xl">
         At Flick TT, our mission is to inspire and empower table tennis
-        enthusiasts of all levels to reach their full potential'
+        enthusiasts of all levels to reach their full potential
       </p>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <!-- <Picture
@@ -63,24 +65,22 @@ const maxWidth = "max-w-355";
       </div>
       <section class="flex flex-col mt-10 text-center">
         <h2>What We Offer</h2>
-        <div class="text-5xl font-light">
-          <p>
-            From group coached sessions to a league with an ELO-rating system,
-            there are no shortage of things to take part at in Flick.
-            <a href="/" class="text-flick-yellow hover:underline">
-              Confused about the different levels of group sessions? Interested
-              in booking a private 121 session? Find out more about what we
-              offer in the <b class="font-semibold">Offerings</b> page &#8594;
-            </a>
-          </p>
-        </div>
+        <p class="text-3xl sm:text-5xl font-light">
+          From group coached sessions to a league with an ELO-rating system,
+          there are no shortage of things to take part at in Flick.
+          <a href="/" class="text-flick-yellow hover:underline">
+            Confused about the different levels of group sessions? Interested in
+            booking a private 121 session? Find out more about what we offer in
+            the <b class="font-semibold">Offerings</b> page &#8594;
+          </a>
+        </p>
       </section>
       <Schedule />
     </div>
   </div>
   <div class="bg-home-kids">
     <section
-      class={`${maxWidth} m-auto flex flex-col gap-11 p-22 px-12 text-center items-center`}
+      class={`${maxWidth} m-auto flex flex-col gap-11 py-20 px-12 text-center items-center`}
     >
       <h3>Kids Coaching and Competitions</h3>
       <p class="text-3xl">
@@ -102,10 +102,10 @@ const maxWidth = "max-w-355";
         `}
     >
       <div
-        class="flex flex-col justify-center items-center bg-white/30 h-69 lg:h-90 xl:h-69 w-full"
+        class="flex flex-col justify-center items-center bg-white/30 h-110 sm:h-69 lg:h-90 xl:h-69 w-full"
       >
         <h3>Flick TT League</h3>
-        <p class="mb-9 text-xl px-10 max-w-190">
+        <p class="mb-3 sm:mb-9 text-xl px-10 max-w-190">
           The Flick TT League is a ranked league with an Elo-based rating
           system. Started in 2025, the league hosts regular 2-hour matching
           sessions on Fridays and Sundays that players of this league can join
@@ -124,10 +124,10 @@ const maxWidth = "max-w-355";
         `}
     >
       <div
-        class="flex flex-col justify-center items-center bg-black/33 h-69 lg:h-90 xl:h-69 w-full"
+        class="flex flex-col justify-center items-center bg-black/33 h-110 sm:h-69 lg:h-90 xl:h-69 w-full"
       >
         <h3>Flick TT Tournament</h3>
-        <p class="mb-9 text-xl px-10 max-w-190">
+        <p class="mb-3 sm:mb-9 text-xl px-10 max-w-190">
           Compete every two months in Flick's adult tournaments, featuring 48
           players per event and a points-based ranking system.
         </p>
@@ -136,19 +136,19 @@ const maxWidth = "max-w-355";
     </section>
   </div>
   <div class="bg-membership">
-    <div class={`${maxWidth} px-10 py-20 2xl:p-0 m-auto xl:flex`}>
+    <div class={`${maxWidth} px-12 py-20 2xl:p-0 m-auto xl:flex`}>
       <div class="2xl:w-[130%] 2xl:relative">
         <div
           class="hidden 2xl:block xl:absolute xl:-top-10 m-auto size-125 rounded-4xl overflow-hidden border-10 border-black/10"
         >
           <img
             src={mem2Img.src}
-            alt="Membership image two"
+            alt="Membership two"
             class="relative bottom-50 h-200 max-w-fit right-12.5"
           />
           <!-- <Picture
             src={mem2Img}
-            alt="Membership image two"
+            alt="Membership two"
             class="relative bottom-50 h-200 max-w-fit right-12.5"
           /> -->
         </div>
@@ -157,26 +157,26 @@ const maxWidth = "max-w-355";
         >
           <img
             src={mem1Img.src}
-            alt="Membership image one"
+            alt="Membership one"
             class="relative bottom-102.5 h-300 max-w-fit right-67.5"
           />
           <!-- <Picture
             src={mem1Img}
-            alt="Membership image one"
+            alt="Membership one"
             class="relative bottom-102.5 h-300 max-w-fit right-67.5"
           /> -->
         </div>
         <div
-          class="2xl:absolute xl:right-38 xl:-bottom-10 m-auto size-125 rounded-4xl overflow-hidden border-10 border-black/10"
+          class="2xl:absolute xl:right-38 xl:-bottom-10 m-auto size-75 md:size-125 rounded-4xl overflow-hidden border-10 border-black/10"
         >
           <img
             src={mem3Img.src}
-            alt="Membership image three"
+            alt="Membership three"
             class="relative bottom-62.5 h-225 max-w-fit right-100"
           />
           <!-- <Picture
             src={mem3Img}
-            alt="Membership image three"
+            alt="Membership three"
             class="relative bottom-62.5 h-225 max-w-fit right-100"
           /> -->
         </div>
@@ -194,7 +194,7 @@ const maxWidth = "max-w-355";
     </div>
   </div>
   <section
-    class={`${maxWidth} m-auto flex flex-col gap-11 p-22 px-12 text-center items-center`}
+    class={`${maxWidth} m-auto flex flex-col gap-11 py-20 px-12 text-center items-center`}
   >
     <h2>About</h2>
     <p class="text-3xl xl:w-245">
@@ -204,7 +204,7 @@ const maxWidth = "max-w-355";
     </p>
     <div class="grid grid-cols-1 xl:grid-cols-2 gap-10">
       <div class="flex flex-col gap-5">
-        <div class="size-120 overflow-hidden rounded-[30px]">
+        <div class="size-75 md:size-125 overflow-hidden rounded-[30px]">
           <img
             src={albertoCoach.src}
             alt="Alberto coach"
@@ -222,7 +222,7 @@ const maxWidth = "max-w-355";
         </div>
       </div>
       <div class="flex flex-col gap-5">
-        <div class="size-120 overflow-hidden rounded-[30px]">
+        <div class="size-75 md:size-125 overflow-hidden rounded-[30px]">
           <img
             src={lisCoach.src}
             alt="Lis coach"
