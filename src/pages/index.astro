@@ -13,13 +13,11 @@ import albertoCoach from "../assets/alberto-coach.jpg";
 import FlickTournamentBackground from "../assets/home-flick-tournament.png";
 import FlickLeagueBackground from "../assets/home-flick-league.png";
 import Footer from "../components/footer/Footer.astro";
-
-const maxWidth = "max-w-355";
 ---
 
-<Layout title="Flick TT - Home">
-  <HomeHeader />
-  <div class={`${maxWidth} px-12 py-15 sm:py-30 m-auto`}>
+<Layout title="Home">
+  <HomeHeader page="home" />
+  <div class="max-w-section px-12 py-15 sm:py-30 m-auto">
     <div class="flex flex-col gap-11">
       <hgroup class="m-auto max-w-2xl text-center">
         <h1 class="uppercase font-bold text-4xl sm:text-5xl md:text-6xl">
@@ -80,7 +78,7 @@ const maxWidth = "max-w-355";
   </div>
   <div class="bg-home-kids">
     <section
-      class={`${maxWidth} m-auto flex flex-col gap-11 py-20 px-12 text-center items-center`}
+      class="max-w-section m-auto flex flex-col gap-11 py-20 px-12 text-center items-center"
     >
       <h3>Kids Coaching and Competitions</h3>
       <p class="text-3xl">
@@ -136,7 +134,7 @@ const maxWidth = "max-w-355";
     </section>
   </div>
   <div class="bg-membership">
-    <div class={`${maxWidth} px-12 py-20 2xl:p-0 m-auto xl:flex`}>
+    <div class="max-w-section px-12 py-20 2xl:p-0 m-auto xl:flex">
       <div class="2xl:w-[130%] 2xl:relative">
         <div
           class="hidden 2xl:block xl:absolute xl:-top-10 m-auto size-125 rounded-4xl overflow-hidden border-10 border-black/10"
@@ -194,7 +192,7 @@ const maxWidth = "max-w-355";
     </div>
   </div>
   <section
-    class={`${maxWidth} m-auto flex flex-col gap-11 py-20 px-12 text-center items-center`}
+    class="max-w-section m-auto flex flex-col gap-11 py-20 px-12 text-center items-center"
   >
     <h2>About</h2>
     <p class="text-3xl xl:w-245">

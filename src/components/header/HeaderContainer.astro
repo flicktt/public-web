@@ -1,0 +1,18 @@
+---
+import BannerBackground from "../../assets/banner-image.png";
+import HeaderNav from "./HeaderNav.astro";
+
+const { page } = Astro.props;
+---
+
+<header
+  class={`p-4 ${page === "home" ? "h-190" : "h-102"} bg-center bg-cover bg-no-repeat`}
+  style={`background-image: url(${BannerBackground.src})`}
+>
+  <div
+    class="flex flex-col items-center justify-between border-2 border-solid border-flick-yellow rounded-md py-4 px-7 h-full"
+  >
+    <HeaderNav page={page} />
+    <slot />
+  </div>
+</header>

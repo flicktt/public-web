@@ -48,4 +48,8 @@
       #2D2E2D;
     background-size: 30px 60px;
   }
+
+  .max-w-section {
+    max-width: 1420px;
+  }
 }

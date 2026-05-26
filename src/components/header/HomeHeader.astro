@@ -1,27 +1,20 @@
 ---
-import HeaderNav from "./HeaderNav.astro";
 import BannerButton from "../ui/inputs/BannerButton.astro";
 import BannerLogo from "../../assets/logo-no-sub.svg";
-import BannerBackground from "../../assets/banner-image.png";
+import HeaderContainer from "./HeaderContainer.astro";
+
+const { page } = Astro.props;
 ---
 
-<header
-  class={`p-4 h-190 bg-center bg-cover bg-no-repeat`}
-  style={`background-image: url(${BannerBackground.src})`}
->
+<HeaderContainer page={page}>
   <div
-    class="flex flex-col items-center justify-between border-2 border-solid border-flick-yellow rounded-md py-4 px-7 h-full"
+    class="flex flex-col gap-10 items-center justify-between lg:flex-row xl:gap-30"
   >
-    <HeaderNav />
-    <div
-      class="flex flex-col gap-10 items-center justify-between lg:flex-row xl:gap-30"
-    >
-      <BannerButton>Timetable</BannerButton>
-      <BannerButton>Membership</BannerButton>
-      <BannerButton>Book</BannerButton>
-    </div>
-    <div class="max-w-375 w-full">
-      <BannerLogo />
-    </div>
+    <BannerButton>Timetable</BannerButton>
+    <BannerButton>Membership</BannerButton>
+    <BannerButton>Book</BannerButton>
   </div>
-</header>
+  <div class="max-w-375 w-full">
+    <BannerLogo />
+  </div>
+</HeaderContainer>
