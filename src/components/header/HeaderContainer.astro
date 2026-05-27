@@ -6,7 +6,7 @@ const { page } = Astro.props;
 ---
 
 <header
-  class={`p-4 ${page === "home" ? "h-190" : "h-102"} bg-center bg-cover bg-no-repeat`}
+  class={`p-4 ${page === "home" ? "h-190" : "h-60 lg:h-80 xl:h-102"} bg-center bg-cover bg-no-repeat`}
   style={`background-image: url(${BannerBackground.src})`}
 >
   <div
