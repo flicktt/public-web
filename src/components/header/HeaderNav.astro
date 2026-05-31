@@ -1,5 +1,6 @@
 ---
 import NavLogo from "../../assets/logo-no-sub.svg";
+import MenuToggleButton from "./MenuToggleButton.astro";
 
 const { page } = Astro.props;
 
@@ -12,16 +13,14 @@ const links = [
 ];
 
 const isHome = page === "home";
-
-// const mobileMenu = document.getElementById("mobile-menu");
-// const toggleBtn = document.getElementById("mobile-menu-toggle-btn");
-
-// toggleBtn.command = "show-popover";
 ---
 
 <nav class="w-full pl-3 lg:pr-3">
   <div
-    class={`flex ${isHome ? "justify-end" : "justify-between"} items-center h-12.5`}
+    class:list={[
+      `flex items-center h-12.5`,
+      isHome ? "justify-end" : "justify-between",
+    ]}
   >
     {
       !isHome && (
@@ -33,69 +32,23 @@ const isHome = page === "home";
 
     <!-- mobile menu -->
     <div class="flex items-center lg:hidden">
-      <button
-        id="mobile-menu-toggle-btn"
-        type="button"
-        command="show-popover"
-        commandfor="mobile-menu"
-        class="relative inline-flex items-center justify-center rounded-md p-2 text-white cursor-pointer transition duration-150 hover:bg-white/5 hover:text-white focus:outline-2 focus:-outline-offset-1 focus:outline-flick-yellow"
-      >
-        <span class="absolute -inset-0.5"></span>
-        <span class="sr-only">Open main menu</span>
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.5"
-          data-slot="icon"
-          aria-hidden="true"
-          class="size-6 in-aria-expanded:hidden"
-        >
-          <path
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"></path>
-        </svg>
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.5"
-          data-slot="icon"
-          aria-hidden="true"
-          class="size-6 not-in-aria-expanded:hidden"
-        >
-          <path
-            d="M6 18 18 6M6 6l12 12"
-            stroke-linecap="round"
-            stroke-linejoin="round"></path>
-        </svg>
-      </button>
+      <MenuToggleButton />
     </div>
-    <div popover id="mobile-menu" hidden class="block sm:hidden">
-      <div class="space-y-1 px-2 pt-2 pb-3">
-        <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
-        <a
-          href="#"
-          aria-current="page"
-          class="block rounded-md bg-gray-950/50 px-3 py-2 text-base font-medium text-white"
-          >Dashboard</a
-        >
-        <a
-          href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white"
-          >Team</a
-        >
-        <a
-          href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white"
-          >Projects</a
-        >
-        <a
-          href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white"
-          >Calendar</a
-        >
+    <div popover id="mobile-menu" class="lg:hidden">
+      <div
+        class="flex flex-col gap-y-8 h-screen w-screen overflow-y-scroll py-9.5 px-8.5"
+      >
+        <MenuToggleButton menuOpen />
+        {
+          links.map(({ name, link }) => (
+            <a
+              href={link}
+              class="text-center font-bold text-5xl sm:8xl md:text-9xl text-flick-black transition duration-150 hover:bg-white/5 hover:text-flick-yellow"
+            >
+              {name}
+            </a>
+          ))
+        }
       </div>
     </div>
 

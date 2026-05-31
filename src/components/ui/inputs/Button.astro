@@ -3,7 +3,10 @@ const { variant = "light" } = Astro.props;
 ---
 
 <button
-  class={`border border-${variant === "dark" ? "flick-black" : "white"} rounded-md px-10 py-3 w-fit cursor-pointer font-bold transition duration-150 hover:bg-white hover:text-flick-black hover:border-white`}
+  class:list={[
+    "border rounded-md px-10 py-3 w-fit cursor-pointer font-bold transition duration-150 hover:bg-white hover:text-flick-black hover:border-white",
+    variant === "dark" ? "border-flick-black" : "border-white",
+  ]}
 >
   <slot />
 </button>
