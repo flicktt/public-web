@@ -34,7 +34,7 @@ import FooterLogo from "../../assets/logo-club.svg";
       <div class="flex flex-col xl:flex-row xl:justify-between">
         <p>© 2026 by Flick TT Ltd.</p>
         <p>Website by Siddhartha</p>
-        <button class="cursor-pointer text-right" id="scrollToTop"
+        <button class="cursor-pointer text-right" id="scroll-to-top"
           >BACK TO TOP ↑</button
         >
       </div>
@@ -43,7 +43,7 @@ import FooterLogo from "../../assets/logo-club.svg";
 </footer>
 
 <script>
-  const scrollToTopEl = document.getElementById("scrollToTop");
+  const scrollToTopEl = document.getElementById("scroll-to-top");
   scrollToTopEl?.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });

@@ -1,0 +1,17 @@
+---
+interface Props extends astroHTML.JSX.AnchorHTMLAttributes {}
+
+const props = Astro.props;
+---
+
+{
+  Object.keys(props).length ? (
+    <a {...props}>
+      <slot />
+    </a>
+  ) : (
+    <>
+      <slot />
+    </>
+  )
+}

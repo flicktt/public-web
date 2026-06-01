@@ -1,6 +1,6 @@
 ---
 import NavLogo from "../../assets/logo-no-sub.svg";
-import MenuToggleButton from "./MenuToggleButton.astro";
+import NavToggleButton from "./NavToggleButton.astro";
 
 const { page } = Astro.props;
 
@@ -32,18 +32,19 @@ const isHome = page === "home";
 
     <!-- mobile menu -->
     <div class="flex items-center lg:hidden">
-      <MenuToggleButton />
+      <NavToggleButton />
     </div>
     <div popover id="mobile-menu" class="lg:hidden">
       <div
-        class="flex flex-col gap-y-8 h-screen w-screen overflow-y-scroll py-9.5 px-8.5"
+        class="flex flex-col gap-y-8 h-screen w-screen overflow-y-scroll py-9.5 px-8.5 text-flick-black"
       >
-        <MenuToggleButton menuOpen />
+        <NavToggleButton menuOpen />
+        <p class="text-center font-bold text-4xl md:text-6xl">Menu</p>
         {
           links.map(({ name, link }) => (
             <a
               href={link}
-              class="text-center font-bold text-5xl sm:8xl md:text-9xl text-flick-black transition duration-150 hover:bg-white/5 hover:text-flick-yellow"
+              class="text-center font-medium text-5xl sm:8xl md:text-9xl text-flick-black transition duration-150 hover:bg-white/5 hover:text-flick-yellow"
             >
               {name}
             </a>
