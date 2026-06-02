@@ -17,8 +17,8 @@ const tabConfig = [
   <PageHeader page="offerings" />
   <PageTabs client:load tabConfig={tabConfig} />
   {
-    tabConfig.map(({ label, contentId }) => (
-      <div class="tab-content hidden" id={contentId}>
+    tabConfig.map(({ label, contentId }, i) => (
+      <div class:list={["tab-content", { hidden: i !== 0 }]} id={contentId}>
         {label + " content"}
       </div>
     ))

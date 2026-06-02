@@ -37,7 +37,6 @@ const PageTabs = ({ tabConfig }: PageTabsProps) => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleTabClick = (newActive: string) => {
-    console.log("newActive", newActive);
     setActive((prev) => {
       const activeContent = document.getElementById(prev);
       activeContent?.classList.add("hidden");
@@ -68,9 +67,11 @@ const PageTabs = ({ tabConfig }: PageTabsProps) => {
   };
 
   useEffect(() => {
-    const openTab = location.hash
-      ? location.hash.slice(1)
-      : tabConfig[0].contentId;
+    const openTab =
+      location.hash &&
+      tabConfig.some(({ contentId }) => location.hash.slice(1) === contentId)
+        ? location.hash.slice(1)
+        : tabConfig[0].contentId;
     if (openTab !== active) {
       handleTabClick(openTab);
     }
