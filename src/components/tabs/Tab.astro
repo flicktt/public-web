@@ -1,22 +1,25 @@
 ---
-import WithA from "../ui/with/WithA.astro";
-
 interface Props {
-  isFirst?: boolean;
-  aProps?: astroHTML.JSX.AnchorHTMLAttributes;
+  hash: string;
+  buttonProps?: astroHTML.JSX.ButtonHTMLAttributes;
 }
 
-const { isFirst, aProps } = Astro.props;
+const { hash, buttonProps } = Astro.props;
 
-// TODO fix styling for smaller window sizes
+let _buttonProps: astroHTML.JSX.ButtonHTMLAttributes = {};
+if (_buttonProps) {
+  _buttonProps = { ...buttonProps };
+  delete _buttonProps.class;
+}
 ---
 
 <button
+  {..._buttonProps}
   class:list={[
-    "flex justify-center items-center w-40 lg:w-50 h-20 p-1 cursor-pointer border-flick-dark text-center uppercase font-light text-lg tab-links",
-    { "border-l": !isFirst },
+    "flex justify-center items-center w-full sm:w-40 lg:w-50 h-12 sm:h-20 p-1 cursor-pointer not-first:border-l border-flick-dark text-center uppercase font-light sm:text-lg tab-links",
+    buttonProps?.class,
   ]}
-  data-target={aProps?.href}
+  data-target={hash}
 >
   <slot />
 </button>

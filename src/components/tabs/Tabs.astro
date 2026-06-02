@@ -3,24 +3,23 @@ import Tab from "./Tab.astro";
 
 interface Props {
   containerProps?: astroHTML.JSX.HTMLAttributes;
+  tabProps?: astroHTML.JSX.ButtonHTMLAttributes;
 }
 
 let _containerProps: astroHTML.JSX.HTMLAttributes = {};
-const { containerProps } = Astro.props;
+const { containerProps, tabProps } = Astro.props;
 if (containerProps) {
   _containerProps = { ...containerProps };
   delete _containerProps.class;
 }
 
-console.log("todosid", Astro.url);
-
 const tabConfig = [
-  { label: "Group sessions", href: "#group-sessions" },
-  { label: "1-2-1s", href: "#one-to-ones" },
-  { label: "Workshops", href: "#workshops" },
-  { label: "Open sessions", href: "#open-sessions" },
-  { label: "Table bookings", href: "#table-bookings" },
-  { label: "Corporate", href: "#corporate" },
+  { label: "Group sessions", hash: "#group-sessions" },
+  { label: "1-2-1s", hash: "#one-to-ones" },
+  { label: "Workshops", hash: "#workshops" },
+  { label: "Open sessions", hash: "#open-sessions" },
+  { label: "Table bookings", hash: "#table-bookings" },
+  { label: "Corporate", hash: "#corporate" },
 ];
 ---
 
@@ -33,8 +32,8 @@ const tabConfig = [
     ]}
   >
     {
-      tabConfig.map(({ label, href }, i) => (
-        <Tab isFirst={i === 0} aProps={{ href }}>
+      tabConfig.map(({ label, hash }) => (
+        <Tab hash={hash} buttonProps={tabProps}>
           {label}
         </Tab>
       ))
@@ -43,8 +42,8 @@ const tabConfig = [
 </div>
 <div>
   {
-    tabConfig.map(({ label, href }) => (
-      <div class="tab-content hidden" id={href.slice(1)}>
+    tabConfig.map(({ label, hash }) => (
+      <div class="tab-content hidden" id={hash.slice(1)}>
         {label + " content"}
       </div>
     ))
