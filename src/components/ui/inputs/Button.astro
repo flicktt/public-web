@@ -1,11 +1,25 @@
 ---
-const { variant = "light" } = Astro.props;
+interface Props extends astroHTML.JSX.ButtonHTMLAttributes {
+  variant?: "light" | "dark";
+  size?: "md" | "lg";
+}
+
+const { variant = "light", size = "md", ...props } = Astro.props;
+
+const btnProps = { ...props };
+delete btnProps.class;
 ---
 
 <button
+  {...btnProps}
   class:list={[
     "border rounded-md px-10 py-3 w-fit cursor-pointer font-bold transition duration-150 hover:bg-white hover:text-flick-black hover:border-white",
-    variant === "dark" ? "border-flick-black" : "border-white",
+    {
+      "border-flick-black": variant === "dark",
+      "border-white": variant === "light",
+      "text-xl lg:text-4xl": size === "lg",
+    },
+    props.class,
   ]}
 >
   <slot />
