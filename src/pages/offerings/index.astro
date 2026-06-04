@@ -22,22 +22,22 @@ const tabConfig = [
 <Layout title="Offerings">
   <PageHeader page="offerings" />
   <PageTabs client:load tabConfig={tabConfig} />
-  <div class="tab-content" id={tabConfig[0].contentId}>
+  <div class="tab-content" data-tab-content={tabConfig[0].contentId}>
     <GroupSessions />
   </div>
-  <div class="tab-content hidden" id={tabConfig[1].contentId}>
+  <div class="tab-content hidden" data-tab-content={tabConfig[1].contentId}>
     <OneToOnes />
   </div>
-  <div class="tab-content hidden" id={tabConfig[2].contentId}>
+  <div class="tab-content hidden" data-tab-content={tabConfig[2].contentId}>
     <Workshops />
   </div>
-  <div class="tab-content hidden" id={tabConfig[3].contentId}>
+  <div class="tab-content hidden" data-tab-content={tabConfig[3].contentId}>
     <OpenSessions />
   </div>
-  <div class="tab-content hidden" id={tabConfig[4].contentId}>
+  <div class="tab-content hidden" data-tab-content={tabConfig[4].contentId}>
     <TableBookings />
   </div>
-  <div class="tab-content hidden" id={tabConfig[5].contentId}>
+  <div class="tab-content hidden" data-tab-content={tabConfig[5].contentId}>
     <Corporate />
   </div>
 

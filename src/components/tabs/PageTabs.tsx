@@ -40,11 +40,15 @@ const PageTabs = ({ tabConfig }: PageTabsProps) => {
 
   const handleTabClick = (newActive: string) => {
     setActive((prev) => {
-      const activeContent = document.getElementById(prev);
+      const activeContent = document.querySelector(
+        `[data-tab-content="${prev}"]`,
+      );
       activeContent?.classList.add("hidden");
       activeContent?.classList.remove("block");
 
-      const newActiveContent = document.getElementById(newActive);
+      const newActiveContent = document.querySelector(
+        `[data-tab-content="${newActive}"]`,
+      );
       newActiveContent?.classList.add("block");
       newActiveContent?.classList.remove("hidden");
 

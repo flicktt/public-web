@@ -3,14 +3,14 @@ import ChevronDown from "../../icons/ChevronDown.svg";
 ---
 
 <div
-  class="accordion-title flex items-center justify-between w-full p-2 cursor-pointer"
+  class="accordion-title flex items-center justify-between w-full p-2 cursor-pointer *:pointer-events-none"
 >
-  <span class="font-bold text-xl lg:text-2xl pointer-events-none">
+  <span class="font-bold text-xl lg:text-2xl">
     <slot />
   </span>
   <span class="w-6 ml-2">
     <ChevronDown
-      class="accordion-chevron size-6 transition-transform duration-150 ease-in pointer-events-none"
+      class="accordion-chevron size-6 transition-transform duration-150 ease-in"
     />
   </span>
 </div>
