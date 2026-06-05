@@ -2,6 +2,7 @@
 import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
 import Button from "../ui/inputs/Button.astro";
 import MainImage from "../../assets/offerings-workshops-main.png";
+import InfoHighlightLayout from "../../layouts/InfoHighlightLayout.astro";
 ---
 
 <OfferingsLayout title="Workshops">
@@ -25,4 +26,22 @@ import MainImage from "../../assets/offerings-workshops-main.png";
   <a href="https://bookwhen.com/flicktt" target="_blank" class="m-auto">
     <Button class="mb-2" size="lg">Book now</Button>
   </a>
+  <InfoHighlightLayout title="Next Workshop" size="md">
+    <h5 class="font-bold text-2xl">Multilball Feeding</h5>
+    <p>In this session, players will learn how to feed multiball correctly.</p>
+    <p>
+      Most players know how to hit the ball, but don't know how to feed, which
+      makes training less effective. This masterclass will teach the basics of
+      good feeding, so everyone can train better and more efficiently.
+    </p>
+    <p class="font-semibold">Dates & Coaches</p>
+    <p>
+      Sunday 11 January, 10:00 - 12:00 <br />
+      Coach: Lis
+    </p>
+    <p>
+      Sunday 18 January, 10:00 - 12:00 <br />
+      Coach: Alberto
+    </p>
+  </InfoHighlightLayout>
 </OfferingsLayout>

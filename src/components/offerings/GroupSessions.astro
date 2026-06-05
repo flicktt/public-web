@@ -1,6 +1,5 @@
 ---
 import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
-import FaqsLayout from "../../layouts/FaqsLayout.astro";
 import AccordionLayout from "../../layouts/AccordionLayout.astro";
 import MainImage from "../../assets/offerings-group-sessions-main.jpg";
 import Button from "../ui/inputs/Button.astro";
@@ -31,8 +30,11 @@ import AccordionContent from "../accordion/AccordionContent.astro";
   <a href="https://bookwhen.com/flicktt" target="_blank" class="m-auto">
     <Button class="mb-2" size="lg">Book now</Button>
   </a>
-  <InfoHighlightLayout title="Group Coaching Levels (1-4)">
-    <p class="font-semibold text-xl lg:text-2xl">
+  <InfoHighlightLayout
+    title="Group Coaching Levels (1-4)"
+    sectionProps={{ class: "gap-6" }}
+  >
+    <p class="font-semibold text-2xl">
       Our group sessions are split by levels so you train at the right pace and
       improve faster. Levels are based on repeatable skills, not “who wins
       games”.
