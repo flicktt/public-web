@@ -33,6 +33,7 @@ const PageTab = ({ buttonProps, isActive, children }: PageTabProps) => {
   );
 };
 
+// TODO add initial/default open tab prop
 const PageTabs = ({ tabConfig }: PageTabsProps) => {
   const [active, setActive] = useState(tabConfig[0].contentId);
   const [tabMobileOptions, setTabMobileOptions] = useState([...tabConfig]);

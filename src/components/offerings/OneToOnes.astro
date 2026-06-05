@@ -1,5 +1,22 @@
 ---
 import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
+import MainImage from "../../assets/offerings-one-to-ones-main.jpg";
 ---
 
-<OfferingsLayout title="1-2-1 Coaching">hello</OfferingsLayout>
+<OfferingsLayout title="1-2-1 Coaching">
+  <div
+    class="w-full aspect-video lg:aspect-73/30 overflow-hidden border-8 border-flick-dark"
+  >
+    <img
+      src={MainImage.src}
+      alt="Corporate"
+      class="relative bottom-14 sm:bottom-25 lg:bottom-75 w-full object-cover aspect-4/3"
+    />
+  </div>
+  <p class="font-light text-xl lg:text-2xl">
+    Fully personalised one-to-one sessions from our coaches to your goals,
+    combining technical coaching, match strategy, and multiball training where
+    appropriate. Ideal for fast improvement, targeted skill development, and
+    refining specific areas of your game.
+  </p>
+</OfferingsLayout>

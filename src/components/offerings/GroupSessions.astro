@@ -8,7 +8,6 @@ import InfoHighlightLayout from "../../layouts/InfoHighlightLayout.astro";
 import Accordion from "../accordion/Accordion.astro";
 import AccordionTitle from "../accordion/AccordionTitle.astro";
 import AccordionContent from "../accordion/AccordionContent.astro";
-import mem3Img from "../../assets/mem-03.jpg";
 ---
 
 <OfferingsLayout title="Group Sessions">
@@ -223,9 +222,9 @@ import mem3Img from "../../assets/mem-03.jpg";
         <AccordionContent>
           <div class="flex flex-col gap-3">
             <p>
-              <span class="font-semibold">Perfect if:</span>you have good
-              strokes, but points slip away on serve/receive, or you don't know
-              what to do on 3rd/5th ball.
+              <span class="font-semibold">Perfect if:</span> you have good strokes,
+              but points slip away on serve/receive, or you don't know what to do
+              on 3rd/5th ball.
             </p>
 
             <div>
@@ -301,81 +300,3 @@ import mem3Img from "../../assets/mem-03.jpg";
     </div>
   </InfoHighlightLayout>
 </OfferingsLayout>
-
-<!-- TODO turn into reusable component along with home page section -->
-<div class="bg-membership">
-  <div class="max-w-section px-12 py-12 m-auto lg:flex">
-    <div>
-      <div
-        class="m-auto size-75 md:size-125 rounded-4xl overflow-hidden border-10 border-black/10"
-      >
-        <img
-          src={mem3Img.src}
-          alt="Membership three"
-          class="relative bottom-62.5 h-225 max-w-fit right-100"
-        />
-      </div>
-    </div>
-    <section
-      class="flex flex-col text-center items-center justify-center gap-8 px-10 xl:pr-0 xl:text-right xl:items-end xl:gap-11"
-    >
-      <h3>Club Membership</h3>
-      <p class="text-3xl">
-        Members get big discounts on activities, including 1-2-1s, group
-        sessions and club tables.
-      </p>
-      <Button>Find out more</Button>
-    </section>
-  </div>
-</div>
-
-<FaqsLayout>
-  <AccordionLayout>
-    <Accordion>
-      <AccordionTitle>Proin placerat vitae nisl sed elementum?</AccordionTitle>
-      <AccordionContent>
-        <p>
-          Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum
-          erat in nisi fringilla egestas. Suspendisse convallis vulputate
-          viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet,
-          mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in
-          ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat.
-          Nam sit amet consequat enim.
-        </p>
-      </AccordionContent>
-    </Accordion>
-    <Accordion>
-      <AccordionTitle>
-        <p>In venenatis tortor leo, et vulputate mauris interdum in?</p>
-      </AccordionTitle>
-      <AccordionContent>
-        <p>
-          Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum
-          erat in nisi fringilla egestas. Suspendisse convallis vulputate
-          viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet,
-          mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in
-          ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat.
-          Nam sit amet consequat enim.
-        </p>
-      </AccordionContent>
-    </Accordion>
-    <Accordion>
-      <AccordionTitle>
-        <p>
-          Vestibulum dignissim tempus justo, auctor vulputate urna varius
-          dignissim?
-        </p>
-      </AccordionTitle>
-      <AccordionContent>
-        <p>
-          Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum
-          erat in nisi fringilla egestas. Suspendisse convallis vulputate
-          viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet,
-          mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in
-          ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat.
-          Nam sit amet consequat enim.
-        </p>
-      </AccordionContent>
-    </Accordion>
-  </AccordionLayout>
-</FaqsLayout>
