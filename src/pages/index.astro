@@ -1,5 +1,4 @@
 ---
-import { Image, Picture } from "astro:assets";
 import HomeHeader from "../components/header/HomeHeader.astro";
 import Layout from "../layouts/Layout.astro";
 import Schedule from "../components/home/Schedule.astro";
@@ -12,11 +11,12 @@ import lisCoach from "../assets/lis-coach.jpg";
 import albertoCoach from "../assets/alberto-coach.jpg";
 import FlickTournamentBackground from "../assets/home-flick-tournament.png";
 import FlickLeagueBackground from "../assets/home-flick-league.png";
+import Container from "../layouts/Container.astro";
 ---
 
 <Layout title="Home">
   <HomeHeader page="home" />
-  <div class="max-w-section px-6 lg:px-12 py-15 sm:py-30 m-auto">
+  <Container class="py-15 sm:py-30">
     <div class="flex flex-col gap-11">
       <hgroup class="m-auto max-w-2xl text-center">
         <h1 class="uppercase font-bold text-4xl sm:text-5xl md:text-6xl">
@@ -36,11 +36,6 @@ import FlickLeagueBackground from "../assets/home-flick-league.png";
         enthusiasts of all levels to reach their full potential
       </p>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <!-- <Picture
-          src={lisAndAlbImg}
-          alt="Alberto explaining to a group"
-          class="border-8 border-flick-dark w-full"
-        /> -->
         <img
           src={lisAndAlbImg.src}
           alt="Alberto explaining to a group"
@@ -74,10 +69,11 @@ import FlickLeagueBackground from "../assets/home-flick-league.png";
       </section>
       <Schedule />
     </div>
-  </div>
+  </Container>
   <div class="bg-home-kids">
-    <section
-      class="max-w-section m-auto flex flex-col gap-11 py-20 px-6 lg:px-12 text-center items-center"
+    <Container
+      section
+      class="flex flex-col gap-11 py-20 text-center items-center"
     >
       <h3>Kids Coaching and Competitions</h3>
       <p class="text-3xl">
@@ -86,7 +82,7 @@ import FlickLeagueBackground from "../assets/home-flick-league.png";
         tournaments today.
       </p>
       <Button>Find out more</Button>
-    </section>
+    </Container>
   </div>
   <div class="grid grid-cols-1 lg:grid-cols-2">
     <section
@@ -133,9 +129,7 @@ import FlickLeagueBackground from "../assets/home-flick-league.png";
     </section>
   </div>
   <div class="bg-membership">
-    <div
-      class="max-w-section px-6 lg:px-12 py-20 xl:pr-0 2xl:p-0 m-auto xl:flex"
-    >
+    <Container class="py-20 xl:pr-0 2xl:p-0 xl:flex">
       <div class="2xl:w-[130%] 2xl:relative">
         <div
           class="hidden 2xl:block xl:absolute xl:-top-10 m-auto size-125 rounded-4xl overflow-hidden border-10 border-black/10"
@@ -145,11 +139,6 @@ import FlickLeagueBackground from "../assets/home-flick-league.png";
             alt="Membership two"
             class="relative bottom-50 h-200 max-w-fit right-12.5"
           />
-          <!-- <Picture
-            src={mem2Img}
-            alt="Membership two"
-            class="relative bottom-50 h-200 max-w-fit right-12.5"
-          /> -->
         </div>
         <div
           class="hidden 2xl:block xl:absolute xl:right-0 top-15 m-auto size-125 rounded-4xl overflow-hidden border-10 border-black/10"
@@ -159,11 +148,6 @@ import FlickLeagueBackground from "../assets/home-flick-league.png";
             alt="Membership one"
             class="relative bottom-102.5 h-300 max-w-fit right-67.5"
           />
-          <!-- <Picture
-            src={mem1Img}
-            alt="Membership one"
-            class="relative bottom-102.5 h-300 max-w-fit right-67.5"
-          /> -->
         </div>
         <div
           class="2xl:absolute xl:right-38 xl:-bottom-10 m-auto size-75 md:size-125 rounded-4xl overflow-hidden border-10 border-black/10"
@@ -173,11 +157,6 @@ import FlickLeagueBackground from "../assets/home-flick-league.png";
             alt="Membership three"
             class="relative bottom-62.5 h-225 max-w-fit right-100"
           />
-          <!-- <Picture
-            src={mem3Img}
-            alt="Membership three"
-            class="relative bottom-62.5 h-225 max-w-fit right-100"
-          /> -->
         </div>
       </div>
       <section
@@ -190,10 +169,11 @@ import FlickLeagueBackground from "../assets/home-flick-league.png";
         </p>
         <Button>Find out more</Button>
       </section>
-    </div>
+    </Container>
   </div>
-  <section
-    class="max-w-section m-auto flex flex-col gap-11 py-20 px-6 lg:px-12 text-center items-center"
+  <Container
+    section
+    class="flex flex-col gap-11 py-20 text-center items-center"
   >
     <h2>About</h2>
     <p class="text-3xl xl:w-245">
@@ -211,11 +191,6 @@ import FlickLeagueBackground from "../assets/home-flick-league.png";
             alt="Alberto coach"
             class="relative max-w-fit h-120 w-213.75 -left-42.5"
           />
-          <!-- <Picture
-            src={albertoCoach}
-            alt="Alberto coach"
-            class="relative max-w-fit h-120 w-213.75 -left-42.5"
-          /> -->
         </div>
         <div class="flex flex-col">
           <p class="font-semibold text-4xl">Alberto Garrido</p>
@@ -231,11 +206,6 @@ import FlickLeagueBackground from "../assets/home-flick-league.png";
             alt="Lis coach"
             class="relative max-w-fit h-120 w-213.75 -left-37.5"
           />
-          <!-- <Picture
-            src={lisCoach}
-            alt="Lis coach"
-            class="relative max-w-fit h-120 w-213.75 -left-37.5"
-          /> -->
         </div>
         <div class="flex flex-col">
           <p class="font-semibold text-4xl">Lis Pardo</p>
@@ -244,6 +214,5 @@ import FlickLeagueBackground from "../assets/home-flick-league.png";
       </div>
     </div>
     <Button>Find out more</Button>
-  </section>
-  <!-- <Footer /> -->
+  </Container>
 </Layout>
