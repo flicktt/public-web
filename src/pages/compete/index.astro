@@ -1,9 +1,28 @@
 ---
 import PageHeader from "../../components/header/PageHeader.astro";
+import PageTabs from "../../components/tabs/PageTabs";
+import CompeteAtFlick from "../../components/compete/CompeteAtFlick.astro";
+import FlickTTLeague from "../../components/compete/FlickTTLeague.astro";
+import FlickTTTournament from "../../components/compete/FlickTTTournament.astro";
 import Layout from "../../layouts/Layout.astro";
+
+const tabConfig = [
+  { label: "Compete at Flick TT", contentId: "compete-at-flick" },
+  { label: "Flick TT League", contentId: "club-league" },
+  { label: "Flick TT Tournament", contentId: "tournament" },
+];
 ---
 
 <Layout title="Compete">
   <PageHeader page="compete" />
-  <p>hello</p>
+  <PageTabs client:load tabConfig={tabConfig} />
+  <div class="tab-content" data-tab-content={tabConfig[0].contentId}>
+    <CompeteAtFlick />
+  </div>
+  <div class="tab-content hidden" data-tab-content={tabConfig[1].contentId}>
+    <FlickTTLeague />
+  </div>
+  <div class="tab-content hidden" data-tab-content={tabConfig[2].contentId}>
+    <FlickTTTournament />
+  </div>
 </Layout>

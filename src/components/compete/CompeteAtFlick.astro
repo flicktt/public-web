@@ -1,0 +1,25 @@
+---
+import Container from "../../layouts/Container.astro";
+import Button from "../ui/inputs/Button.astro";
+import CompeteLisAlbertoImage from "../../assets/compete-lis-alberto.png";
+---
+
+<Container class="flex flex-col gap-8 lg:gap-12 py-14">
+  <p class="text-3xl md:text-4xl lg:text-5xl font-light text-center">
+    Play, compete, and improve with Flick TT! From our inclusive quarterly Flick
+    League to the historic Central League and the national British League,
+    there's a league for every level and ambition.
+    <span class="text-flick-yellow">
+      Join a league today and take your game to the
+      <b class="font-semibold">next level!</b>
+    </span>
+  </p>
+  <div class="max-w-section w-full overflow-hidden border-8 border-flick-dark">
+    <img
+      src={CompeteLisAlbertoImage.src}
+      alt="Lis and Alberto celebrating"
+      class="relative object-cover"
+    />
+  </div>
+  <Button class="m-auto" size="lg">Contact Us</Button>
+</Container>
