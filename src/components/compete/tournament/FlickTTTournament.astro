@@ -1,0 +1,52 @@
+---
+import InfoHighlightLayout from "../../../layouts/InfoHighlightLayout.astro";
+import OfferingsLayout from "../../../layouts/OfferingsLayout.astro";
+import Button from "../../ui/inputs/Button.astro";
+---
+
+<OfferingsLayout
+  title="Flick TT Tournament"
+  showMembership={false}
+  containerProps={{ class: "gap-8" }}
+>
+  <p class="text-3xl md:text-4xl lg:text-5xl text-flick-yellow text-center">
+    Orci varius natoque penatibus et magnis dis
+    <b class="font-semibold">parturient montes</b>, nascetur ridiculus mus.
+    Donec vitae tincidunt nisl.
+  </p>
+  <p class="font-light text-xl lg:text-3xl text-center">
+    Integer tincidunt, ipsum at commodo tempus, enim orci consequat dolor, non
+    sodales velit erat tristique lacus. Integer fermentum convallis orci ac
+    faucibus. Integer sodales at erat ut vestibulum. Suspendisse ultrices sapien
+    sit amet pharetra maximus. Nullam mollis dolor at urna auctor, id feugiat mi
+    porttitor. Donec tincidunt lacinia lectus, id luctus quam dapibus sit amet.
+    In dignissim dapibus nunc, ut semper libero interdum vitae.
+  </p>
+  <a
+    href="https://bookwhen.com/flicktt-competitions"
+    target="_blank"
+    class="m-auto"
+  >
+    <Button size="lg" class="m-auto">Register Now</Button>
+  </a>
+  <InfoHighlightLayout title="Next Tournament" size="md">
+    <div class="flex flex-row gap-2 items-end">
+      <h5 class="font-bold text-2xl">14 June 2026</h5>
+      <p>9:30am - 5pm</p>
+    </div>
+    <p>48 players</p>
+    <p>Group stage, then main & consolation draw</p>
+    <p>
+      <span class="font-semibold">Fee:</span>
+      £12 (Members) / £25 (Non-Members)
+    </p>
+    <p>
+      <span class="font-semibold">Sessions:</span>
+      Fridays 6-8pm / Sundays 10am-12pm & 12-2pm
+    </p>
+    <p>
+      <span class="font-semibold">Prizes:</span>
+      Winner: £125, Runner Up: £75, 3rd Place: £50, plus consolation prizes
+    </p>
+  </InfoHighlightLayout>
+</OfferingsLayout>
