@@ -1,0 +1,21 @@
+---
+interface Props {
+  section?: boolean;
+}
+
+const { section } = Astro.props;
+
+const classes = "grid grid-cols-1 lg:grid-cols-3 gap-6";
+---
+
+{
+  section ? (
+    <section class={classes}>
+      <slot />
+    </section>
+  ) : (
+    <div class={classes}>
+      <slot />
+    </div>
+  )
+}

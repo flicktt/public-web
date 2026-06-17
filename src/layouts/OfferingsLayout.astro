@@ -3,93 +3,79 @@ import Accordion from "../components/accordion/Accordion.astro";
 import AccordionContent from "../components/accordion/AccordionContent.astro";
 import AccordionTitle from "../components/accordion/AccordionTitle.astro";
 import Button from "../components/ui/inputs/Button.astro";
-import AccordionLayout from "./AccordionLayout.astro";
-import FaqsLayout from "./FaqsLayout.astro";
+import AccordionStack from "../components/accordion/AccordionStack.astro";
+import FaqsLayout, { type FaqConfig } from "./FaqsLayout.astro";
 import mem3Img from "../assets/mem-03.jpg";
 import Container from "./Container.astro";
 
-const { title } = Astro.props;
+interface Props {
+  title?: string,
+  showMembership?: boolean;
+  containerProps?: astroHTML.JSX.HTMLAttributes
+  faqsConfig?: FaqConfig[];
+}
+
+const mockConfig = [
+  {
+    title: 'Proin placerat vitae nisl sed elementum?',
+    Content: 'Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum erat in nisi fringilla egestas. Suspendisse convallis vulputate viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet, mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat. Nam sit amet consequat enim.'
+  }
+];
+
+const { title, showMembership = true, faqsConfig = mockConfig, containerProps } = Astro.props;
+const _containerProps = { ...containerProps };
+if (_containerProps) delete _containerProps.class;
+
+const containerClassList = [
+  "flex flex-col pt-6 pb-14", 
+  containerProps?.class, 
+  { 'gap-8 lg:gap-12': !containerProps?.class?.includes('gap-') }
+];
 ---
 
-<Container class="flex flex-col gap-8 lg:gap-12 pt-6 pb-14">
+<Container main {..._containerProps} class:list={containerClassList}>
   {title && <h2 class="font-bold text-center">{title}</h2>}
   <slot />
 </Container>
 
-<!-- TODO turn into reusable component along with home page section -->
-<div class="bg-membership">
-  <Container class="flex flex-col lg:flex-row gap-8 py-12">
-    <div>
-      <div
-        class="m-auto size-75 pb md:size-100 xl:size-125 rounded-4xl overflow-hidden border-10 border-black/10"
-      >
-        <img
-          src={mem3Img.src}
-          alt="Membership three"
-          class="relative bottom-62.5 h-225 max-w-fit right-100"
-        />
+{showMembership && (
+  <!-- TODO turn into reusable component along with home page section -->
+  <div class="bg-membership">
+    <Container class="flex flex-col lg:flex-row gap-8 py-12">
+      <div>
+        <div
+          class="m-auto size-75 pb md:size-100 xl:size-125 rounded-4xl overflow-hidden border-10 border-black/10"
+        >
+          <img
+            src={mem3Img.src}
+            alt="Membership three"
+            class="relative bottom-62.5 h-225 max-w-fit right-100"
+          />
+        </div>
       </div>
-    </div>
-    <section
-      class="flex flex-col text-center items-center justify-center gap-8 px-10 xl:pr-0 xl:text-right xl:items-end xl:gap-11"
-    >
-      <h3>Club Membership</h3>
-      <p class="text-3xl">
-        Members get big discounts on activities, including 1-2-1s, group
-        sessions and club tables.
-      </p>
-      <Button>Find out more</Button>
-    </section>
-  </Container>
-</div>
+      <section
+        class="flex flex-col text-center items-center justify-center gap-8 px-10 xl:pr-0 xl:text-right xl:items-end xl:gap-11"
+      >
+        <h3>Club Membership</h3>
+        <p class="text-3xl">
+          Members get big discounts on activities, including 1-2-1s, group
+          sessions and club tables.
+        </p>
+        <Button>Find out more</Button>
+      </section>
+    </Container>
+  </div>
+)}
 
 <FaqsLayout>
-  <AccordionLayout>
-    <Accordion>
-      <AccordionTitle>Proin placerat vitae nisl sed elementum?</AccordionTitle>
-      <AccordionContent>
-        <p>
-          Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum
-          erat in nisi fringilla egestas. Suspendisse convallis vulputate
-          viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet,
-          mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in
-          ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat.
-          Nam sit amet consequat enim.
-        </p>
-      </AccordionContent>
-    </Accordion>
-    <Accordion>
-      <AccordionTitle>
-        <p>In venenatis tortor leo, et vulputate mauris interdum in?</p>
-      </AccordionTitle>
-      <AccordionContent>
-        <p>
-          Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum
-          erat in nisi fringilla egestas. Suspendisse convallis vulputate
-          viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet,
-          mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in
-          ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat.
-          Nam sit amet consequat enim.
-        </p>
-      </AccordionContent>
-    </Accordion>
-    <Accordion>
-      <AccordionTitle>
-        <p>
-          Vestibulum dignissim tempus justo, auctor vulputate urna varius
-          dignissim?
-        </p>
-      </AccordionTitle>
-      <AccordionContent>
-        <p>
-          Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum
-          erat in nisi fringilla egestas. Suspendisse convallis vulputate
-          viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet,
-          mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in
-          ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat.
-          Nam sit amet consequat enim.
-        </p>
-      </AccordionContent>
-    </Accordion>
-  </AccordionLayout>
+  <AccordionStack>
+    {faqsConfig.map(({ title, Content }) => (
+      <Accordion>
+        <AccordionTitle>{title}</AccordionTitle>
+        <AccordionContent>
+          {typeof Content === 'string' ? <p>{Content}</p> : <Content />}
+        </AccordionContent>
+      </Accordion>
+    ))}
+  </AccordionStack>
 </FaqsLayout>

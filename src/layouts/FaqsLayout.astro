@@ -1,5 +1,11 @@
 ---
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 import Container from "./Container.astro";
+
+export type FaqConfig = {
+  title: string;
+  Content: AstroComponentFactory | string;
+};
 ---
 
 <div class="bg-flick-red">

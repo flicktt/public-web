@@ -1,8 +1,8 @@
 ---
 import PageHeader from "../../components/header/PageHeader.astro";
 import PageTabs from "../../components/tabs/PageTabs.tsx";
-import Layout from "../../layouts/Layout.astro";
-import GroupSessions from "../../components/offerings/GroupSessions.astro";
+import PageLayout from "../../layouts/PageLayout.astro";
+import GroupSessions from "../../components/offerings/groupSessions/GroupSessions.astro";
 import OneToOnes from "../../components/offerings/OneToOnes.astro";
 import Workshops from "../../components/offerings/Workshops.astro";
 import OpenSessions from "../../components/offerings/OpenSessions.astro";
@@ -19,7 +19,7 @@ const tabConfig = [
 ];
 ---
 
-<Layout title="Offerings">
+<PageLayout title="Offerings">
   <PageHeader page="offerings" />
   <PageTabs client:load tabConfig={tabConfig} />
   <div class="tab-content" data-tab-content={tabConfig[0].contentId}>
@@ -40,4 +40,4 @@ const tabConfig = [
   <div class="tab-content hidden" data-tab-content={tabConfig[5].contentId}>
     <Corporate />
   </div>
-</Layout>
+</PageLayout>

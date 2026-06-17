@@ -1,7 +1,12 @@
 ---
 import Container from "../../layouts/Container.astro";
+import SplitLayoutContainer from "../../layouts/splitLayout/SplitLayoutContainer.astro";
+import SplitLayoutLeft from "../../layouts/splitLayout/SplitLayoutLeft.astro";
+import SplitLayoutRight from "../../layouts/splitLayout/SplitLayoutRight.astro";
 import Button from "../ui/inputs/Button.astro";
 import CompeteLisAlbertoImage from "../../assets/compete-lis-alberto.png";
+import FTTTournamentBg from "../../assets/compete-banner-tournament.png";
+import FTTU18TournamentBg from "../../assets/compete-banner-u18.png";
 ---
 
 <Container class="flex flex-col gap-8 lg:gap-12 py-14">
@@ -21,5 +26,116 @@ import CompeteLisAlbertoImage from "../../assets/compete-lis-alberto.png";
       class="relative object-cover"
     />
   </div>
+  <SplitLayoutContainer section>
+    <SplitLayoutLeft>
+      <h3 class="text-4xl mb-2">Leagues at Flick TT</h3>
+      <p class="text-xl">
+        Flick TT runs and participates in three exciting leagues, offering
+        competitive and social opportunities for players of all levels.
+      </p>
+    </SplitLayoutLeft>
+    <SplitLayoutRight>
+      <div class="flex flex-col gap-4">
+        <p class="text-xl">
+          <span class="text-flick-yellow font-semibold">
+            Flick TT League &ndash;
+          </span>
+          Our quarterly league is perfect for serious players looking to improve and
+          meet others. Open to all levels, players pay a seasonal fee (every 3 months)
+          and can book to play on Fridays or Sundays. Each season starts in February,
+          May, August, and November, with end-of-league awards for the top 3 players
+          in each category.
+          <a
+            href="#club-league"
+            id="link-to-club-league"
+            class="text-flick-yellow font-semibold"
+          >
+            Find out more here →
+          </a>
+        </p>
+        <p class="text-xl">
+          <span class="text-flick-yellow font-semibold">
+            Central League &ndash;
+          </span>
+          Founded in 1943, the Central London Table Tennis League is the hub for competitive
+          table tennis in Zones 1-2. Players range from National League level to relative
+          beginners. Flick currently fields four teams across Divisions 2, 4, 6, and
+          7.
+        </p>
+        <p class="text-xl">
+          <span class="text-flick-yellow font-semibold">
+            British League &ndash;
+          </span>
+          The premier club competition run by Table Tennis England, open to clubs
+          across the Home Nations. Flick competes with three senior teams and one
+          women's team. The leagues include Youth (YBCL), Senior (SBCL), Women's (WBCL),
+          and Veterans (VBCL), organised by the British Clubs Leagues committee and
+          volunteers.
+        </p>
+      </div>
+    </SplitLayoutRight>
+  </SplitLayoutContainer>
   <Button class="m-auto" size="lg">Contact Us</Button>
 </Container>
+<div
+  style={`
+    background: url(${FTTTournamentBg.src}) center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  `}
+>
+  <Container
+    section
+    class="flex flex-col items-center text-center gap-10 py-20"
+  >
+    <h3>Flick TT Tournament</h3>
+    <p class="text-2xl">
+      Compete every two months in Flick TT's adult tournaments, featuring 48
+      players per event and a points-based ranking system. Across five
+      tournaments each year, the top 32 players advance to the final showdown.
+      Prizes include cash rewards for top performers, making it the perfect mix
+      of competition, skill-building, and fun.
+    </p>
+    <a href="#tournament" id="link-to-tournament">
+      <Button>Find out more</Button>
+    </a>
+  </Container>
+</div>
+<div
+  style={`
+    background: url(${FTTU18TournamentBg.src}) center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  `}
+>
+  <Container
+    section
+    class="flex flex-col items-center text-center gap-10 py-20"
+  >
+    <h3>U18 Tournament</h3>
+    <p class="text-2xl">
+      Integer tincidunt, ipsum at commodo tempus, enim orci consequat dolor, non
+      sodales velit erat tristique lacus.
+    </p>
+    <a href="#tournament" id="link-to-tournament">
+      <Button>Find out more</Button>
+    </a>
+  </Container>
+</div>
+
+<script>
+  const loadTab = (tab: string) => {
+    location.href = location.pathname + "#" + tab;
+    location.reload();
+  };
+
+  const linkToClubLegaueEl = document.getElementById("link-to-club-league");
+  linkToClubLegaueEl?.addEventListener("click", () => {
+    loadTab("club-league");
+  });
+
+  const linkToTournamentEl = document.getElementById("link-to-tournament");
+  linkToTournamentEl?.addEventListener("click", () => {
+    loadTab("tournament");
+  });
+</script>

@@ -1,6 +1,6 @@
 ---
 import HomeHeader from "../components/header/HomeHeader.astro";
-import Layout from "../layouts/Layout.astro";
+import PageLayout from "../layouts/PageLayout.astro";
 import Schedule from "../components/home/Schedule.astro";
 import Button from "../components/ui/inputs/Button.astro";
 import lisAndAlbImg from "../assets/flick-alberto-and-lis-1.png";
@@ -9,12 +9,12 @@ import mem2Img from "../assets/mem-02.png";
 import mem3Img from "../assets/mem-03.jpg";
 import lisCoach from "../assets/lis-coach.jpg";
 import albertoCoach from "../assets/alberto-coach.jpg";
-import FlickTournamentBackground from "../assets/home-flick-tournament.png";
-import FlickLeagueBackground from "../assets/home-flick-league.png";
+import FTTTournamentBg from "../assets/home-flick-tournament.png";
+import FTTLeagueBg from "../assets/home-flick-league.png";
 import Container from "../layouts/Container.astro";
 ---
 
-<Layout title="Home">
+<PageLayout title="Home">
   <HomeHeader page="home" />
   <Container class="py-15 sm:py-30">
     <div class="flex flex-col gap-11">
@@ -76,7 +76,7 @@ import Container from "../layouts/Container.astro";
       class="flex flex-col gap-11 py-20 text-center items-center"
     >
       <h3>Kids Coaching and Competitions</h3>
-      <p class="text-3xl">
+      <p class="text-2xl">
         Give your child the chance to learn, play, and improve! Sign up for
         group sessions, one-to-one coaching, or join the Flick junior
         tournaments today.
@@ -86,10 +86,10 @@ import Container from "../layouts/Container.astro";
   </div>
   <div class="grid grid-cols-1 lg:grid-cols-2">
     <section
-      class="flex flex-col items-center text-center gap-10 pt-20 pb-20 xl:pb-25 bg-no-repeat text-flick-black"
+      class="flex flex-col items-center text-center gap-10 py-20 xl:pb-25 bg-no-repeat text-flick-black"
       style={`
         background:
-          url(${FlickLeagueBackground.src}) center center;
+          url(${FTTLeagueBg.src}) center center;
         background-size: cover;
         background-repeat: no-repeat;
         `}
@@ -111,7 +111,7 @@ import Container from "../layouts/Container.astro";
       class="flex flex-col items-center text-center gap-10 pt-20 pb-28"
       style={`
         background: 
-          url(${FlickTournamentBackground.src}) center center;
+          url(${FTTTournamentBg.src}) center center;
         background-size: cover;
         background-repeat: no-repeat;
         `}
@@ -215,4 +215,4 @@ import Container from "../layouts/Container.astro";
     </div>
     <Button>Find out more</Button>
   </Container>
-</Layout>
+</PageLayout>

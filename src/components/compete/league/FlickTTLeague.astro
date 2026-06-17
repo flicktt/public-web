@@ -1,0 +1,118 @@
+---
+import OfferingsLayout from "../../../layouts/OfferingsLayout.astro";
+import PointsRow from "../../pointsRow/PointsRow.astro";
+import Button from "../../ui/inputs/Button.astro";
+import TableCells from "../../../icons/TableCells.svg";
+import Trophy from "../../../icons/Trophy.svg";
+import CalendarDays from "../../../icons/CalendarDays.svg";
+import InfoHighlightLayout from "../../../layouts/InfoHighlightLayout.astro";
+import Container from "../../../layouts/Container.astro";
+import type { FaqConfig } from "../../../layouts/FaqsLayout.astro";
+import MatchingSessionFaq from "./MatchingSessionFaq.astro";
+import EloFaq from "./EloFaq.astro";
+
+const pointConfig = [
+  {
+    Icon: TableCells,
+    text: "ELO-based rating system with rankings and divisions",
+  },
+  {
+    Icon: Trophy,
+    text: "Three month seasons with awards for division winners as well as other categories",
+  },
+  {
+    Icon: CalendarDays,
+    text: "Regular two hour sessions on Friday and Sunday",
+  },
+];
+
+const faqsConfig: FaqConfig[] = [
+  {
+    title: "What is a Matching Session?",
+    Content: MatchingSessionFaq,
+  },
+  {
+    title: "Can I choose my opponents in the matching session?",
+    Content: "No. You will be assigned opponents to play with in the session.",
+  },
+  {
+    title: "Do I need to attend every single matching session?",
+    Content:
+      "Absolutely not! You can attend as many session as you want. However, do note that if you want to receive a ranking, you need to attend at least 3 matching sessions in a season (roughly 1 session per month).",
+  },
+  {
+    title: "Is there a limit on how many Matching Sessions I can attend?",
+    Content:
+      "Not at the moment. You can attend as many sessions as you want. However, if matching sessions are full, players who have attended a high number of sessions might be asked to give their spot to players who have attended less sessions.",
+  },
+  {
+    title: "What is an Elo-Based Rating?",
+    Content: EloFaq,
+  },
+  {
+    title:
+      "Is the Flick TT League rating equivalent to ratings in other leagues?",
+    Content:
+      "No. Elo-based ratings only reflect your skill level within that league. The rating you have in Flick TT League cannot be compared to rating you receive in other leagues.",
+  },
+];
+---
+
+<OfferingsLayout
+  showMembership={false}
+  title="Flick TT League"
+  containerProps={{ class: "gap-8 max-w-full px-0" }}
+  faqsConfig={faqsConfig}
+>
+  <div
+    class="max-w-section m-auto flex flex-col gap-8 px-6 lg:px-12 text-center"
+  >
+    <p class="text-3xl md:text-4xl lg:text-5xl text-flick-yellow">
+      The Flick TT League is a
+      <b class="font-semibold">ranking league</b> with an
+      <b class="font-semibold">Elo rating system</b>.
+    </p>
+    <p class="font-light text-xl lg:text-3xl">
+      Starting early 2025, the league hosts regular 2-hour matching sessions on
+      Fridays and Sundays that players of this league can join for free! Once
+      you join the league, you will be assigned a rating. You will be matched
+      randomly against others in a matching session and you play as many matches
+      as you can within the 2 hours! Winning will gain you points, losing will
+      cost you points. Want to play some proper matches in a fun and casual
+      environment? Here's your chance to do just that!
+    </p>
+    <a
+      href="https://bookwhen.com/flicktt-competitions/memberships"
+      target="_blank"
+    >
+      <Button size="lg" class="m-auto">Register now</Button>
+    </a>
+    <div
+      class="flex flex-col md:flex-row gap-4 items-center justify-center w-full"
+    >
+      <Button size="lg" class="w-full md:w-fit">League Table</Button>
+      <Button size="lg" class="w-full md:w-fit">League Calendar</Button>
+      <Button size="lg" class="w-full md:w-fit">League Rules</Button>
+    </div>
+  </div>
+  <PointsRow pointConfig={pointConfig} />
+  <Container>
+    <InfoHighlightLayout title="Currently Active" size="md">
+      <h5 class="font-bold text-2xl">Season 6</h5>
+      <p>1 May - 31 July</p>
+      <p>
+        <span class="font-semibold">Fee:</span>
+        £35 (Members) / £65 (Non-Members) | £1.50 per session
+      </p>
+      <p>
+        <span class="font-semibold">Sessions:</span>
+        Fridays 6-8pm / Sundays 10am-12pm & 12-2pm
+      </p>
+      <p>
+        <span class="font-semibold">Prizes:</span>
+        £60 voucher for top 3 Division 1 players / £40 voucher for top 3 Division
+        2 players / Private lesson voucher for winners of 3 mystery categories
+      </p>
+    </InfoHighlightLayout>
+  </Container>
+</OfferingsLayout>

@@ -1,22 +1,31 @@
 ---
 interface Props extends astroHTML.JSX.HTMLAttributes {
   section?: boolean;
+  main?: boolean;
 }
 
-const { section, ...props } = Astro.props;
+const { section, main, ...props } = Astro.props;
 const _props = { ...props };
 if (_props) delete _props.class;
 
-const classes = "max-w-section px-6 lg:px-12 m-auto";
+const classList = [
+  "max-w-section m-auto",
+  props?.class,
+  { "px-6 lg:px-12": !props?.class?.includes("px-") },
+];
 ---
 
 {
   section ? (
-    <section {..._props} class:list={[classes, props.class]}>
+    <section {..._props} class:list={classList}>
       <slot />
     </section>
+  ) : main ? (
+    <main {..._props} class:list={classList}>
+      <slot />
+    </main>
   ) : (
-    <div {..._props} class:list={[classes, props.class]}>
+    <div {..._props} class:list={classList}>
       <slot />
     </div>
   )
