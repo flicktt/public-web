@@ -7,9 +7,9 @@ import Trophy from "../../../icons/Trophy.svg";
 import CalendarDays from "../../../icons/CalendarDays.svg";
 import InfoHighlightLayout from "../../../layouts/InfoHighlightLayout.astro";
 import Container from "../../../layouts/Container.astro";
-import type { FaqConfig } from "../../../layouts/FaqsLayout.astro";
 import MatchingSessionFaq from "./MatchingSessionFaq.astro";
 import EloFaq from "./EloFaq.astro";
+import type { FaqConfig } from "../../faqs/Faqs.astro";
 
 const pointConfig = [
   {
@@ -26,7 +26,7 @@ const pointConfig = [
   },
 ];
 
-const faqsConfig: FaqConfig[] = [
+const faqConfig: FaqConfig[] = [
   {
     title: "What is a Matching Session?",
     Content: MatchingSessionFaq,
@@ -62,7 +62,7 @@ const faqsConfig: FaqConfig[] = [
   title="Flick TT League"
   showMembership={false}
   containerProps={{ class: "gap-8 max-w-full px-0" }}
-  faqsConfig={faqsConfig}
+  faqConfig={faqConfig}
 >
   <div
     class="max-w-section m-auto flex flex-col gap-8 px-6 lg:px-12 text-center"
