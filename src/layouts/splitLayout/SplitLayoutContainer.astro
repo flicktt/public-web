@@ -1,20 +1,22 @@
 ---
-interface Props {
+interface Props extends astroHTML.JSX.HTMLAttributes {
   section?: boolean;
 }
 
-const { section } = Astro.props;
+const { section, ...props } = Astro.props;
+const _props = { ...props };
+if (_props) delete _props.class;
 
-const classes = "grid grid-cols-1 lg:grid-cols-3 gap-6";
+const classList = ["grid grid-cols-1 lg:grid-cols-3 gap-8", props?.class];
 ---
 
 {
   section ? (
-    <section class={classes}>
+    <section {..._props} class:list={classList}>
       <slot />
     </section>
   ) : (
-    <div class={classes}>
+    <div {..._props} class:list={classList}>
       <slot />
     </div>
   )
