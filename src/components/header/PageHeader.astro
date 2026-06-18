@@ -1,38 +1,13 @@
 ---
 import HeaderLayout from "../../layouts/HeaderLayout.astro";
 
-type HeaderConfig = {
-  title: string;
-};
-
-const { page } = Astro.props;
-
-const headerConfig: Record<string, HeaderConfig> = {
-  offerings: {
-    title: "Offerings",
-  },
-  compete: {
-    title: "Compete",
-  },
-  kids: {
-    title: "Kids",
-  },
-  membership: {
-    title: "Membership",
-  },
-  about: {
-    title: "About",
-  },
-  coaches: {
-    title: "Coaches",
-  },
-};
+const { title } = Astro.props;
 ---
 
 <HeaderLayout>
   <h1
     class="font-extrabold text-5xl md:text-8xl lg:text-9xl xl:text-[200px] uppercase text-flick-yellow"
   >
-    {headerConfig[page]?.title}
+    {title}
   </h1>
 </HeaderLayout>

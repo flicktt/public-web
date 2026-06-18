@@ -6,6 +6,7 @@ import {
 } from "react";
 import ChevronDown from "../../icons/ChevronDown.tsx";
 import ChevronUp from "../../icons/ChevronUp.tsx";
+import type { PageTabConfig } from "../../types.ts";
 
 type PageTabProps = PropsWithChildren<{
   buttonProps?: ButtonHTMLAttributes<HTMLButtonElement>;
@@ -14,11 +15,6 @@ type PageTabProps = PropsWithChildren<{
 
 type PageTabsProps = {
   tabConfig: PageTabConfig[];
-};
-
-type PageTabConfig = {
-  label: string;
-  contentId: string;
 };
 
 const PageTab = ({ buttonProps, isActive, children }: PageTabProps) => {

@@ -1,6 +1,11 @@
 ---
 import NavLogo from "../../assets/logo-no-sub.svg";
+import type { Page } from "../../types";
 import NavToggleButton from "./NavToggleButton.astro";
+
+interface Props {
+  page?: Page;
+}
 
 const { page } = Astro.props;
 

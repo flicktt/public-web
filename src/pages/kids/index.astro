@@ -1,5 +1,4 @@
 ---
-import PageHeader from "../../components/header/PageHeader.astro";
 import GroupSessions from "../../components/kids/GroupSessions.astro";
 import OneToOnes from "../../components/kids/OneToOnes.astro";
 import SchoolSessions from "../../components/kids/SchoolSessions.astro";
@@ -31,8 +30,7 @@ const tabConfig = [
 ];
 ---
 
-<PageLayout title="Kids">
-  <PageHeader page="kids" />
+<PageLayout page="kids">
   <PageTabs client:load tabConfig={tabConfig} />
   {
     tabConfig.map(({ contentId, Content }, i) => (

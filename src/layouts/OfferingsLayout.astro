@@ -2,7 +2,8 @@
 import Button from "../components/ui/inputs/Button.astro";
 import mem3Img from "../assets/mem-03.jpg";
 import Container from "./Container.astro";
-import Faqs, { type FaqConfig } from "../components/faqs/Faqs.astro";
+import type { FaqConfig } from "../types";
+import Faqs from "../components/faqs/Faqs.astro";
 
 interface Props {
   title?: string,

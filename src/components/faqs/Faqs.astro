@@ -1,15 +1,10 @@
 ---
-import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 import Container from "../../layouts/Container.astro";
 import AccordionStack from "../accordion/AccordionStack.astro";
 import Accordion from "../accordion/Accordion.astro";
 import AccordionTitle from "../accordion/AccordionTitle.astro";
 import AccordionContent from "../accordion/AccordionContent.astro";
-
-export type FaqConfig = {
-  title: string;
-  Content: AstroComponentFactory | string;
-};
+import type { FaqConfig } from "../../types";
 
 interface Props {
   faqConfig: FaqConfig[];

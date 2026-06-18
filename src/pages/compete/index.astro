@@ -1,5 +1,4 @@
 ---
-import PageHeader from "../../components/header/PageHeader.astro";
 import PageTabs from "../../components/tabs/PageTabs";
 import CompeteAtFlick from "../../components/compete/CompeteAtFlick.astro";
 import FlickTTLeague from "../../components/compete/league/FlickTTLeague.astro";
@@ -13,8 +12,7 @@ const tabConfig = [
 ];
 ---
 
-<PageLayout title="Compete">
-  <PageHeader page="compete" />
+<PageLayout page="compete">
   <PageTabs client:load tabConfig={tabConfig} />
   <div class="tab-content" data-tab-content={tabConfig[0].contentId}>
     <CompeteAtFlick />
