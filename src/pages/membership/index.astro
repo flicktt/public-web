@@ -41,25 +41,19 @@ const faqConfig = [
   },
 ];
 
+const pricingRows = [
+  { label: "Group session", normal: "£20", members: "£12" },
+  { label: "Open session", normal: "£20", members: "£5" },
+  { label: "Private Coaching lesson", normal: "£60", members: "£45" },
+  { label: "Workshop", normal: "N/A", members: "Free" },
+  { label: "Flick TT League season membership", normal: "£65", members: "£35" },
+  { label: "Flick TT Tournament entry", normal: "£25", members: "£15" },
+  { label: "Club Table", normal: "£5.50 / £9.50", members: "£2 / £3" },
+];
+
 const pricingConfig = {
-  normal: [
-    { label: "Group session", price: "£20" },
-    { label: "Open session", price: "£20" },
-    { label: "Private Coaching lesson", price: "£60" },
-    { label: "Workshop", price: "N/A" },
-    { label: "Flick TT League season membership", price: "£65" },
-    { label: "Flick TT Tournament entry", price: "£25" },
-    { label: "Club Table", price: "£5.50 / £9.50" },
-  ],
-  members: [
-    { label: "Group session", price: "£12" },
-    { label: "Open session", price: "£5" },
-    { label: "Private Coaching lesson", price: "£45" },
-    { label: "Workshop", price: "Free" },
-    { label: "Flick TT League season membership", price: "£35" },
-    { label: "Flick TT Tournament entry", price: "£15" },
-    { label: "Club Table", price: "£2 / £3" },
-  ],
+  normal: pricingRows.map(({ label, normal }) => ({ label, price: normal })),
+  members: pricingRows.map(({ label, members }) => ({ label, price: members })),
 };
 ---
 
