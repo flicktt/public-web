@@ -1,7 +1,100 @@
 ---
+import PointsRow from "../../components/pointsRow/PointsRow.astro";
+import Button from "../../components/ui/inputs/Button.astro";
+import Container from "../../layouts/Container.astro";
 import PageLayout from "../../layouts/PageLayout.astro";
+import PercentBadge from "../../icons/PercentBadge.svg";
+import FaceSmile from "../../icons/FaceSmile.svg";
+import Faqs from "../../components/faqs/Faqs.astro";
+import SplitLayoutContainer from "../../layouts/splitLayout/SplitLayoutContainer.astro";
+import SplitLayoutLeft from "../../layouts/splitLayout/SplitLayoutLeft.astro";
+import SplitLayoutRight from "../../layouts/splitLayout/SplitLayoutRight.astro";
+import PricingCard from "../../components/membership/PricingCard.astro";
+
+const pointConfig = [
+  {
+    Icon: PercentBadge,
+    text: "Members get big discounts on all activities, as well as access to free Masterclass sessions, held every two months ",
+  },
+  {
+    Icon: FaceSmile,
+    text: "Become part of a huge friendly and passionate table tennis community, dedicated to spreading the love for the sport throughout London",
+  },
+];
+
+const faqConfig = [
+  {
+    title: "Proin placerat vitae nisl sed elementum?",
+    Content:
+      "Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum erat in nisi fringilla egestas. Suspendisse convallis vulputate viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet, mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat. Nam sit amet consequat enim.",
+  },
+  {
+    title: "In venenatis tortor leo, et vulputate mauris interdum in?",
+    Content:
+      "Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum erat in nisi fringilla egestas. Suspendisse convallis vulputate viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet, mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat. Nam sit amet consequat enim.",
+  },
+  {
+    title:
+      "Vestibulum dignissim tempus justo, auctor vulputate urna varius dignissim?",
+    Content:
+      "Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum erat in nisi fringilla egestas. Suspendisse convallis vulputate viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet, mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat. Nam sit amet consequat enim.",
+  },
+];
+
+const pricingConfig = {
+  normal: [
+    { label: "Group session", price: "£20" },
+    { label: "Open session", price: "£20" },
+    { label: "Private Coaching lesson", price: "£60" },
+    { label: "Workshop", price: "N/A" },
+    { label: "Flick TT League season membership", price: "£65" },
+    { label: "Flick TT Tournament entry", price: "£25" },
+    { label: "Club Table", price: "£5.50 / £9.50" },
+  ],
+  members: [
+    { label: "Group session", price: "£12" },
+    { label: "Open session", price: "£5" },
+    { label: "Private Coaching lesson", price: "£45" },
+    { label: "Workshop", price: "Free" },
+    { label: "Flick TT League season membership", price: "£35" },
+    { label: "Flick TT Tournament entry", price: "£15" },
+    { label: "Club Table", price: "£2 / £3" },
+  ],
+};
 ---
 
 <PageLayout page="membership">
-  <p>hello</p>
+  <Container class="flex flex-col gap-8 lg:gap-12 py-14">
+    <p class="text-3xl md:text-4xl lg:text-5xl font-light text-center">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut quis ipsum et
+      neque viverra pulvinar sit amet quis sem. Orci varius natoque penatibus et
+      magnis dis parturient montes, nascetur ridiculus mus. Etiam sit amet urna
+      viverra, laoreet dolor nec, elementum nisi. Morbi dapibus et justo a
+      facilisis.
+    </p>
+    <a
+      href="https://bookwhen.com/flicktt/memberships"
+      target="_blank"
+      class="m-auto"
+    >
+      <Button size="lg">Become a member</Button>
+    </a>
+  </Container>
+  <PointsRow pointConfig={pointConfig} />
+  <Container class="flex flex-col gap-8 lg:gap-12 py-14">
+    <SplitLayoutContainer>
+      <SplitLayoutLeft title="Membership benefits" />
+      <SplitLayoutRight>
+        <div class="flex flex-col gap-8">
+          <PricingCard title="Normal" prices={pricingConfig.normal} bg="dark" />
+          <PricingCard
+            title="Members"
+            prices={pricingConfig.members}
+            bg="yellow"
+          />
+        </div>
+      </SplitLayoutRight>
+    </SplitLayoutContainer>
+  </Container>
+  <Faqs faqConfig={faqConfig} />
 </PageLayout>

@@ -1,4 +1,5 @@
 import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+import type { SvgComponent } from "astro/types";
 
 export type Page =
   | "home"
@@ -22,3 +23,8 @@ export type PageTabConfig = {
   label: string;
   contentId: string;
 };
+
+export type PointsRowConfig = {
+  Icon: SvgComponent;
+  text: string;
+}[];

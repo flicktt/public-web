@@ -1,0 +1,37 @@
+---
+interface Props {
+  bg?: "dark" | "yellow";
+  title: string;
+  prices: { label: string; price: string }[];
+}
+
+const { title, prices, bg = "dark" } = Astro.props;
+---
+
+<div
+  class:list={[
+    "flex flex-col gap-2 p-8 rounded-xl",
+    {
+      "border-flick-dark border bg-flick-black text-white": bg === "dark",
+      "bg-flick-yellow text-flick-black": bg === "yellow",
+    },
+  ]}
+>
+  <h4 class="font-bold text-3xl">{title}</h4>
+  {
+    prices.map(({ label, price }) => (
+      <div
+        class:list={[
+          "flex flex-row gap-3 justify-between border-b text-2xl",
+          {
+            "border-flick-dark": bg === "dark",
+            "border-black/10": bg === "yellow",
+          },
+        ]}
+      >
+        <p class="font-semibold">{label}</p>
+        <p class="text-right">{price}</p>
+      </div>
+    ))
+  }
+</div>

@@ -1,11 +1,8 @@
 ---
-import type { SvgComponent } from "astro/types";
+import type { PointsRowConfig } from "../../types";
 
 interface Props {
-  pointConfig: {
-    Icon: SvgComponent;
-    text: string;
-  }[];
+  pointConfig: PointsRowConfig;
 }
 
 const { pointConfig } = Astro.props;
@@ -17,9 +14,14 @@ const { pointConfig } = Astro.props;
   >
     {
       pointConfig.map(({ Icon, text }) => (
-        <div class="grid grid-rows-1 md:grid-rows-[auto_1fr] gap-6 w-full md:max-w-160 py-10 not-first:border-l not-last:border-b md:not-last:border-b-0 border-flick-dark bg-linear-to-b from-flick-black to-[#242424]">
+        <div class="grid grid-rows-1 md:grid-rows-[auto_1fr] gap-6 w-full md:max-w-150 py-10 not-first:border-l not-last:border-b md:not-last:border-b-0 border-flick-dark bg-linear-to-b from-flick-black to-[#242424]">
           <Icon class="size-20 m-auto" />
-          <p class="md:max-w-lg px-12 text-center font-light text-xl md:text-2xl">
+          <p
+            class:list={[
+              "md:max-w-lg px-12 text-center font-light text-xl md:text-2xl",
+              pointConfig.length > 2 ? "md:max-w-lg" : "md:max-w-xl",
+            ]}
+          >
             {text}
           </p>
         </div>
