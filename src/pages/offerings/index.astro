@@ -8,7 +8,7 @@ import OpenSessions from "../../components/offerings/OpenSessions.astro";
 import TableBookings from "../../components/offerings/TableBookings.astro";
 import Corporate from "../../components/offerings/Corporate.astro";
 
-const contentConfig = [
+const tabConfig = [
   {
     label: "Group sessions",
     contentId: "group-sessions",
@@ -31,9 +31,9 @@ const contentConfig = [
 ---
 
 <PageLayout page="offerings">
-  <PageTabs client:load tabConfig={contentConfig} />
+  <PageTabs client:load tabConfig={tabConfig} />
   {
-    contentConfig.map(({ contentId, Content }, i) => (
+    tabConfig.map(({ contentId, Content }, i) => (
       <div
         class:list={["tab-content", { hidden: i !== 0 }]}
         data-tab-content={contentId}

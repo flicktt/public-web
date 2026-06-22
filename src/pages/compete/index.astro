@@ -6,21 +6,34 @@ import FlickTTTournament from "../../components/compete/tournament/FlickTTTourna
 import PageLayout from "../../layouts/PageLayout.astro";
 
 const tabConfig = [
-  { label: "Compete at Flick TT", contentId: "compete-at-flick" },
-  { label: "Flick TT League", contentId: "club-league" },
-  { label: "Flick TT Tournament", contentId: "tournament" },
+  {
+    label: "Compete at Flick TT",
+    contentId: "compete-at-flick",
+    Content: CompeteAtFlick,
+  },
+  {
+    label: "Flick TT League",
+    contentId: "club-league",
+    Content: FlickTTLeague,
+  },
+  {
+    label: "Flick TT Tournament",
+    contentId: "tournament",
+    Content: FlickTTTournament,
+  },
 ];
 ---
 
 <PageLayout page="compete">
   <PageTabs client:load tabConfig={tabConfig} />
-  <div class="tab-content" data-tab-content={tabConfig[0].contentId}>
-    <CompeteAtFlick />
-  </div>
-  <div class="tab-content hidden" data-tab-content={tabConfig[1].contentId}>
-    <FlickTTLeague />
-  </div>
-  <div class="tab-content hidden" data-tab-content={tabConfig[2].contentId}>
-    <FlickTTTournament />
-  </div>
+  {
+    tabConfig.map(({ contentId, Content }, i) => (
+      <div
+        class:list={["tab-content", { hidden: i !== 0 }]}
+        data-tab-content={contentId}
+      >
+        <Content />
+      </div>
+    ))
+  }
 </PageLayout>

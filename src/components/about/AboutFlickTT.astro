@@ -1,0 +1,123 @@
+---
+import Container from "../../layouts/Container.astro";
+import SplitLayoutContainer from "../../layouts/splitLayout/SplitLayoutContainer.astro";
+import SplitLayoutLeft from "../../layouts/splitLayout/SplitLayoutLeft.astro";
+import SplitLayoutRight from "../../layouts/splitLayout/SplitLayoutRight.astro";
+import AboutLisAlberto from "../../assets/about-lis-alberto.png";
+
+const aboutPoints = [
+  {
+    title: "Passion for Table Tennis",
+    desc: "We believe in the power of table tennis to bring joy, build character, and create lasting memories. We are passionate about sharing our love for the sport and instilling that same passion in our students.",
+  },
+  {
+    title: "Excellence in Coaching",
+    desc: "We are committed to delivering excellence in coaching by providing experienced, knowledgeable, and supportive instructors. Our coaches are not only experts in the game but also skilled communicators who can adapt their teaching methods to suit each student's learning style.",
+  },
+  {
+    title: "Inclusive Learning Environment",
+    desc: "We strive to create a welcoming and inclusive environment where individuals of all backgrounds, ages, and abilities can thrive. We believe that everyone deserves the opportunity to learn and grow in table tennis, and we celebrate diversity within our community.",
+  },
+  {
+    title: "Holistic Skill Development",
+    desc: "We understand that table tennis is more than just mastering strokes and techniques. Our training programs focus on developing not only the physical skills but also mental agility, strategic thinking, sportsmanship, and teamwork.",
+  },
+  {
+    title: "Personalised Approach",
+    desc: "We recognise that every student is unique, with their own strengths, weaknesses, and goals. We take a personalised approach to coaching, tailoring our lessons to meet each student's specific needs and aspirations, ensuring effective skill development and progress.",
+  },
+  {
+    title: "Building a Community",
+    desc: "We aim to build a vibrant and supportive table tennis community. Through our lessons, events, and online platforms, we encourage collaboration, camaraderie, and the exchange of knowledge among our students, fostering lifelong friendships and a shared passion for the sport.",
+  },
+];
+
+const contacts = [
+  {
+    name: "General enqueries",
+    title: "",
+    email: "flickttservices@gmail.com",
+  },
+  {
+    name: "Alberto Garrido",
+    title: "Founder, Head Coach",
+    email: "alberto.garrido@gmail.com",
+  },
+  {
+    name: "Lis Maria",
+    title: "Founder, Head Coach",
+    email: "lis.maria@gmail.com",
+  },
+  {
+    name: "Mark Lee",
+    title: "Chairman",
+    email: "mark.lee@gmail.com",
+  },
+  {
+    name: "Astrid",
+    title: "Secretary",
+    email: "astrid@gmail.com",
+  },
+  {
+    name: "Jessica",
+    title: "Community Officer",
+    email: "jess@gmail.com",
+  },
+];
+---
+
+<Container main class="flex flex-col gap-8 lg:gap-12 py-14">
+  <p class="text-3xl md:text-4xl lg:text-5xl font-light text-center">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut quis ipsum et
+    neque viverra pulvinar sit amet quis sem. Orci varius natoque penatibus et
+    magnis dis parturient montes, nascetur ridiculus mus. Etiam sit amet urna
+    viverra, laoreet dolor nec.
+  </p>
+  <img
+    src={AboutLisAlberto.src}
+    alt="Lis and Alberto in session"
+    class="border-8 border-flick-dark"
+  />
+  <SplitLayoutContainer section>
+    <SplitLayoutLeft title="What we believe in" />
+    <SplitLayoutRight>
+      <div class="flex flex-col gap-4">
+        {
+          aboutPoints.map(({ title, desc }) => (
+            <p class="text-xl">
+              <span class="text-flick-yellow font-semibold">
+                {title} &ndash;
+              </span>
+              {desc}
+            </p>
+          ))
+        }
+      </div>
+    </SplitLayoutRight>
+  </SplitLayoutContainer>
+</Container>
+<section class="bg-flick-blue">
+  <Container class="py-14">
+    <SplitLayoutContainer>
+      <SplitLayoutLeft
+        title="Contact us"
+        subtitle="Have a question about the club, the sessions we offer, or anything else? Don't hesitate to send us a message."
+      />
+      <SplitLayoutRight>
+        <div class="flex flex-col gap-4">
+          {
+            contacts.map(({ name, title, email }) => (
+              <div>
+                <p class="text-2xl">{name}</p>
+                <p class:list={["text-2xl", { hidden: title.length === 0 }]}>
+                  {title}
+                </p>
+                <p class="text-2xl font-semibold">{email}</p>
+              </div>
+            ))
+          }
+        </div>
+      </SplitLayoutRight>
+    </SplitLayoutContainer>
+  </Container>
+</section>
