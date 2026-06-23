@@ -79,10 +79,7 @@ const coachConfig: {
           >
             Find out more
           </Button>
-          <CoachProfile
-            id={`${name.split(" ").join("-")}-drawer`}
-            profile={{ ...profile, name, img }}
-          />
+          <CoachProfile profile={{ ...profile, name, img }} />
           <a href={bookingUrl} target="_blank">
             <Button class="w-full sm:w-fit">Book a Session</Button>
           </a>

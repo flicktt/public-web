@@ -10,7 +10,7 @@ const { id } = Astro.props;
 
 <dialog
   id={id}
-  class="fixed top-0 right-0 ml-auto open:flex flex-col justify-between max-h-none h-screen max-w-150 bg-flick-black text-white backdrop:backdrop-blur-xs backdrop:backdrop-brightness-50"
+  class="fixed inset-0 ml-auto flex flex-col justify-between max-h-none h-screen max-w-150 bg-flick-black text-white backdrop:backdrop-brightness-50 backdrop:backdrop-blur-xs not-open:translate-x-full open:translate-x-0 transition-transform"
   closedby="any"
 >
   <button
