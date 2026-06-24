@@ -10,6 +10,7 @@ import Container from "../../../layouts/Container.astro";
 import MatchingSessionFaq from "./MatchingSessionFaq.astro";
 import EloFaq from "./EloFaq.astro";
 import type { FaqConfig } from "../../../types";
+import WithSmoothScrollTo from "../../ui/with/WithSmoothScrollTo.astro";
 
 const pointConfig = [
   {
@@ -90,13 +91,27 @@ const faqConfig: FaqConfig[] = [
     <div
       class="flex flex-col md:flex-row gap-4 items-center justify-center w-full"
     >
-      <Button size="lg" class="w-full md:w-fit">League Table</Button>
-      <Button size="lg" class="w-full md:w-fit">League Calendar</Button>
+      <WithSmoothScrollTo
+        originId="league-table-btn"
+        toId="league-table-container"
+      >
+        <Button size="lg" class="w-full md:w-fit" id="league-table-btn"
+          >League Table</Button
+        >
+      </WithSmoothScrollTo>
+      <WithSmoothScrollTo
+        originId="league-calendar-btn"
+        toId="league-calendar-container"
+      >
+        <Button size="lg" class="w-full md:w-fit" id="league-calendar-btn"
+          >League Calendar</Button
+        >
+      </WithSmoothScrollTo>
       <Button size="lg" class="w-full md:w-fit">League Rules</Button>
     </div>
   </div>
   <PointsRow pointConfig={pointConfig} />
-  <Container class="pt-6">
+  <Container class="flex flex-col gap-8 pt-6">
     <InfoHighlightLayout title="Currently Active" size="md">
       <h5 class="font-bold text-2xl">Season 6</h5>
       <p>1 May - 31 July</p>
@@ -114,5 +129,31 @@ const faqConfig: FaqConfig[] = [
         2 players / Private lesson voucher for winners of 3 mystery categories
       </p>
     </InfoHighlightLayout>
+    <div class="flex flex-col gap-4" id="league-table-container">
+      <h3>League Table</h3>
+      <iframe
+        title="Flick TT League table"
+        src="https://flicktt-my.sharepoint.com/personal/admin_flicktt_club/_layouts/15/Doc.aspx?sourcedoc={ce4f9882-b9ea-466c-a8ff-ce7892a9e0af}&action=embedview&wdAllowInteractivity=False&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&waccluster=GUK3&edaebp=&edaebf=ctrl"
+        loading="lazy"
+        class="w-full h-175 rounded-xl"
+      >
+      </iframe>
+    </div>
+    <div class="flex flex-col gap-4" id="league-calendar-container">
+      <span>
+        <h3>League Calendar</h3>
+        <p class="text-xl">
+          This calendar is updated every 5 minutes. Attendees are listed in the
+          event's description.
+        </p>
+      </span>
+      <iframe
+        title="Flick TT League calendar"
+        src="https://calendar.google.com/calendar/embed?src=1aa3076ec7cdc6e10c1e99d468368a94c82108fc425664b7e082d34d49724179%40group.calendar.google.com&ctz=Europe%2FLondon"
+        loading="lazy"
+        class="w-full h-175 rounded-xl"
+      >
+      </iframe>
+    </div>
   </Container>
 </OfferingsLayout>

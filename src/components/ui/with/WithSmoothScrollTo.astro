@@ -1,0 +1,33 @@
+---
+interface Props {
+  originId: string;
+  toId: string;
+}
+
+const { originId, toId } = Astro.props;
+---
+
+<with-smooth-scroll-to
+  data-originid={originId}
+  data-toid={toId}
+  class="contents"
+>
+  <slot />
+</with-smooth-scroll-to>
+
+<script>
+  class WithSmothScrollTo extends HTMLElement {
+    connectedCallback() {
+      const originId = this.dataset.originid;
+      const toId = this.dataset.toid;
+      if (originId && toId) {
+        const originEl = document.getElementById(originId);
+        originEl?.addEventListener("click", () => {
+          const targetEl = document.getElementById(toId);
+          targetEl?.scrollIntoView({ behavior: "smooth" });
+        });
+      }
+    }
+  }
+  customElements.define("with-smooth-scroll-to", WithSmothScrollTo);
+</script>

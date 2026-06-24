@@ -2,15 +2,18 @@
 import BannerButton from "../ui/inputs/BannerButton.astro";
 import BannerLogo from "../../assets/logo-no-sub.svg";
 import HeaderLayout from "../../layouts/HeaderLayout.astro";
+import WithSmoothScrollTo from "../ui/with/WithSmoothScrollTo.astro";
 ---
 
 <HeaderLayout page="home">
   <div
     class="flex flex-col gap-10 items-center justify-between lg:flex-row xl:gap-30"
   >
-    <BannerButton btnProps={{ id: "banner-btn-timetable" }}>
-      Timetable
-    </BannerButton>
+    <WithSmoothScrollTo originId="banner-btn-timetable" toId="schedule">
+      <BannerButton btnProps={{ id: "banner-btn-timetable" }}>
+        Timetable
+      </BannerButton>
+    </WithSmoothScrollTo>
     <BannerButton aProps={{ href: "/membership" }}>Membership</BannerButton>
     <BannerButton
       aProps={{ href: "https://bookwhen.com/flicktt", target: "_blank" }}
@@ -21,11 +24,3 @@ import HeaderLayout from "../../layouts/HeaderLayout.astro";
     <BannerLogo />
   </div>
 </HeaderLayout>
-
-<script>
-  const timetableBtn = document.getElementById("banner-btn-timetable");
-  timetableBtn?.addEventListener("click", () => {
-    const scheduleEl = document.getElementById("schedule");
-    scheduleEl?.scrollIntoView({ behavior: "smooth" });
-  });
-</script>

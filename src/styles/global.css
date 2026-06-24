@@ -8,6 +8,7 @@
   --color-flick-red: #c03c38;
   --color-flick-blue: #283b79;
   --font-briolage-grot: "Bricolage Grotesque", sans-serif;
+  --container-section: 1530px;
 }
 
 @layer base {
@@ -61,9 +62,5 @@
         15px -30px,
       #2d2e2d;
     background-size: 30px 60px;
-  }
-
-  .max-w-section {
-    max-width: 1530px;
   }
 }
