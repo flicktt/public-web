@@ -1,0 +1,104 @@
+---
+import type { PageTabConfig } from "../../types";
+import ChevronDown from "../../icons/ChevronDown.svg";
+import ChevronUp from "../../icons/ChevronUp.svg";
+
+type Props = {
+  tabConfig: PageTabConfig[];
+};
+
+const { tabConfig } = Astro.props as Props;
+const numOfTabs = tabConfig.length;
+---
+
+<div data-tabs-root>
+  <div class="border-b border-flick-dark overflow-x-auto">
+    <div
+      class="hidden lg:flex flex-row flex-wrap lg:flex-nowrap max-w-full lg:max-w-fit w-full m-auto border-x border-flick-dark"
+      role="tablist"
+      aria-label="Page sections"
+    >
+      {
+        tabConfig.map(({ label, contentId }, index) => (
+          <button
+            type="button"
+            class:list={[
+              "tab-links flex justify-center items-center w-full lg:w-50 h-12 lg:h-20 p-2 cursor-pointer not-first:border-l border-flick-dark text-center uppercase font-light lg:text-lg transition duration-150 hover:bg-linear-to-b hover:from-flick-black hover:to-[#242424] data-[active=true]:text-flick-yellow data-[active=true]:bg-linear-to-b data-[active=true]:from-flick-black data-[active=true]:to-[#242424]",
+              { "lg:w-90": numOfTabs < 4, "lg:w-60": numOfTabs >= 4 },
+            ]}
+            role="tab"
+            id={`${contentId}-tab`}
+            aria-selected={index === 0 ? "true" : "false"}
+            aria-controls={contentId}
+            tabindex={index === 0 ? "0" : "-1"}
+            data-tab-trigger={contentId}
+          >
+            {label}
+          </button>
+        ))
+      }
+    </div>
+
+    <div class="lg:hidden">
+      <button
+        type="button"
+        class="tab-links relative flex justify-center items-center w-full h-12 p-2 cursor-pointer border-flick-dark text-center uppercase font-light transition duration-150 hover:bg-linear-to-b hover:from-flick-black hover:to-[#242424] data-[active=true]:text-flick-yellow data-[active=true]:bg-linear-to-b data-[active=true]:from-flick-black data-[active=true]:to-[#242424]"
+        data-mobile-menu-toggle
+        aria-expanded="false"
+        aria-controls="mobile-tab-list"
+      >
+        <span class="sr-only">Open tabs menu</span>
+        <span data-mobile-button-label>{tabConfig[0]?.label}</span>
+        <span class="absolute right-5" data-mobile-icon-down>
+          <ChevronDown class="text-white size-6" />
+        </span>
+        <span class="absolute right-5 hidden" data-mobile-icon-up>
+          <ChevronUp class="text-white size-6" />
+        </span>
+      </button>
+      <div
+        id="mobile-tab-list"
+        class="hidden border-t border-flick-dark"
+        data-mobile-menu
+      >
+        {
+          tabConfig.map(({ label, contentId }) => (
+            <button
+              type="button"
+              class="tab-links flex justify-center items-center w-full h-12 p-2 cursor-pointer border-t border-flick-dark text-center uppercase font-light transition duration-150 hover:bg-linear-to-b hover:from-flick-black hover:to-[#242424]"
+              data-mobile-tab-trigger={contentId}
+              aria-selected="false"
+            >
+              {label}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  {
+    tabConfig.map(({ contentId, Content }, index) => (
+      <section
+        class:list={[
+          "tab-content scroll-mt-24",
+          { hidden: index !== 0, block: index === 0 },
+        ]}
+        id={contentId}
+        role="tabpanel"
+        tabindex="0"
+        aria-labelledby={`${contentId}-tab`}
+        data-tab-panel={contentId}
+        hidden={index !== 0}
+      >
+        <Content />
+      </section>
+    ))
+  }
+</div>
+
+<script>
+  import { initializeTabControllers } from "../../utils/tabController.ts";
+
+  initializeTabControllers();
+</script>

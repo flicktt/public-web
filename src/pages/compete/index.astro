@@ -1,5 +1,5 @@
 ---
-import PageTabs from "../../components/tabs/PageTabs";
+import PageTabs from "../../components/tabs/PageTabs.astro";
 import CompeteAtFlick from "../../components/compete/CompeteAtFlick.astro";
 import FlickTTLeague from "../../components/compete/league/FlickTTLeague.astro";
 import FlickTTTournament from "../../components/compete/tournament/FlickTTTournament.astro";
@@ -25,15 +25,5 @@ const tabConfig = [
 ---
 
 <PageLayout page="compete">
-  <PageTabs client:load tabConfig={tabConfig} />
-  {
-    tabConfig.map(({ contentId, Content }, i) => (
-      <div
-        class:list={["tab-content", { hidden: i !== 0 }]}
-        data-tab-content={contentId}
-      >
-        <Content />
-      </div>
-    ))
-  }
+  <PageTabs tabConfig={tabConfig} />
 </PageLayout>

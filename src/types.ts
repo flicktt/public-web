@@ -22,6 +22,7 @@ export type FaqConfig = {
 export type PageTabConfig = {
   label: string;
   contentId: string;
+  Content: AstroComponentFactory;
 };
 
 export type PointsRowConfig = {

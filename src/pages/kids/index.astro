@@ -3,7 +3,7 @@ import GroupSessions from "../../components/kids/GroupSessions.astro";
 import OneToOnes from "../../components/kids/OneToOnes.astro";
 import SchoolSessions from "../../components/kids/SchoolSessions.astro";
 import U18Tournament from "../../components/kids/U18Tournament.astro";
-import PageTabs from "../../components/tabs/PageTabs";
+import PageTabs from "../../components/tabs/PageTabs.astro";
 import PageLayout from "../../layouts/PageLayout.astro";
 
 const tabConfig = [
@@ -31,15 +31,5 @@ const tabConfig = [
 ---
 
 <PageLayout page="kids">
-  <PageTabs client:load tabConfig={tabConfig} />
-  {
-    tabConfig.map(({ contentId, Content }, i) => (
-      <div
-        class:list={["tab-content", { hidden: i !== 0 }]}
-        data-tab-content={contentId}
-      >
-        <Content />
-      </div>
-    ))
-  }
+  <PageTabs tabConfig={tabConfig} />
 </PageLayout>

@@ -45,7 +45,7 @@ import FTTU18TournamentBg from "../../assets/compete-banner-u18.png";
           in each category.
           <a
             href="#club-league"
-            id="link-to-club-league"
+            data-link-to-tab
             class="text-flick-yellow font-semibold"
           >
             Find out more here →
@@ -94,7 +94,7 @@ import FTTU18TournamentBg from "../../assets/compete-banner-u18.png";
       Prizes include cash rewards for top performers, making it the perfect mix
       of competition, skill-building, and fun.
     </p>
-    <a href="#tournament" id="link-to-tournament">
+    <a href="#tournament" data-link-to-tab>
       <Button>Find out more</Button>
     </a>
   </Container>
@@ -115,26 +115,14 @@ import FTTU18TournamentBg from "../../assets/compete-banner-u18.png";
       Integer tincidunt, ipsum at commodo tempus, enim orci consequat dolor, non
       sodales velit erat tristique lacus.
     </p>
-    <a href="#tournament" id="link-to-tournament">
+    <a href="#tournament" data-link-to-tab>
       <Button>Find out more</Button>
     </a>
   </Container>
 </div>
 
 <script>
-  const loadTab = (tab: string) => {
-    location.href = location.pathname + "#" + tab;
-    location.reload();
-    window.scrollTo(0, 0);
-  };
+  import { initializeTabLinkHandlers } from "../../utils/tabController.ts";
 
-  const linkToClubLegaueEl = document.getElementById("link-to-club-league");
-  linkToClubLegaueEl?.addEventListener("click", () => {
-    loadTab("club-league");
-  });
-
-  const linkToTournamentEl = document.getElementById("link-to-tournament");
-  linkToTournamentEl?.addEventListener("click", () => {
-    loadTab("tournament");
-  });
+  initializeTabLinkHandlers();
 </script>

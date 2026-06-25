@@ -1,5 +1,5 @@
 ---
-import PageTabs from "../../components/tabs/PageTabs.tsx";
+import PageTabs from "../../components/tabs/PageTabs.astro";
 import PageLayout from "../../layouts/PageLayout.astro";
 import GroupSessions from "../../components/offerings/groupSessions/GroupSessions.astro";
 import OneToOnes from "../../components/offerings/OneToOnes.astro";
@@ -31,15 +31,5 @@ const tabConfig = [
 ---
 
 <PageLayout page="offerings">
-  <PageTabs client:load tabConfig={tabConfig} />
-  {
-    tabConfig.map(({ contentId, Content }, i) => (
-      <div
-        class:list={["tab-content", { hidden: i !== 0 }]}
-        data-tab-content={contentId}
-      >
-        <Content />
-      </div>
-    ))
-  }
+  <PageTabs tabConfig={tabConfig} />
 </PageLayout>
