@@ -12,9 +12,12 @@ if (_props) delete _props.class;
 
 const classString = props?.class ?? "";
 const classList = [
-  "max-w-section m-auto w-full",
+  "m-auto w-full",
   classString,
-  { "px-6 lg:px-12": !hasPaddingClass(classString, { onlyX: true }) },
+  {
+    "px-6 lg:px-12": !hasPaddingClass(classString, { onlyX: true }),
+    "max-w-section": !classString.includes("max-w-"),
+  },
 ];
 ---
 
