@@ -2,8 +2,8 @@
 import { hasPaddingClass } from "../utils";
 
 interface Props extends astroHTML.JSX.HTMLAttributes {
-  section?: boolean;
-  main?: boolean;
+	section?: boolean;
+	main?: boolean;
 }
 
 const { section, main, ...props } = Astro.props;
@@ -12,12 +12,12 @@ if (_props) delete _props.class;
 
 const classString = props?.class ?? "";
 const classList = [
-  "m-auto w-full",
-  classString,
-  {
-    "px-6 lg:px-12": !hasPaddingClass(classString, { onlyX: true }),
-    "max-w-section": !classString.includes("max-w-"),
-  },
+	"m-auto w-full",
+	classString,
+	{
+		"px-6 lg:px-12": !hasPaddingClass(classString, { onlyX: true }),
+		"max-w-section": !classString.includes("max-w-"),
+	},
 ];
 ---
 

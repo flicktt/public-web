@@ -1,59 +1,59 @@
 ---
+import Faqs from "../../components/faqs/Faqs.astro";
+import PricingCard from "../../components/membership/PricingCard.astro";
 import PointsRow from "../../components/pointsRow/PointsRow.astro";
 import Button from "../../components/ui/inputs/Button.astro";
+import FaceSmile from "../../icons/FaceSmile.svg";
+import PercentBadge from "../../icons/PercentBadge.svg";
 import Container from "../../layouts/Container.astro";
 import PageLayout from "../../layouts/PageLayout.astro";
-import PercentBadge from "../../icons/PercentBadge.svg";
-import FaceSmile from "../../icons/FaceSmile.svg";
-import Faqs from "../../components/faqs/Faqs.astro";
 import SplitLayoutContainer from "../../layouts/splitLayout/SplitLayoutContainer.astro";
 import SplitLayoutLeft from "../../layouts/splitLayout/SplitLayoutLeft.astro";
 import SplitLayoutRight from "../../layouts/splitLayout/SplitLayoutRight.astro";
-import PricingCard from "../../components/membership/PricingCard.astro";
 
 const pointConfig = [
-  {
-    Icon: PercentBadge,
-    text: "Members get big discounts on all activities, as well as access to free Masterclass sessions, held every two months ",
-  },
-  {
-    Icon: FaceSmile,
-    text: "Become part of a huge friendly and passionate table tennis community, dedicated to spreading the love for the sport throughout London",
-  },
+	{
+		Icon: PercentBadge,
+		text: "Members get big discounts on all activities, as well as access to free Masterclass sessions, held every two months ",
+	},
+	{
+		Icon: FaceSmile,
+		text: "Become part of a huge friendly and passionate table tennis community, dedicated to spreading the love for the sport throughout London",
+	},
 ];
 
 const faqConfig = [
-  {
-    title: "Proin placerat vitae nisl sed elementum?",
-    Content:
-      "Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum erat in nisi fringilla egestas. Suspendisse convallis vulputate viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet, mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat. Nam sit amet consequat enim.",
-  },
-  {
-    title: "In venenatis tortor leo, et vulputate mauris interdum in?",
-    Content:
-      "Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum erat in nisi fringilla egestas. Suspendisse convallis vulputate viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet, mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat. Nam sit amet consequat enim.",
-  },
-  {
-    title:
-      "Vestibulum dignissim tempus justo, auctor vulputate urna varius dignissim?",
-    Content:
-      "Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum erat in nisi fringilla egestas. Suspendisse convallis vulputate viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet, mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat. Nam sit amet consequat enim.",
-  },
+	{
+		title: "Proin placerat vitae nisl sed elementum?",
+		Content:
+			"Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum erat in nisi fringilla egestas. Suspendisse convallis vulputate viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet, mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat. Nam sit amet consequat enim.",
+	},
+	{
+		title: "In venenatis tortor leo, et vulputate mauris interdum in?",
+		Content:
+			"Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum erat in nisi fringilla egestas. Suspendisse convallis vulputate viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet, mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat. Nam sit amet consequat enim.",
+	},
+	{
+		title:
+			"Vestibulum dignissim tempus justo, auctor vulputate urna varius dignissim?",
+		Content:
+			"Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum erat in nisi fringilla egestas. Suspendisse convallis vulputate viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet, mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat. Nam sit amet consequat enim.",
+	},
 ];
 
 const pricingRows = [
-  { label: "Group session", normal: "£20", members: "£12" },
-  { label: "Open session", normal: "£20", members: "£5" },
-  { label: "Private Coaching lesson", normal: "£60", members: "£45" },
-  { label: "Workshop", normal: "N/A", members: "Free" },
-  { label: "Flick TT League season membership", normal: "£65", members: "£35" },
-  { label: "Flick TT Tournament entry", normal: "£25", members: "£15" },
-  { label: "Club Table", normal: "£5.50 / £9.50", members: "£2 / £3" },
+	{ label: "Group session", normal: "£20", members: "£12" },
+	{ label: "Open session", normal: "£20", members: "£5" },
+	{ label: "Private Coaching lesson", normal: "£60", members: "£45" },
+	{ label: "Workshop", normal: "N/A", members: "Free" },
+	{ label: "Flick TT League season membership", normal: "£65", members: "£35" },
+	{ label: "Flick TT Tournament entry", normal: "£25", members: "£15" },
+	{ label: "Club Table", normal: "£5.50 / £9.50", members: "£2 / £3" },
 ];
 
 const pricingConfig = {
-  normal: pricingRows.map(({ label, normal }) => ({ label, price: normal })),
-  members: pricingRows.map(({ label, members }) => ({ label, price: members })),
+	normal: pricingRows.map(({ label, normal }) => ({ label, price: normal })),
+	members: pricingRows.map(({ label, members }) => ({ label, price: members })),
 };
 ---
 

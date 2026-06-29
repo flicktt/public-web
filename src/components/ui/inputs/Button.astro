@@ -1,7 +1,7 @@
 ---
 interface Props extends astroHTML.JSX.ButtonHTMLAttributes {
-  variant?: "light" | "dark";
-  size?: "md" | "lg";
+	variant?: "light" | "dark";
+	size?: "md" | "lg";
 }
 
 const { variant = "light", size = "md", ...props } = Astro.props;

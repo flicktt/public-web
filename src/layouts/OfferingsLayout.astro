@@ -1,32 +1,38 @@
 ---
-import Button from "../components/ui/inputs/Button.astro";
 import mem3Img from "../assets/mem-03.jpg";
-import Container from "./Container.astro";
-import type { FaqConfig } from "../types";
 import Faqs from "../components/faqs/Faqs.astro";
+import Button from "../components/ui/inputs/Button.astro";
+import type { FaqConfig } from "../types";
+import Container from "./Container.astro";
 
 interface Props {
-  title?: string,
-  showMembership?: boolean;
-  containerProps?: astroHTML.JSX.HTMLAttributes
-  faqConfig?: FaqConfig[];
+	title?: string;
+	showMembership?: boolean;
+	containerProps?: astroHTML.JSX.HTMLAttributes;
+	faqConfig?: FaqConfig[];
 }
 
 const mockConfig = [
-  {
-    title: 'Proin placerat vitae nisl sed elementum?',
-    Content: 'Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum erat in nisi fringilla egestas. Suspendisse convallis vulputate viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet, mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat. Nam sit amet consequat enim.'
-  }
+	{
+		title: "Proin placerat vitae nisl sed elementum?",
+		Content:
+			"Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum erat in nisi fringilla egestas. Suspendisse convallis vulputate viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet, mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat. Nam sit amet consequat enim.",
+	},
 ];
 
-const { title, showMembership = true, faqConfig = mockConfig, containerProps } = Astro.props;
+const {
+	title,
+	showMembership = true,
+	faqConfig = mockConfig,
+	containerProps,
+} = Astro.props;
 const _containerProps = { ...containerProps };
 if (_containerProps) delete _containerProps.class;
 
 const containerClassList = [
-  "flex flex-col pt-6 pb-14", 
-  containerProps?.class, 
-  { 'gap-8 lg:gap-12': !containerProps?.class?.includes('gap-') }
+	"flex flex-col pt-6 pb-14",
+	containerProps?.class,
+	{ "gap-8 lg:gap-12": !containerProps?.class?.includes("gap-") },
 ];
 ---
 

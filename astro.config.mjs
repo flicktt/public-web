@@ -1,19 +1,19 @@
 // @ts-check
-import { defineConfig, passthroughImageService } from 'astro/config';
 
-import tailwindcss from '@tailwindcss/vite';
+import cloudflare from "@astrojs/cloudflare";
 
-import cloudflare from '@astrojs/cloudflare';
+import tailwindcss from "@tailwindcss/vite";
+import { defineConfig, passthroughImageService } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  image: {
-    service: passthroughImageService()
-  },
+	image: {
+		service: passthroughImageService(),
+	},
 
-  vite: {
-    plugins: [tailwindcss()]
-  },
+	vite: {
+		plugins: [tailwindcss()],
+	},
 
-  adapter: cloudflare(),
+	adapter: cloudflare(),
 });

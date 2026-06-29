@@ -4,17 +4,17 @@ import type { Page } from "../../types";
 import NavToggleButton from "./NavToggleButton.astro";
 
 interface Props {
-  page?: Page;
+	page?: Page;
 }
 
 const { page } = Astro.props;
 
 const links = [
-  { name: "Offerings", link: "/offerings" },
-  { name: "Compete", link: "/compete" },
-  { name: "Kids", link: "/kids" },
-  { name: "Membership", link: "/membership" },
-  { name: "About", link: "/about" },
+	{ name: "Offerings", link: "/offerings" },
+	{ name: "Compete", link: "/compete" },
+	{ name: "Kids", link: "/kids" },
+	{ name: "Membership", link: "/membership" },
+	{ name: "About", link: "/about" },
 ];
 
 const isHome = page === "home";

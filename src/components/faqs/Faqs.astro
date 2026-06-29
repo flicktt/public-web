@@ -1,13 +1,13 @@
 ---
 import Container from "../../layouts/Container.astro";
-import AccordionStack from "../accordion/AccordionStack.astro";
-import Accordion from "../accordion/Accordion.astro";
-import AccordionTitle from "../accordion/AccordionTitle.astro";
-import AccordionContent from "../accordion/AccordionContent.astro";
 import type { FaqConfig } from "../../types";
+import Accordion from "../accordion/Accordion.astro";
+import AccordionContent from "../accordion/AccordionContent.astro";
+import AccordionStack from "../accordion/AccordionStack.astro";
+import AccordionTitle from "../accordion/AccordionTitle.astro";
 
 interface Props {
-  faqConfig: FaqConfig[];
+	faqConfig: FaqConfig[];
 }
 
 const { faqConfig } = Astro.props;

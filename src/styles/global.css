@@ -2,65 +2,66 @@
 @import "tailwindcss";
 
 @theme {
-  --color-flick-yellow: #e4b363;
-  --color-flick-black: #1e1e1e;
-  --color-flick-dark: #2d2e2d;
-  --color-flick-red: #c03c38;
-  --color-flick-blue: #283b79;
-  --font-briolage-grot: "Bricolage Grotesque", sans-serif;
-  --container-section: 1530px;
+	--color-flick-yellow: #e4b363;
+	--color-flick-black: #1e1e1e;
+	--color-flick-dark: #2d2e2d;
+	--color-flick-red: #c03c38;
+	--color-flick-blue: #283b79;
+	--font-briolage-grot: "Bricolage Grotesque", sans-serif;
+	--container-section: 1530px;
 }
 
 @layer base {
-  h2 {
-    font-weight: var(--font-weight-bold);
-    font-size: 60px;
+	h2 {
+		font-weight: var(--font-weight-bold);
+		font-size: 60px;
 
-    @variant lg {
-      font-size: 110px;
-    }
-  }
+		@variant lg {
+			/* biome-ignore lint/suspicious/noDuplicateProperties: false positive */
+			font-size: 110px;
+		}
+	}
 
-  h3 {
-    font-weight: var(--font-weight-bold);
-    font-size: 50px;
+	h3 {
+		font-weight: var(--font-weight-bold);
+		font-size: 50px;
 
-    @variant lg {
-      font-size: 70px;
-    }
-  }
+		@variant lg {
+			/* biome-ignore lint/suspicious/noDuplicateProperties: false positive */
+			font-size: 70px;
+		}
+	}
 
-  address {
-    font-style: normal;
-  }
+	address {
+		font-style: normal;
+	}
 }
 
 @layer components {
-  .bg-home-kids {
-    background:
-      linear-gradient(63deg, #283b79 23%, transparent 23%) 7px 0,
-      linear-gradient(63deg, transparent 74%, #283b79 78%),
-      linear-gradient(
-        63deg,
-        transparent 34%,
-        #283b79 38%,
-        #283b79 58%,
-        transparent 62%
-      ),
-      rgba(0, 0, 0, 0.1);
-    background-size: 16px 48px;
-  }
+	.bg-home-kids {
+		background:
+			linear-gradient(63deg, #283b79 23%, transparent 23%) 7px 0,
+			linear-gradient(63deg, transparent 74%, #283b79 78%),
+			linear-gradient(
+				63deg,
+				transparent 34%,
+				#283b79 38%,
+				#283b79 58%,
+				transparent 62%
+			),
+			rgba(0, 0, 0, 0.1);
+		background-size: 16px 48px;
+	}
 
-  .bg-membership {
-    background: #2d2e2d;
-    background:
-      linear-gradient(115deg, transparent 75%, rgba(0, 0, 0, 0.1) 75%) 0 0,
-      linear-gradient(245deg, transparent 75%, rgba(0, 0, 0, 0.1) 75%) 0 0,
-      linear-gradient(115deg, transparent 75%, rgba(0, 0, 0, 0.1) 75%)
-        15px -30px,
-      linear-gradient(245deg, transparent 75%, rgba(0, 0, 0, 0.1) 75%)
-        15px -30px,
-      #2d2e2d;
-    background-size: 30px 60px;
-  }
+	.bg-membership {
+		background:
+			linear-gradient(115deg, transparent 75%, rgba(0, 0, 0, 0.1) 75%) 0 0,
+			linear-gradient(245deg, transparent 75%, rgba(0, 0, 0, 0.1) 75%) 0 0,
+			linear-gradient(115deg, transparent 75%, rgba(0, 0, 0, 0.1) 75%) 15px
+			-30px,
+			linear-gradient(245deg, transparent 75%, rgba(0, 0, 0, 0.1) 75%) 15px
+			-30px,
+			#2d2e2d;
+		background-size: 30px 60px;
+	}
 }

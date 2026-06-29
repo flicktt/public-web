@@ -2,59 +2,59 @@
 import AlbertoImage from "../../assets/profile-alberto.png";
 import LisImage from "../../assets/profile-lis.png";
 import MartinImage from "../../assets/profile-martin.png";
+import type { CoachProfileConfig } from "../../types";
 import Button from "../ui/inputs/Button.astro";
 import CoachProfile from "./CoachProfile.astro";
-import type { CoachProfileConfig } from "../../types";
 
 const coachConfig: {
-  name: string;
-  img: string;
-  bookingUrl: string;
-  profile: Omit<CoachProfileConfig, "name" | "img">;
+	name: string;
+	img: string;
+	bookingUrl: string;
+	profile: Omit<CoachProfileConfig, "name" | "img">;
 }[] = [
-  {
-    name: "Alberto Garrido",
-    img: AlbertoImage.src,
-    bookingUrl: "https://bookwhen.com/flicktt-alberto",
-    profile: {
-      title: "head",
-      description: [
-        "With over 20 years in the game, Alberto brings deep competitive experience and a passion for helping players reach their potential.",
-        "Started playing at age 7 and went on to earn podium finishes at the Spanish National Championships and win Division C of the British League",
-        "Currently ranked No. 77 in the UK",
-        "Has been coaching for over a decade, guiding everyone from first-timers to high-performance athletes",
-        "Known for a technical, focused, and motivating coaching style that develops both skill and mindset",
-      ],
-    },
-  },
-  {
-    name: "Lis Pardo",
-    img: LisImage.src,
-    bookingUrl: "https://bookwhen.com/flicktt-lis",
-    profile: {
-      title: "head",
-      description: [
-        "With over 30 years of playing experience and 20 years of coaching, Lis brings a wealth of international expertise and technical precision to Flick TT Club.",
-        "Former top division player in Spain, with multiple national-level titles",
-        "Qualified Level 2 England Table Tennis Coach",
-        "Experienced in coaching both children and adults, tailoring each session to individual goals and playing styles",
-      ],
-    },
-  },
-  {
-    name: "Martin Matuzevicius",
-    img: MartinImage.src,
-    bookingUrl: "https://bookwhen.com/flicktt-martin",
-    profile: {
-      title: "coach",
-      description: [
-        "With over 30 years of playing experience and 20 years of coaching, Lis brings a wealth of international expertise and technical precision to Flick TT Club.",
-        "Former top division player in Spain, with multiple national-level titles",
-        "Qualified Level 2 England Table Tennis Coach",
-        "Experienced in coaching both children and adults, tailoring each session to individual goals and playing styles",
-      ],
-    },
-  },
+	{
+		name: "Alberto Garrido",
+		img: AlbertoImage.src,
+		bookingUrl: "https://bookwhen.com/flicktt-alberto",
+		profile: {
+			title: "head",
+			description: [
+				"With over 20 years in the game, Alberto brings deep competitive experience and a passion for helping players reach their potential.",
+				"Started playing at age 7 and went on to earn podium finishes at the Spanish National Championships and win Division C of the British League",
+				"Currently ranked No. 77 in the UK",
+				"Has been coaching for over a decade, guiding everyone from first-timers to high-performance athletes",
+				"Known for a technical, focused, and motivating coaching style that develops both skill and mindset",
+			],
+		},
+	},
+	{
+		name: "Lis Pardo",
+		img: LisImage.src,
+		bookingUrl: "https://bookwhen.com/flicktt-lis",
+		profile: {
+			title: "head",
+			description: [
+				"With over 30 years of playing experience and 20 years of coaching, Lis brings a wealth of international expertise and technical precision to Flick TT Club.",
+				"Former top division player in Spain, with multiple national-level titles",
+				"Qualified Level 2 England Table Tennis Coach",
+				"Experienced in coaching both children and adults, tailoring each session to individual goals and playing styles",
+			],
+		},
+	},
+	{
+		name: "Martin Matuzevicius",
+		img: MartinImage.src,
+		bookingUrl: "https://bookwhen.com/flicktt-martin",
+		profile: {
+			title: "coach",
+			description: [
+				"With over 30 years of playing experience and 20 years of coaching, Lis brings a wealth of international expertise and technical precision to Flick TT Club.",
+				"Former top division player in Spain, with multiple national-level titles",
+				"Qualified Level 2 England Table Tennis Coach",
+				"Experienced in coaching both children and adults, tailoring each session to individual goals and playing styles",
+			],
+		},
+	},
 ];
 ---
 

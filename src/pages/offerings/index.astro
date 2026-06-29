@@ -1,32 +1,32 @@
 ---
-import PageTabs from "../../components/tabs/PageTabs.astro";
-import PageLayout from "../../layouts/PageLayout.astro";
+import Corporate from "../../components/offerings/Corporate.astro";
 import GroupSessions from "../../components/offerings/groupSessions/GroupSessions.astro";
 import OneToOnes from "../../components/offerings/OneToOnes.astro";
-import Workshops from "../../components/offerings/Workshops.astro";
 import OpenSessions from "../../components/offerings/OpenSessions.astro";
 import TableBookings from "../../components/offerings/TableBookings.astro";
-import Corporate from "../../components/offerings/Corporate.astro";
+import Workshops from "../../components/offerings/Workshops.astro";
+import PageTabs from "../../components/tabs/PageTabs.astro";
+import PageLayout from "../../layouts/PageLayout.astro";
 
 const tabConfig = [
-  {
-    label: "Group sessions",
-    contentId: "group-sessions",
-    Content: GroupSessions,
-  },
-  {
-    label: "Private Coaching",
-    contentId: "private-coaching",
-    Content: OneToOnes,
-  },
-  { label: "Workshops", contentId: "workshops", Content: Workshops },
-  { label: "Open sessions", contentId: "open-sessions", Content: OpenSessions },
-  {
-    label: "Table bookings",
-    contentId: "table-bookings",
-    Content: TableBookings,
-  },
-  { label: "Corporate", contentId: "corporate", Content: Corporate },
+	{
+		label: "Group sessions",
+		contentId: "group-sessions",
+		Content: GroupSessions,
+	},
+	{
+		label: "Private Coaching",
+		contentId: "private-coaching",
+		Content: OneToOnes,
+	},
+	{ label: "Workshops", contentId: "workshops", Content: Workshops },
+	{ label: "Open sessions", contentId: "open-sessions", Content: OpenSessions },
+	{
+		label: "Table bookings",
+		contentId: "table-bookings",
+		Content: TableBookings,
+	},
+	{ label: "Corporate", contentId: "corporate", Content: Corporate },
 ];
 ---
 

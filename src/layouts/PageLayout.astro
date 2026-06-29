@@ -6,31 +6,31 @@ import "../styles/global.css";
 import type { Page, PageConfig } from "../types";
 
 interface Props {
-  page: Page;
+	page: Page;
 }
 
 const pageConfig: Record<Page, PageConfig> = {
-  home: {
-    title: "Home",
-  },
-  offerings: {
-    title: "Offerings",
-  },
-  compete: {
-    title: "Compete",
-  },
-  kids: {
-    title: "Kids",
-  },
-  membership: {
-    title: "Membership",
-  },
-  about: {
-    title: "About",
-  },
-  coaches: {
-    title: "Coaches",
-  },
+	home: {
+		title: "Home",
+	},
+	offerings: {
+		title: "Offerings",
+	},
+	compete: {
+		title: "Compete",
+	},
+	kids: {
+		title: "Kids",
+	},
+	membership: {
+		title: "Membership",
+	},
+	about: {
+		title: "About",
+	},
+	coaches: {
+		title: "Coaches",
+	},
 };
 
 const { page } = Astro.props;
