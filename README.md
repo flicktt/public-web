@@ -35,7 +35,7 @@ pnpm build
 pnpm preview
 ```
 
-## Docker / NAS deployment
+## Docker deployment
 
 The same source deploys two ways:
 
@@ -44,23 +44,15 @@ The same source deploys two ways:
   served by nginx. This is what runs on the Synology NAS.
 
 CI (`.github/workflows/build-and-push.yml`) builds and pushes the image to GHCR on every push to `master`,
-tagged by commit id (no semver):
+tagged by commit id:
 
 - `ghcr.io/flicktt/public-web:latest` and `:<commit-id>` (short SHA)
 
-The NAS (Dockhand) auto-pulls the new `:latest`; the `:<commit-id>` tag pins an exact build. Build it locally with:
+Build it locally with:
 
 ```sh
 docker build -t public-web .
 docker run --rm -p 8080:80 public-web   # http://localhost:8080
-```
-
-Example NAS compose service (Cloudflare Tunnel → this container; no published ports needed):
-
-```yaml
-  public-web:
-    image: ghcr.io/flicktt/public-web:latest
-    restart: unless-stopped
 ```
 
 ## Notes
