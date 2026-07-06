@@ -103,18 +103,23 @@ const faqConfig: FaqConfig[] = [
         originId="league-calendar-btn"
         toId="league-calendar-container"
       >
-        <Button size="lg" class="w-full md:w-fit" id="league-calendar-btn"
-          >League Calendar</Button
+        <Button 
+          size="lg" 
+          class="w-full md:w-fit" 
+          id="league-calendar-btn"
         >
+          League Calendar
+        </Button>
       </WithSmoothScrollTo>
-      <WithSmoothScrollTo
-        originId="league-rules-btn"
-        toId="league-rules-container"
+    <a
+      href="https://flicktt-my.sharepoint.com/:w:/g/personal/admin_flicktt_club/IQBgV7nlqyx7RLtbHjtfApg4AQf9vbQQ3ye_nBOaFjFivuo?e=cud6GC"
+      target="_blank"
+      class="w-full md:w-fit"
+    >
+      <Button size="lg" class="w-full" id="league-rules-btn"
+        >League Rules</Button
       >
-        <Button size="lg" class="w-full md:w-fit" id="league-rules-btn"
-          >League Rules</Button
-        >
-      </WithSmoothScrollTo>
+    </a>
     </div>
   </div>
   <PointsRow pointConfig={pointConfig} />
@@ -136,12 +141,12 @@ const faqConfig: FaqConfig[] = [
         2 players / Private lesson voucher for winners of 3 mystery categories
       </p>
     </InfoHighlightLayout>
-    <div class="flex flex-col gap-4" id="league-table-container">
+        <div class="flex flex-col gap-4" id="league-table-container">
       <h3>League Table</h3>
       <iframe
         title="Flick TT League table"
-        src="https://flicktt-my.sharepoint.com/personal/admin_flicktt_club/_layouts/15/Doc.aspx?sourcedoc={ce4f9882-b9ea-466c-a8ff-ce7892a9e0af}&action=embedview&wdAllowInteractivity=False&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&waccluster=GUK3&edaebp=&edaebf=ctrl"
         loading="lazy"
+        src="https://flicktt-my.sharepoint.com/:x:/g/personal/admin_flicktt_club/IQCCmE_O6rlsRqj_zniSqeCvAeBOnFbZlbDcDg6JzYrkl04?e=iSrnGT&action=embedview"
         class="w-full h-175 rounded-xl"
       >
       </iframe>
@@ -164,13 +169,3 @@ const faqConfig: FaqConfig[] = [
     </div>
   </Container>
 </OfferingsLayout>
-<Container class="flex flex-col gap-4 pt-6 pb-14" id="league-rules-container">
-  <h3>League Rules</h3>
-  <iframe
-    title="Flick TT League calendar"
-    src="https://flicktt-my.sharepoint.com/personal/admin_flicktt_club/_layouts/15/Doc.aspx?sourcedoc={e5b95760-2cab-447b-bb5b-1e3b5f029838}&action=embedview&wdStartOn=1"
-    loading="lazy"
-    class="w-full h-175 rounded-xl"
-  >
-  </iframe>
-</Container>
