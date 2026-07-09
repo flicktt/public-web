@@ -17,14 +17,13 @@
 		"@astrojs/react": "5.0.7",
 		"@tailwindcss/vite": "4.2.2",
 		"astro": "6.3.7",
+		"clsx": "^2.1.1",
 		"sharp": "0.34.5",
+		"tailwind-merge": "^3.6.0",
 		"tailwindcss": "4.2.2",
 		"wrangler": "4.93.1"
 	},
 	"overrides": {
 		"vite": "7"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "2.5.1"
 	}
 }

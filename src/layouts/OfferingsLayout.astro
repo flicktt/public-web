@@ -3,6 +3,7 @@ import mem3Img from "../assets/mem-03.jpg";
 import Faqs from "../components/faqs/Faqs.astro";
 import Button from "../components/ui/inputs/Button.astro";
 import type { FaqConfig } from "../types";
+import { cn } from "../utils";
 import Container from "./Container.astro";
 
 interface Props {
@@ -26,17 +27,14 @@ const {
 	faqConfig = mockConfig,
 	containerProps,
 } = Astro.props;
-const _containerProps = { ...containerProps };
-if (_containerProps) delete _containerProps.class;
 
-const containerClassList = [
-	"flex flex-col pt-6 pb-14",
+const containerClasses = cn(
+	"flex flex-col pt-6 pb-14 gap-8 lg:gap-12",
 	containerProps?.class,
-	{ "gap-8 lg:gap-12": !containerProps?.class?.includes("gap-") },
-];
+);
 ---
 
-<Container main {..._containerProps} class:list={containerClassList}>
+<Container main class={containerClasses} {...containerProps}>
   {title && <h2 class="font-bold text-center">{title}</h2>}
   <slot />
 </Container>

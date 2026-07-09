@@ -2,7 +2,7 @@
 
 Astro site for Flick Table Tennis.
 
-Link: https://flick-tt-web.siddhartha-c1d.workers.dev/
+Link: https://preview.flicktt.club/
 
 ## Requirements
 
