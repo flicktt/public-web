@@ -1,24 +1,18 @@
 ---
-import MainImage from "../../../assets/offerings-group-sessions-main.jpg";
-import InfoHighlightLayout from "../../../layouts/InfoHighlightLayout.astro";
-import OfferingsLayout from "../../../layouts/OfferingsLayout.astro";
-import Accordion from "../../accordion/Accordion.astro";
-import AccordionContent from "../../accordion/AccordionContent.astro";
-import AccordionStack from "../../accordion/AccordionStack.astro";
-import AccordionTitle from "../../accordion/AccordionTitle.astro";
-import Button from "../../ui/inputs/Button.astro";
+import MainImage from "../../assets/offerings-group-sessions-main.jpg";
+import InfoHighlightLayout from "../../layouts/InfoHighlightLayout.astro";
+import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
+import Accordion from "../accordion/Accordion.astro";
+import AccordionContent from "../accordion/AccordionContent.astro";
+import AccordionStack from "../accordion/AccordionStack.astro";
+import AccordionTitle from "../accordion/AccordionTitle.astro";
+import Button from "../ui/inputs/Button.astro";
 ---
 
-<OfferingsLayout title="Group Sessions">
-  <div
-    class="w-full aspect-video lg:aspect-73/30 overflow-hidden border-8 border-flick-dark"
-  >
-    <img
-      src={MainImage.src}
-      alt="Group session"
-      class="relative bottom-14 sm:bottom-25 lg:bottom-75 w-full object-cover aspect-4/3"
-    />
-  </div>
+<OfferingsLayout
+  title="Group Sessions"
+  img={{ src: MainImage.src, alt: "Group session" }}
+>
   <p class="font-light text-xl lg:text-3xl">
     Our level-based* group sessions are structured to balance quality coaching,
     focused training, and match play. Each two-hour session (max 12 players)

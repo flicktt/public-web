@@ -1,16 +1,15 @@
 ---
+import type { ContainerProps } from "../types";
 import { cn } from "../utils";
 
-interface Props extends astroHTML.JSX.HTMLAttributes {
-	section?: boolean;
-	main?: boolean;
-}
+interface Props extends ContainerProps {}
 
-const { section, main, ...props } = Astro.props;
+const { section, main, fullMaxWidth, ...props } = Astro.props;
 
 const classes = cn(
-	"m-auto w-full px-6 lg:px-12 max-w-section",
-	props?.class ?? "",
+  "m-auto w-full px-6 lg:px-12",
+  fullMaxWidth ? "max-w-full" : "max-w-section",
+  props?.class,
 );
 ---
 

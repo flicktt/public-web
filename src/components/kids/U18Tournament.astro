@@ -5,16 +5,10 @@ import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
 import Button from "../ui/inputs/Button.astro";
 ---
 
-<OfferingsLayout title="U18 Tournament">
-  <div
-    class="w-full aspect-video lg:aspect-73/30 overflow-hidden border-8 border-flick-dark"
-  >
-    <img
-      src={MainImage.src}
-      alt="Workshop"
-      class="relative bottom-14 sm:bottom-25 lg:bottom-75 w-full object-cover aspect-4/3"
-    />
-  </div>
+<OfferingsLayout
+  title="U18 Tournament"
+  img={{ src: MainImage.src, alt: "Under 18s tournament" }}
+>
   <p class="font-light text-xl lg:text-3xl">
     Integer tincidunt, ipsum at commodo tempus, enim orci consequat dolor, non
     sodales velit erat tristique lacus. Integer fermentum convallis orci ac

@@ -1,6 +1,7 @@
 ---
 import albertoCoach from "../assets/alberto-coach.jpg";
-import lisAndAlbImg from "../assets/flick-alberto-and-lis-1.png";
+// import lisAndAlbImg from "../assets/flick-alberto-and-lis-1.png";
+import lisAndAlbImg from "../assets/flick-alberto-and-lis-1-1.png";
 import FTTLeagueBg from "../assets/home-flick-league.png";
 import FTTTournamentBg from "../assets/home-flick-tournament.png";
 import lisCoach from "../assets/lis-coach.jpg";
@@ -9,43 +10,44 @@ import mem2Img from "../assets/mem-02.png";
 import mem3Img from "../assets/mem-03.jpg";
 import Schedule from "../components/home/Schedule.astro";
 import Button from "../components/ui/inputs/Button.astro";
+import DisplayText from "../components/ui/text/DisplayText.astro";
 import Container from "../layouts/Container.astro";
 import PageLayout from "../layouts/PageLayout.astro";
 ---
 
 <PageLayout page="home">
-  <Container class="py-10 sm:py-20">
+  <Container class="py-10 sm:py-18">
     <div class="flex flex-col gap-10">
       <hgroup class="m-auto max-w-2xl text-center">
-        <h1 class="uppercase font-bold text-4xl sm:text-5xl md:text-6xl">
+        <h1 class="uppercase font-bold text-4xl sm:text-5xl">
           Table Tennis For
           <span
-            class="text-flick-yellow font-extrabold text-5xl sm:text-8xl md:text-[110px] tracking-wider"
+            class="text-flick-yellow font-extrabold text-5xl sm:text-8xl tracking-wider"
           >
             Everybody
           </span>
         </h1>
-        <p class="font-medium text-4xl md:text-5xl">
+        <p class="font-medium text-4xl">
           A TT Club Based In London
         </p>
       </hgroup>
-      <p class="text-center font-light text text-4xl sm:text-5xl">
+      <DisplayText class="max-w-5xl m-auto text-center">
         At Flick TT, our mission is to inspire and empower table tennis
         enthusiasts of all levels to reach their full potential
-      </p>
+      </DisplayText>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <img
           src={lisAndAlbImg.src}
           alt="Alberto explaining to a group"
-          class="border-8 border-flick-dark w-full"
+          class="border-8 border-flick-dark w-full m-auto"
         />
         <div class="flex flex-col gap-9 justify-center">
-          <p class="font-medium text-3xl">
+          <p class="font-medium text-2xl">
             We are dedicated to providing high-quality coaching and
             comprehensive training programs that foster a love for the sport and
             help individuals excel in their table tennis journey.
           </p>
-          <p class="text-2xl">
+          <p class="text-xl">
             We believe in the power of table tennis to bring joy, build
             character, and create lasting memories. We are passionate about
             sharing our love for the sport and instilling that same passion in
@@ -53,9 +55,9 @@ import PageLayout from "../layouts/PageLayout.astro";
           </p>
         </div>
       </div>
-      <section class="flex flex-col lg:mt-10 text-center">
+      <section class="flex flex-col lg:mt-6 text-center">
         <h2>What We Offer</h2>
-        <p class="text-3xl md:text-4xl lg:text-5xl font-light">
+        <p class="text-3xl sm:text-4xl font-light">
           From group coached sessions to a league with an ELO-rating system,
           there are no shortage of things to take part at in Flick.
           <a href="/" class="text-flick-yellow hover:underline">

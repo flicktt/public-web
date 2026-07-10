@@ -4,16 +4,10 @@ import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
 import Button from "../ui/inputs/Button.astro";
 ---
 
-<OfferingsLayout title="Open Sessions">
-  <div
-    class="w-full aspect-video lg:aspect-73/30 overflow-hidden border-8 border-flick-dark"
-  >
-    <img
-      src={MainImage.src}
-      alt="Open session"
-      class="relative bottom-14 sm:bottom-25 lg:bottom-75 w-full object-cover aspect-4/3"
-    />
-  </div>
+<OfferingsLayout
+  title="Open Sessions"
+  img={{ src: MainImage.src, alt: "Open session" }}
+>
   <p class="font-light text-xl lg:text-3xl">
     Open sessions are non-supervised and designed for flexible, social play.
     Players can sign up individually and are matched with others on the day.

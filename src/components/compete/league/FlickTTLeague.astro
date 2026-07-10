@@ -13,56 +13,56 @@ import EloFaq from "./EloFaq.astro";
 import MatchingSessionFaq from "./MatchingSessionFaq.astro";
 
 const pointConfig = [
-	{
-		Icon: TableCells,
-		text: "ELO-based rating system with rankings and divisions",
-	},
-	{
-		Icon: Trophy,
-		text: "Three month seasons with awards for division winners as well as other categories",
-	},
-	{
-		Icon: CalendarDays,
-		text: "Regular two hour sessions on Friday and Sunday",
-	},
+  {
+    Icon: TableCells,
+    text: "ELO-based rating system with rankings and divisions",
+  },
+  {
+    Icon: Trophy,
+    text: "Three month seasons with awards for division winners as well as other categories",
+  },
+  {
+    Icon: CalendarDays,
+    text: "Regular two hour sessions on Friday and Sunday",
+  },
 ];
 
 const faqConfig: FaqConfig[] = [
-	{
-		title: "What is a Matching Session?",
-		Content: MatchingSessionFaq,
-	},
-	{
-		title: "Can I choose my opponents in the matching session?",
-		Content: "No. You will be assigned opponents to play with in the session.",
-	},
-	{
-		title: "Do I need to attend every single matching session?",
-		Content:
-			"Absolutely not! You can attend as many session as you want. However, do note that if you want to receive a ranking, you need to attend at least 3 matching sessions in a season (roughly 1 session per month).",
-	},
-	{
-		title: "Is there a limit on how many Matching Sessions I can attend?",
-		Content:
-			"Not at the moment. You can attend as many sessions as you want. However, if matching sessions are full, players who have attended a high number of sessions might be asked to give their spot to players who have attended less sessions.",
-	},
-	{
-		title: "What is an Elo-Based Rating?",
-		Content: EloFaq,
-	},
-	{
-		title:
-			"Is the Flick TT League rating equivalent to ratings in other leagues?",
-		Content:
-			"No. Elo-based ratings only reflect your skill level within that league. The rating you have in Flick TT League cannot be compared to rating you receive in other leagues.",
-	},
+  {
+    title: "What is a Matching Session?",
+    Content: MatchingSessionFaq,
+  },
+  {
+    title: "Can I choose my opponents in the matching session?",
+    Content: "No. You will be assigned opponents to play with in the session.",
+  },
+  {
+    title: "Do I need to attend every single matching session?",
+    Content:
+      "Absolutely not! You can attend as many session as you want. However, do note that if you want to receive a ranking, you need to attend at least 3 matching sessions in a season (roughly 1 session per month).",
+  },
+  {
+    title: "Is there a limit on how many Matching Sessions I can attend?",
+    Content:
+      "Not at the moment. You can attend as many sessions as you want. However, if matching sessions are full, players who have attended a high number of sessions might be asked to give their spot to players who have attended less sessions.",
+  },
+  {
+    title: "What is an Elo-Based Rating?",
+    Content: EloFaq,
+  },
+  {
+    title:
+      "Is the Flick TT League rating equivalent to ratings in other leagues?",
+    Content:
+      "No. Elo-based ratings only reflect your skill level within that league. The rating you have in Flick TT League cannot be compared to rating you receive in other leagues.",
+  },
 ];
 ---
 
 <OfferingsLayout
   title="Flick TT League"
   showMembership={false}
-  containerProps={{ class: "gap-8 max-w-full px-0" }}
+  containerProps={{ class: "lg:px-0", fullMaxWidth: true }}
   faqConfig={faqConfig}
 >
   <div
@@ -103,23 +103,19 @@ const faqConfig: FaqConfig[] = [
         originId="league-calendar-btn"
         toId="league-calendar-container"
       >
-        <Button 
-          size="lg" 
-          class="w-full md:w-fit" 
-          id="league-calendar-btn"
-        >
+        <Button size="lg" class="w-full md:w-fit" id="league-calendar-btn">
           League Calendar
         </Button>
       </WithSmoothScrollTo>
-    <a
-      href="https://flicktt-my.sharepoint.com/:w:/g/personal/admin_flicktt_club/IQBgV7nlqyx7RLtbHjtfApg4AQf9vbQQ3ye_nBOaFjFivuo?e=cud6GC"
-      target="_blank"
-      class="w-full md:w-fit"
-    >
-      <Button size="lg" class="w-full" id="league-rules-btn"
-        >League Rules</Button
+      <a
+        href="https://flicktt-my.sharepoint.com/:w:/g/personal/admin_flicktt_club/IQBgV7nlqyx7RLtbHjtfApg4AQf9vbQQ3ye_nBOaFjFivuo?e=cud6GC"
+        target="_blank"
+        class="w-full md:w-fit"
       >
-    </a>
+        <Button size="lg" class="w-full" id="league-rules-btn"
+          >League Rules</Button
+        >
+      </a>
     </div>
   </div>
   <PointsRow pointConfig={pointConfig} />

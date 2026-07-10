@@ -2,15 +2,16 @@
 import mem3Img from "../assets/mem-03.jpg";
 import Faqs from "../components/faqs/Faqs.astro";
 import Button from "../components/ui/inputs/Button.astro";
-import type { FaqConfig } from "../types";
+import type { ContainerProps, FaqConfig } from "../types";
 import { cn } from "../utils";
 import Container from "./Container.astro";
 
 interface Props {
 	title?: string;
 	showMembership?: boolean;
-	containerProps?: astroHTML.JSX.HTMLAttributes;
+	containerProps?: ContainerProps;
 	faqConfig?: FaqConfig[];
+  img?: { src: string, alt: string };
 }
 
 const mockConfig = [
@@ -23,20 +24,34 @@ const mockConfig = [
 
 const {
 	title,
+  img,
 	showMembership = true,
 	faqConfig = mockConfig,
 	containerProps,
 } = Astro.props;
 
 const containerClasses = cn(
-	"flex flex-col pt-6 pb-14 gap-8 lg:gap-12",
+	"pt-6 pb-14",
 	containerProps?.class,
 );
 ---
 
-<Container main class={containerClasses} {...containerProps}>
+<Container main {...containerProps} class={containerClasses}>
   {title && <h2 class="font-bold text-center">{title}</h2>}
-  <slot />
+  <div class="flex flex-col gap-6 lg:gap-12">
+    {img && (
+      <div
+        class="mt-6 w-full aspect-video lg:aspect-73/30 overflow-hidden border-8 border-flick-dark"
+      >
+        <img
+          src={img.src}
+          alt={img.alt}
+          class="relative bottom-14 sm:bottom-25 lg:bottom-75 w-full object-cover aspect-4/3"
+        />
+      </div>
+    )}
+    <slot />
+  </div>
 </Container>
 
 {showMembership && (

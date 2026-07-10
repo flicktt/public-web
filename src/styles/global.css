@@ -8,27 +8,27 @@
 	--color-flick-red: #c03c38;
 	--color-flick-blue: #283b79;
 	--font-briolage-grot: "Bricolage Grotesque", sans-serif;
-	--container-section: 1530px;
+	--container-section: 1440px;
 }
 
 @layer base {
 	h2 {
 		font-weight: var(--font-weight-bold);
-		font-size: 60px;
+		font-size: var(--text-6xl);
 
 		@variant lg {
 			/* biome-ignore lint/suspicious/noDuplicateProperties: false positive */
-			font-size: 110px;
+			font-size: var(--text-8xl);
 		}
 	}
 
 	h3 {
 		font-weight: var(--font-weight-bold);
-		font-size: 50px;
+		font-size: var(--text-5xl);
 
-		@variant lg {
+		@variant sm {
 			/* biome-ignore lint/suspicious/noDuplicateProperties: false positive */
-			font-size: 70px;
+			font-size: var(--text-6xl);
 		}
 	}
 

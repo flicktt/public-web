@@ -36,3 +36,9 @@ export type CoachProfileConfig = {
 	title: "head" | "coach";
 	description: string[];
 };
+
+export interface ContainerProps extends astroHTML.JSX.HTMLAttributes {
+  section?: boolean;
+  main?: boolean;
+  fullMaxWidth?: boolean;
+}

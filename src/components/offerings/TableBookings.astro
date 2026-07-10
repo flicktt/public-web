@@ -4,16 +4,10 @@ import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
 import Button from "../ui/inputs/Button.astro";
 ---
 
-<OfferingsLayout title="Table Bookings">
-  <div
-    class="w-full aspect-video lg:aspect-73/30 overflow-hidden border-8 border-flick-dark"
-  >
-    <img
-      src={MainImage.src}
-      alt="Table booking"
-      class="relative bottom-14 sm:bottom-25 lg:bottom-75 w-full object-cover aspect-4/3"
-    />
-  </div>
+<OfferingsLayout
+  title="Table Bookings"
+  img={{ src: MainImage.src, alt: "Table bookings" }}
+>
   <p class="font-light text-xl lg:text-3xl">
     Book a table and enjoy flexible, uninterrupted playing time at our premium
     venue. Perfect for practice matches, casual play, or training with friends,
