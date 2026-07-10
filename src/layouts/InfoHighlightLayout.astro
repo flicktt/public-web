@@ -2,24 +2,25 @@
 import { cn } from "../utils";
 
 interface Props {
-	title?: string;
-	size?: "md" | "full";
-	containerProps?: astroHTML.JSX.HTMLAttributes;
+  title?: string;
+  size?: "md" | "full";
+  containerProps?: astroHTML.JSX.HTMLAttributes;
 }
 
 const { title, size = "full", containerProps } = Astro.props;
 
 const classes = cn(
-	"p-8 flex flex-col bg-white/5 gap-2 rounded-xl text-xl",
-	size === "md" && "m-auto w-full max-w-4xl",
-	containerProps?.class ?? "",
+  "p-8 flex flex-col bg-white/5 gap-2 rounded-xl text-xl",
+  size === "md" && "m-auto w-full max-w-4xl",
+  containerProps?.class ?? "",
 );
 ---
 
-<div
-	class={classes}
-  {...containerProps}
->
-  {title && <h4 class="text-flick-yellow font-bold text-4xl">{title}</h4>}
+<div class={classes} {...containerProps}>
+  {
+    title && (
+      <h4 class="text-flick-yellow font-bold text-3xl md:text-4xl">{title}</h4>
+    )
+  }
   <slot />
 </div>

@@ -2,18 +2,16 @@
 import MainImage from "../../assets/offerings-one-to-ones-main.jpg";
 import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
 import CoachesList from "../coaches/CoachesList.astro";
+
+const desc =
+  "Fully personalised one-to-one sessions from our coaches to your goals, combining technical coaching, match strategy, and multiball training where appropriate. Ideal for fast improvement, targeted skill development, and refining specific areas of your game.";
 ---
 
 <OfferingsLayout
   title="Private Coaching"
   img={{ src: MainImage.src, alt: "Kids private coaching" }}
+  desc={desc}
 >
-  <p class="font-light text-xl lg:text-3xl">
-    Fully personalised one-to-one sessions from our coaches to your goals,
-    combining technical coaching, match strategy, and multiball training where
-    appropriate. Ideal for fast improvement, targeted skill development, and
-    refining specific areas of your game.
-  </p>
   <section>
     <h4 class="font-bold text-4xl mb-4">Meet the Coaches</h4>
     <CoachesList />

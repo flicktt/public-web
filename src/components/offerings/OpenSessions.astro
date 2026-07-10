@@ -2,18 +2,16 @@
 import MainImage from "../../assets/offerings-open-sessions-main.png";
 import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
 import Button from "../ui/inputs/Button.astro";
+
+const desc =
+  "Open sessions are non-supervised and designed for flexible, social play. Players can sign up individually and are matched with others on the day. With a maximum of 12 players per session, it's a great way to get quality games, meet new players, and play freely in a relaxed environment.";
 ---
 
 <OfferingsLayout
   title="Open Sessions"
   img={{ src: MainImage.src, alt: "Open session" }}
+  desc={desc}
 >
-  <p class="font-light text-xl lg:text-3xl">
-    Open sessions are non-supervised and designed for flexible, social play.
-    Players can sign up individually and are matched with others on the day.
-    With a maximum of 12 players per session, it's a great way to get quality
-    games, meet new players, and play freely in a relaxed environment.
-  </p>
   <a href="https://bookwhen.com/flicktt" target="_blank" class="m-auto">
     <Button class="mb-2" size="lg">Book now</Button>
   </a>

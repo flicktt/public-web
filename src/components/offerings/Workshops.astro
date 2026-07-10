@@ -3,20 +3,16 @@ import MainImage from "../../assets/offerings-workshops-main.png";
 import InfoHighlightLayout from "../../layouts/InfoHighlightLayout.astro";
 import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
 import Button from "../ui/inputs/Button.astro";
+
+const desc =
+  "Our bi-monthly workshops are topic-focused training sessions led by experienced coaches and are free for members. Each two-hour session dives deep into a specific aspect of the game—past topics include footwork, playing against pimples, service techniques, and other crucial table tennis skills. Ideal for players looking to sharpen their understanding and add new tools to their game.";
 ---
 
 <OfferingsLayout
   title="Workshops"
   img={{ src: MainImage.src, alt: "Workshops" }}
+  desc={desc}
 >
-  <p class="font-light text-xl lg:text-3xl">
-    Our bi-monthly workshops are topic-focused training sessions led by
-    experienced coaches and are free for members. Each two-hour session dives
-    deep into a specific aspect of the game—past topics include footwork,
-    playing against pimples, service techniques, and other crucial table tennis
-    skills. Ideal for players looking to sharpen their understanding and add new
-    tools to their game.
-  </p>
   <a href="https://bookwhen.com/flicktt" target="_blank" class="m-auto">
     <Button class="mb-2" size="lg">Book now</Button>
   </a>

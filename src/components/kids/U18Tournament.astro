@@ -3,20 +3,16 @@ import MainImage from "../../assets/offerings-workshops-main.png";
 import InfoHighlightLayout from "../../layouts/InfoHighlightLayout.astro";
 import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
 import Button from "../ui/inputs/Button.astro";
+
+const desc =
+  "Integer tincidunt, ipsum at commodo tempus, enim orci consequat dolor, non sodales velit erat tristique lacus. Integer fermentum convallis orci ac faucibus. Integer sodales at erat ut vestibulum. Suspendisse ultrices sapien sit amet pharetra maximus. Nullam mollis dolor at urna auctor, id feugiat mi porttitor. Donec tincidunt lacinia lectus, id luctus quam dapibus sit amet. In dignissim dapibus nunc, ut semper libero interdum vitae.";
 ---
 
 <OfferingsLayout
   title="U18 Tournament"
   img={{ src: MainImage.src, alt: "Under 18s tournament" }}
+  desc={desc}
 >
-  <p class="font-light text-xl lg:text-3xl">
-    Integer tincidunt, ipsum at commodo tempus, enim orci consequat dolor, non
-    sodales velit erat tristique lacus. Integer fermentum convallis orci ac
-    faucibus. Integer sodales at erat ut vestibulum. Suspendisse ultrices sapien
-    sit amet pharetra maximus. Nullam mollis dolor at urna auctor, id feugiat mi
-    porttitor. Donec tincidunt lacinia lectus, id luctus quam dapibus sit amet.
-    In dignissim dapibus nunc, ut semper libero interdum vitae.
-  </p>
   <a
     href="https://bookwhen.com/flicktt-competitions"
     target="_blank"

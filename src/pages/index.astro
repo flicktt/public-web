@@ -27,21 +27,19 @@ import PageLayout from "../layouts/PageLayout.astro";
             Everybody
           </span>
         </h1>
-        <p class="font-medium text-4xl">
-          A TT Club Based In London
-        </p>
+        <p class="font-medium text-4xl">A TT Club Based In London</p>
       </hgroup>
       <DisplayText class="max-w-5xl m-auto text-center">
         At Flick TT, our mission is to inspire and empower table tennis
         enthusiasts of all levels to reach their full potential
       </DisplayText>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
         <img
           src={lisAndAlbImg.src}
           alt="Alberto explaining to a group"
           class="border-8 border-flick-dark w-full m-auto"
         />
-        <div class="flex flex-col gap-9 justify-center">
+        <div class="flex flex-col gap-4 justify-center">
           <p class="font-medium text-2xl">
             We are dedicated to providing high-quality coaching and
             comprehensive training programs that foster a love for the sport and
@@ -57,7 +55,7 @@ import PageLayout from "../layouts/PageLayout.astro";
       </div>
       <section class="flex flex-col lg:mt-6 text-center">
         <h2>What We Offer</h2>
-        <p class="text-3xl sm:text-4xl font-light">
+        <DisplayText>
           From group coached sessions to a league with an ELO-rating system,
           there are no shortage of things to take part at in Flick.
           <a href="/" class="text-flick-yellow hover:underline">
@@ -65,7 +63,7 @@ import PageLayout from "../layouts/PageLayout.astro";
             booking a private 121 session? Find out more about what we offer in
             the <b class="font-semibold">Offerings</b> page &#8594;
           </a>
-        </p>
+        </DisplayText>
       </section>
       <Schedule />
     </div>
@@ -171,48 +169,47 @@ import PageLayout from "../layouts/PageLayout.astro";
       </section>
     </Container>
   </div>
-  <Container
-    section
-    class="flex flex-col gap-11 py-20 text-center items-center"
-  >
+  <Container section class="py-20 text-center">
     <h2>About</h2>
-    <p class="text-3xl xl:w-245">
-      We believe in the power of table tennis to bring joy, build character, and
-      create lasting memories. We are passionate about sharing our love for the
-      sport and instilling that same passion in our students.
-    </p>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-      <div class="flex flex-col gap-5">
-        <div
-          class="size-90 lg:size-115 xl:size-115 overflow-hidden rounded-[30px]"
-        >
-          <img
-            src={albertoCoach.src}
-            alt="Alberto coach"
-            class="relative max-w-fit h-120 w-213.75 -left-42.5"
-          />
+    <div class="flex flex-col gap-11 items-center">
+      <p class="text-3xl xl:w-245">
+        We believe in the power of table tennis to bring joy, build character,
+        and create lasting memories. We are passionate about sharing our love
+        for the sport and instilling that same passion in our students.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div class="flex flex-col gap-5">
+          <div
+            class="size-90 lg:size-115 xl:size-115 overflow-hidden rounded-[30px]"
+          >
+            <img
+              src={albertoCoach.src}
+              alt="Alberto coach"
+              class="relative max-w-fit h-120 w-213.75 -left-42.5"
+            />
+          </div>
+          <div class="flex flex-col">
+            <p class="font-semibold text-4xl">Alberto Garrido</p>
+            <p class="font-semibold text-3xl text-flick-yellow">Head Coach</p>
+          </div>
         </div>
-        <div class="flex flex-col">
-          <p class="font-semibold text-4xl">Alberto Garrido</p>
-          <p class="font-semibold text-3xl text-flick-yellow">Head Coach</p>
+        <div class="flex flex-col gap-5">
+          <div
+            class="size-90 lg:size-115 xl:size-115 overflow-hidden rounded-[30px]"
+          >
+            <img
+              src={lisCoach.src}
+              alt="Lis coach"
+              class="relative max-w-fit h-120 w-213.75 -left-37.5"
+            />
+          </div>
+          <div class="flex flex-col">
+            <p class="font-semibold text-4xl">Lis Pardo</p>
+            <p class="font-semibold text-3xl text-flick-yellow">Head Coach</p>
+          </div>
         </div>
       </div>
-      <div class="flex flex-col gap-5">
-        <div
-          class="size-90 lg:size-115 xl:size-115 overflow-hidden rounded-[30px]"
-        >
-          <img
-            src={lisCoach.src}
-            alt="Lis coach"
-            class="relative max-w-fit h-120 w-213.75 -left-37.5"
-          />
-        </div>
-        <div class="flex flex-col">
-          <p class="font-semibold text-4xl">Lis Pardo</p>
-          <p class="font-semibold text-3xl text-flick-yellow">Head Coach</p>
-        </div>
-      </div>
+      <Button>Find out more</Button>
     </div>
-    <Button>Find out more</Button>
   </Container>
 </PageLayout>

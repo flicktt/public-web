@@ -7,10 +7,11 @@ import SplitLayoutContainer from "../../layouts/splitLayout/SplitLayoutContainer
 import SplitLayoutLeft from "../../layouts/splitLayout/SplitLayoutLeft.astro";
 import SplitLayoutRight from "../../layouts/splitLayout/SplitLayoutRight.astro";
 import Button from "../ui/inputs/Button.astro";
+import DisplayText from "../ui/text/DisplayText.astro";
 ---
 
-<Container class="flex flex-col gap-8 lg:gap-12 py-14">
-  <p class="text-3xl md:text-4xl lg:text-5xl font-light text-center">
+<Container class="flex flex-col gap-10 lg:gap-14 py-10 lg:py-14">
+  <DisplayText class="text-center">
     Play, compete, and improve with Flick TT! From our inclusive quarterly Flick
     League to the historic Central League and the national British League,
     there's a league for every level and ambition.
@@ -18,7 +19,7 @@ import Button from "../ui/inputs/Button.astro";
       Join a league today and take your game to the
       <b class="font-semibold">next level!</b>
     </span>
-  </p>
+  </DisplayText>
   <div class="max-w-section w-full overflow-hidden border-8 border-flick-dark">
     <img
       src={CompeteLisAlbertoImage.src}

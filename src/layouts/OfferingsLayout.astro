@@ -2,6 +2,7 @@
 import mem3Img from "../assets/mem-03.jpg";
 import Faqs from "../components/faqs/Faqs.astro";
 import Button from "../components/ui/inputs/Button.astro";
+import DisplayText from "../components/ui/text/DisplayText.astro";
 import type { ContainerProps, FaqConfig } from "../types";
 import { cn } from "../utils";
 import Container from "./Container.astro";
@@ -12,6 +13,7 @@ interface Props {
 	containerProps?: ContainerProps;
 	faqConfig?: FaqConfig[];
   img?: { src: string, alt: string };
+  desc?: string;
 }
 
 const mockConfig = [
@@ -25,23 +27,24 @@ const mockConfig = [
 const {
 	title,
   img,
+  desc,
 	showMembership = true,
 	faqConfig = mockConfig,
 	containerProps,
 } = Astro.props;
 
 const containerClasses = cn(
-	"pt-6 pb-14",
+	"pt-6 pb-10 lg:pb-14",
 	containerProps?.class,
 );
 ---
 
 <Container main {...containerProps} class={containerClasses}>
   {title && <h2 class="font-bold text-center">{title}</h2>}
-  <div class="flex flex-col gap-6 lg:gap-12">
+  <div class="flex flex-col gap-8">
     {img && (
       <div
-        class="mt-6 w-full aspect-video lg:aspect-73/30 overflow-hidden border-8 border-flick-dark"
+        class="mt-3 w-full aspect-video lg:aspect-73/30 overflow-hidden border-8 border-flick-dark"
       >
         <img
           src={img.src}
@@ -49,6 +52,9 @@ const containerClasses = cn(
           class="relative bottom-14 sm:bottom-25 lg:bottom-75 w-full object-cover aspect-4/3"
         />
       </div>
+    )}
+    {desc && (
+      <DisplayText class="text-xl sm:text-xl md:text-2xl">{desc}</DisplayText>
     )}
     <slot />
   </div>
