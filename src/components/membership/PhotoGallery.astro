@@ -14,34 +14,36 @@ const photosSplit = [
 
 <!-- desktop -->
 <div
-  class="hidden sm:flex max-w-section m-auto px-6 lg:px-12 justify-center gap-6 text-5xl"
+  class="hidden sm:flex max-w-section m-auto px-6 lg:px-12 justify-center gap-6 mask-y-from-80%"
 >
   {
-    photosSplit.map((photos, splitIndex) => (
-      <div class="max-h-200 flex flex-col overflow-hidden select-none gap-6 hover:*:animation-state-paused">
-        {[...Array(2)].map((_, ulIndex) => (
-          <ul
-            class:list={[
-              "flex flex-col shrink-0 justify-around min-w-full gap-6",
-              splitIndex % 2
-                ? "animate-marquee-vertical"
-                : "animate-marquee-vertical-reverse animation-delay-[-3s]",
-            ]}
-            aria-hidden={ulIndex === 1}
-          >
-            {photos.map(({ src, alt }) => (
-              <img src={src} alt={alt} class="rounded-xl" loading="lazy" />
-            ))}
-          </ul>
-        ))}
-      </div>
-    ))
+    photosSplit.map((photos, splitIndex) => {
+      return (
+        <div class="max-h-250 flex flex-col overflow-hidden select-none gap-6 hover:*:animation-state-paused">
+          {[...Array(2)].map((_, uiIndex) => (
+            <ul
+              class:list={[
+                `flex flex-col shrink-0 justify-around min-w-full gap-6 animate-marquee-vertical`,
+                {
+                  "animation-direction-reverse": splitIndex % 2,
+                },
+              ]}
+              aria-hidden={uiIndex === 1}
+            >
+              {photos.map(({ src, alt }) => (
+                <img src={src} alt={alt} class="rounded-xl" loading="lazy" />
+              ))}
+            </ul>
+          ))}
+        </div>
+      );
+    })
   }
 </div>
 
 <!-- mobile -->
 <div
-  class="flex sm:hidden max-w-section m-auto px-6 lg:px-12 justify-center gap-6 text-5xl"
+  class="flex sm:hidden max-w-section m-auto px-6 lg:px-12 justify-center gap-6 mask-y-from-80%"
 >
   {
     (

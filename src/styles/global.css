@@ -10,8 +10,11 @@
   --font-briolage-grot: "Bricolage Grotesque", sans-serif;
   --container-section: 1440px;
   --animate-marquee-vertical: marquee-scroll-y 100s linear infinite;
-  --animate-marquee-vertical-reverse: marquee-scroll-y 100s linear infinite
-    reverse;
+
+  --animation-direction-normal: normal;
+  --animation-direction-reverse: reverse;
+  --animation-direction-alternate: alternate;
+  --animation-direction-alternate-reverse: alternate-reverse;
 
   --animation-state-paused: paused;
   --animation-state-running: running;
@@ -63,6 +66,11 @@
   --tw-animation-delay: --value([*]);
   --tw-animation-delay: --value(integer) ms;
   animation-delay: var(--tw-animation-delay);
+}
+
+@utility animation-direction-* {
+  --tw-animation-direction: --value(--animation-direction-*);
+  animation-direction: var(--tw-animation-direction);
 }
 
 @utility animation-state-* {
