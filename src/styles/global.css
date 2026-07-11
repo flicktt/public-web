@@ -2,66 +2,105 @@
 @import "tailwindcss";
 
 @theme {
-	--color-flick-yellow: #e4b363;
-	--color-flick-black: #1e1e1e;
-	--color-flick-dark: #2d2e2d;
-	--color-flick-red: #c03c38;
-	--color-flick-blue: #283b79;
-	--font-briolage-grot: "Bricolage Grotesque", sans-serif;
-	--container-section: 1440px;
+  --color-flick-yellow: #e4b363;
+  --color-flick-black: #1e1e1e;
+  --color-flick-dark: #2d2e2d;
+  --color-flick-red: #c03c38;
+  --color-flick-blue: #283b79;
+  --font-briolage-grot: "Bricolage Grotesque", sans-serif;
+  --container-section: 1440px;
+  --animate-marquee-vertical: marquee-scroll-y 100s linear infinite;
+  --animate-marquee-vertical-reverse: marquee-scroll-y 100s linear infinite
+    reverse;
+
+  --animation-state-paused: paused;
+  --animation-state-running: running;
+
+  @keyframes marquee-scroll-y {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(
+        calc(-100% - 1.5rem)
+      ); /* xrem = equal to gap value in marquee */
+    }
+  }
 }
 
 @layer base {
-	h2 {
-		font-weight: var(--font-weight-bold);
-		font-size: var(--text-6xl);
+  h2 {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--text-6xl);
 
-		@variant lg {
-			/* biome-ignore lint/suspicious/noDuplicateProperties: false positive */
-			font-size: var(--text-8xl);
-		}
-	}
+    @variant lg {
+      font-size: var(--text-8xl);
+    }
+  }
 
-	h3 {
-		font-weight: var(--font-weight-bold);
-		font-size: var(--text-5xl);
+  h3 {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--text-5xl);
 
-		@variant sm {
-			/* biome-ignore lint/suspicious/noDuplicateProperties: false positive */
-			font-size: var(--text-6xl);
-		}
-	}
+    @variant sm {
+      font-size: var(--text-6xl);
+    }
+  }
 
-	address {
-		font-style: normal;
-	}
+  address {
+    font-style: normal;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee-vertical,
+    .animate-marquee-vertical-reverse {
+      animation-play-state: paused;
+    }
+  }
+}
+
+@utility animation-delay-* {
+  --tw-animation-delay: --value([*]);
+  --tw-animation-delay: --value(integer) ms;
+  animation-delay: var(--tw-animation-delay);
+}
+
+@utility animation-state-* {
+  --tw-animation-state: --value(--animation-state-*);
+  animation-play-state: var(--tw-animation-state);
+}
+
+@utility animation-duration-* {
+  --tw-animation-duration: --value([*]);
+  --tw-animation-duration: --value(integer) ms;
+  animation-duration: var(--tw-animation-duration);
 }
 
 @layer components {
-	.bg-home-kids {
-		background:
-			linear-gradient(63deg, #283b79 23%, transparent 23%) 7px 0,
-			linear-gradient(63deg, transparent 74%, #283b79 78%),
-			linear-gradient(
-				63deg,
-				transparent 34%,
-				#283b79 38%,
-				#283b79 58%,
-				transparent 62%
-			),
-			rgba(0, 0, 0, 0.1);
-		background-size: 16px 48px;
-	}
+  .bg-home-kids {
+    background:
+      linear-gradient(63deg, #283b79 23%, transparent 23%) 7px 0,
+      linear-gradient(63deg, transparent 74%, #283b79 78%),
+      linear-gradient(
+        63deg,
+        transparent 34%,
+        #283b79 38%,
+        #283b79 58%,
+        transparent 62%
+      ),
+      rgba(0, 0, 0, 0.1);
+    background-size: 16px 48px;
+  }
 
-	.bg-membership {
-		background:
-			linear-gradient(115deg, transparent 75%, rgba(0, 0, 0, 0.1) 75%) 0 0,
-			linear-gradient(245deg, transparent 75%, rgba(0, 0, 0, 0.1) 75%) 0 0,
-			linear-gradient(115deg, transparent 75%, rgba(0, 0, 0, 0.1) 75%) 15px
-			-30px,
-			linear-gradient(245deg, transparent 75%, rgba(0, 0, 0, 0.1) 75%) 15px
-			-30px,
-			#2d2e2d;
-		background-size: 30px 60px;
-	}
+  .bg-membership {
+    background:
+      linear-gradient(115deg, transparent 75%, rgba(0, 0, 0, 0.1) 75%) 0 0,
+      linear-gradient(245deg, transparent 75%, rgba(0, 0, 0, 0.1) 75%) 0 0,
+      linear-gradient(115deg, transparent 75%, rgba(0, 0, 0, 0.1) 75%)
+        15px -30px,
+      linear-gradient(245deg, transparent 75%, rgba(0, 0, 0, 0.1) 75%)
+        15px -30px,
+      #2d2e2d;
+    background-size: 30px 60px;
+  }
 }

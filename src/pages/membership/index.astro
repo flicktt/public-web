@@ -1,5 +1,6 @@
 ---
 import Faqs from "../../components/faqs/Faqs.astro";
+import PhotoGallery from "../../components/membership/PhotoGallery.astro";
 import PricingCard from "../../components/membership/PricingCard.astro";
 import PointsRow from "../../components/pointsRow/PointsRow.astro";
 import Button from "../../components/ui/inputs/Button.astro";
@@ -76,6 +77,9 @@ const pricingConfig = {
     </a>
   </Container>
   <PointsRow pointConfig={pointConfig} />
+  <div class="border-b border-flick-dark">
+    <PhotoGallery />
+  </div>
   <Container class="lg:gap-14 py-10 lg:py-14">
     <SplitLayoutContainer>
       <SplitLayoutLeft title="Membership benefits" />

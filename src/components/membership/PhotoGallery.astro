@@ -1,0 +1,64 @@
+---
+const photos: { src: string; alt: string }[] = [];
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/membership-gallery-*.png",
+);
+for await (const imgPromise of Object.values(images)) {
+  const img = await imgPromise();
+  photos.push({ src: img.default.src, alt: "" });
+}
+const photosSplit = [
+  ...[...Array(3)].map((_, index) => photos.slice(index * 3, (index + 1) * 3)),
+];
+---
+
+<!-- desktop -->
+<div
+  class="hidden sm:flex max-w-section m-auto px-6 lg:px-12 justify-center gap-6 text-5xl"
+>
+  {
+    photosSplit.map((photos, splitIndex) => (
+      <div class="max-h-200 flex flex-col overflow-hidden select-none gap-6 hover:*:animation-state-paused">
+        {[...Array(2)].map((_, ulIndex) => (
+          <ul
+            class:list={[
+              "flex flex-col shrink-0 justify-around min-w-full gap-6",
+              splitIndex % 2
+                ? "animate-marquee-vertical"
+                : "animate-marquee-vertical-reverse animation-delay-[-3s]",
+            ]}
+            aria-hidden={ulIndex === 1}
+          >
+            {photos.map(({ src, alt }) => (
+              <img src={src} alt={alt} class="rounded-xl" loading="lazy" />
+            ))}
+          </ul>
+        ))}
+      </div>
+    ))
+  }
+</div>
+
+<!-- mobile -->
+<div
+  class="flex sm:hidden max-w-section m-auto px-6 lg:px-12 justify-center gap-6 text-5xl"
+>
+  {
+    (
+      <div class="max-h-200 flex flex-col overflow-hidden select-none gap-6 hover:*:animation-state-paused">
+        {[...Array(2)].map((_, ulIndex) => (
+          <ul
+            class:list={[
+              "flex flex-col shrink-0 justify-around min-w-full gap-6 animate-marquee-vertical animation-duration-[200s]",
+            ]}
+            aria-hidden={ulIndex === 1}
+          >
+            {photos.map(({ src, alt }) => (
+              <img src={src} alt={alt} class="rounded-xl" loading="lazy" />
+            ))}
+          </ul>
+        ))}
+      </div>
+    )
+  }
+</div>
