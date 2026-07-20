@@ -8,85 +8,82 @@ import { cn } from "../utils";
 import Container from "./Container.astro";
 
 interface Props {
-	title?: string;
-	showMembership?: boolean;
-	containerProps?: ContainerProps;
-	faqConfig?: FaqConfig[];
-  img?: { src: string, alt: string };
+  title?: string;
+  showMembership?: boolean;
+  containerProps?: ContainerProps;
+  faqConfig?: FaqConfig[];
+  img?: { src: string; alt: string };
   desc?: string;
 }
 
 const mockConfig = [
-	{
-		title: "Proin placerat vitae nisl sed elementum?",
-		Content:
-			"Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum erat in nisi fringilla egestas. Suspendisse convallis vulputate viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet, mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat. Nam sit amet consequat enim.",
-	},
+  {
+    title: "Proin placerat vitae nisl sed elementum?",
+    Content:
+      "Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum erat in nisi fringilla egestas. Suspendisse convallis vulputate viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet, mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat. Nam sit amet consequat enim.",
+  },
 ];
 
 const {
-	title,
+  title,
   img,
   desc,
-	showMembership = true,
-	faqConfig = mockConfig,
-	containerProps,
+  showMembership = true,
+  faqConfig = mockConfig,
+  containerProps,
 } = Astro.props;
 
-const containerClasses = cn(
-	"pt-6 pb-10 lg:pb-14",
-	containerProps?.class,
-);
+const containerClasses = cn("pt-6 pb-10 lg:pb-14", containerProps?.class);
 ---
 
 <Container main {...containerProps} class={containerClasses}>
   {title && <h2 class="font-bold text-center">{title}</h2>}
   <div class="flex flex-col gap-8 lg:gap-10">
-    {img && (
-      <div
-        class="mt-3 w-full aspect-video lg:aspect-73/30 overflow-hidden border-8 border-flick-dark"
-      >
-        <img
-          src={img.src}
-          alt={img.alt}
-          class="relative bottom-14 sm:bottom-25 lg:bottom-75 w-full object-cover aspect-4/3"
-        />
-      </div>
-    )}
-    {desc && (
-      <DisplayText class="text-xl sm:text-xl md:text-2xl">{desc}</DisplayText>
-    )}
+    {
+      img && (
+        <div class="mt-3 w-full aspect-video lg:aspect-73/30 overflow-hidden border-8 border-flick-dark">
+          <img
+            src={img.src}
+            alt={img.alt}
+            class="relative bottom-14 sm:bottom-25 lg:bottom-75 w-full object-cover aspect-4/3"
+          />
+        </div>
+      )
+    }
+    {
+      desc && (
+        <DisplayText class="text-xl sm:text-xl md:text-2xl">{desc}</DisplayText>
+      )
+    }
     <slot />
   </div>
 </Container>
 
-{showMembership && (
-  <!-- TODO turn into reusable component along with home page section -->
-  <div class="bg-membership">
-    <Container class="flex flex-col lg:flex-row gap-8 py-12">
-      <div>
-        <div
-          class="m-auto size-75 pb md:size-100 xl:size-125 rounded-4xl overflow-hidden border-10 border-black/10"
-        >
-          <img
-            src={mem3Img.src}
-            alt="Membership three"
-            class="relative bottom-62.5 h-225 max-w-fit right-100"
-          />
+{
+  showMembership && (
+    <div class="bg-membership">
+      {/* TODO turn into reusable component along with home page section */}
+      <Container class="flex flex-col lg:flex-row gap-8 py-12">
+        <div>
+          <div class="m-auto size-75 pb md:size-100 xl:size-125 rounded-4xl overflow-hidden border-10 border-black/10">
+            <img
+              src={mem3Img.src}
+              alt="Membership three"
+              class="relative bottom-62.5 h-225 max-w-fit right-100"
+            />
+          </div>
         </div>
-      </div>
-      <section
-        class="flex flex-col text-center items-center justify-center gap-8 px-10 xl:pr-0 xl:text-right xl:items-end xl:gap-11"
-      >
-        <h3>Club Membership</h3>
-        <p class="text-3xl">
-          Members get big discounts on activities, including 1-2-1s, group
-          sessions and club tables.
-        </p>
-        <Button>Find out more</Button>
-      </section>
-    </Container>
-  </div>
-)}
+        <section class="flex flex-col text-center items-center justify-center gap-8 px-10 xl:pr-0 xl:text-right xl:items-end xl:gap-11">
+          <h3>Club Membership</h3>
+          <p class="text-3xl">
+            Members get big discounts on activities, including 1-2-1s, group
+            sessions and club tables.
+          </p>
+          <Button>Find out more</Button>
+        </section>
+      </Container>
+    </div>
+  )
+}
 
 <Faqs faqConfig={faqConfig} />

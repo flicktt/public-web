@@ -13,6 +13,187 @@ import Button from "../components/ui/inputs/Button.astro";
 import DisplayText from "../components/ui/text/DisplayText.astro";
 import Container from "../layouts/Container.astro";
 import PageLayout from "../layouts/PageLayout.astro";
+import type { ScheduleConfig } from "../types";
+
+const scheduleConfig: ScheduleConfig = [
+  {
+    day: "Mon",
+    blocks: [
+      {
+        type: "clubTable",
+        isPeak: false,
+        hours: 7,
+      },
+      {
+        type: "clubTable",
+        isPeak: true,
+        hours: 2,
+      },
+      {
+        type: "group",
+        lvl: "3-4-5",
+        hours: 2,
+      },
+    ],
+  },
+  {
+    day: "Tue",
+    blocks: [
+      {
+        type: "clubTable",
+        isPeak: false,
+        hours: 7,
+      },
+      {
+        type: "clubTable",
+        isPeak: true,
+        hours: 2,
+      },
+      {
+        type: "group",
+        lvl: "2-3",
+        hours: 2,
+      },
+    ],
+  },
+  {
+    day: "Wed",
+    blocks: [
+      {
+        type: "clubTable",
+        isPeak: false,
+        hours: 1,
+      },
+      {
+        type: "group",
+        lvl: "all",
+        hours: 2,
+      },
+      {
+        type: "clubTable",
+        isPeak: false,
+        hours: 4,
+      },
+      {
+        type: "clubTable",
+        isPeak: true,
+        hours: 2,
+      },
+      {
+        type: "group",
+        lvl: "1-2",
+        hours: 2,
+      },
+    ],
+  },
+  {
+    day: "Thu",
+    blocks: [
+      {
+        type: "clubTable",
+        isPeak: false,
+        hours: 7,
+      },
+      {
+        type: "clubTable",
+        isPeak: true,
+        hours: 2,
+      },
+      {
+        type: "group",
+        lvl: "3-4",
+        hours: 2,
+      },
+    ],
+  },
+  {
+    day: "Fri",
+    blocks: [
+      {
+        type: "clubTable",
+        isPeak: false,
+        hours: 7,
+      },
+      {
+        type: "clubTable",
+        isPeak: true,
+        hours: 2,
+      },
+      {
+        type: "clubLeague",
+        matching: "open",
+        hours: 2,
+      },
+    ],
+  },
+  {
+    day: "Sat",
+    blocks: [
+      {
+        type: "clubTable",
+        isPeak: true,
+        hasRobot: true,
+        hours: 3,
+      },
+      {
+        type: "group",
+        lvl: "1-2",
+        hours: 2,
+      },
+      {
+        type: "group",
+        lvl: "u18-1-2",
+        hours: 1.5,
+      },
+      {
+        type: "group",
+        lvl: "u18-3-4",
+        hours: 1.5,
+      },
+      {
+        type: "clubTable",
+        isPeak: true,
+        hasRobot: true,
+        hours: 1,
+      },
+      {
+        type: "group",
+        lvl: "3-4",
+        hours: 2,
+      },
+    ],
+  },
+  {
+    day: "Sun",
+    blocks: [
+      {
+        type: "clubTable",
+        isPeak: true,
+        hours: 1,
+      },
+      {
+        type: "clubLeague",
+        matching: "grouped",
+        hours: 2,
+      },
+      {
+        type: "clubLeague",
+        matching: "open",
+        hours: 2,
+      },
+      {
+        type: "clubTable",
+        isPeak: true,
+        hours: 1,
+      },
+      {
+        type: "group",
+        lvl: "2-3",
+        hours: 2,
+      },
+    ],
+  },
+];
 ---
 
 <PageLayout page="home">
@@ -22,7 +203,7 @@ import PageLayout from "../layouts/PageLayout.astro";
         <h1 class="uppercase font-bold text-4xl sm:text-5xl">
           Table Tennis For
           <span
-            class="text-flick-yellow font-extrabold text-5xl sm:text-8xl tracking-wider"
+            class="block text-flick-yellow font-extrabold text-5xl sm:text-8xl tracking-wider"
           >
             Everybody
           </span>
@@ -65,7 +246,7 @@ import PageLayout from "../layouts/PageLayout.astro";
           </a>
         </DisplayText>
       </section>
-      <Schedule />
+      <Schedule config={scheduleConfig} />
     </div>
   </Container>
   <div class="bg-home-kids">

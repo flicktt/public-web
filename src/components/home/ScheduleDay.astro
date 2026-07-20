@@ -1,10 +1,168 @@
 ---
-const { day } = Astro.props;
+import type { ScheduleDayConfig, ScheduleDayProps } from "../../types";
+
+interface Props extends ScheduleDayProps {}
+
+const { day, blocks } = Astro.props;
+
+function getBlockValues(dayConfig: ScheduleDayConfig) {
+  const type = dayConfig.type;
+
+  if (type === "clubTable") {
+    return {
+      label: `Club Table (${dayConfig.isPeak ? "Peak" : "Off-Peak"})${dayConfig.hasRobot ? " / Training Robot" : ""}`,
+      bg: "bg-black/15",
+      href: "/offerings#table-bookings",
+    };
+  }
+
+  if (type === "clubLeague") {
+    return {
+      label: `Flick TT League ${dayConfig.matching === "grouped" ? "Grouped" : "Open"} Matching`,
+      bg: "bg-flick-yellow",
+      color: "text-black",
+      href: "/compete#club-league",
+    };
+  }
+
+  if (type === "group") {
+    const adultHref = "/offerings#group-sessions";
+    const kidsHref = "/kids#group-sessions";
+    const prefix = "Level";
+    const suffix = "Group Session";
+
+    switch (dayConfig.lvl) {
+      case "1-2": {
+        return {
+          label: `${prefix} 1-2 ${suffix}`,
+          bg: "bg-[#4A67C7]/50",
+          href: adultHref,
+        };
+      }
+      case "2-3": {
+        return {
+          label: `${prefix} 2-3 ${suffix}`,
+          bg: "bg-[#283B79]/50",
+          href: adultHref,
+        };
+      }
+      case "3-4": {
+        return {
+          label: `${prefix} 3-4 ${suffix}`,
+          bg: "bg-[#041B68]/50",
+          href: adultHref,
+        };
+      }
+      case "3-4-5": {
+        return {
+          label: `${prefix} 3-4-5 ${suffix}`,
+          bg: "bg-[#041B68]/50",
+          href: adultHref,
+        };
+      }
+      case "all": {
+        return {
+          label: `All-${prefix} ${suffix}`,
+          bg: "bg-[#724BBF]/50",
+          href: adultHref,
+        };
+      }
+      case "u18-1-2": {
+        return {
+          label: `U18 ${prefix} 1-2 ${suffix}`,
+          bg: "bg-[#4A67C7]/50",
+          href: kidsHref,
+        };
+      }
+      case "u18-3-4": {
+        return {
+          label: `U18 ${prefix} 3-4 ${suffix}`,
+          bg: "bg-[#041B68]/50",
+          href: kidsHref,
+        };
+      }
+    }
+  }
+
+  return {};
+}
+
+function getRowSpan(hours: number) {
+  switch (hours) {
+    case 1:
+      return "row-span-2";
+    case 1.5:
+      return "row-span-3";
+    case 2:
+      return "row-span-4";
+    case 3:
+      return "row-span-6";
+    case 4:
+      return "row-span-8";
+    case 5:
+      return "row-span-10";
+    case 6:
+      return "row-span-12";
+    case 7:
+      return "row-span-14";
+    case 8:
+      return "row-span-16";
+    case 9:
+      return "row-span-18";
+  }
+}
+
+let endTime = 9;
+function getTimeLabel(hour: number) {
+  const isHalfHour = hour % 1;
+  return `${hour === 9 ? "09" : Math.floor(hour)}:${isHalfHour ? "30" : "00"}`;
+}
 ---
 
-<div class="w-42.5 lg:w-fit lg:flex-1/5 xl:flex-1/8 flex-col gap-2.5">
-  <p class="font-semibold text-3xl">{day}</p>
-  <div class="flex flex-col gap-2.5 h-178">
-    <slot />
+<div>
+  <p class="font-semibold text-3xl mb-2">{day}</p>
+  <div class="h-190 grid grid-rows-22 gap-2">
+    {
+      blocks.map((block, i) => {
+        const { label, bg, color, href } = getBlockValues(block);
+        const { hours } = block;
+
+        const startTime = endTime;
+        endTime += hours;
+
+        return (
+          <a
+            class:list={[
+              "flex flex-col grow justify-center p-4 transition-transform focus:scale-103 hover:scale-103",
+              getRowSpan(hours),
+              bg,
+              color,
+              {
+                "rounded-t-lg": i === 0,
+                "rounded-b-lg": i === blocks.length - 1,
+              },
+            ]}
+            href={href}
+            target="_blank"
+          >
+            <p
+              class:list={[
+                "font-semibold",
+                {
+                  "text-xl": hours > 3,
+                  "text-md": hours > 1,
+                  "text-xs": hours === 1,
+                },
+              ]}
+            >
+              {label}
+            </p>
+            <p class:list={{ "text-sm": hours > 1, "text-xs": hours === 1 }}>
+              {`${getTimeLabel(startTime)} - ${getTimeLabel(endTime)}`}
+            </p>
+          </a>
+        );
+      })
+    }
   </div>
 </div>
