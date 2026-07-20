@@ -15,7 +15,11 @@ const openHours = ["09:00", "12:00", "15:00", "18:00"];
   <div class="p-10 text-center rounded-xl border-flick-yellow border">
     <h3 class="font-light text-6xl text-flick-yellow">Schedule</h3>
     <div class="flex flex-row mt-10">
-      <div class="min-w-16 lg:min-w-20">
+      <div
+        id="schedule-hours-col"
+        class="min-w-20 transition-shadow not-xl:not-data-[scroll=0]:shadow-[0_0_75px_0_rgba(0,0,0,0.33)] [clip-path:inset(0_-75px_0_0)]"
+        data-scroll="0"
+      >
         <div class="h-11"></div>
         <div class="h-190 grid grid-rows-22 gap-2">
           {
@@ -33,6 +37,7 @@ const openHours = ["09:00", "12:00", "15:00", "18:00"];
         </div>
       </div>
       <div
+        id="schedule-blocks"
         class="overflow-x-scroll overflow-y-visible xl:overflow-x-visible pb-1"
       >
         <div class="w-315 xl:w-full grid grid-cols-7 gap-x-3">
@@ -46,3 +51,39 @@ const openHours = ["09:00", "12:00", "15:00", "18:00"];
     </div>
   </div>
 </div>
+
+<script>
+  const debounce = (fn: Function) => {
+    // This holds the requestAnimationFrame reference, so we can cancel it if we wish
+    let frame: number;
+
+    return (...params: any) => {
+      // If the frame variable has been defined, clear it now, and queue for next frame
+      if (frame) {
+        cancelAnimationFrame(frame);
+      }
+
+      // Queue our function call for the next frame
+      frame = requestAnimationFrame(() => {
+        // Call our function and pass any params we received
+        fn(...params);
+      });
+    };
+  };
+
+  // Reads out the scroll position and stores it in the data attribute so we can use it
+  const storeScroll = () => {
+    const el = document.getElementById("schedule-hours-col");
+    if (el !== null) {
+      el.dataset.scroll = document
+        .getElementById("schedule-blocks")
+        ?.scrollLeft.toString();
+    }
+  };
+
+  document
+    .getElementById("schedule-blocks")
+    ?.addEventListener("scroll", debounce(storeScroll), { passive: true });
+
+  storeScroll();
+</script>

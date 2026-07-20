@@ -16,9 +16,14 @@ import WithSmoothScrollTo from "../ui/with/WithSmoothScrollTo.astro";
     </WithSmoothScrollTo>
     <BannerButton aProps={{ href: "/membership" }}>Membership</BannerButton>
     <BannerButton
-      aProps={{ href: "https://bookwhen.com/flicktt", target: "_blank" }}
-      >Book</BannerButton
+      aProps={{
+        href: "https://bookwhen.com/flicktt",
+        target: "_blank",
+        rel: "noopener",
+      }}
     >
+      Book
+    </BannerButton>
   </div>
   <div class="max-w-375 w-full">
     <BannerLogo />
