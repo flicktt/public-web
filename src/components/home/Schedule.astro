@@ -1,12 +1,186 @@
 ---
-import type { ScheduleDayProps } from "../../types";
+import type { ScheduleConfig } from "../../types";
 import ScheduleDay from "./ScheduleDay.astro";
 
-interface Props {
-  config: ScheduleDayProps[];
-}
-
-const { config } = Astro.props;
+const scheduleConfig: ScheduleConfig = [
+  {
+    day: "Mon",
+    blocks: [
+      {
+        type: "clubTable",
+        isPeak: false,
+        hours: 7,
+      },
+      {
+        type: "clubTable",
+        isPeak: true,
+        hours: 2,
+      },
+      {
+        type: "group",
+        lvl: "3-4-5",
+        hours: 2,
+      },
+    ],
+  },
+  {
+    day: "Tue",
+    blocks: [
+      {
+        type: "clubTable",
+        isPeak: false,
+        hours: 7,
+      },
+      {
+        type: "clubTable",
+        isPeak: true,
+        hours: 2,
+      },
+      {
+        type: "group",
+        lvl: "2-3",
+        hours: 2,
+      },
+    ],
+  },
+  {
+    day: "Wed",
+    blocks: [
+      {
+        type: "clubTable",
+        isPeak: false,
+        hours: 1,
+      },
+      {
+        type: "group",
+        lvl: "all",
+        hours: 2,
+      },
+      {
+        type: "clubTable",
+        isPeak: false,
+        hours: 4,
+      },
+      {
+        type: "clubTable",
+        isPeak: true,
+        hours: 2,
+      },
+      {
+        type: "group",
+        lvl: "1-2",
+        hours: 2,
+      },
+    ],
+  },
+  {
+    day: "Thu",
+    blocks: [
+      {
+        type: "clubTable",
+        isPeak: false,
+        hours: 7,
+      },
+      {
+        type: "clubTable",
+        isPeak: true,
+        hours: 2,
+      },
+      {
+        type: "group",
+        lvl: "3-4",
+        hours: 2,
+      },
+    ],
+  },
+  {
+    day: "Fri",
+    blocks: [
+      {
+        type: "clubTable",
+        isPeak: false,
+        hours: 7,
+      },
+      {
+        type: "clubTable",
+        isPeak: true,
+        hours: 2,
+      },
+      {
+        type: "clubLeague",
+        matching: "open",
+        hours: 2,
+      },
+    ],
+  },
+  {
+    day: "Sat",
+    blocks: [
+      {
+        type: "clubTable",
+        isPeak: true,
+        hasRobot: true,
+        hours: 3,
+      },
+      {
+        type: "group",
+        lvl: "1-2",
+        hours: 2,
+      },
+      {
+        type: "group",
+        lvl: "u18-1-2",
+        hours: 1.5,
+      },
+      {
+        type: "group",
+        lvl: "u18-3-4",
+        hours: 1.5,
+      },
+      {
+        type: "clubTable",
+        isPeak: true,
+        hasRobot: true,
+        hours: 1,
+      },
+      {
+        type: "group",
+        lvl: "3-4",
+        hours: 2,
+      },
+    ],
+  },
+  {
+    day: "Sun",
+    blocks: [
+      {
+        type: "clubTable",
+        isPeak: true,
+        hours: 1,
+      },
+      {
+        type: "clubLeague",
+        matching: "grouped",
+        hours: 2,
+      },
+      {
+        type: "clubLeague",
+        matching: "open",
+        hours: 2,
+      },
+      {
+        type: "clubTable",
+        isPeak: true,
+        hours: 1,
+      },
+      {
+        type: "group",
+        lvl: "2-3",
+        hours: 2,
+      },
+    ],
+  },
+];
 
 const openHours = ["09:00", "12:00", "15:00", "18:00"];
 ---
@@ -42,7 +216,7 @@ const openHours = ["09:00", "12:00", "15:00", "18:00"];
       >
         <div class="w-315 xl:w-full grid grid-cols-7 gap-x-3">
           {
-            config.map(({ blocks, day }) => (
+            scheduleConfig.map(({ blocks, day }) => (
               <ScheduleDay day={day} blocks={blocks} />
             ))
           }

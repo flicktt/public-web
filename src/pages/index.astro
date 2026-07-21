@@ -13,187 +13,6 @@ import Button from "../components/ui/inputs/Button.astro";
 import DisplayText from "../components/ui/text/DisplayText.astro";
 import Container from "../layouts/Container.astro";
 import PageLayout from "../layouts/PageLayout.astro";
-import type { ScheduleConfig } from "../types";
-
-const scheduleConfig: ScheduleConfig = [
-  {
-    day: "Mon",
-    blocks: [
-      {
-        type: "clubTable",
-        isPeak: false,
-        hours: 7,
-      },
-      {
-        type: "clubTable",
-        isPeak: true,
-        hours: 2,
-      },
-      {
-        type: "group",
-        lvl: "3-4-5",
-        hours: 2,
-      },
-    ],
-  },
-  {
-    day: "Tue",
-    blocks: [
-      {
-        type: "clubTable",
-        isPeak: false,
-        hours: 7,
-      },
-      {
-        type: "clubTable",
-        isPeak: true,
-        hours: 2,
-      },
-      {
-        type: "group",
-        lvl: "2-3",
-        hours: 2,
-      },
-    ],
-  },
-  {
-    day: "Wed",
-    blocks: [
-      {
-        type: "clubTable",
-        isPeak: false,
-        hours: 1,
-      },
-      {
-        type: "group",
-        lvl: "all",
-        hours: 2,
-      },
-      {
-        type: "clubTable",
-        isPeak: false,
-        hours: 4,
-      },
-      {
-        type: "clubTable",
-        isPeak: true,
-        hours: 2,
-      },
-      {
-        type: "group",
-        lvl: "1-2",
-        hours: 2,
-      },
-    ],
-  },
-  {
-    day: "Thu",
-    blocks: [
-      {
-        type: "clubTable",
-        isPeak: false,
-        hours: 7,
-      },
-      {
-        type: "clubTable",
-        isPeak: true,
-        hours: 2,
-      },
-      {
-        type: "group",
-        lvl: "3-4",
-        hours: 2,
-      },
-    ],
-  },
-  {
-    day: "Fri",
-    blocks: [
-      {
-        type: "clubTable",
-        isPeak: false,
-        hours: 7,
-      },
-      {
-        type: "clubTable",
-        isPeak: true,
-        hours: 2,
-      },
-      {
-        type: "clubLeague",
-        matching: "open",
-        hours: 2,
-      },
-    ],
-  },
-  {
-    day: "Sat",
-    blocks: [
-      {
-        type: "clubTable",
-        isPeak: true,
-        hasRobot: true,
-        hours: 3,
-      },
-      {
-        type: "group",
-        lvl: "1-2",
-        hours: 2,
-      },
-      {
-        type: "group",
-        lvl: "u18-1-2",
-        hours: 1.5,
-      },
-      {
-        type: "group",
-        lvl: "u18-3-4",
-        hours: 1.5,
-      },
-      {
-        type: "clubTable",
-        isPeak: true,
-        hasRobot: true,
-        hours: 1,
-      },
-      {
-        type: "group",
-        lvl: "3-4",
-        hours: 2,
-      },
-    ],
-  },
-  {
-    day: "Sun",
-    blocks: [
-      {
-        type: "clubTable",
-        isPeak: true,
-        hours: 1,
-      },
-      {
-        type: "clubLeague",
-        matching: "grouped",
-        hours: 2,
-      },
-      {
-        type: "clubLeague",
-        matching: "open",
-        hours: 2,
-      },
-      {
-        type: "clubTable",
-        isPeak: true,
-        hours: 1,
-      },
-      {
-        type: "group",
-        lvl: "2-3",
-        hours: 2,
-      },
-    ],
-  },
-];
 ---
 
 <PageLayout page="home">
@@ -246,7 +65,7 @@ const scheduleConfig: ScheduleConfig = [
           </a>
         </DisplayText>
       </section>
-      <Schedule config={scheduleConfig} />
+      <Schedule />
     </div>
   </Container>
   <div class="bg-home-kids">
@@ -307,11 +126,12 @@ const scheduleConfig: ScheduleConfig = [
       <Button>Find out more</Button>
     </section>
   </div>
-  <div class="bg-membership">
-    <Container class="py-20 xl:pr-0 2xl:p-0 xl:flex">
-      <div class="2xl:w-[130%] 2xl:relative">
+  <!-- <div class="bg-membership"> -->
+  <div class="bg-flick-dark">
+    <Container class="py-10 2xl:p-0 flex flex-col 2xl:flex-row">
+      <div class="hidden md:block m-auto 2xl:m-0 2xl:w-[130%] md:relative">
         <div
-          class="hidden 2xl:block xl:absolute xl:-top-10 m-auto size-125 rounded-4xl overflow-hidden border-10 border-black/10"
+          class="absolute -top-25 -right-20 2xl:right-[unset] 2xl:-top-10 m-auto size-115 rounded-4xl overflow-hidden border-10 border-black/10"
         >
           <img
             src={mem2Img.src}
@@ -320,7 +140,7 @@ const scheduleConfig: ScheduleConfig = [
           />
         </div>
         <div
-          class="hidden 2xl:block xl:absolute xl:right-0 top-15 m-auto size-125 rounded-4xl overflow-hidden border-10 border-black/10"
+          class="absolute -top-11 -left-21 2xl:left-[unset] 2xl:right-0 2xl:top-4 m-auto size-115 rounded-4xl overflow-hidden border-10 border-black/10"
         >
           <img
             src={mem1Img.src}
@@ -329,7 +149,7 @@ const scheduleConfig: ScheduleConfig = [
           />
         </div>
         <div
-          class="2xl:absolute xl:right-38 xl:-bottom-10 m-auto size-75 md:size-125 rounded-4xl overflow-hidden border-10 border-black/10"
+          class="absolute top-5 -left-55 2xl:left-[unset] 2xl:top-[unset] 2xl:right-44 2xl:-bottom-12 m-auto size-75 md:size-115 rounded-4xl overflow-hidden border-10 border-black/10"
         >
           <img
             src={mem3Img.src}
@@ -339,13 +159,15 @@ const scheduleConfig: ScheduleConfig = [
         </div>
       </div>
       <section
-        class="flex flex-col text-center items-center justify-center gap-8 px-10 2xl:py-20 xl:text-right xl:items-end xl:gap-11"
+        class="flex flex-col text-center items-center justify-center gap-8 px-10 md:pt-125 2xl:py-25 2xl:text-right 2xl:items-end 2xl:gap-11"
       >
-        <h3>Club Membership</h3>
-        <p class="text-3xl">
-          Members get big discounts on activities, including 1-2-1s, group
-          sessions and club tables.
-        </p>
+        <hgroup class="max-w-200 w-full 2xl:max-w-fit">
+          <h3>Club Membership</h3>
+          <p class="text-3xl">
+            Members get big discounts on activities, including 1-2-1s, group
+            sessions and club tables.
+          </p>
+        </hgroup>
         <Button>Find out more</Button>
       </section>
     </Container>
