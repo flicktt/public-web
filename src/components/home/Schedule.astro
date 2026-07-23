@@ -188,20 +188,20 @@ const openHours = ["09:00", "12:00", "15:00", "18:00"];
 <div class="py-4" id="schedule">
   <div class="p-10 text-center rounded-xl border-flick-yellow border">
     <h3 class="font-light text-6xl text-flick-yellow">Schedule</h3>
-    <div class="flex flex-row mt-10">
+    <div class="group flex flex-row gap-0.75 mt-10">
       <div
         id="schedule-hours-col"
         class="min-w-20 transition-shadow not-xl:not-data-[scroll=0]:shadow-[0_0_75px_0_rgba(0,0,0,0.33)] [clip-path:inset(0_-75px_0_0)]"
         data-scroll="0"
       >
-        <div class="h-11"></div>
+        <div class="h-11" role="presentation"></div>
         <div class="h-190 grid grid-rows-22 gap-2">
           {
-            openHours.map((hour, index) => (
+            openHours.map((hour, i) => (
               <div
                 class:list={[
                   "border-t-3 border-white/10 border-dotted pt-4 text-xl",
-                  index === openHours.length - 1 ? "row-span-4" : "row-span-6",
+                  i === openHours.length - 1 ? "row-span-4" : "row-span-6",
                 ]}
               >
                 {hour}
@@ -212,14 +212,32 @@ const openHours = ["09:00", "12:00", "15:00", "18:00"];
       </div>
       <div
         id="schedule-blocks"
-        class="overflow-x-scroll overflow-y-visible xl:overflow-x-visible pb-1"
+        class="overflow-x-scroll overflow-y-visible xl:overflow-x-visible pb-1 relative"
       >
-        <div class="w-315 xl:w-full grid grid-cols-7 gap-x-3">
+        <div class="w-315 xl:w-full grid grid-cols-7 gap-x-2">
           {
             scheduleConfig.map(({ blocks, day }) => (
               <ScheduleDay day={day} blocks={blocks} />
             ))
           }
+        </div>
+        <div
+          class="absolute top-0 opacity-0 -z-1 w-315 xl:w-full group-has-[#schedule-hours-col:hover]:z-0 group-has-[#schedule-hours-col:hover]:opacity-100 transition-opacity"
+          role="presentation"
+        >
+          <div class="h-11"></div>
+          <div class="h-190 grid grid-rows-22 gap-2">
+            {
+              Array.from({ length: 4 }, (_, i) => (
+                <div
+                  class:list={[
+                    "border-t-3 border-white/10 border-dotted",
+                    i === openHours.length - 1 ? "row-span-4" : "row-span-6",
+                  ]}
+                />
+              ))
+            }
+          </div>
         </div>
       </div>
     </div>
