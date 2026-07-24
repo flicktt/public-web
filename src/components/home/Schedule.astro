@@ -188,7 +188,7 @@ const openHours = ["09:00", "12:00", "15:00", "18:00"];
 <div class="py-4" id="schedule">
   <div class="p-10 text-center rounded-xl border-flick-yellow border">
     <h3 class="font-light text-6xl text-flick-yellow">Schedule</h3>
-    <div class="group flex flex-row gap-0.75 mt-10">
+    <div class="group flex flex-row mt-10">
       <div
         id="schedule-hours-col"
         class="min-w-20 transition-shadow not-xl:not-data-[scroll=0]:shadow-[0_0_75px_0_rgba(0,0,0,0.33)] [clip-path:inset(0_-75px_0_0)]"
@@ -200,7 +200,7 @@ const openHours = ["09:00", "12:00", "15:00", "18:00"];
             openHours.map((hour, i) => (
               <div
                 class:list={[
-                  "border-t-3 border-white/10 border-dotted pt-4 text-xl",
+                  "border-t-3 border-white/10 border-dashed pt-4 text-xl",
                   i === openHours.length - 1 ? "row-span-4" : "row-span-6",
                 ]}
               >
@@ -212,7 +212,7 @@ const openHours = ["09:00", "12:00", "15:00", "18:00"];
       </div>
       <div
         id="schedule-blocks"
-        class="overflow-x-scroll overflow-y-visible xl:overflow-x-visible pb-1 relative"
+        class="pl-0.75 overflow-x-scroll overflow-y-visible xl:overflow-x-visible pb-1 relative"
       >
         <div class="w-315 xl:w-full grid grid-cols-7 gap-x-2">
           {
@@ -231,7 +231,7 @@ const openHours = ["09:00", "12:00", "15:00", "18:00"];
               Array.from({ length: 4 }, (_, i) => (
                 <div
                   class:list={[
-                    "border-t-3 border-white/10 border-dotted",
+                    "border-t-3 border-white/10 border-dashed",
                     i === openHours.length - 1 ? "row-span-4" : "row-span-6",
                   ]}
                 />
