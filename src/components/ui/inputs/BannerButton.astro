@@ -1,20 +1,14 @@
 ---
-import WithA from "../with/WithA.astro";
+import type { Polymorphic } from "astro/types";
 
-interface Props {
-	aProps?: astroHTML.JSX.AnchorHTMLAttributes;
-	btnProps?: astroHTML.JSX.ButtonHTMLAttributes;
-}
+type Props<Tag extends "a" | "button"> = Polymorphic<{ as: Tag }>;
 
-const { aProps, btnProps } = Astro.props;
+const { as: Tag = "button", ...props } = Astro.props;
 ---
 
-<WithA {...aProps}>
-  <button
-    type="button"
-    class="w-71 text-white bg-white/35 rounded text-[32px] font-semibold cursor-pointer transition duration-150 hover:bg-white/50"
-    {...btnProps}
-  >
-    <slot />
-  </button>
-</WithA>
+<Tag
+  class="w-69 py-1 text-center text-white bg-white/35 rounded text-3xl font-semibold cursor-pointer transition duration-150 hover:bg-white/50"
+  {...props}
+>
+  <slot />
+</Tag>

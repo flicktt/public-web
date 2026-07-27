@@ -6,7 +6,6 @@ import Accordion from "../accordion/Accordion.astro";
 import AccordionContent from "../accordion/AccordionContent.astro";
 import AccordionStack from "../accordion/AccordionStack.astro";
 import AccordionTitle from "../accordion/AccordionTitle.astro";
-import Button from "../ui/inputs/Button.astro";
 
 const desc =
   "Our level-based* group sessions are structured to balance quality coaching, focused training, and match play. Each two-hour session (max 12 players) includes a 15-minute warm-up, 1 hour 15 minutes of drill practice with water breaks, and 30 minutes of match play. Coaches provide personalised feedback to every player, with groups organised by level to ensure the right challenge and steady improvement.";
@@ -16,10 +15,12 @@ const desc =
   title="Group Sessions"
   img={{ src: MainImage.src, alt: "Group session" }}
   desc={desc}
+  linkBtn={{
+    label: "Book now",
+    href: "https://bookwhen.com/flicktt",
+    external: true,
+  }}
 >
-  <a href="https://bookwhen.com/flicktt" target="_blank" class="m-auto">
-    <Button class="mb-2" size="lg">Book now</Button>
-  </a>
   <InfoHighlightLayout
     title="Group Coaching Levels (1-4)"
     containerProps={{ class: "gap-6" }}

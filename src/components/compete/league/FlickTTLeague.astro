@@ -82,12 +82,15 @@ const faqConfig: FaqConfig[] = [
       cost you points. Want to play some proper matches in a fun and casual
       environment? Here's your chance to do just that!
     </p>
-    <a
+    <Button
+      as="a"
+      size="lg"
+      class="m-auto"
       href="https://bookwhen.com/flicktt-competitions/memberships"
       target="_blank"
     >
-      <Button size="lg" class="m-auto">Register now</Button>
-    </a>
+      Register now
+    </Button>
     <div
       class="flex flex-col md:flex-row gap-4 items-center justify-center w-full"
     >
@@ -95,9 +98,9 @@ const faqConfig: FaqConfig[] = [
         originId="league-table-btn"
         toId="league-table-container"
       >
-        <Button size="lg" class="w-full md:w-fit" id="league-table-btn"
-          >League Table</Button
-        >
+        <Button size="lg" class="w-full md:w-fit" id="league-table-btn">
+          League Table
+        </Button>
       </WithSmoothScrollTo>
       <WithSmoothScrollTo
         originId="league-calendar-btn"
@@ -107,15 +110,16 @@ const faqConfig: FaqConfig[] = [
           League Calendar
         </Button>
       </WithSmoothScrollTo>
-      <a
+      <Button
+        as="a"
+        size="lg"
+        class="w-full md:w-fit"
+        id="league-rules-btn"
         href="https://flicktt-my.sharepoint.com/:w:/g/personal/admin_flicktt_club/IQBgV7nlqyx7RLtbHjtfApg4AQf9vbQQ3ye_nBOaFjFivuo?e=cud6GC"
         target="_blank"
-        class="w-full md:w-fit"
       >
-        <Button size="lg" class="w-full" id="league-rules-btn"
-          >League Rules</Button
-        >
-      </a>
+        League Rules
+      </Button>
     </div>
   </div>
   <PointsRow pointConfig={pointConfig} />

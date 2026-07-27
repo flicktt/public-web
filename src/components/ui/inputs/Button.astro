@@ -1,27 +1,30 @@
 ---
+import type { Polymorphic } from "astro/types";
 import { cn } from "../../../utils";
 
-interface Props extends astroHTML.JSX.ButtonHTMLAttributes {
-	variant?: "light" | "dark";
-	size?: "md" | "lg";
-}
+type Props<Tag extends "a" | "button"> = Polymorphic<{ as: Tag }> & {
+  variant?: "light" | "dark";
+  size?: "md" | "lg";
+};
 
-const { variant = "light", size = "md", ...props } = Astro.props;
+const {
+  as: Tag = "button",
+  variant = "light",
+  size = "md",
+  ...props
+} = Astro.props;
 
 const classes = cn(
-	"border rounded-md px-10 py-3 w-fit cursor-pointer font-bold transition duration-150 hover:bg-white hover:text-flick-black hover:border-white",
-	{
-		"border-flick-black": variant === "dark",
-		"border-white": variant === "light",
-		"text-xl lg:text-4xl": size === "lg",
-	},
-	props?.class,
+  "border rounded-md px-10 py-3 w-fit cursor-pointer font-bold transition duration-150 hover:bg-white hover:text-flick-black hover:border-white",
+  props?.class,
+  {
+    "border-flick-black": variant === "dark",
+    "border-white": variant === "light",
+    "text-xl lg:text-3xl": size === "lg",
+  },
 );
 ---
 
-<button
-	class={classes}
-  {...props}
->
+<Tag {...props} class={classes}>
   <slot />
-</button>
+</Tag>

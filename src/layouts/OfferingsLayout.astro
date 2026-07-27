@@ -14,6 +14,7 @@ interface Props {
   faqConfig?: FaqConfig[];
   img?: { src: string; alt: string };
   desc?: string;
+  linkBtn?: { label: string; href: string; external?: boolean };
 }
 
 const mockConfig = [
@@ -31,6 +32,7 @@ const {
   showMembership = true,
   faqConfig = mockConfig,
   containerProps,
+  linkBtn,
 } = Astro.props;
 
 const containerClasses = cn("pt-6 pb-10 lg:pb-14", containerProps?.class);
@@ -55,13 +57,26 @@ const containerClasses = cn("pt-6 pb-10 lg:pb-14", containerProps?.class);
         <DisplayText class="text-xl sm:text-xl md:text-2xl">{desc}</DisplayText>
       )
     }
+    {
+      linkBtn && (
+        <Button
+          as="a"
+          href={linkBtn.href}
+          class="m-auto mb-2"
+          size="lg"
+          {...(linkBtn.external && { target: "_blank" })}
+        >
+          {linkBtn.label}
+        </Button>
+      )
+    }
     <slot />
   </div>
 </Container>
 
 {
   showMembership && (
-    <div class="bg-membership">
+    <div class="bg-flick-dark">
       {/* TODO turn into reusable component along with home page section */}
       <Container class="flex flex-col lg:flex-row gap-8 py-12">
         <div>
@@ -74,12 +89,16 @@ const containerClasses = cn("pt-6 pb-10 lg:pb-14", containerProps?.class);
           </div>
         </div>
         <section class="flex flex-col text-center items-center justify-center gap-8 px-10 xl:pr-0 xl:text-right xl:items-end xl:gap-11">
-          <h3>Club Membership</h3>
-          <p class="text-3xl">
-            Members get big discounts on activities, including 1-2-1s, group
-            sessions and club tables.
-          </p>
-          <Button>Find out more</Button>
+          <hgroup>
+            <h3>Club Membership</h3>
+            <p class="text-3xl">
+              Members get big discounts on activities, including 1-2-1s, group
+              sessions and club tables.
+            </p>
+          </hgroup>
+          <Button as="a" href="/membership">
+            Find out more
+          </Button>
         </section>
       </Container>
     </div>

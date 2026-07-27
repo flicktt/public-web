@@ -162,11 +162,16 @@ const contacts = [
           {
             contacts.map(({ name, title, email }) => (
               <div>
-                <p class="text-2xl">{name}</p>
-                <p class:list={["text-2xl", { hidden: title.length === 0 }]}>
+                <p class="text-2xl font-semibold">{name}</p>
+                <p class:list={["text-xl", { hidden: title.length === 0 }]}>
                   {title}
                 </p>
-                <p class="text-2xl font-semibold">{email}</p>
+                <a
+                  href={`mailto:${email}`}
+                  class="text-xl font-semibold hover:underline"
+                >
+                  {email}
+                </a>
               </div>
             ))
           }

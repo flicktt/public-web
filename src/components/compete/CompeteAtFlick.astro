@@ -47,7 +47,7 @@ import DisplayText from "../ui/text/DisplayText.astro";
           <a
             href="#club-league"
             data-link-to-tab
-            class="text-flick-yellow font-semibold"
+            class="text-flick-yellow font-semibold hover:underline"
           >
             Find out more here →
           </a>
@@ -74,7 +74,9 @@ import DisplayText from "../ui/text/DisplayText.astro";
       </div>
     </SplitLayoutRight>
   </SplitLayoutContainer>
-  <Button class="m-auto" size="lg">Contact Us</Button>
+  <Button as="a" class="m-auto" size="lg" href="mailto:flickservices@gmail.com">
+    Contact Us
+  </Button>
 </Container>
 <div
   style={`
@@ -95,9 +97,7 @@ import DisplayText from "../ui/text/DisplayText.astro";
       Prizes include cash rewards for top performers, making it the perfect mix
       of competition, skill-building, and fun.
     </p>
-    <a href="#tournament" data-link-to-tab>
-      <Button>Find out more</Button>
-    </a>
+    <Button as="a" href="#tournament" data-link-to-tab>Find out more</Button>
   </Container>
 </div>
 <div
@@ -116,9 +116,7 @@ import DisplayText from "../ui/text/DisplayText.astro";
       Integer tincidunt, ipsum at commodo tempus, enim orci consequat dolor, non
       sodales velit erat tristique lacus.
     </p>
-    <a href="#tournament" data-link-to-tab>
-      <Button>Find out more</Button>
-    </a>
+    <Button as="a" href="/kids#u18-tournament"> Find out more </Button>
   </Container>
 </div>
 

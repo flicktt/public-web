@@ -11,8 +11,9 @@ const desc =
   title="Table Bookings"
   img={{ src: MainImage.src, alt: "Table bookings" }}
   desc={desc}
->
-  <a href="https://bookwhen.com/flicktt-tables" target="_blank" class="m-auto">
-    <Button class="mb-2" size="lg">Book now</Button>
-  </a>
-</OfferingsLayout>
+  linkBtn={{
+    label: "Book now",
+    href: "https://bookwhen.com/flicktt-tables",
+    external: true,
+  }}
+/>

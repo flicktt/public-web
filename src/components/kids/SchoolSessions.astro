@@ -11,8 +11,9 @@ const desc =
   title="School Sessions"
   img={{ src: MainImage.src, alt: "School session" }}
   desc={desc}
->
-  <a href="https://bookwhen.com/flicktt" target="_blank" class="m-auto">
-    <Button class="mb-2" size="lg">Contact Us</Button>
-  </a>
-</OfferingsLayout>
+  linkBtn={{
+    label: "Contact us",
+    href: "mailto:flickservices@gmail.com",
+    external: true,
+  }}
+/>

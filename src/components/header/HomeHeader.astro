@@ -10,18 +10,10 @@ import WithSmoothScrollTo from "../ui/with/WithSmoothScrollTo.astro";
     class="flex flex-col gap-10 items-center justify-between lg:flex-row xl:gap-30"
   >
     <WithSmoothScrollTo originId="banner-btn-schedule" toId="schedule">
-      <BannerButton btnProps={{ id: "banner-btn-schedule" }}>
-        Schedule
-      </BannerButton>
+      <BannerButton id="banner-btn-schedule"> Schedule </BannerButton>
     </WithSmoothScrollTo>
-    <BannerButton aProps={{ href: "/membership" }}>Membership</BannerButton>
-    <BannerButton
-      aProps={{
-        href: "https://bookwhen.com/flicktt",
-        target: "_blank",
-        rel: "noopener",
-      }}
-    >
+    <BannerButton as="a" href="/membership">Membership</BannerButton>
+    <BannerButton as="a" href="https://bookwhen.com/flicktt" target="_blank">
       Book
     </BannerButton>
   </div>

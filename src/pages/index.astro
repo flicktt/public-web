@@ -16,7 +16,7 @@ import PageLayout from "../layouts/PageLayout.astro";
 ---
 
 <PageLayout page="home">
-  <Container class="py-10 sm:py-18">
+  <Container class="pt-12 sm:pt-18 pb-14 sm:pb-18">
     <div class="flex flex-col gap-10">
       <hgroup class="m-auto max-w-2xl text-center">
         <h1 class="uppercase font-bold text-4xl sm:text-5xl">
@@ -81,7 +81,7 @@ import PageLayout from "../layouts/PageLayout.astro";
           tournaments today.
         </p>
       </hgroup>
-      <Button>Find out more</Button>
+      <Button as="a" href="/kids">Find out more</Button>
     </Container>
   </div>
   <div class="grid grid-cols-1 lg:grid-cols-2">
@@ -105,7 +105,9 @@ import PageLayout from "../layouts/PageLayout.astro";
           for free.
         </p>
       </div>
-      <Button variant="dark">Find out more</Button>
+      <Button variant="dark" as="a" href="/compete#club-league">
+        Find out more
+      </Button>
     </section>
     <section
       class="flex flex-col items-center text-center gap-10 pt-20 pb-28"
@@ -125,11 +127,13 @@ import PageLayout from "../layouts/PageLayout.astro";
           players per event and a points-based ranking system.
         </p>
       </div>
-      <Button>Find out more</Button>
+      <Button as="a" href="/compete#tournament">Find out more</Button>
     </section>
   </div>
   <div class="bg-flick-dark">
-    <Container class="py-10 2xl:p-0 flex flex-col 2xl:flex-row">
+    <Container
+      class="pt-10 pb-14 md:pt-8 lg:pb-18 2xl:p-0 flex flex-col 2xl:flex-row"
+    >
       <div class="hidden md:block m-auto 2xl:m-0 2xl:w-[130%] md:relative">
         <div
           class="absolute -top-25 -right-20 2xl:right-[unset] 2xl:-top-10 m-auto size-115 rounded-4xl overflow-hidden border-10 border-black/10"
@@ -169,11 +173,11 @@ import PageLayout from "../layouts/PageLayout.astro";
             sessions and club tables.
           </p>
         </hgroup>
-        <Button>Find out more</Button>
+        <Button as="a" href="/membership">Find out more</Button>
       </section>
     </Container>
   </div>
-  <Container section class="py-20 text-center">
+  <Container section class="pt-10 2xl:pt-18 pb-14 lg:pb-18 text-center">
     <h2>About</h2>
     <div class="flex flex-col gap-11 items-center">
       <p class="text-3xl xl:w-245">
@@ -213,7 +217,7 @@ import PageLayout from "../layouts/PageLayout.astro";
           </div>
         </div>
       </div>
-      <Button>Find out more</Button>
+      <Button as="a" href="/about">Find out more</Button>
     </div>
   </Container>
 </PageLayout>
