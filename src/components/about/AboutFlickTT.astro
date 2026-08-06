@@ -9,6 +9,8 @@ import SplitLayoutContainer from "../../layouts/splitLayout/SplitLayoutContainer
 import SplitLayoutLeft from "../../layouts/splitLayout/SplitLayoutLeft.astro";
 import SplitLayoutRight from "../../layouts/splitLayout/SplitLayoutRight.astro";
 import DisplayText from "../ui/text/DisplayText.astro";
+import { SUPPORT_EMAIL } from "../../constants";
+import { Image } from "astro:assets";
 
 const aboutPoints = [
   {
@@ -41,7 +43,7 @@ const contacts = [
   {
     name: "General enquiries",
     title: "",
-    email: "services@flicktt.club",
+    email: SUPPORT_EMAIL,
   },
   {
     name: "Alberto Garrido",
@@ -70,11 +72,17 @@ const contacts = [
   <DisplayText class="text-center">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut quis ipsum et
     neque viverra pulvinar sit amet quis sem. Orci varius natoque penatibus et
-    magnis dis parturient montes, nascetur ridiculus mus. Etiam sit amet urna
-    viverra, laoreet dolor nec.
+    magnis dis parturient montes, nascetur ridiculus mus.{" "}
+    <a
+      href="#coaches"
+      data-link-to-tab
+      class="text-flick-yellow hover:underline"
+    >
+      Learn more about our <b class="font-semibold">Coaches</b> &#8594;
+    </a>
   </DisplayText>
-  <img
-    src={AboutLisAlberto.src}
+  <Image
+    src={AboutLisAlberto}
     alt="Lis and Alberto in session"
     class="border-8 border-flick-dark"
   />

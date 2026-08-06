@@ -1,0 +1,52 @@
+---
+import type { CoachProfileConfig } from "../../types";
+import Button from "../ui/inputs/Button.astro";
+import CoachProfile from "./CoachProfile.astro";
+
+interface Props {
+  bookingUrl: string;
+  profile: CoachProfileConfig;
+}
+
+const { bookingUrl, profile } = Astro.props;
+---
+
+<li
+  class="flex flex-col md:flex-row pt-6 not-last:pb-6 gap-5 md:gap-8 border-flick-dark not-last:border-b"
+>
+  <div class="md:max-h-90 md:max-w-85 h-full w-full overflow-hidden">
+    {
+      (
+        <img
+          src={profile.img}
+          alt={profile.name}
+          class="relative object-cover"
+        />
+      )
+    }
+  </div>
+  <div class="flex flex-col justify-between gap-5 md:gap-0 w-full">
+    <h3 class="font-bold text-4xl">{profile.name}</h3>
+    <div
+      class="flex flex-col sm:flex-row w-full sm:w-fit self-start gap-5 md:self-end"
+    >
+      <Button
+        as="button"
+        class="w-full sm:w-fit text-center"
+        command="show-modal"
+        commandfor={`${profile.name.split(" ").join("-")}-drawer`}
+      >
+        Find out more
+      </Button>
+      <CoachProfile profile={profile} />
+      <Button
+        as="a"
+        class="w-full sm:w-fit text-center"
+        href={bookingUrl}
+        target="_blank"
+      >
+        Book a Session
+      </Button>
+    </div>
+  </div>
+</li>

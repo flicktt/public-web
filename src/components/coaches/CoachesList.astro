@@ -2,95 +2,90 @@
 import AlbertoImage from "../../assets/profile-alberto.png";
 import LisImage from "../../assets/profile-lis.png";
 import MartinImage from "../../assets/profile-martin.png";
+import { COACH_TITLES } from "../../constants";
 import type { CoachProfileConfig } from "../../types";
-import Button from "../ui/inputs/Button.astro";
-import CoachProfile from "./CoachProfile.astro";
+import CoachRow from "./CoachRow.astro";
+
+interface Props {
+  includeTitle?: boolean;
+}
 
 const coachConfig: {
-  name: string;
-  img: string;
-  bookingUrl: string;
-  profile: Omit<CoachProfileConfig, "name" | "img">;
+  title: CoachProfileConfig["title"];
+  coaches: {
+    bookingUrl: string;
+    profile: Omit<CoachProfileConfig, "title">;
+  }[];
 }[] = [
   {
-    name: "Alberto Garrido",
-    img: AlbertoImage.src,
-    bookingUrl: "https://bookwhen.com/flicktt-alberto",
-    profile: {
-      title: "head",
-      description: [
-        "With over 20 years in the game, Alberto brings deep competitive experience and a passion for helping players reach their potential.",
-        "Started playing at age 7 and went on to earn podium finishes at the Spanish National Championships and win Division C of the British League",
-        "Currently ranked No. 77 in the UK",
-        "Has been coaching for over a decade, guiding everyone from first-timers to high-performance athletes",
-        "Known for a technical, focused, and motivating coaching style that develops both skill and mindset",
-      ],
-    },
+    title: "head",
+    coaches: [
+      {
+        bookingUrl: "https://bookwhen.com/flicktt-alberto",
+        profile: {
+          img: AlbertoImage.src,
+          name: "Alberto Garrido",
+          description: [
+            "With over 20 years in the game, Alberto brings deep competitive experience and a passion for helping players reach their potential.",
+            "Started playing at age 7 and went on to earn podium finishes at the Spanish National Championships and win Division C of the British League",
+            "Currently ranked No. 77 in the UK",
+            "Has been coaching for over a decade, guiding everyone from first-timers to high-performance athletes",
+            "Known for a technical, focused, and motivating coaching style that develops both skill and mindset",
+          ],
+        },
+      },
+      {
+        bookingUrl: "https://bookwhen.com/flicktt-lis",
+        profile: {
+          img: LisImage.src,
+          name: "Lis Pardo",
+          description: [
+            "With over 30 years of playing experience and 20 years of coaching, Lis brings a wealth of international expertise and technical precision to Flick TT Club.",
+            "Former top division player in Spain, with multiple national-level titles",
+            "Qualified Level 2 England Table Tennis Coach",
+            "Experienced in coaching both children and adults, tailoring each session to individual goals and playing styles",
+          ],
+        },
+      },
+    ],
   },
   {
-    name: "Lis Pardo",
-    img: LisImage.src,
-    bookingUrl: "https://bookwhen.com/flicktt-lis",
-    profile: {
-      title: "head",
-      description: [
-        "With over 30 years of playing experience and 20 years of coaching, Lis brings a wealth of international expertise and technical precision to Flick TT Club.",
-        "Former top division player in Spain, with multiple national-level titles",
-        "Qualified Level 2 England Table Tennis Coach",
-        "Experienced in coaching both children and adults, tailoring each session to individual goals and playing styles",
-      ],
-    },
-  },
-  {
-    name: "Martin Matuzevicius",
-    img: MartinImage.src,
-    bookingUrl: "https://bookwhen.com/flicktt-martin",
-    profile: {
-      title: "coach",
-      description: [
-        "With over 30 years of playing experience and 20 years of coaching, Lis brings a wealth of international expertise and technical precision to Flick TT Club.",
-        "Former top division player in Spain, with multiple national-level titles",
-        "Qualified Level 2 England Table Tennis Coach",
-        "Experienced in coaching both children and adults, tailoring each session to individual goals and playing styles",
-      ],
-    },
+    title: "coach",
+    coaches: [
+      {
+        bookingUrl: "https://bookwhen.com/flicktt-martin",
+        profile: {
+          name: "Martin Matuzevicius",
+          img: MartinImage.src,
+          description: [
+            "With over 30 years of playing experience and 20 years of coaching, Lis brings a wealth of international expertise and technical precision to Flick TT Club.",
+            "Former top division player in Spain, with multiple national-level titles",
+            "Qualified Level 2 England Table Tennis Coach",
+            "Experienced in coaching both children and adults, tailoring each session to individual goals and playing styles",
+          ],
+        },
+      },
+    ],
   },
 ];
+
+const { includeTitle } = Astro.props;
 ---
 
+
 {
-  coachConfig.map(({ name, img, bookingUrl, profile }, i) => (
-    <div
-      class:list={[
-        "flex flex-col md:flex-row py-6 gap-5 md:gap-8",
-        { "border-b border-flick-dark": i !== coachConfig.length - 1 },
-      ]}
-    >
-      <div class="md:max-h-90 md:max-w-85 h-full w-full overflow-hidden">
-        {<img src={img} alt={name} class="relative object-cover" />}
-      </div>
-      <div class="flex flex-col justify-between gap-5 md:gap-0 w-full">
-        <h5 class="font-bold text-4xl">{name}</h5>
-        <div class="flex flex-col sm:flex-row w-full sm:w-fit self-start gap-5 md:self-end">
-          <Button
-            as="button"
-            class="w-full sm:w-fit"
-            command="show-modal"
-            commandfor={`${name.split(" ").join("-")}-drawer`}
-          >
-            Find out more
-          </Button>
-          <CoachProfile profile={{ ...profile, name, img }} />
-          <Button
-            as="a"
-            class="w-full sm:w-fit"
-            href={bookingUrl}
-            target="_blank"
-          >
-            Book a Session
-          </Button>
-        </div>
-      </div>
-    </div>
-  ))
+  includeTitle ? coachConfig.map(({ title, coaches }) => (
+    <h2 class="text-6xl mb-2">{COACH_TITLES[title].plural}</h2>
+    <ul class="not-last:mb-20">
+      {coaches.map(({ bookingUrl, profile }) => (
+        <CoachRow bookingUrl={bookingUrl} profile={{...profile, title}} />
+      ))}
+    </ul>
+  )) : (
+    <ul>
+    {coachConfig.flatMap(({ title, coaches }) => (coaches.map((coach) => ({ ...coach, title })))).map(({ title, bookingUrl, profile }) => (
+        <CoachRow bookingUrl={bookingUrl} profile={{...profile, title}} />
+    ))}
+    </ul>
+  )
 }

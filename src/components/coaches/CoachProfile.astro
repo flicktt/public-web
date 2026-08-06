@@ -1,14 +1,14 @@
 ---
+import { COACH_TITLES } from "../../constants";
 import type { CoachProfileConfig } from "../../types";
 import Drawer from "../ui/drawer/Drawer.astro";
 
 interface Props {
-	profile: CoachProfileConfig;
+  profile: CoachProfileConfig;
 }
 
 const { profile } = Astro.props;
 const { name, img, description, title } = profile;
-const titleLabel = title === "head" ? "Head Coach" : "Coach";
 ---
 
 <Drawer id={`${name.split(" ").join("-")}-drawer`} }>
@@ -16,7 +16,9 @@ const titleLabel = title === "head" ? "Head Coach" : "Coach";
     <img src={img} width="340" alt={name} />
     <div>
       <p class="text-3xl font-semibold">{name}</p>
-      <p class="text-2xl font-light text-flick-yellow">{titleLabel}</p>
+      <p class="text-2xl font-light text-flick-yellow">
+        {COACH_TITLES[title].singular}
+      </p>
     </div>
     {
       description.map((desc, i) => (
