@@ -56,7 +56,7 @@ import PageLayout from "../layouts/PageLayout.astro";
       <section class="flex flex-col lg:mt-6 text-center">
         <h2>What We Offer</h2>
         <DisplayText>
-          From group coached sessions to a league with an ELO-rating system,
+          From group coached sessions to a league with an Elo rating system,
           there is no shortage of things to take part in at Flick TT.{" "}
           <a href="/" class="text-flick-yellow hover:underline">
             Confused about the different levels of group sessions? Interested in
@@ -86,7 +86,7 @@ import PageLayout from "../layouts/PageLayout.astro";
   </div>
   <div class="grid grid-cols-1 lg:grid-cols-2">
     <section
-      class="flex flex-col items-center text-center gap-10 py-20 xl:pb-25 bg-no-repeat text-flick-black"
+      class="flex flex-col items-center text-center gap-10 pt-16 pb-14 2xl:pb-26 bg-no-repeat text-flick-black"
       style={`
         background:
           url(${FTTLeagueBg.src}) center center;
@@ -110,7 +110,7 @@ import PageLayout from "../layouts/PageLayout.astro";
       </Button>
     </section>
     <section
-      class="flex flex-col items-center text-center gap-10 pt-20 pb-28"
+      class="flex flex-col items-center text-center gap-10 pt-16 pb-14 md:pb-16 2xl:pb-26"
       style={`
         background: 
           url(${FTTTournamentBg.src}) center center;
@@ -132,7 +132,7 @@ import PageLayout from "../layouts/PageLayout.astro";
   </div>
   <div class="bg-flick-dark">
     <Container
-      class="pt-10 pb-14 md:pt-8 lg:pb-18 2xl:p-0 flex flex-col 2xl:flex-row"
+      class="pt-10 pb-14 md:pt-20 lg:pb-18 2xl:p-0 flex flex-col 2xl:flex-row"
     >
       <div class="hidden md:block m-auto 2xl:m-0 2xl:w-[130%] md:relative">
         <div
@@ -185,11 +185,9 @@ import PageLayout from "../layouts/PageLayout.astro";
         and create lasting memories. We are passionate about sharing our love
         for the sport and instilling that same passion in our students.
       </p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-6 lg:gap-x-10">
         <div class="flex flex-col gap-5">
-          <div
-            class="size-90 lg:size-115 xl:size-115 overflow-hidden rounded-[30px]"
-          >
+          <div class="size-84 lg:size-108 overflow-hidden rounded-[30px]">
             <img
               src={albertoCoach.src}
               alt="Alberto coach"
@@ -202,9 +200,7 @@ import PageLayout from "../layouts/PageLayout.astro";
           </div>
         </div>
         <div class="flex flex-col gap-5">
-          <div
-            class="size-90 lg:size-115 xl:size-115 overflow-hidden rounded-[30px]"
-          >
+          <div class="size-84 lg:size-108 overflow-hidden rounded-[30px]">
             <img
               src={lisCoach.src}
               alt="Lis coach"
