@@ -1,4 +1,7 @@
-export const SUPPORT_EMAIL = "services@flicktt.club";
+export const CONTACT_CONSTS = {
+  supportEmail: "services@flicktt.club",
+  whatsapp: "/",
+};
 
 export const COACH_TITLES: Record<
   string,

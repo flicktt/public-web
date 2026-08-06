@@ -3,13 +3,15 @@ import AboutLisAlberto from "../../assets/about-lis-alberto.png";
 import VenueMain from "../../assets/about-venue-main.png";
 import VenueMap from "../../assets/about-venue-map.png";
 import VenueOutside from "../../assets/about-venue-outside.png";
+import WhatsAppLogo from "../../assets/whatsapp-logo.svg";
+import Envelope from "../../icons/Envelope.svg";
 import Container from "../../layouts/Container.astro";
 import InfoHighlightLayout from "../../layouts/InfoHighlightLayout.astro";
 import SplitLayoutContainer from "../../layouts/splitLayout/SplitLayoutContainer.astro";
 import SplitLayoutLeft from "../../layouts/splitLayout/SplitLayoutLeft.astro";
 import SplitLayoutRight from "../../layouts/splitLayout/SplitLayoutRight.astro";
 import DisplayText from "../ui/text/DisplayText.astro";
-import { SUPPORT_EMAIL } from "../../constants";
+import { CONTACT_CONSTS } from "../../constants";
 import { Image } from "astro:assets";
 
 const aboutPoints = [
@@ -43,7 +45,7 @@ const contacts = [
   {
     name: "General enquiries",
     title: "",
-    email: SUPPORT_EMAIL,
+    email: CONTACT_CONSTS.supportEmail,
   },
   {
     name: "Alberto Garrido",
@@ -146,7 +148,7 @@ const contacts = [
             target="_blank"
             class="text-flick-yellow font-semibold hover:underline w-fit m-auto"
           >
-            Find in Google Maps →
+            Find in Google Maps
           </a>
         </InfoHighlightLayout>
       </div>
@@ -156,10 +158,17 @@ const contacts = [
 <section class="bg-flick-blue">
   <Container class="py-10 lg:py-14">
     <SplitLayoutContainer>
-      <SplitLayoutLeft
-        title="Contact us"
-        subtitle="Have a question about the club, the sessions we offer, or anything else? Don't hesitate to send us a message."
-      />
+      <SplitLayoutLeft title="Contact us">
+        <p class="text-xl">
+          Have a question about the club, the sessions we offer, or anything
+          else? Don't hesitate to send us a message.{" "}
+          <a href={CONTACT_CONSTS.whatsapp} class="font-bold hover:underline">
+            You can also contact us via{" "}
+            <WhatsAppLogo class="inline" width={22} />{" "}
+            WhatsApp.
+          </a>
+        </p>
+      </SplitLayoutLeft>
       <SplitLayoutRight>
         <div class="flex flex-col gap-4">
           {
@@ -169,12 +178,15 @@ const contacts = [
                 <p class:list={["text-xl", { hidden: title.length === 0 }]}>
                   {title}
                 </p>
-                <a
-                  href={`mailto:${email}`}
-                  class="text-xl font-semibold hover:underline"
-                >
-                  {email}
-                </a>
+                <div class="flex gap-2 items-center">
+                  <Envelope />
+                  <a
+                    href={`mailto:${email}`}
+                    class="text-xl font-semibold hover:underline"
+                  >
+                    {email}
+                  </a>
+                </div>
               </div>
             ))
           }

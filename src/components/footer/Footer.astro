@@ -1,6 +1,8 @@
 ---
 import FooterLogo from "../../assets/logo-club.svg";
 import IgLogo from "../../assets/ig-logo.svg";
+import WhatsAppLogo from "../../assets/whatsapp-logo.svg";
+import { CONTACT_CONSTS } from "../../constants";
 ---
 
 <footer class="bg-[#111111] p-7.5 text-xl">
@@ -26,18 +28,31 @@ import IgLogo from "../../assets/ig-logo.svg";
           SE16 7FU
         </a>
       </address>
-      <a
-        class="flex self-end"
-        href="https://www.instagram.com/flickttlondon/"
-        target="_blank"
-      >
-        <IgLogo height={22} width={22} />
-      </a>
+      <ul class="flex self-end gap-2">
+        <li>
+          <a
+            class="flex self-end"
+            href="https://www.instagram.com/flickttlondon/"
+            target="_blank"
+          >
+            <IgLogo height={22} width={22} />
+          </a>
+        </li>
+        <li>
+          <a
+            class="flex self-end"
+            href={CONTACT_CONSTS.whatsapp}
+            target="_blank"
+          >
+            <WhatsAppLogo height={22} width={22} />
+          </a>
+        </li>
+      </ul>
       <a
         class="flex self-end hover:underline"
-        href="mailto:services@flicktt.club"
+        href={`mailto:${CONTACT_CONSTS.supportEmail}`}
       >
-        services@flicktt.club
+        {CONTACT_CONSTS.supportEmail}
       </a>
       <ul class="flex flex-col gap-y-1 xl:flex-row xl:justify-between">
         <li>© 2026 by Flick TT Ltd.</li>
