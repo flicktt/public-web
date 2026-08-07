@@ -12,6 +12,24 @@ import WithSmoothScrollTo from "../../ui/with/WithSmoothScrollTo.astro";
 import EloFaq from "./EloFaq.astro";
 import MatchingSessionFaq from "./MatchingSessionFaq.astro";
 
+const embedBtns = [
+  {
+    label: "League Table",
+    id: "league-table-bt",
+    toId: "league-table-container",
+  },
+  {
+    label: "League Calendar",
+    id: "league-calendar-bt",
+    toId: "league-calendar-container",
+  },
+  {
+    label: "League Rules",
+    id: "league-rules-bt",
+    toId: "league-rules-container",
+  },
+];
+
 const pointConfig = [
   {
     Icon: TableCells,
@@ -94,32 +112,15 @@ const faqConfig: FaqConfig[] = [
     <div
       class="flex flex-col md:flex-row gap-4 items-center justify-center w-full"
     >
-      <WithSmoothScrollTo
-        originId="league-table-btn"
-        toId="league-table-container"
-      >
-        <Button size="lg" class="w-full md:w-fit" id="league-table-btn">
-          League Table
-        </Button>
-      </WithSmoothScrollTo>
-      <WithSmoothScrollTo
-        originId="league-calendar-btn"
-        toId="league-calendar-container"
-      >
-        <Button size="lg" class="w-full md:w-fit" id="league-calendar-btn">
-          League Calendar
-        </Button>
-      </WithSmoothScrollTo>
-      <Button
-        as="a"
-        size="lg"
-        class="w-full md:w-fit"
-        id="league-rules-btn"
-        href="https://flicktt-my.sharepoint.com/:w:/g/personal/admin_flicktt_club/IQBgV7nlqyx7RLtbHjtfApg4AQf9vbQQ3ye_nBOaFjFivuo?e=cud6GC"
-        target="_blank"
-      >
-        League Rules
-      </Button>
+      {
+        embedBtns.map(({ label, id, toId }) => (
+          <WithSmoothScrollTo originId={id} toId={toId}>
+            <Button size="lg" class="w-full md:w-fit" id={id}>
+              {label}
+            </Button>
+          </WithSmoothScrollTo>
+        ))
+      }
     </div>
   </div>
   <PointsRow pointConfig={pointConfig} />
@@ -169,3 +170,15 @@ const faqConfig: FaqConfig[] = [
     </div>
   </Container>
 </OfferingsLayout>
+<Container class="pt-6 pb-10">
+  <div class="flex flex-col gap-4" id="league-rules-container">
+    <h3>League Rules</h3>
+    <iframe
+      title="Flick TT League rules"
+      loading="lazy"
+      src="https://flicktt-my.sharepoint.com/:w:/g/personal/admin_flicktt_club/IQBgV7nlqyx7RLtbHjtfApg4AQf9vbQQ3ye_nBOaFjFivuo?e=cud6GC"
+      class="w-full h-175 rounded-xl"
+    >
+    </iframe>
+  </div>
+</Container>

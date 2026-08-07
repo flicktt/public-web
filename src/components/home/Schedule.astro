@@ -245,6 +245,9 @@ const openHours = ["09:00", "12:00", "15:00", "18:00"];
 </div>
 
 <script>
+  // To track scroll bar state for shadow effect on Schedule that should only show
+  // when scroll bar appears + user scrolls to the right
+
   const debounce = (fn: Function) => {
     // This holds the requestAnimationFrame reference, so we can cancel it if we wish
     let frame: number;
