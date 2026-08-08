@@ -1,0 +1,61 @@
+---
+const headers = [
+  { id: "offering", label: "Offerings" },
+  { id: "normal", label: "Normal" },
+  { id: "member", label: "Members" },
+];
+
+interface Props {
+  rows: { offering: string; normal: string; member: string }[];
+}
+
+const { rows } = Astro.props;
+---
+
+<table
+  class="table-auto w-full border border-flick-dark rounded-xl border-separate border-spacing-0"
+>
+  <thead class="text-3xl">
+    <tr>
+      <th class="p-4 border-b border-flick-dark text-left">Offering</th>
+      <th class="p-4 border-b border-l bg-white/2 border-flick-dark">Normal</th>
+      <th
+        class="p-4 border-b border-l border-flick-dark bg-flick-yellow text-flick-dark rounded-tr-xl"
+        >Members</th
+      >
+    </tr>
+  </thead>
+  <tbody class="text-2xl">
+    {
+      rows.map(({ offering, normal, member }, i) => (
+        <tr>
+          <td
+            class:list={[
+              "m-0 p-4 font-semibold",
+              { "border-b border-flick-dark": i !== rows.length - 1 },
+            ]}
+          >
+            {offering}
+          </td>
+          <td
+            class:list={[
+              "m-0 p-4 text-center border-l bg-white/2 border-flick-dark",
+              { "border-b": i !== rows.length - 1 },
+            ]}
+          >
+            {normal}
+          </td>
+          <td
+            class:list={[
+              "m-0 p-4 text-center border-l border-flick-dark bg-flick-yellow text-flick-dark",
+              { "border-b": i !== rows.length - 1 },
+              { "rounded-br-xl": i === rows.length - 1 },
+            ]}
+          >
+            {member}
+          </td>
+        </tr>
+      ))
+    }
+  </tbody>
+</table>

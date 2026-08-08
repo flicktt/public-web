@@ -2,6 +2,7 @@
 import Faqs from "../../components/faqs/Faqs.astro";
 import PhotoGallery from "../../components/membership/PhotoGallery.astro";
 import PricingCard from "../../components/membership/PricingCard.astro";
+import PricingTable from "../../components/membership/PricingTable.astro";
 import PointsRow from "../../components/pointsRow/PointsRow.astro";
 import Button from "../../components/ui/inputs/Button.astro";
 import DisplayText from "../../components/ui/text/DisplayText.astro";
@@ -44,18 +45,28 @@ const faqConfig = [
 ];
 
 const pricingRows = [
-  { label: "Group session", normal: "£20", members: "£12" },
-  { label: "Open session", normal: "£20", members: "£5" },
-  { label: "Private Coaching lesson", normal: "£60", members: "£45" },
-  { label: "Workshop", normal: "N/A", members: "Free" },
-  { label: "Flick TT League season membership", normal: "£65", members: "£35" },
-  { label: "Flick TT Tournament entry", normal: "£25", members: "£15" },
-  { label: "Club Table", normal: "£5.50 / £9.50", members: "£2 / £3" },
+  { offering: "Group session", normal: "£20", member: "£12" },
+  { offering: "Open session", normal: "£20", member: "£5" },
+  { offering: "Private Coaching lesson", normal: "£60", member: "£45" },
+  { offering: "Workshop", normal: "N/A", member: "Free" },
+  {
+    offering: "Flick TT League season membership",
+    normal: "£65",
+    member: "£35",
+  },
+  { offering: "Flick TT Tournament entry", normal: "£25", member: "£15" },
+  { offering: "Club Table", normal: "£5.50 / £9.50", member: "£2 / £3" },
 ];
 
 const pricingConfig = {
-  normal: pricingRows.map(({ label, normal }) => ({ label, price: normal })),
-  members: pricingRows.map(({ label, members }) => ({ label, price: members })),
+  normal: pricingRows.map(({ offering, normal }) => ({
+    label: offering,
+    price: normal,
+  })),
+  members: pricingRows.map(({ offering, member }) => ({
+    label: offering,
+    price: member,
+  })),
 };
 ---
 
@@ -87,12 +98,21 @@ const pricingConfig = {
       <SplitLayoutLeft title="Membership benefits" />
       <SplitLayoutRight>
         <div class="flex flex-col gap-8">
-          <PricingCard title="Normal" prices={pricingConfig.normal} bg="dark" />
-          <PricingCard
-            title="Members"
-            prices={pricingConfig.members}
-            bg="yellow"
-          />
+          <div class="hidden sm:block">
+            <PricingTable rows={pricingRows} />
+          </div>
+          <div class="sm:hidden">
+            <PricingCard
+              title="Normal"
+              prices={pricingConfig.normal}
+              bg="dark"
+            />
+            <PricingCard
+              title="Members"
+              prices={pricingConfig.members}
+              bg="yellow"
+            />
+          </div>
         </div>
       </SplitLayoutRight>
     </SplitLayoutContainer>
