@@ -14,7 +14,7 @@ const { rows } = Astro.props;
       <th class="p-4 border-b border-flick-dark text-left">Offering</th>
       <th class="p-4 border-b border-l bg-white/2 border-flick-dark">Normal</th>
       <th
-        class="p-4 border-b border-l border-flick-dark bg-flick-yellow text-flick-dark rounded-tr-xl"
+        class="p-4 border-b border-l border-black/10 bg-flick-yellow text-flick-black rounded-tr-xl"
         >Members</th
       >
     </tr>
@@ -22,10 +22,10 @@ const { rows } = Astro.props;
   <tbody class="text-2xl">
     {
       rows.map(({ offering, normal, member }, i) => (
-        <tr>
+        <tr class="group">
           <td
             class:list={[
-              "m-0 p-4 font-semibold",
+              "m-0 p-4 font-semibold group-hover:bg-white/2",
               { "border-b border-flick-dark": i !== rows.length - 1 },
             ]}
           >
@@ -33,7 +33,7 @@ const { rows } = Astro.props;
           </td>
           <td
             class:list={[
-              "m-0 p-4 text-center border-l bg-white/2 border-flick-dark",
+              "m-0 p-4 text-center border-l bg-white/2 group-hover:bg-white/4 border-flick-dark",
               { "border-b": i !== rows.length - 1 },
             ]}
           >
@@ -41,7 +41,7 @@ const { rows } = Astro.props;
           </td>
           <td
             class:list={[
-              "m-0 p-4 text-center border-l border-flick-dark bg-flick-yellow text-flick-dark",
+              "m-0 p-4 text-center border-l border-black/10 bg-flick-yellow group-hover:bg-flick-yellow/96 text-flick-black",
               { "border-b": i !== rows.length - 1 },
               { "rounded-br-xl": i === rows.length - 1 },
             ]}

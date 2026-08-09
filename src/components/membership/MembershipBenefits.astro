@@ -1,0 +1,51 @@
+---
+import SplitLayoutContainer from "../../layouts/splitLayout/SplitLayoutContainer.astro";
+import SplitLayoutLeft from "../../layouts/splitLayout/SplitLayoutLeft.astro";
+import SplitLayoutRight from "../../layouts/splitLayout/SplitLayoutRight.astro";
+import PricingCard from "./PricingCard.astro";
+import PricingTable from "./PricingTable.astro";
+
+const pricingRows = [
+  { offering: "Group session", normal: "£20", member: "£12" },
+  { offering: "Open session", normal: "£10", member: "£5" },
+  { offering: "Private Coaching lesson", normal: "£60", member: "£45" },
+  { offering: "Workshop", normal: "N/A", member: "Free" },
+  {
+    offering: "Flick TT League season membership",
+    normal: "£65",
+    member: "£35",
+  },
+  { offering: "Flick TT Tournament entry", normal: "£25", member: "£15" },
+  { offering: "Club Table", normal: "£5.50 / £9.50", member: "£2 / £3" },
+];
+
+const pricingConfig = {
+  normal: pricingRows.map(({ offering, normal }) => ({
+    label: offering,
+    price: normal,
+  })),
+  members: pricingRows.map(({ offering, member }) => ({
+    label: offering,
+    price: member,
+  })),
+};
+---
+
+<SplitLayoutContainer>
+  <SplitLayoutLeft title="Membership benefits" />
+  <SplitLayoutRight>
+    <div class="flex flex-col gap-8">
+      <div class="hidden sm:block">
+        <PricingTable rows={pricingRows} />
+      </div>
+      <div class="sm:hidden">
+        <PricingCard title="Normal" prices={pricingConfig.normal} bg="dark" />
+        <PricingCard
+          title="Members"
+          prices={pricingConfig.members}
+          bg="yellow"
+        />
+      </div>
+    </div>
+  </SplitLayoutRight>
+</SplitLayoutContainer>
