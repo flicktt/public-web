@@ -1,6 +1,6 @@
 export const CONTACT_CONSTS = {
   supportEmail: "services@flicktt.club",
-  whatsapp: "/",
+  whatsapp: "https://wa.me/message/RFAGZD6LY7RWL1",
 };
 
 export const COACH_TITLES: Record<
