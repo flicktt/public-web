@@ -72,7 +72,15 @@ const contacts = [
 
 <Container main class="flex flex-col gap-10 lg:gap-14 py-10 lg:py-14">
   <DisplayText class="text-center">
-    Flick TT was founded in July 2023 by Lis Pardo and Alberto Garrido. Two experienced coaches who are truly passionate about the game, we strive to create an inclusive and fun environment for players of all levels and experience. In the past three years we have grown into a community with over 250 members.
+    Flick TT was founded in July 2023 by Lis Pardo and Alberto Garrido. Two
+    experienced coaches who are truly passionate about the game, we strive to
+    create{" "}
+    <span class="text-flick-yellow">
+      an
+      <b class="font-semibold"> inclusive and fun environment</b>{" "}
+      for players of all levels and experience.
+    </span>{" "}
+    In the past three years we have grown into a community with over 250 members.
   </DisplayText>
   <Image
     src={AboutLisAlberto}
@@ -106,7 +114,11 @@ const contacts = [
           class="border-8 border-flick-dark"
         />
         <p class="text-xl">
-          Our club is conveniently located on the second floor of Decathlon Surrey Quays, a 2-minute walk from Canada Water station. We have recently installed a professional-standard flooring, along with supporting equipment to make sure our training environment supports better movement, higher-quality play, and long-term development.
+          Our club is conveniently located on the second floor of Decathlon
+          Surrey Quays, a 2-minute walk from Canada Water station. We have
+          recently installed a professional-standard flooring, along with
+          supporting equipment to make sure our training environment supports
+          better movement, higher-quality play, and long-term development.
         </p>
         <InfoHighlightLayout
           containerProps={{ class: "p-4 gap-4 text-center" }}
@@ -120,17 +132,26 @@ const contacts = [
             <br />
             <span class="font-bold">Decathlon Surrey Quays</span>
           </p>
-          <address>
-            <p class="font-bold">Address</p>
-            <p>
-              Decathlon Surrey Quays
-              <br />
-              9 Maritime Street
-              <br />
-              London<br />
-              SE16 7FU
-            </p>
-          </address>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div class="flex flex-col justify-center">
+              <p class="font-bold">Opening Hours</p>
+              <ul>
+                <li>Mon - Sat: 09:00 - 20:00</li>
+                <li>Sun: 09:00 - 17:00</li>
+              </ul>
+            </div>
+            <address>
+              <p class="font-bold">Address</p>
+              <p>
+                Decathlon Surrey Quays
+                <br />
+                9 Maritime Street
+                <br />
+                London<br />
+                SE16 7FU
+              </p>
+            </address>
+          </div>
           <a
             href="https://maps.app.goo.gl/pxRgqkdwtRLoAZk79"
             target="_blank"
