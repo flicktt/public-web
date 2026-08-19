@@ -1,9 +1,21 @@
 ---
 import MainImage from "../../assets/offerings-group-sessions-main.jpg";
 import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
+import InfoHighlightLayout from "../../layouts/InfoHighlightLayout.astro";
+import Accordion from "../accordion/Accordion.astro";
+import AccordionContent from "../accordion/AccordionContent.astro";
+import AccordionStack from "../accordion/AccordionStack.astro";
+import AccordionTitle from "../accordion/AccordionTitle.astro";
 
 const desc =
   "Our kids' group sessions are structured to make learning table tennis fun, engaging, and effective. Each 2-hour session (max 12 players) includes 20 minutes of footwork drills, 10 minutes of table warm-up, 1 hour of multiball and focused drills, 25 minutes of match play, and 5 minutes of stretching. Coaches provide personalised guidance to every child, ensuring they develop skills, confidence, and a love for the game in a supportive group environment.";
+
+ const faqConfig = [
+  {
+    title: "Do I need to bring my own racket?",
+    Content: "Something something"
+  }
+ ] 
 ---
 
 <OfferingsLayout
@@ -15,4 +27,68 @@ const desc =
     href: "https://bookwhen.com/flicktt",
     external: true,
   }}
-/>
+  faqConfig={faqConfig}
+>
+  <InfoHighlightLayout
+    title="U18 Group Coaching Levels (1-3)"
+    containerProps={{ class: "gap-6" }}
+  >
+    <p>
+      Not sure where you fit? Book a Flick Start session or ask a coach on the day — we'll
+      guide you to the best group for progress.
+    </p>
+
+    <AccordionStack>
+      <Accordion>
+        <AccordionTitle>
+          Flick Start (2-3pm)
+        </AccordionTitle>
+        <AccordionContent>
+          <div class="flex flex-col gap-3">
+            <p>
+              Learn the basics. Build confidence. Have fun.
+            </p>
+
+            <p>
+              Perfect for children who are new to table tennis or have little playing experience. Sessions focus on basic strokes, coordination, movement and enjoying the game in a friendly environment.
+            </p>
+          </div>
+        </AccordionContent>
+      </Accordion>
+
+      <Accordion>
+        <AccordionTitle>
+          Flick Play (3-4pm)
+        </AccordionTitle>
+        <AccordionContent>
+          <div class="flex flex-col gap-3">
+            <p>
+              Improve your game. Play matches. Enjoy the sport.
+            </p>
+
+            <p>
+              Ideal for children who already know the basics and want to improve while having fun. Players develop their technique, play matches and build confidence without the pressure of competition.
+            </p>
+          </div>
+        </AccordionContent>
+      </Accordion>
+
+      <Accordion>
+        <AccordionTitle>
+          Flick Performance (4-5.30pm)
+        </AccordionTitle>
+        <AccordionContent>
+          <div class="flex flex-col gap-3">
+            <p>
+              Train hard. Compete. Reach your potential.
+            </p>
+
+            <p>
+              Designed for committed players who want to compete regularly. Sessions focus on advanced technique, tactics, physical development and tournament preparation.
+            </p>
+          </div>
+        </AccordionContent>
+      </Accordion>
+    </AccordionStack>
+  </InfoHighlightLayout>
+</OfferingsLayout>
