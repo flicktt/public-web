@@ -6,31 +6,39 @@ import "../styles/global.css";
 import type { Page, PageConfig } from "../types";
 
 interface Props {
-	page: Page;
+  page: Page;
 }
 
 const pageConfig: Record<Page, PageConfig> = {
-	home: {
-		title: "Home",
-	},
-	offerings: {
-		title: "Offerings",
-	},
-	compete: {
-		title: "Compete",
-	},
-	kids: {
-		title: "Kids",
-	},
-	membership: {
-		title: "Membership",
-	},
-	about: {
-		title: "About",
-	},
-	coaches: {
-		title: "Coaches",
-	},
+  // TODO descriptions need filling out for each page
+  home: {
+    title: "Home",
+    desc: "",
+  },
+  offerings: {
+    title: "Offerings",
+    desc: "",
+  },
+  compete: {
+    title: "Compete",
+    desc: "",
+  },
+  kids: {
+    title: "Kids",
+    desc: "",
+  },
+  membership: {
+    title: "Membership",
+    desc: "",
+  },
+  about: {
+    title: "About",
+    desc: "",
+  },
+  coaches: {
+    title: "Coaches",
+    desc: "",
+  },
 };
 
 const { page } = Astro.props;
@@ -43,6 +51,7 @@ const { page } = Astro.props;
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={pageConfig[page].desc} />
     <title>{`Flick TT | ${pageConfig[page].title}`}</title>
   </head>
   <body>

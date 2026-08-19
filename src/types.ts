@@ -12,6 +12,7 @@ export type Page =
 
 export type PageConfig = {
   title: string;
+  desc: string;
 };
 
 export type FaqConfig = {

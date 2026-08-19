@@ -16,204 +16,208 @@ import PageLayout from "../layouts/PageLayout.astro";
 ---
 
 <PageLayout page="home">
-  <Container class="pt-12 sm:pt-18 pb-14 sm:pb-18">
-    <div class="flex flex-col gap-10">
-      <hgroup class="m-auto max-w-2xl text-center">
-        <h1 class="uppercase font-bold text-4xl sm:text-5xl">
-          Table Tennis For
-          <span
-            class="block text-flick-yellow font-extrabold text-5xl sm:text-8xl tracking-wider"
-          >
-            Everybody
-          </span>
-        </h1>
-        <p class="font-medium text-4xl">A TT Club Based In London</p>
-      </hgroup>
-      <DisplayText class="max-w-5xl m-auto text-center">
-        At Flick TT, our mission is to inspire and empower table tennis
-        enthusiasts of all levels to reach their full potential
-      </DisplayText>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
-        <img
-          src={lisAndAlbImg.src}
-          alt="Alberto explaining to a group"
-          class="border-8 border-flick-dark w-full m-auto"
-        />
-        <div class="flex flex-col gap-4 justify-center">
-          <p class="font-medium text-2xl">
-            We are dedicated to providing high-quality coaching and
-            comprehensive training programs that foster a love for the sport and
-            help individuals excel in their table tennis journey.
-          </p>
-          <p class="text-xl">
-            We believe in the power of table tennis to bring joy, build
-            character, and create lasting memories. We are passionate about
-            sharing our love for the sport and instilling that same passion in
-            our students.
-          </p>
-        </div>
-      </div>
-      <section class="flex flex-col lg:mt-6 text-center">
-        <h2>What We Offer</h2>
-        <DisplayText>
-          From group coached sessions to a league with an Elo rating system,
-          there is no shortage of things to take part in at Flick TT.{" "}
-          <a href="/" class="text-flick-yellow hover:underline">
-            Confused about the different levels of group sessions? Interested in
-            booking a private 121 session? Find out more about what we offer in
-            the <b class="font-semibold">Offerings</b> page &#8594;
-          </a>
+  <main>
+    <Container class="pt-12 sm:pt-18 pb-14 sm:pb-18">
+      <div class="flex flex-col gap-10">
+        <hgroup class="m-auto max-w-2xl text-center">
+          <h1 class="uppercase font-bold text-4xl sm:text-5xl">
+            Table Tennis For
+            <span
+              class="block text-flick-yellow font-extrabold text-5xl sm:text-8xl tracking-wider"
+            >
+              Everybody
+            </span>
+          </h1>
+          <p class="font-medium text-4xl">A TT Club Based In London</p>
+        </hgroup>
+        <DisplayText class="max-w-5xl m-auto text-center">
+          At Flick TT, our mission is to inspire and empower table tennis
+          enthusiasts of all levels to reach their full potential
         </DisplayText>
-      </section>
-      <Schedule />
-    </div>
-  </Container>
-  <div class="bg-flick-blue">
-    <Container
-      section
-      class="flex flex-col gap-8 py-15 text-center items-center"
-    >
-      <hgroup>
-        <h3>Kids Coaching and Competitions</h3>
-        <p class="text-2xl">
-          Give your child the chance to learn, play, and improve! Sign up for
-          group sessions, one-to-one coaching, or join the Flick junior
-          tournaments today.
-        </p>
-      </hgroup>
-      <Button as="a" href="/kids">Find out more</Button>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
+          <img
+            src={lisAndAlbImg.src}
+            alt="Alberto explaining to a group"
+            class="border-8 border-flick-dark w-full m-auto"
+          />
+          <div class="flex flex-col gap-4 justify-center">
+            <p class="font-medium text-2xl">
+              We are dedicated to providing high-quality coaching and
+              comprehensive training programs that foster a love for the sport
+              and help individuals excel in their table tennis journey.
+            </p>
+            <p class="text-xl">
+              We believe in the power of table tennis to bring joy, build
+              character, and create lasting memories. We are passionate about
+              sharing our love for the sport and instilling that same passion in
+              our students.
+            </p>
+          </div>
+        </div>
+        <section class="flex flex-col lg:mt-6 text-center">
+          <h2>What We Offer</h2>
+          <DisplayText>
+            From group coached sessions to a league with an Elo rating system,
+            there is no shortage of things to take part in at Flick TT.{" "}
+            <a href="/" class="text-flick-yellow hover:underline">
+              Confused about the different levels of group sessions? Interested
+              in booking a private 121 session? Find out more about what we
+              offer in the <b class="font-semibold">Offerings</b> page &#8594;
+            </a>
+          </DisplayText>
+        </section>
+        <Schedule />
+      </div>
     </Container>
-  </div>
-  <div class="grid grid-cols-1 lg:grid-cols-2">
-    <section
-      class="flex flex-col items-center text-center gap-10 pt-16 pb-14 2xl:pb-26 bg-no-repeat text-flick-black"
-      style={`
+    <div class="bg-flick-blue">
+      <Container
+        section
+        class="flex flex-col gap-8 py-15 text-center items-center"
+      >
+        <hgroup>
+          <h3>Kids Coaching and Competitions</h3>
+          <p class="text-2xl">
+            Give your child the chance to learn, play, and improve! Sign up for
+            group sessions, one-to-one coaching, or join the Flick junior
+            tournaments today.
+          </p>
+        </hgroup>
+        <Button as="a" href="/kids">Find out more</Button>
+      </Container>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2">
+      <section
+        class="flex flex-col items-center text-center gap-10 pt-16 pb-14 2xl:pb-26 bg-no-repeat text-flick-black"
+        style={`
         background:
           url(${FTTLeagueBg.src}) center center;
         background-size: cover;
         background-repeat: no-repeat;
         `}
-    >
-      <div
-        class="flex flex-col justify-center px-10 lg:px-3 items-center bg-white/30 h-110 sm:h-69 lg:h-90 xl:h-69 w-full"
       >
-        <h3>Flick TT League</h3>
-        <p class="mb-3 sm:mb-9 text-xl max-w-190">
-          The Flick TT League is a ranked league with an Elo-based rating
-          system. Started in 2025, the league hosts regular 2-hour matching
-          sessions on Fridays and Sundays that players of this league can join
-          for free.
-        </p>
-      </div>
-      <Button variant="dark" as="a" href="/compete#club-league">
-        Find out more
-      </Button>
-    </section>
-    <section
-      class="flex flex-col items-center text-center gap-10 pt-16 pb-14 md:pb-16 2xl:pb-26"
-      style={`
+        <div
+          class="flex flex-col justify-center px-10 lg:px-3 items-center bg-white/30 h-110 sm:h-69 lg:h-90 xl:h-69 w-full"
+        >
+          <h3>Flick TT League</h3>
+          <p class="mb-3 sm:mb-9 text-xl max-w-190">
+            The Flick TT League is a ranked league with an Elo-based rating
+            system. Started in 2025, the league hosts regular 2-hour matching
+            sessions on Fridays and Sundays that players of this league can join
+            for free.
+          </p>
+        </div>
+        <Button variant="dark" as="a" href="/compete#club-league">
+          Find out more
+        </Button>
+      </section>
+      <section
+        class="flex flex-col items-center text-center gap-10 pt-16 pb-14 md:pb-16 2xl:pb-26"
+        style={`
         background: 
           url(${FTTTournamentBg.src}) center center;
         background-size: cover;
         background-repeat: no-repeat;
         `}
-    >
-      <div
-        class="flex flex-col justify-center px-10 lg:px-3 items-center bg-black/33 h-95 sm:h-69 lg:h-90 xl:h-69 w-full"
       >
-        <h3>Flick TT Tournament</h3>
-        <p class="mb-3 sm:mb-9 text-xl max-w-190">
-          Compete every two months in Flick's adult tournaments, featuring 48
-          players per event and a point-based ranking system.
-        </p>
-      </div>
-      <Button as="a" href="/compete#tournament">Find out more</Button>
-    </section>
-  </div>
-  <div class="bg-flick-dark">
-    <Container
-      class="pt-10 pb-14 md:pt-20 lg:pb-18 2xl:p-0 flex flex-col 2xl:flex-row"
-    >
-      <div class="hidden md:block m-auto 2xl:m-0 2xl:w-[130%] md:relative">
         <div
-          class="absolute -top-25 -right-20 2xl:right-[unset] 2xl:-top-10 m-auto size-115 rounded-4xl overflow-hidden border-10 border-black/10"
+          class="flex flex-col justify-center px-10 lg:px-3 items-center bg-black/33 h-95 sm:h-69 lg:h-90 xl:h-69 w-full"
         >
-          <img
-            src={mem2Img.src}
-            alt="Membership two"
-            class="relative bottom-50 h-200 max-w-fit right-12.5"
-          />
-        </div>
-        <div
-          class="absolute -top-11 -left-21 2xl:left-[unset] 2xl:right-0 2xl:top-8.5 m-auto size-115 rounded-4xl overflow-hidden border-10 border-black/10"
-        >
-          <img
-            src={mem1Img.src}
-            alt="Membership one"
-            class="relative bottom-102.5 h-300 max-w-fit right-67.5"
-          />
-        </div>
-        <div
-          class="absolute top-5 -left-55 2xl:left-[unset] 2xl:top-[unset] 2xl:right-44 2xl:-bottom-12 m-auto size-75 md:size-115 rounded-4xl overflow-hidden border-10 border-black/10"
-        >
-          <img
-            src={mem3Img.src}
-            alt="Membership three"
-            class="relative bottom-62.5 h-225 max-w-fit right-100"
-          />
-        </div>
-      </div>
-      <section
-        class="flex flex-col text-center items-center justify-center gap-8 px-10 md:pt-125 2xl:py-30 2xl:text-right 2xl:items-end 2xl:gap-11"
-      >
-        <hgroup class="max-w-200 w-full 2xl:max-w-fit">
-          <h3>Club Membership</h3>
-          <p class="text-3xl">
-            Members get big discounts on activities, including 1-2-1s, group
-            sessions and club tables.
+          <h3>Flick TT Tournament</h3>
+          <p class="mb-3 sm:mb-9 text-xl max-w-190">
+            Compete every two months in Flick's adult tournaments, featuring 48
+            players per event and a point-based ranking system.
           </p>
-        </hgroup>
-        <Button as="a" href="/membership">Find out more</Button>
+        </div>
+        <Button as="a" href="/compete#tournament">Find out more</Button>
       </section>
-    </Container>
-  </div>
-  <Container section class="pt-10 2xl:pt-18 pb-14 lg:pb-18 text-center">
-    <h2>About</h2>
-    <div class="flex flex-col gap-11 items-center">
-      <p class="text-3xl xl:w-245">
-        We believe in the power of table tennis to bring joy, build character,
-        and create lasting memories. We are passionate about sharing our love
-        for the sport and instilling that same passion in our students.
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-6 lg:gap-x-10">
-        <div class="flex flex-col gap-5">
-          <div class="size-84 lg:size-108 overflow-hidden rounded-[30px]">
-            <img
-              src={albertoCoach.src}
-              alt="Alberto coach"
-              class="relative max-w-fit h-120 w-213.75 -left-42.5"
-            />
-          </div>
-          <div class="flex flex-col">
-            <p class="font-semibold text-4xl">Alberto Garrido</p>
-            <p class="font-semibold text-3xl text-flick-yellow">Head Coach</p>
-          </div>
-        </div>
-        <div class="flex flex-col gap-5">
-          <div class="size-84 lg:size-108 overflow-hidden rounded-[30px]">
-            <img
-              src={lisCoach.src}
-              alt="Lis coach"
-              class="relative max-w-fit h-120 w-213.75 -left-37.5"
-            />
-          </div>
-          <div class="flex flex-col">
-            <p class="font-semibold text-4xl">Lis Pardo</p>
-            <p class="font-semibold text-3xl text-flick-yellow">Head Coach</p>
-          </div>
-        </div>
-      </div>
-      <Button as="a" href="/about">Find out more</Button>
     </div>
-  </Container>
+    <div class="bg-flick-dark">
+      <Container
+        class="pt-10 pb-14 md:pt-20 lg:pb-18 2xl:p-0 flex flex-col 2xl:flex-row"
+      >
+        <div class="hidden md:block m-auto 2xl:m-0 2xl:w-[130%] md:relative">
+          <div
+            class="absolute -top-25 -right-20 2xl:right-[unset] 2xl:-top-10 m-auto size-115 rounded-4xl overflow-hidden border-10 border-black/10"
+          >
+            <img
+              src={mem2Img.src}
+              alt="Membership two"
+              class="relative bottom-50 h-200 max-w-fit right-12.5"
+            />
+          </div>
+          <div
+            class="absolute -top-11 -left-21 2xl:left-[unset] 2xl:right-0 2xl:top-8.5 m-auto size-115 rounded-4xl overflow-hidden border-10 border-black/10"
+          >
+            <img
+              src={mem1Img.src}
+              alt="Membership one"
+              class="relative bottom-102.5 h-300 max-w-fit right-67.5"
+            />
+          </div>
+          <div
+            class="absolute top-5 -left-55 2xl:left-[unset] 2xl:top-[unset] 2xl:right-44 2xl:-bottom-12 m-auto size-75 md:size-115 rounded-4xl overflow-hidden border-10 border-black/10"
+          >
+            <img
+              src={mem3Img.src}
+              alt="Membership three"
+              class="relative bottom-62.5 h-225 max-w-fit right-100"
+            />
+          </div>
+        </div>
+        <section
+          class="flex flex-col text-center items-center justify-center gap-8 px-10 md:pt-125 2xl:py-30 2xl:text-right 2xl:items-end 2xl:gap-11"
+        >
+          <hgroup class="max-w-200 w-full 2xl:max-w-fit">
+            <h3>Club Membership</h3>
+            <p class="text-3xl">
+              Members get big discounts on activities, including 1-2-1s, group
+              sessions and club tables.
+            </p>
+          </hgroup>
+          <Button as="a" href="/membership">Find out more</Button>
+        </section>
+      </Container>
+    </div>
+    <Container section class="pt-10 2xl:pt-18 pb-14 lg:pb-18 text-center">
+      <h2>About</h2>
+      <div class="flex flex-col gap-11 items-center">
+        <p class="text-3xl xl:w-245">
+          We believe in the power of table tennis to bring joy, build character,
+          and create lasting memories. We are passionate about sharing our love
+          for the sport and instilling that same passion in our students.
+        </p>
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-6 lg:gap-x-10"
+        >
+          <div class="flex flex-col gap-5">
+            <div class="size-84 lg:size-108 overflow-hidden rounded-[30px]">
+              <img
+                src={albertoCoach.src}
+                alt="Alberto coach"
+                class="relative max-w-fit h-120 w-213.75 -left-42.5"
+              />
+            </div>
+            <div class="flex flex-col">
+              <p class="font-semibold text-4xl">Alberto Garrido</p>
+              <p class="font-semibold text-3xl text-flick-yellow">Head Coach</p>
+            </div>
+          </div>
+          <div class="flex flex-col gap-5">
+            <div class="size-84 lg:size-108 overflow-hidden rounded-[30px]">
+              <img
+                src={lisCoach.src}
+                alt="Lis coach"
+                class="relative max-w-fit h-120 w-213.75 -left-37.5"
+              />
+            </div>
+            <div class="flex flex-col">
+              <p class="font-semibold text-4xl">Lis Pardo</p>
+              <p class="font-semibold text-3xl text-flick-yellow">Head Coach</p>
+            </div>
+          </div>
+        </div>
+        <Button as="a" href="/about">Find out more</Button>
+      </div>
+    </Container>
+  </main>
 </PageLayout>

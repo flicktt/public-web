@@ -14,9 +14,7 @@ import { CONTACT_CONSTS } from "../../constants";
     </div>
     <div class="order-1 flex flex-col gap-6 text-right sm:order-2">
       <h2 class="text-3xl">
-        <a href="/about#contact-us" target="_blank" class="hover:underline"
-          >Contact</a
-        >
+        <a href="/about#contact-us" class="hover:underline">Contact</a>
       </h2>
       <address>
         <a
@@ -38,6 +36,7 @@ import { CONTACT_CONSTS } from "../../constants";
             class="flex self-end"
             href="https://www.instagram.com/flickttlondon/"
             target="_blank"
+            aria-label="Instagram"
           >
             <IgLogo height={22} width={22} />
           </a>
@@ -47,6 +46,7 @@ import { CONTACT_CONSTS } from "../../constants";
             class="flex self-end"
             href={CONTACT_CONSTS.whatsapp}
             target="_blank"
+            aria-label="WhatsApp"
           >
             <WhatsAppLogo height={22} width={22} />
           </a>
