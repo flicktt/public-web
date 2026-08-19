@@ -10,12 +10,12 @@ import AccordionTitle from "../accordion/AccordionTitle.astro";
 const desc =
   "Our kids' group sessions are structured to make learning table tennis fun, engaging, and effective. Each 2-hour session (max 12 players) includes 20 minutes of footwork drills, 10 minutes of table warm-up, 1 hour of multiball and focused drills, 25 minutes of match play, and 5 minutes of stretching. Coaches provide personalised guidance to every child, ensuring they develop skills, confidence, and a love for the game in a supportive group environment.";
 
- const faqConfig = [
+const faqConfig = [
   {
     title: "Do I need to bring my own racket?",
-    Content: "Something something"
-  }
- ] 
+    Content: "Something something",
+  },
+];
 ---
 
 <OfferingsLayout
@@ -30,61 +30,64 @@ const desc =
   faqConfig={faqConfig}
 >
   <InfoHighlightLayout
-    title="U18 Group Coaching Levels (1-3)"
+    title="U18 Group Coaching Levels"
     containerProps={{ class: "gap-6" }}
   >
     <p>
-      Not sure where you fit? Book a Flick Start session or ask a coach on the day — we'll
-      guide you to the best group for progress.
+      Not sure where you fit? Book a Flick Start session or ask a coach on the
+      day — we'll guide you to the best group for progress.
     </p>
 
     <AccordionStack>
       <Accordion>
-        <AccordionTitle>
-          Flick Start (2-3pm)
-        </AccordionTitle>
+        <AccordionTitle>Flick Start</AccordionTitle>
         <AccordionContent>
           <div class="flex flex-col gap-3">
             <p>
-              Learn the basics. Build confidence. Have fun.
+              Learn the basics. Build confidence.{" "}
+              <b class="font-semibold">Have fun.</b>
             </p>
 
             <p>
-              Perfect for children who are new to table tennis or have little playing experience. Sessions focus on basic strokes, coordination, movement and enjoying the game in a friendly environment.
+              Perfect for children who are new to table tennis or have little
+              playing experience. Sessions focus on basic strokes, coordination,
+              movement and enjoying the game in a friendly environment.
             </p>
           </div>
         </AccordionContent>
       </Accordion>
 
       <Accordion>
-        <AccordionTitle>
-          Flick Play (3-4pm)
-        </AccordionTitle>
+        <AccordionTitle>Flick Play</AccordionTitle>
         <AccordionContent>
           <div class="flex flex-col gap-3">
             <p>
-              Improve your game. Play matches. Enjoy the sport.
+              Improve your game. Play matches.{" "}
+              <b class="font-semibold">Enjoy the sport.</b>
             </p>
 
             <p>
-              Ideal for children who already know the basics and want to improve while having fun. Players develop their technique, play matches and build confidence without the pressure of competition.
+              Ideal for children who already know the basics and want to improve
+              while having fun. Players develop their technique, play matches
+              and build confidence without the pressure of competition.
             </p>
           </div>
         </AccordionContent>
       </Accordion>
 
       <Accordion>
-        <AccordionTitle>
-          Flick Performance (4-5.30pm)
-        </AccordionTitle>
+        <AccordionTitle>Flick Performance</AccordionTitle>
         <AccordionContent>
           <div class="flex flex-col gap-3">
             <p>
-              Train hard. Compete. Reach your potential.
+              Train hard. Compete.{" "}
+              <b class="font-semibold">Reach your potential.</b>
             </p>
 
             <p>
-              Designed for committed players who want to compete regularly. Sessions focus on advanced technique, tactics, physical development and tournament preparation.
+              Designed for committed players who want to compete regularly.
+              Sessions focus on advanced technique, tactics, physical
+              development and tournament preparation.
             </p>
           </div>
         </AccordionContent>

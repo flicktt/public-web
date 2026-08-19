@@ -1,6 +1,7 @@
 ---
 import Faqs from "../../components/faqs/Faqs.astro";
 import MembershipBenefits from "../../components/membership/MembershipBenefits.astro";
+import MembershipTypes from "../../components/membership/MembershipTypes.astro";
 import PhotoGallery from "../../components/membership/PhotoGallery.astro";
 import PointsRow from "../../components/pointsRow/PointsRow.astro";
 import Button from "../../components/ui/inputs/Button.astro";
@@ -44,7 +45,13 @@ const faqConfig = [
 <PageLayout page="membership">
   <Container class="flex flex-col gap-10 lg:gap-14 py-10 lg:py-14">
     <DisplayText class="text-center">
-      Membership is a great way to save money for table tennis enthusiasts who join our sessions regularly. You get reduced rates on all activities at the club, free entry to our workshops, and a place in one of London's friendliest table tennis communities.
+      Membership is a great way to save money for table tennis enthusiasts who
+      join our sessions regularly. You get reduced rates on all activities at
+      the club, free entry to our workshops, and{" "}
+      <span class="text-flick-yellow">
+        a place in one of London's{" "}
+        <b class="font-semibold">friendliest table tennis communities.</b>
+      </span>
     </DisplayText>
     <Button
       as="a"
@@ -60,7 +67,8 @@ const faqConfig = [
   <div class="border-b border-flick-dark">
     <PhotoGallery />
   </div>
-  <Container class="lg:gap-14 pt-10 pb-14 lg:pt-14">
+  <Container class="flex flex-col gap-10 lg:gap-14 pt-10 pb-14 lg:pt-14">
+    <MembershipTypes />
     <MembershipBenefits />
   </Container>
   <Faqs faqConfig={faqConfig} />
