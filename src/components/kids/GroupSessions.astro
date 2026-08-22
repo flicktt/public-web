@@ -1,6 +1,7 @@
 ---
 import MainImage from "../../assets/offerings-group-sessions-main.jpg";
 import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
+import type { FaqConfig } from "../../types";
 import InfoHighlightLayout from "../../layouts/InfoHighlightLayout.astro";
 import Accordion from "../accordion/Accordion.astro";
 import AccordionContent from "../accordion/AccordionContent.astro";
@@ -10,10 +11,34 @@ import AccordionTitle from "../accordion/AccordionTitle.astro";
 const desc =
   "Our kids' group sessions are structured to make learning table tennis fun, engaging, and effective. Each 2-hour session (max 12 players) includes 20 minutes of footwork drills, 10 minutes of table warm-up, 1 hour of multiball and focused drills, 25 minutes of match play, and 5 minutes of stretching. Coaches provide personalised guidance to every child, ensuring they develop skills, confidence, and a love for the game in a supportive group environment.";
 
-const faqConfig = [
+const faqConfig: FaqConfig[] = [
   {
     title: "Do I need to bring my own racket?",
-    Content: "Something something",
+    Content:
+      "No. We have rackets at the club you can borrow for the session, though most regulars bring their own. We do highly recommend that you have your own racket since it significantly improves your consistency in training. If you need help buying a racket, please get in touch and our coaches will be more than happy to help you with it!",
+  },
+  {
+    title: "Which group should my child join?",
+    Content:
+      "Flick Start for children new to the game, Flick Play for those with the basics who want to improve while having fun, and Flick Performance for committed players who want to compete. If you are not sure, book a Flick Start session or ask a coach on the day.",
+  },
+  {
+    title: "What ages are the sessions for?",
+    Content:
+      "The maximum age is 18. We do not have a fixed minimum age. If you're unsure whether your child is ready to start giving table tennis a try, please feel free to get in touch and our coaches will assess.",
+  },
+  {
+    title: "Can parents stay?",
+    Content:
+      "Parents are welcome to observe the session in the seating area, however they will not be allowed in the playing area during the session.",
+  },
+  {
+    title: "How big are the groups?",
+    Content: "We have a maximum of 12 players per session.",
+  },
+  {
+    title: "How much does it cost?",
+    Content: "£12 per session, or £8 for members.",
   },
 ];
 ---

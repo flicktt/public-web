@@ -10,6 +10,7 @@ import FaceSmile from "../../icons/FaceSmile.svg";
 import PercentBadge from "../../icons/PercentBadge.svg";
 import Container from "../../layouts/Container.astro";
 import PageLayout from "../../layouts/PageLayout.astro";
+import type { FaqConfig } from "../../types";
 
 const pointConfig = [
   {
@@ -22,22 +23,21 @@ const pointConfig = [
   },
 ];
 
-const faqConfig = [
+const faqConfig: FaqConfig[] = [
   {
-    title: "Proin placerat vitae nisl sed elementum?",
+    title: "How do I join?",
     Content:
-      "Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum erat in nisi fringilla egestas. Suspendisse convallis vulputate viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet, mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat. Nam sit amet consequat enim.",
+      "You can join our membership at bookwhen.com/flicktt/memberships.",
   },
   {
-    title: "In venenatis tortor leo, et vulputate mauris interdum in?",
+    title: "How long does membership last, and can I cancel?",
     Content:
-      "Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum erat in nisi fringilla egestas. Suspendisse convallis vulputate viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet, mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat. Nam sit amet consequat enim.",
+      "Our memberships are available in monthly, quarterly, biannual and annual periods. You can cancel your membership directly through Bookwhen. Your membership will continue to run until the end of your renewal period.",
   },
   {
-    title:
-      "Vestibulum dignissim tempus justo, auctor vulputate urna varius dignissim?",
+    title: "How do I switch membership type or subscription period?",
     Content:
-      "Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum erat in nisi fringilla egestas. Suspendisse convallis vulputate viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet, mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat. Nam sit amet consequat enim.",
+      "Please contact us through email or WhatsApp and we can sort it out for you.",
   },
 ];
 ---

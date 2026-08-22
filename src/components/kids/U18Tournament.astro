@@ -2,10 +2,27 @@
 import MainImage from "../../assets/offerings-workshops-main.png";
 import InfoHighlightLayout from "../../layouts/InfoHighlightLayout.astro";
 import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
+import type { FaqConfig } from "../../types";
 import Button from "../ui/inputs/Button.astro";
 
 const desc =
   "Our U18 tournaments run every two months, with 48 young players per event competing in a points-based ranking system. The top 16 across the five-tournament series qualify for the final, with prizes including free club sessions. A structured, competitive, and exciting environment for junior players to develop and test their skills.";
+
+const faqConfig: FaqConfig[] = [
+  {
+    title: "Who can enter?",
+    Content: "Any player under 18 years old.",
+  },
+  {
+    title: "How does the ranking series work?",
+    Content:
+      "Tournaments run every two months with a points-based ranking system. The top 16 players across the five-tournament series qualify for the final.",
+  },
+  {
+    title: "What does it cost?",
+    Content: "£8 for members and £16 for non-members.",
+  },
+];
 ---
 
 <OfferingsLayout
@@ -17,6 +34,7 @@ const desc =
     href: "https://bookwhen.com/flicktt-competitions",
     external: true,
   }}
+  faqConfig={faqConfig}
 >
   <InfoHighlightLayout title="Next Tournament" size="md">
     <div class="flex flex-row gap-1 items-end">

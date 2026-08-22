@@ -1,16 +1,36 @@
 ---
 import MainImage from "../../assets/offerings-one-to-ones-main.jpg";
 import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
+import type { FaqConfig } from "../../types";
 import CoachesList from "../coaches/CoachesList.astro";
 
 const desc =
   "Tailored entirely to your child’s goals, our one-to-one sessions combine technical coaching, match practice, and multiball training. Ideal for skill development, confidence building, and focusing on specific areas, these sessions offer the same personalised attention as our adult one-to-ones and masterclasses.";
+
+const faqConfig: FaqConfig[] = [
+  {
+    title: "What does a kids one-to-one involve?",
+    Content:
+      "Each session is tailored entirely to your child's goals, combining technical coaching, match practice and multiball training with one of our coaches.",
+  },
+  {
+    title: "How much does a lesson cost and how long is it?",
+    Content:
+      "Private lessons with all of our coaches are £60 per hour, or £45 per hour for members.",
+  },
+  {
+    title: "Can multiple kids join a lesson together?",
+    Content:
+      "Absolutely! If your child would like to train together with their friends, we are more than happy to tailor lessons for them!",
+  },
+];
 ---
 
 <OfferingsLayout
   title="Private Coaching"
   img={{ src: MainImage.src, alt: "Kids private coaching" }}
   desc={desc}
+  faqConfig={faqConfig}
 >
   <section>
     <h4 class="font-bold text-4xl">Meet the Coaches</h4>

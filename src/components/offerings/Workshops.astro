@@ -2,9 +2,27 @@
 import MainImage from "../../assets/offerings-workshops-main.png";
 import InfoHighlightLayout from "../../layouts/InfoHighlightLayout.astro";
 import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
+import type { FaqConfig } from "../../types";
 
 const desc =
   "Our bi-monthly workshops are topic-focused training sessions led by experienced coaches and are free for members. Each two-hour session dives deep into a specific aspect of the game — past topics include footwork, playing against pimples, service techniques, and other crucial table tennis skills. Ideal for players looking to sharpen their understanding and add new tools to their game.";
+
+const faqConfig: FaqConfig[] = [
+  {
+    title: "Who can attend workshops?",
+    Content: "Workshops are only available for Flick TT club members.",
+  },
+  {
+    title: "How often do workshops run and what do they cover?",
+    Content:
+      "Our workshops run roughly every two months, but are not on a fixed schedule. We announce new workshops a few weeks ahead of each scheduled workshop. Each two-hour session dives deep into one specific topic. Past workshops have covered footwork, playing against pimples, service techniques and multiball feeding.",
+  },
+  {
+    title: "What level do I need to be?",
+    Content:
+      "Workshops are usually separated by levels identical to group sessions. Please check the Group Sessions page on how we assign levels for players.",
+  },
+];
 ---
 
 <OfferingsLayout
@@ -16,6 +34,7 @@ const desc =
     href: "https://bookwhen.com/flicktt?tags=workshop",
     external: true,
   }}
+  faqConfig={faqConfig}
 >
   <InfoHighlightLayout title="Next Workshop" size="md">
     <h5 class="font-bold text-2xl">Multiball Feeding</h5>

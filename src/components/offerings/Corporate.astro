@@ -1,9 +1,38 @@
 ---
 import MainImage from "../../assets/offerings-corporate-main.jpg";
 import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
+import type { FaqConfig } from "../../types";
 
 const desc =
   "Looking to host a unique corporate event in London? From team-building and client entertainment to wellbeing days and family-friendly sessions, we design table tennis experiences to fit your goals, your people, and your schedule. Join us at our premium venue next to Canada Water station on the Jubilee Line, or let us bring the event directly to your workplace.";
+
+const faqConfig: FaqConfig[] = [
+  {
+    title: "Where do corporate events take place?",
+    Content:
+      "Either at our venue at Decathlon next to Canada Water station, or we can bring equipment directly to your workplace.",
+  },
+  {
+    title: "How many people can you host?",
+    Content:
+      "We tailor each event to your group. Tell us your numbers and goals and we will design a format that works for you!",
+  },
+  {
+    title: "Do people need to be good at table tennis?",
+    Content:
+      "Not at all! Our coaches run sessions that can get everyone playing and laughing within minutes, whatever their levels are.",
+  },
+  {
+    title: "What kinds of events do you run?",
+    Content:
+      "Team building days, client entertainment, wellbeing days and family-friendly sessions, each designed around your goals, your target audience and your schedule.",
+  },
+  {
+    title: "How do I get a quote?",
+    Content:
+      "Email services@flicktt.club with your rough numbers, preferred dates and whether you would like the event at our venue or your office, and we will come back with options.",
+  },
+];
 ---
 
 <OfferingsLayout
@@ -15,4 +44,5 @@ const desc =
     href: "mailto:services@flicktt.club",
     external: true,
   }}
+  faqConfig={faqConfig}
 />

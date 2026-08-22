@@ -1,9 +1,37 @@
 ---
 import MainImage from "../../assets/offerings-open-sessions-main.png";
 import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
+import type { FaqConfig } from "../../types";
 
 const desc =
   "Open sessions are non-supervised and designed for flexible, social play. Players can sign up individually and are matched with others on the day. It's a great way to get quality games, meet new players, and play freely in a relaxed environment.";
+
+const faqConfig: FaqConfig[] = [
+  {
+    title: "Do I need to bring a partner?",
+    Content:
+      "Not at all. All players sign up individually and come to the session to play with any player in the session, which makes open sessions a great way to meet new people at the club.",
+  },
+  {
+    title: "Is there a coach at open sessions?",
+    Content:
+      "No, open sessions are unsupervised. If you prefer coaching, take a look at our group sessions or private lessons.",
+  },
+  {
+    title: "What level do I need to be?",
+    Content:
+      "Open sessions are open to everyone, although you will get the most out of the session if you can sustain a rally, so complete beginners may prefer to start with a Level 1 group session.",
+  },
+  {
+    title: "How much does it cost?",
+    Content: "£10 per session, or £5 for members.",
+  },
+  {
+    title: "Do I need to bring my own racket?",
+    Content:
+      "No. We have rackets at the club you can borrow for the session, though most regulars bring their own. We do highly recommend that you have your own racket since it significantly improves your consistency in training. If you need help buying a racket, please get in touch and our coaches will be more than happy to help you with it!",
+  },
+];
 ---
 
 <OfferingsLayout
@@ -15,4 +43,5 @@ const desc =
     href: "https://bookwhen.com/flicktt?tags=open-session",
     external: true,
   }}
+  faqConfig={faqConfig}
 />

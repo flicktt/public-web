@@ -1,10 +1,33 @@
 ---
 import MainImage from "../../assets/offerings-corporate-main.jpg";
 import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
+import type { FaqConfig } from "../../types";
 import Button from "../ui/inputs/Button.astro";
 
 const desc =
   "Flick TT brings the game to schools or welcomes students to our premium venue. We currently collaborate with four schools, delivering fully customised sessions tailored to group size, skill level, and location. Coaches design each session to combine skill development, fun, and engagement, ensuring every student gets the right level of challenge and personalised attention.";
+
+const faqConfig: FaqConfig[] = [
+  {
+    title: "Do sessions happen at our school or at your venue?",
+    Content:
+      "Either. We can bring equipment to your school, or welcome students to our venue at Decathlon Surrey Quays.",
+  },
+  {
+    title: "How are sessions structured?",
+    Content:
+      "Each programme is fully customisable to your group size, skill level and location.",
+  },
+  {
+    title: "Are your coaches DBS checked?",
+    Content: "Yes, all our coaches hold enhanced DBS checks.",
+  },
+  {
+    title: "How do we set up a partnership?",
+    Content:
+      "Email services@flicktt.club and we will arrange a conversation about what your school needs.",
+  },
+];
 ---
 
 <OfferingsLayout
@@ -13,7 +36,8 @@ const desc =
   desc={desc}
   linkBtn={{
     label: "Contact us",
-    href: "mailto:flickservices@gmail.com",
+    href: "mailto:services@flicktt.club",
     external: true,
   }}
+  faqConfig={faqConfig}
 />

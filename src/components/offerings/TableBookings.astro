@@ -1,10 +1,49 @@
 ---
 import MainImage from "../../assets/offerings-table-bookings-main.jpg";
 import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
+import type { FaqConfig } from "../../types";
 import Button from "../ui/inputs/Button.astro";
 
 const desc =
   "Book a table and enjoy flexible, uninterrupted playing time at our premium venue. Perfect for practice matches, casual play, or training with friends, all on professional flooring in a high-quality setting.";
+
+const faqConfig: FaqConfig[] = [
+  {
+    title: "How much is it to book a table?",
+    Content:
+      "Tables are £5.50 per hour off-peak and £9.50 peak, or £2 and £3 respectively for members.",
+  },
+  {
+    title: "Do I need to bring a partner?",
+    Content:
+      "You can book a table for yourself to practice serves. However, if you'd like to play with someone you would need to bring a partner. A table booking only covers the table. If you are an individual and would like to find someone to play or train with, consider joining our open sessions instead, or join the Flick TT WhatsApp group and ask someone to play together. There is always someone who would be up for a rally in our group!",
+  },
+  {
+    title: "How many people can play on one booking?",
+    Content:
+      "A maximum of four players are allowed to play on a single table at a time. If you have a group larger than four, please rotate instead in order to avoid disturbing players at other tables.",
+  },
+  {
+    title: "Is equipment included?",
+    Content:
+      "Balls and bats are available upon request but are not guaranteed for table bookings. It is advisable to bring your own.",
+  },
+  {
+    title: "Can I book the robot?",
+    Content:
+      "Yes, we have a table tennis robot available on Saturdays. Check the schedule on our booking page for availability.",
+  },
+  {
+    title: "Why are table bookings sometimes not available during opening hours?",
+    Content:
+      "We have a limited amount of tables available at the club, which are sometimes reserved for sessions or coaching. For availability please check our booking page.",
+  },
+  {
+    title: "I am a coach. Can I book a table to train my students?",
+    Content:
+      "External coaches are welcome to book a table for coaching, however we charge £11 for coaches who are not affiliated with the club. Please ensure you choose the right ticket when making the table booking.",
+  },
+];
 ---
 
 <OfferingsLayout
@@ -16,4 +55,5 @@ const desc =
     href: "https://bookwhen.com/flicktt-tables",
     external: true,
   }}
+  faqConfig={faqConfig}
 />

@@ -1,13 +1,37 @@
 ---
 import InfoHighlightLayout from "../../../layouts/InfoHighlightLayout.astro";
 import OfferingsLayout from "../../../layouts/OfferingsLayout.astro";
+import type { FaqConfig } from "../../../types";
 import Button from "../../ui/inputs/Button.astro";
+
+const faqConfig: FaqConfig[] = [
+  {
+    title: "Who can enter the tournament?",
+    Content:
+      "Everyone is welcome, you do not need to be a member or a league player. With a group stage followed by main and consolation draws, you are guaranteed plenty of matches no matter your level.",
+  },
+  {
+    title: "How does the day work?",
+    Content:
+      "48 players start in groups, then progress into the main draw or the consolation draw, so nobody is knocked out after one match. The day runs from 9:30am to 5pm.",
+  },
+  {
+    title: "What does it cost and what can I win?",
+    Content:
+      "Entry is £12 for members and £25 for non-members. The winner gets £125, the runner-up gets £75, and third place gets £50. There are also prizes for winners of the consolation draw.",
+  },
+  {
+    title: "Do I need to bring my own racket?",
+    Content: "Yes, you will need your own racket for a Flick TT tournament.",
+  },
+];
 ---
 
 <OfferingsLayout
   title="Flick TT Tournament"
   showMembership={false}
   containerProps={{ class: "gap-8" }}
+  faqConfig={faqConfig}
 >
   <p class="text-3xl md:text-4xl text-flick-yellow text-center">
     Orci varius natoque penatibus et magnis dis

@@ -2,6 +2,7 @@
 import MainImage from "../../assets/offerings-group-sessions-main.jpg";
 import InfoHighlightLayout from "../../layouts/InfoHighlightLayout.astro";
 import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
+import type { FaqConfig } from "../../types";
 import Accordion from "../accordion/Accordion.astro";
 import AccordionContent from "../accordion/AccordionContent.astro";
 import AccordionStack from "../accordion/AccordionStack.astro";
@@ -9,6 +10,45 @@ import AccordionTitle from "../accordion/AccordionTitle.astro";
 
 const desc =
   "Our level-based group sessions are structured to balance quality coaching, focused training, and match play. Each two-hour session includes a 15-minute warm-up, 1 hour 15 minutes of drill practice, and 30 minutes of match play. Coaches provide personalised feedback to every player, with groups organised by level to ensure the right challenge and steady improvement.";
+
+const faqConfig: FaqConfig[] = [
+  {
+    title:
+      "I'm nervous about joining a group session. Can I try a session first?",
+    Content:
+      "Absolutely! We are happy to offer a free trial session for those who are unsure. Just send us a message and we'd be happy to arrange for you to try one of our sessions!",
+  },
+  {
+    title:
+      "I'm not a complete beginner but I'm not sure what level I'm playing at. Which level should I book?",
+    Content:
+      "If you are unsure about your level, please get in touch and our coaches will arrange a session with you to assess your level!",
+  },
+  {
+    title: "Do I need to bring my own racket?",
+    Content:
+      "No. We have rackets at the club you can borrow for the session, though most regulars bring their own. We do highly recommend that you have your own racket since it significantly improves your consistency in training. If you need help buying a racket, please get in touch and our coaches will be more than happy to help you with it!",
+  },
+  {
+    title: "What should I wear?",
+    Content:
+      "Comfortable clothes and non-marking indoor trainers. Please note that any shoes that are not non-marking trainers will not be allowed, as they can damage our flooring.",
+  },
+  {
+    title: "How long is a session and what does it involve?",
+    Content:
+      "Each session is two hours. It involves a 15-minute warm-up, 75 minutes of drill practice, and 30 minutes of match play. Our coaches give continuous feedback throughout the session.",
+  },
+  {
+    title: "How much does it cost?",
+    Content: "Group sessions are £20, or £12 for club members.",
+  },
+  {
+    title: "Do I have to commit to a block of sessions?",
+    Content:
+      "Not at all! Our sessions are all booked individually, so you can come as often or as little as you like.",
+  },
+];
 ---
 
 <OfferingsLayout
@@ -20,6 +60,7 @@ const desc =
     href: "https://bookwhen.com/flicktt",
     external: true,
   }}
+  faqConfig={faqConfig}
 >
   <InfoHighlightLayout
     title="Group Coaching Levels (1-4)"

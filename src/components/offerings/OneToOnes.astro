@@ -1,16 +1,41 @@
 ---
 import MainImage from "../../assets/offerings-one-to-ones-main.jpg";
 import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
+import type { FaqConfig } from "../../types";
 import CoachesList from "../coaches/CoachesList.astro";
 
 const desc =
   "One-to-one sessions fully personalised by our coaches to your goals, combining technical coaching, match strategy, and multiball training where appropriate. Ideal for fast improvement, targeted skill development, and refining specific areas of your game.";
+
+const faqConfig: FaqConfig[] = [
+  {
+    title: "How much does a lesson cost and how long is it?",
+    Content:
+      "Private lessons with all of our coaches are £60 per hour, or £45 per hour for members.",
+  },
+  {
+    title: "Can I choose which coach I work with?",
+    Content:
+      "Of course! Each of our coaches has their own style and strengths, and you can see their profiles on this page. If you are not sure who to pick, tell us your playing style and goals, and we will recommend the best coach for you.",
+  },
+  {
+    title: "Can I switch coaches or work with multiple coaches?",
+    Content:
+      "Our goal at Flick TT is to help you achieve your goals in table tennis in a way that works best for you. You are more than welcome to work with any coach or coaches that you'd prefer.",
+  },
+  {
+    title: "Can I join the lesson together with a friend?",
+    Content:
+      "Yes! If you would like to train together with a friend or partner, we are more than happy to help.",
+  },
+];
 ---
 
 <OfferingsLayout
   title="Private Coaching"
   img={{ src: MainImage.src, alt: "Private coaching" }}
   desc={desc}
+  faqConfig={faqConfig}
 >
   <section>
     <h4 class="font-bold text-4xl">Meet the Coaches</h4>
