@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { COACH_TITLES } from "../../constants";
 import type { CoachProfileConfig } from "../../types";
 import Drawer from "../ui/drawer/Drawer.astro";
@@ -13,7 +14,7 @@ const { name, img, description, title } = profile;
 
 <Drawer id={`${name.split(" ").join("-")}-drawer`} }>
   <div class="flex flex-col gap-2 justify-end p-6 text-left">
-    <img src={img} width="340" alt={name} />
+    <Image src={img} width={340} densities={[1, 2]} alt={name} loading="lazy" />
     <div>
       <p class="text-3xl"><b>{name}</b></p>
       <p class="text-2xl font-light text-flick-yellow">

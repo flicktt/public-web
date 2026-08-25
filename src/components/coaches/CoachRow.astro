@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import type { CoachProfileConfig } from "../../types";
 import Button from "../ui/inputs/Button.astro";
 import CoachProfile from "./CoachProfile.astro";
@@ -17,10 +18,13 @@ const { bookingUrl, profile } = Astro.props;
   <div class="md:max-h-90 md:max-w-85 h-full w-full overflow-hidden">
     {
       (
-        <img
+        <Image
           src={profile.img}
           alt={profile.name}
+          width={340}
+          densities={[1, 2]}
           class="relative object-cover"
+          loading="lazy"
         />
       )
     }

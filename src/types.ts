@@ -32,7 +32,7 @@ export type PointsRowConfig = {
 }[];
 
 export type CoachProfileConfig = {
-  img: string;
+  img: ImageMetadata;
   name: string;
   title: "head" | "coach";
   description: string[];

@@ -1,4 +1,5 @@
 ---
+import { Image, getImage } from "astro:assets";
 import albertoCoach from "../assets/alberto-coach.jpg";
 // import lisAndAlbImg from "../assets/flick-alberto-and-lis-1.png";
 import lisAndAlbImg from "../assets/flick-alberto-and-lis-1-1.png";
@@ -8,6 +9,10 @@ import lisCoach from "../assets/lis-coach.jpg";
 import mem1Img from "../assets/mem-01.jpg";
 import mem2Img from "../assets/mem-02.png";
 import mem3Img from "../assets/mem-03.jpg";
+
+// Background images can't go through <Image>, so optimise them with getImage() at build time.
+const leagueBg = await getImage({ src: FTTLeagueBg, width: 960, format: "webp" });
+const tournamentBg = await getImage({ src: FTTTournamentBg, width: 960, format: "webp" });
 import Schedule from "../components/home/Schedule.astro";
 import Button from "../components/ui/inputs/Button.astro";
 import DisplayText from "../components/ui/text/DisplayText.astro";
@@ -35,10 +40,11 @@ import PageLayout from "../layouts/PageLayout.astro";
           enthusiasts of all levels to reach their full potential
         </DisplayText>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
-          <img
-            src={lisAndAlbImg.src}
+          <Image
+            src={lisAndAlbImg}
             alt="Alberto explaining to a group"
             class="border-8 border-flick-dark w-full m-auto"
+            loading="lazy"
           />
           <div class="flex flex-col gap-4 justify-center">
             <p class="font-medium text-2xl">
@@ -90,7 +96,7 @@ import PageLayout from "../layouts/PageLayout.astro";
         class="flex flex-col items-center text-center gap-10 pt-16 pb-14 2xl:pb-26 bg-no-repeat text-flick-black"
         style={`
         background:
-          url(${FTTLeagueBg.src}) center center;
+          url(${leagueBg.src}) center center;
         background-size: cover;
         background-repeat: no-repeat;
         `}
@@ -114,7 +120,7 @@ import PageLayout from "../layouts/PageLayout.astro";
         class="flex flex-col items-center text-center gap-10 pt-16 pb-14 md:pb-16 2xl:pb-26"
         style={`
         background: 
-          url(${FTTTournamentBg.src}) center center;
+          url(${tournamentBg.src}) center center;
         background-size: cover;
         background-repeat: no-repeat;
         `}
@@ -139,28 +145,35 @@ import PageLayout from "../layouts/PageLayout.astro";
           <div
             class="absolute -top-25 -right-20 2xl:right-[unset] 2xl:-top-10 m-auto size-115 rounded-4xl overflow-hidden border-10 border-black/10"
           >
-            <img
-              src={mem2Img.src}
+            <Image
+              src={mem2Img}
               alt="Membership two"
+              height={800}
               class="relative bottom-50 h-200 max-w-fit right-12.5"
+              loading="lazy"
             />
           </div>
           <div
             class="absolute -top-11 -left-21 2xl:left-[unset] 2xl:right-0 2xl:top-8.5 m-auto size-115 rounded-4xl overflow-hidden border-10 border-black/10"
           >
-            <img
-              src={mem1Img.src}
+            <Image
+              src={mem1Img}
               alt="Membership one"
+              height={1200}
+              densities={[1, 2]}
               class="relative bottom-102.5 h-300 max-w-fit right-67.5"
+              loading="lazy"
             />
           </div>
           <div
             class="absolute top-5 -left-55 2xl:left-[unset] 2xl:top-[unset] 2xl:right-44 2xl:-bottom-12 m-auto size-75 md:size-115 rounded-4xl overflow-hidden border-10 border-black/10"
           >
-            <img
-              src={mem3Img.src}
+            <Image
+              src={mem3Img}
               alt="Membership three"
+              height={900}
               class="relative bottom-62.5 h-225 max-w-fit right-100"
+              loading="lazy"
             />
           </div>
         </div>
@@ -191,9 +204,10 @@ import PageLayout from "../layouts/PageLayout.astro";
         >
           <div class="flex flex-col gap-5">
             <div class="size-84 lg:size-108 overflow-hidden rounded-[30px]">
-              <img
-                src={albertoCoach.src}
+              <Image
+                src={albertoCoach}
                 alt="Alberto coach"
+                loading="lazy"
                 class="relative max-w-fit h-120 w-213.75 -left-42.5"
               />
             </div>
@@ -204,9 +218,10 @@ import PageLayout from "../layouts/PageLayout.astro";
           </div>
           <div class="flex flex-col gap-5">
             <div class="size-84 lg:size-108 overflow-hidden rounded-[30px]">
-              <img
-                src={lisCoach.src}
+              <Image
+                src={lisCoach}
                 alt="Lis coach"
+                loading="lazy"
                 class="relative max-w-fit h-120 w-213.75 -left-37.5"
               />
             </div>

@@ -1,7 +1,11 @@
 ---
+import { Image, getImage } from "astro:assets";
 import FTTTournamentBg from "../../assets/compete-banner-tournament.png";
 import FTTU18TournamentBg from "../../assets/compete-banner-u18.png";
 import CompeteLisAlbertoImage from "../../assets/compete-lis-alberto.png";
+
+const tournamentBg = await getImage({ src: FTTTournamentBg, width: 1600, quality: 70, format: "webp" });
+const u18Bg = await getImage({ src: FTTU18TournamentBg, width: 1600, quality: 70, format: "webp" });
 import Container from "../../layouts/Container.astro";
 import SplitLayoutContainer from "../../layouts/splitLayout/SplitLayoutContainer.astro";
 import SplitLayoutLeft from "../../layouts/splitLayout/SplitLayoutLeft.astro";
@@ -21,9 +25,11 @@ import DisplayText from "../ui/text/DisplayText.astro";
     </span>
   </DisplayText>
   <div class="max-w-section w-full overflow-hidden border-8 border-flick-dark">
-    <img
-      src={CompeteLisAlbertoImage.src}
+    <Image
+      src={CompeteLisAlbertoImage}
       alt="Lis and Alberto celebrating"
+      widths={[640, 1024, 1530]}
+      sizes="(min-width: 1440px) 1440px, 100vw"
       class="relative object-cover"
     />
   </div>
@@ -74,7 +80,7 @@ import DisplayText from "../ui/text/DisplayText.astro";
 </Container>
 <div
   style={`
-    background: url(${FTTTournamentBg.src}) center center;
+    background: url(${tournamentBg.src}) center center;
     background-size: cover;
     background-repeat: no-repeat;
   `}
@@ -96,7 +102,7 @@ import DisplayText from "../ui/text/DisplayText.astro";
 </div>
 <div
   style={`
-    background: url(${FTTU18TournamentBg.src}) center center;
+    background: url(${u18Bg.src}) center center;
     background-size: cover;
     background-repeat: no-repeat;
   `}

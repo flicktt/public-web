@@ -1,5 +1,6 @@
 ---
-import BannerLogo from "../../assets/logo-no-sub.svg";
+import { Image } from "astro:assets";
+import bannerLogo from "../../assets/logo-no-sub.png";
 import HeaderLayout from "../../layouts/HeaderLayout.astro";
 import BannerButton from "../ui/inputs/BannerButton.astro";
 import WithSmoothScrollTo from "../ui/with/WithSmoothScrollTo.astro";
@@ -18,6 +19,14 @@ import WithSmoothScrollTo from "../ui/with/WithSmoothScrollTo.astro";
     </BannerButton>
   </div>
   <div class="max-w-375 w-full">
-    <BannerLogo />
+    <Image
+      src={bannerLogo}
+      alt="Flick TT"
+      widths={[400, 800, 1200, 1604]}
+      sizes="(min-width: 1500px) 1500px, 100vw"
+      loading="eager"
+      fetchpriority="high"
+      class="w-full h-auto"
+    />
   </div>
 </HeaderLayout>

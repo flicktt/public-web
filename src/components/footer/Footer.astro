@@ -1,5 +1,6 @@
 ---
-import FooterLogo from "../../assets/logo-club.svg";
+import { Image } from "astro:assets";
+import footerLogo from "../../assets/logo-club.png";
 import IgLogo from "../../assets/ig-logo.svg";
 import WhatsAppLogo from "../../assets/whatsapp-logo.svg";
 import { CONTACT_CONSTS } from "../../constants";
@@ -9,7 +10,14 @@ import { CONTACT_CONSTS } from "../../constants";
   <div class="grid grid-cols-1 gap-8 sm:gap-2.5 sm:grid-cols-2">
     <div class="order-2 self-end sm:max-w-75 sm:order-1">
       <a href="/">
-        <FooterLogo />
+        <Image
+          src={footerLogo}
+          alt="Flick Table Tennis Club"
+          width={600}
+          widths={[300, 600]}
+          sizes="300px"
+          loading="lazy"
+        />
       </a>
     </div>
     <div class="order-1 flex flex-col gap-6 text-right sm:order-2">

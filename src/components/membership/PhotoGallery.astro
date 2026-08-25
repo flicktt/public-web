@@ -1,11 +1,13 @@
 ---
-const photos: { src: string; alt: string }[] = [];
+import { Image } from "astro:assets";
+
+const photos: { src: ImageMetadata; alt: string }[] = [];
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/membership-gallery-*.png",
 );
 for await (const imgPromise of Object.values(images)) {
   const img = await imgPromise();
-  photos.push({ src: img.default.src, alt: "" });
+  photos.push({ src: img.default, alt: "" });
 }
 const photosSplit = [
   ...[...Array(3)].map((_, index) => photos.slice(index * 3, (index + 1) * 3)),
@@ -30,7 +32,7 @@ const photosSplit = [
             aria-hidden={uiIndex === 1}
           >
             {photos.map(({ src, alt }) => (
-              <img src={src} alt={alt} class="rounded-xl" loading="lazy" />
+              <Image src={src} alt={alt} class="rounded-xl" loading="lazy" />
             ))}
           </ul>
         ))}
@@ -49,7 +51,7 @@ const photosSplit = [
             aria-hidden={ulIndex === 1}
           >
             {photos.map(({ src, alt }) => (
-              <img src={src} alt={alt} class="rounded-xl" loading="lazy" />
+              <Image src={src} alt={alt} class="rounded-xl" loading="lazy" />
             ))}
           </ul>
         ))}

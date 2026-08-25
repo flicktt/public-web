@@ -1,5 +1,6 @@
 ---
-import NavLogo from "../../assets/logo-no-sub.svg";
+import { Image } from "astro:assets";
+import navLogo from "../../assets/logo-no-sub.png";
 import type { Page } from "../../types";
 import NavToggleButton from "./NavToggleButton.astro";
 
@@ -31,7 +32,7 @@ const isHome = page === "home";
     {
       !isHome && (
         <a href="/">
-          <NavLogo height="50px" />
+          <Image src={navLogo} alt="Flick TT" height={50} densities={[1, 2]} loading="eager" />
         </a>
       )
     }

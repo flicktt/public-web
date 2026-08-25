@@ -105,10 +105,11 @@ const contacts = [
     <SplitLayoutLeft titleAs="h2" title="Our Venue" />
     <SplitLayoutRight>
       <div class="flex flex-col gap-6">
-        <img
-          src={VenueMain.src}
+        <Image
+          src={VenueMain}
           alt="Venue"
           class="border-8 border-flick-dark"
+          loading="lazy"
         />
         <p class="text-xl">
           Our club is conveniently located on the second floor of Decathlon
@@ -121,8 +122,8 @@ const contacts = [
           containerProps={{ class: "p-4 gap-4 text-center" }}
         >
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-            <img src={VenueOutside.src} alt="Venue outside" />
-            <img src={VenueMap.src} alt="Venue map" />
+            <Image src={VenueOutside} alt="Venue outside" loading="lazy" />
+            <Image src={VenueMap} alt="Venue map" loading="lazy" />
           </div>
           <p class="text-3xl">
             Our current location is at

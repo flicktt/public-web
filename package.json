@@ -10,7 +10,8 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"generate-types": "wrangler types"
+		"generate-types": "wrangler types",
+		"optimize:svg": "svgo -f src/icons -o src/icons && svgo src/assets/ig-logo.svg src/assets/whatsapp-logo.svg"
 	},
 	"dependencies": {
 		"@astrojs/cloudflare": "14.1.3",
@@ -28,6 +29,7 @@
 		"vite": "8"
 	},
 	"devDependencies": {
-		"@types/node": "26.1.1"
+		"@types/node": "26.1.1",
+		"svgo": "^4.0.2"
 	}
 }
