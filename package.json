@@ -30,6 +30,6 @@
 	},
 	"devDependencies": {
 		"@types/node": "26.1.1",
-		"svgo": "^4.0.2"
+		"svgo": "4.0.2"
 	}
 }
