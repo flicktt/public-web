@@ -1,5 +1,6 @@
 ---
 import { bannerBg } from "../banner";
+import { localBusinessSchema } from "../schema";
 import Footer from "../components/footer/Footer.astro";
 import HomeHeader from "../components/header/HomeHeader.astro";
 import PageHeader from "../components/header/PageHeader.astro";
@@ -73,6 +74,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={pageConfig[page].desc} />
     <title>{`Flick TT | ${pageConfig[page].title}`}</title>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(localBusinessSchema)}
+    />
   </head>
   <body>
     {
