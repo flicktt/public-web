@@ -1,4 +1,5 @@
 ---
+import { bannerBg } from "../banner";
 import Footer from "../components/footer/Footer.astro";
 import HomeHeader from "../components/header/HomeHeader.astro";
 import PageHeader from "../components/header/PageHeader.astro";
@@ -64,6 +65,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       type="font/woff2"
       crossorigin
     />
+    <link rel="preload" as="image" href={bannerBg.src} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />

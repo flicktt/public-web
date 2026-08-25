@@ -1,6 +1,5 @@
 ---
-import { getImage } from "astro:assets";
-import BannerBackground from "../assets/banner-image.png";
+import { bannerBg } from "../banner";
 import HeaderNav from "../components/header/HeaderNav.astro";
 import type { Page } from "../types";
 
@@ -9,7 +8,6 @@ interface Props {
 }
 
 const { page } = Astro.props;
-const bannerBg = await getImage({ src: BannerBackground, width: 1920, format: "webp" });
 ---
 
 <header
