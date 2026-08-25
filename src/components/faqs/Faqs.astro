@@ -12,7 +12,28 @@ interface Props {
 }
 
 const { headerAs: HeaderTag = "h3", faqConfig } = Astro.props;
+
+// FAQPage structured data (schema.org). Google no longer shows FAQ rich results for sites like
+// ours, but the markup is still read by AI answer engines and non-Google search.
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqConfig.flatMap(({ title, Content, answerText }) => {
+    const text = typeof Content === "string" ? Content : answerText;
+    if (!text) {
+      console.warn(`[Faqs] "${title}" has a component answer but no answerText; omitted from JSON-LD`);
+      return [];
+    }
+    return [{
+      "@type": "Question",
+      name: title,
+      acceptedAnswer: { "@type": "Answer", text },
+    }];
+  }),
+};
 ---
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
 <div class="bg-flick-red">
   <Container section class="pt-6 pb-14 text-xl">

@@ -18,6 +18,11 @@ export type PageConfig = {
 export type FaqConfig = {
   title: string;
   Content: AstroComponentFactory | string;
+  /**
+   * Plain-text answer for the FAQPage JSON-LD emitted by <Faqs />. Only needed when `Content`
+   * is a component; string answers are used as-is.
+   */
+  answerText?: string;
 };
 
 export type PageTabConfig = {

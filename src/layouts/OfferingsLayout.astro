@@ -12,26 +12,18 @@ interface Props {
   title?: string;
   showMembership?: boolean;
   containerProps?: ContainerProps;
-  faqConfig?: FaqConfig[];
+  faqConfig: FaqConfig[];
   img?: { src: ImageMetadata; alt: string };
   desc?: string;
   linkBtn?: { label: string; href: string; external?: boolean };
 }
-
-const mockConfig = [
-  {
-    title: "Proin placerat vitae nisl sed elementum?",
-    Content:
-      "Maecenas dignissim eros ut elit imperdiet convallis. Morbi bibendum erat in nisi fringilla egestas. Suspendisse convallis vulputate viverra. Curabitur blandit ornare porttitor. Nunc at mauris laoreet, mollis turpis sit amet, porttitor nunc. Curabitur rhoncus ipsum in ante finibus, non egestas diam sollicitudin. Aliquam erat volutpat. Nam sit amet consequat enim.",
-  },
-];
 
 const {
   title,
   img,
   desc,
   showMembership = true,
-  faqConfig = mockConfig,
+  faqConfig,
   containerProps,
   linkBtn,
 } = Astro.props;
