@@ -2,10 +2,62 @@
 import SplitLayoutContainer from "../../layouts/splitLayout/SplitLayoutContainer.astro";
 import SplitLayoutLeft from "../../layouts/splitLayout/SplitLayoutLeft.astro";
 import SplitLayoutRight from "../../layouts/splitLayout/SplitLayoutRight.astro";
+import type { MembershipTypeProps } from "../../types";
+import MembershipType from "./MembershipType.astro";
+
+const memTypes: MembershipTypeProps[] = [
+  {
+    name: "Standard",
+    prices: {
+      monthly: 35,
+      quarterly: 90,
+      biannual: 170,
+      annual: 320,
+    },
+  },
+  {
+    name: "Under-18",
+    prices: {
+      monthly: 20,
+      quarterly: 50,
+      biannual: 190,
+      annual: 160,
+    },
+  },
+  {
+    name: "Student",
+    prices: {
+      monthly: 28,
+      quarterly: 72,
+      biannual: 136,
+      annual: 256,
+    },
+  },
+  {
+    name: "Senior",
+    prices: {
+      monthly: 28,
+      quarterly: 72,
+      biannual: 136,
+      annual: 256,
+    },
+  },
+];
 ---
 
-<!-- TODO membership types and prices grid/cards -->
 <SplitLayoutContainer>
-  <SplitLayoutLeft title="Membership types" />
-  <SplitLayoutRight />
+  <SplitLayoutLeft
+    titleAs="h2"
+    title="Membership types"
+    subtitle="All prices include VAT."
+  />
+  <SplitLayoutRight>
+    <div class="flex flex-row gap-5 flex-wrap">
+      {
+        memTypes.map(({ name, prices }) => (
+          <MembershipType name={name} prices={prices} />
+        ))
+      }
+    </div>
+  </SplitLayoutRight>
 </SplitLayoutContainer>

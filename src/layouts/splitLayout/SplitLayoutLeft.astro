@@ -1,14 +1,21 @@
 ---
 interface Props {
-	title?: string;
-	subtitle?: string;
+  titleAs?: "h2" | "h3";
+  title?: string;
+  subtitle?: string;
 }
 
-const { title, subtitle } = Astro.props;
+const { title, titleAs: TitleTag = "h3", subtitle } = Astro.props;
 ---
 
 <div class="col-span-1">
-  {title && <h3 class:list={["text-4xl", { "mb-2": !!subtitle }]}>{title}</h3>}
+  {
+    title && (
+      <TitleTag class:list={["text-4xl", { "mb-2": !!subtitle }]}>
+        {title}
+      </TitleTag>
+    )
+  }
   {subtitle && <p class="text-xl">{subtitle}</p>}
   <slot />
 </div>

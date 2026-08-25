@@ -1,16 +1,27 @@
 ---
 import ChevronDown from "../../icons/ChevronDown.svg";
+
+interface Props {
+  headerAs?: "h3" | "h4";
+  id: string;
+  ariaControls: string;
+}
+
+const { headerAs: HeaderTag = "h3", id, ariaControls } = Astro.props;
 ---
 
-<div
-  class="accordion-title flex items-center justify-between w-full p-2 cursor-pointer *:pointer-events-none"
->
-  <span class="font-bold text-xl lg:text-2xl">
+<HeaderTag class="font-bold text-xl lg:text-2xl">
+  <button
+    class="accordion-btn flex items-center justify-between w-full p-2 text-left cursor-pointer *:pointer-events-none"
+    id={id}
+    aria-controls={ariaControls}
+    aria-expanded="false"
+  >
     <slot />
-  </span>
-  <span class="w-6 ml-2">
-    <ChevronDown
-      class="accordion-chevron size-6 transition-transform duration-150 ease-in"
-    />
-  </span>
-</div>
+    <span class="w-6 ml-2">
+      <ChevronDown
+        class="accordion-chevron size-6 transition-transform duration-150 ease-in"
+      />
+    </span>
+  </button>
+</HeaderTag>

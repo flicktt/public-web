@@ -1,5 +1,18 @@
+---
+interface Props {
+  id: string;
+  ariaLabelledBy: string;
+}
+
+const { id, ariaLabelledBy } = Astro.props;
+---
+
 <div
   class="accordion-dropdown overflow-hidden invisible transition-[visibility] duration-75 ease-in"
+  id={id}
+  aria-labelledBy={ariaLabelledBy}
 >
-  <div class="accordion-dropdown-content p-2"><slot /></div>
+  <div class="accordion-dropdown-content p-2">
+    <slot />
+  </div>
 </div>

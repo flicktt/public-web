@@ -3,10 +3,9 @@
 >
   <slot />
 </div>
-<!-- TODO see if can be rebuilt with <details> and <summary> https://webdev.bryanhogan.com/components/accordion/#the-most-simple-accordion -->
-<!-- TODO make open only one accordion at a time -->
+
 <script>
-  const toggleAccordion = (parent: HTMLElement | null) => {
+  const toggleAccordion = (parent: HTMLElement | null, btnEl: Element) => {
     parent?.classList.toggle("grid-rows-[min-content_0fr]");
     parent?.classList.toggle("grid-rows-[min-content_1fr]");
 
@@ -16,14 +15,20 @@
 
     const chevron = parent?.getElementsByClassName("accordion-chevron");
     chevron?.item(0)?.classList.toggle("rotate-180");
+
+    btnEl.setAttribute(
+      "aria-expanded",
+      btnEl.getAttribute("aria-expanded") === "false" ? "true" : "false",
+    );
   };
 
-  const accordionTitles = document.querySelectorAll(".accordion-title");
+  const accordionBtns = document.querySelectorAll(".accordion-btn");
 
-  for (const accordionTitle of accordionTitles) {
-    accordionTitle.addEventListener("click", function (event) {
-      const parent = (event?.target as Element)?.parentElement;
-      toggleAccordion(parent);
+  for (const accordionBtn of accordionBtns) {
+    accordionBtn.addEventListener("click", function (event) {
+      const parent = ((event?.target as Element)?.parentElement as HTMLElement)
+        .parentElement;
+      toggleAccordion(parent, accordionBtn);
     });
   }
 </script>

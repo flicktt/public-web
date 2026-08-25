@@ -7,20 +7,25 @@ import AccordionStack from "../accordion/AccordionStack.astro";
 import AccordionTitle from "../accordion/AccordionTitle.astro";
 
 interface Props {
-	faqConfig: FaqConfig[];
+  headerAs?: "h2" | "h3";
+  faqConfig: FaqConfig[];
 }
 
-const { faqConfig } = Astro.props;
+const { headerAs: HeaderTag = "h3", faqConfig } = Astro.props;
 ---
 
 <div class="bg-flick-red">
   <Container section class="pt-6 pb-14 text-xl">
-    <h3 class="text-flick-yellow mb-6">Frequently Asked Questions</h3>
+    <HeaderTag class="text-flick-yellow mb-6 text-5xl sm:text-6xl">
+      Frequently Asked Questions
+    </HeaderTag>
     <AccordionStack>
       {
-        faqConfig.map(({ title, Content }) => (
+        (faqConfig as FaqConfig[]).map(({ title, Content }) => (
           <Accordion>
-            <AccordionTitle>{title}</AccordionTitle>
+            <AccordionTitle headerAs={HeaderTag === "h2" ? "h3" : "h4"}>
+              {title}
+            </AccordionTitle>
             <AccordionContent>
               {typeof Content === "string" ? <p>{Content}</p> : <Content />}
             </AccordionContent>

@@ -76,8 +76,8 @@ const contacts = [
     experienced coaches who are truly passionate about the game, we strive to
     create{" "}
     <span class="text-flick-yellow">
-      an
-      <b class="font-semibold"> inclusive and fun environment</b>{" "}
+      an{" "}
+      <b>inclusive and fun environment</b>{" "}
       for players of all levels and experience.
     </span>{" "}
     In the past three years we have grown into a community with over 250 members.
@@ -88,16 +88,13 @@ const contacts = [
     class="border-8 border-flick-dark"
   />
   <SplitLayoutContainer section>
-    <SplitLayoutLeft title="What we believe in" />
+    <SplitLayoutLeft titleAs="h2" title="What we believe in" />
     <SplitLayoutRight>
       <div class="flex flex-col gap-4">
         {
           aboutPoints.map(({ title, desc }) => (
             <p class="text-xl">
-              <span class="text-flick-yellow font-semibold">
-                {title} &ndash;
-              </span>{" "}
-              {desc}
+              <b class="text-flick-yellow">{title} &ndash;</b> {desc}
             </p>
           ))
         }
@@ -105,7 +102,7 @@ const contacts = [
     </SplitLayoutRight>
   </SplitLayoutContainer>
   <SplitLayoutContainer section>
-    <SplitLayoutLeft title="Our Venue" />
+    <SplitLayoutLeft titleAs="h2" title="Our Venue" />
     <SplitLayoutRight>
       <div class="flex flex-col gap-6">
         <img
@@ -167,7 +164,7 @@ const contacts = [
 <section class="bg-flick-blue" id="contact-us">
   <Container class="py-10 lg:py-14">
     <SplitLayoutContainer>
-      <SplitLayoutLeft title="Contact us">
+      <SplitLayoutLeft titleAs="h2" title="Contact us">
         <p class="text-xl">
           Have a question about the club, the sessions we offer, or anything
           else? Don't hesitate to send us a message.{" "}
@@ -183,7 +180,9 @@ const contacts = [
           {
             contacts.map(({ name, title, email }) => (
               <div>
-                <p class="text-2xl font-semibold">{name}</p>
+                <p class="text-2xl">
+                  <b>{name}</b>
+                </p>
                 <p class:list={["text-xl", { hidden: title.length === 0 }]}>
                   {title}
                 </p>

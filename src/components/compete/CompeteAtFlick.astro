@@ -16,8 +16,8 @@ import DisplayText from "../ui/text/DisplayText.astro";
     League to the historic Central League and the national British League,
     there's a league for every level and ambition.{" "}
     <span class="text-flick-yellow">
-      Join a league today and take your game to the{" "}
-      <b class="font-semibold">next level!</b>
+      Join a league today and{" "}
+      <b>take your game to the next level!</b>
     </span>
   </DisplayText>
   <div class="max-w-section w-full overflow-hidden border-8 border-flick-dark">
@@ -29,6 +29,7 @@ import DisplayText from "../ui/text/DisplayText.astro";
   </div>
   <SplitLayoutContainer section>
     <SplitLayoutLeft
+      titleAs="h2"
       title="Leagues at Flick TT"
       subtitle="Flick TT runs and participates in three exciting leagues, offering
         competitive and social opportunities for players of all levels."
@@ -36,13 +37,11 @@ import DisplayText from "../ui/text/DisplayText.astro";
     <SplitLayoutRight>
       <div class="flex flex-col gap-4">
         <p class="text-xl">
-          <span class="text-flick-yellow font-semibold">
-            Flick TT League &ndash;
-          </span>{" "}
-          Our quarterly league is perfect for serious players looking to improve and
-          meet others. Open to all levels, players pay a seasonal fee (every 3 months)
-          and can book to play on Fridays or Sundays, with end-of-league awards for the
-          top 3 players in each category.{" "}
+          <b class="text-flick-yellow">Flick TT League &ndash;</b>
+          {" "}Our quarterly league is perfect for serious players looking to
+          improve and meet others. Open to all levels, players pay a seasonal
+          fee (every 3 months) and can book to play on Fridays or Sundays, with
+          end-of-league awards for the top 3 players in each category.{" "}
           <a
             href="#club-league"
             data-link-to-tab
@@ -52,21 +51,19 @@ import DisplayText from "../ui/text/DisplayText.astro";
           </a>
         </p>
         <p class="text-xl">
-          <span class="text-flick-yellow font-semibold">
-            Central League &ndash;
-          </span>{" "}
-          Founded in 1943, the Central London Table Tennis League is the hub for competitive
-          table tennis in Zones 1-2. Players range from National League level to relative
-          beginners. Flick TT currently fields multiple teams across several divisions.
+          <b class="text-flick-yellow">Central League &ndash;</b>
+          {" "}Founded in 1943, the Central London Table Tennis League is the
+          hub for competitive table tennis in Zones 1-2. Players range from
+          National League level to relative beginners. Flick TT currently fields
+          multiple teams across several divisions.
         </p>
         <p class="text-xl">
-          <span class="text-flick-yellow font-semibold">
-            British League &ndash;
-          </span>{" "}
-          The premier club competition run by Table Tennis England, open to clubs
-          across the Home Nations. The leagues include Youth (YBCL), Senior (SBCL), 
-          Women's (WBCL), and Veterans (VBCL), organised by the British Clubs Leagues 
-          committee and volunteers. Flick TT competes in the Senior and Women's categories.
+          <b class="text-flick-yellow">British League &ndash;</b>
+          {" "}The premier club competition run by Table Tennis England, open to
+          clubs across the Home Nations. The leagues include Youth (YBCL),
+          Senior (SBCL), Women's (WBCL), and Veterans (VBCL), organised by the
+          British Clubs Leagues committee and volunteers. Flick TT competes in
+          the Senior and Women's categories.
         </p>
       </div>
     </SplitLayoutRight>
@@ -86,7 +83,7 @@ import DisplayText from "../ui/text/DisplayText.astro";
     section
     class="flex flex-col items-center text-center gap-10 py-20"
   >
-    <h3>Flick TT Tournament</h3>
+    <h2 class="text-5xl sm:text-6xl">Flick TT Tournament</h2>
     <p class="text-2xl">
       Compete every two months in Flick TT's adult tournaments, featuring 48
       players per event and a points-based ranking system. Across five
@@ -108,9 +105,13 @@ import DisplayText from "../ui/text/DisplayText.astro";
     section
     class="flex flex-col items-center text-center gap-10 py-20"
   >
-    <h3>U18 Tournament</h3>
+    <h2 class="text-5xl sm:text-6xl">U18 Tournament</h2>
     <p class="text-2xl">
-      Our U18 tournaments run every two months, with 48 young players per event competing in a points-based ranking system. The top 16 across the five-tournament series qualify for the final, with prizes including free club sessions. A structured, competitive, and exciting environment for junior players to develop and test their skills.
+      Our U18 tournaments run every two months, with 48 young players per event
+      competing in a points-based ranking system. The top 16 across the
+      five-tournament series qualify for the final, with prizes including free
+      club sessions. A structured, competitive, and exciting environment for
+      junior players to develop and test their skills.
     </p>
     <Button as="a" href="/kids#u18-tournament"> Find out more </Button>
   </Container>

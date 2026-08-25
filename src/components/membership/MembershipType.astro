@@ -1,0 +1,49 @@
+---
+import type { MembershipTypeProps } from "../../types";
+
+interface Props extends MembershipTypeProps {}
+
+const { name, prices } = Astro.props;
+
+const getFormattedPrice = (value: number) => `£${value}`;
+
+const priceConfig = [
+  {
+    label: "Monthly",
+    value: getFormattedPrice(prices.monthly),
+  },
+  {
+    label: "Quarterly",
+    value: getFormattedPrice(prices.quarterly),
+  },
+  {
+    label: "Biannual",
+    value: getFormattedPrice(prices.biannual),
+  },
+  {
+    label: "Annual",
+    value: getFormattedPrice(prices.annual),
+  },
+];
+---
+
+<div
+  class="border border-flick-dark rounded-xl w-full sm:w-48 text-center hover:bg-white/1"
+>
+  <div class="py-4 border-b border-flick-dark">
+    <h4 class="font-semibold text-3xl">{name}</h4>
+  </div>
+  {
+    priceConfig.map(({ label, value }, i) => (
+      <div
+        class:list={[
+          "text-lg p-3 hover:bg-white/1",
+          { "border-b border-flick-dark": i !== priceConfig.length - 1 },
+        ]}
+      >
+        {`${label}: `}
+        <b>{value}</b>
+      </div>
+    ))
+  }
+</div>

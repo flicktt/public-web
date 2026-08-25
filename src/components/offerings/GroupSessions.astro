@@ -66,30 +66,38 @@ const faqConfig: FaqConfig[] = [
     title="Group Coaching Levels (1-4)"
     containerProps={{ class: "gap-6" }}
   >
-    <p class="font-semibold text-xl md:text-2xl">
-      Our group sessions are split by levels so you train at the right pace and
-      improve faster. Levels are based on repeatable skills, not “who wins
-      games”.
+    <p class="text-xl md:text-2xl">
+      <b>
+        Our group sessions are split by levels so you train at the right pace
+        and improve faster. Levels are based on repeatable skills, not “who wins
+        games”.
+      </b>
     </p>
     <p>
-      Not sure where you fit? Book a Level 1-2 session or ask a coach on the day — we'll
-      guide you to the best group for progress.
+      Not sure where you fit? Book a Level 1-2 session or ask a coach on the day
+      — we'll guide you to the best group for progress.
     </p>
 
     <AccordionStack>
       <Accordion>
-        <AccordionTitle>
+        <AccordionTitle
+          id="offerings-grp-sess-lvl-1-btn"
+          ariaControls="offerings-grp-sess-lvl-1-panel"
+        >
           LEVEL 1 — Solid foundations (stance, grip, control)
         </AccordionTitle>
-        <AccordionContent>
+        <AccordionContent
+          id="offerings-grp-sess-lvl-1-panel"
+          ariaLabelledBy="offerings-grp-sess-lvl-1-btn"
+        >
           <div class="flex flex-col gap-3">
             <p>
-              <span class="font-semibold">Perfect if:</span> you're new, returning
-              after a break, or you can rally “sometimes” but don't feel in control.
+              <b>Perfect if:</b> you're new, returning after a break, or you can rally
+              “sometimes” but don't feel in control.
             </p>
 
             <div>
-              <span class="font-semibold">We focus on</span>
+              <b>We focus on</b>
               <ul class="list-disc list-inside">
                 <li>
                   Ready position (stance), balance and distance to the table
@@ -100,7 +108,7 @@ const faqConfig: FaqConfig[] = [
             </div>
 
             <div>
-              <span class="font-semibold">You will learn</span>
+              <b>You will learn</b>
               <ul class="list-disc list-inside">
                 <li>Forehand & backhand basics with a stable trajectory</li>
                 <li>Simple placement (cross-court / down-the-line)</li>
@@ -112,7 +120,7 @@ const faqConfig: FaqConfig[] = [
             </div>
 
             <div>
-              <span class="font-semibold">To move up to Level 2</span>
+              <b>To move up to Level 2</b>
               <ul class="list-disc list-inside">
                 <li>
                   You can rally comfortably on both sides at a steady pace
@@ -126,27 +134,32 @@ const faqConfig: FaqConfig[] = [
             </div>
 
             <p>
-              <span class="font-semibold">Main difference vs Level 2:</span> Level
-              1 builds control. Level 2 adds real consistency with spin awareness.
+              <b>Main difference vs Level 2:</b> Level 1 builds control. Level 2 adds
+              real consistency with spin awareness.
             </p>
           </div>
         </AccordionContent>
       </Accordion>
 
       <Accordion>
-        <AccordionTitle>
+        <AccordionTitle
+          id="offerings-grp-sess-lvl-2-btn"
+          ariaControls="offerings-grp-sess-lvl-2-panel"
+        >
           LEVEL 2 — Consistency + understanding spin
         </AccordionTitle>
-        <AccordionContent>
+        <AccordionContent
+          id="offerings-grp-sess-lvl-2-panel"
+          ariaLabelledBy="offerings-grp-sess-lvl-2-btn"
+        >
           <div class="flex flex-col gap-3">
             <p>
-              <span class="font-semibold">Perfect if:</span> you can rally, but spin
-              (especially serves) makes the ball fly long, drop in the net, or kick
-              sideways.
+              <b>Perfect if:</b> you can rally, but spin (especially serves) makes
+              the ball fly long, drop in the net, or kick sideways.
             </p>
 
             <div>
-              <span class="font-semibold">We focus on</span>
+              <b>We focus on</b>
               <ul class="list-disc list-inside">
                 <li>Stronger forehand/backhand consistency with placement</li>
                 <li>Reading topspin / backspin / sidespin</li>
@@ -155,7 +168,7 @@ const faqConfig: FaqConfig[] = [
             </div>
 
             <div>
-              <span class="font-semibold">You will learn</span>
+              <b>You will learn</b>
               <ul class="list-disc list-inside">
                 <li>Controlled rallies with better depth and direction</li>
                 <li>How to identify spin and adjust racket angle + timing</li>
@@ -164,7 +177,7 @@ const faqConfig: FaqConfig[] = [
             </div>
 
             <div>
-              <span class="font-semibold">To move up to Level 3</span>
+              <b>To move up to Level 3</b>
               <ul class="list-disc list-inside">
                 <li>
                   You can keep consistent rallies with intention (not just
@@ -179,28 +192,32 @@ const faqConfig: FaqConfig[] = [
             </div>
 
             <p>
-              <span class="font-semibold">Main difference vs Level 3:</span> Level
-              2 is “I understand spin.” Level 3 is “I can attack with topspin and
-              defend with blocks.”
+              <b>Main difference vs Level 3:</b> Level 2 is “I understand spin.” Level
+              3 is “I can attack with topspin and defend with blocks.”
             </p>
           </div>
         </AccordionContent>
       </Accordion>
 
       <Accordion>
-        <AccordionTitle>
+        <AccordionTitle
+          id="offerings-grp-sess-lvl-3-btn"
+          ariaControls="offerings-grp-sess-lvl-3-panel"
+        >
           LEVEL 3 — Topspin consistency + blocking + structured drills
         </AccordionTitle>
-        <AccordionContent>
+        <AccordionContent
+          id="offerings-grp-sess-lvl-3-panel"
+          ariaLabelledBy="offerings-grp-sess-lvl-3-btn"
+        >
           <div class="flex flex-col gap-3">
             <p>
-              <span class="font-semibold">Perfect if:</span> you want to play modern
-              table tennis: open the point, pressure, and hold rallies without breaking
-              down.
+              <b>Perfect if:</b> you want to play modern table tennis: open the point,
+              pressure, and hold rallies without breaking down.
             </p>
 
             <div>
-              <span class="font-semibold">We focus on</span>
+              <b>We focus on</b>
               <ul class="list-disc list-inside">
                 <li>Reliable topspin (not occasional hero shots)</li>
                 <li>Blocking technique (control + placement)</li>
@@ -211,7 +228,7 @@ const faqConfig: FaqConfig[] = [
             </div>
 
             <div>
-              <span class="font-semibold">You will learn</span>
+              <b>You will learn</b>
               <ul class="list-disc list-inside">
                 <li>
                   Forehand topspin consistency (and backhand topspin progression
@@ -226,7 +243,7 @@ const faqConfig: FaqConfig[] = [
             </div>
 
             <div>
-              <span class="font-semibold">To move up to Level 4</span>
+              <b>To move up to Level 4</b>
               <ul class="list-disc list-inside">
                 <li>
                   You can topspin safely with margin and repeat it in drills
@@ -240,28 +257,32 @@ const faqConfig: FaqConfig[] = [
             </div>
 
             <p>
-              <span class="font-semibold">Main difference vs Level 4:</span> Level
-              3 builds your rally engine. Level 4 teaches you to win points from the
-              serve + first 3 balls.
+              <b>Main difference vs Level 4:</b> Level 3 builds your rally engine.
+              Level 4 teaches you to win points from the serve + first 3 balls.
             </p>
           </div>
         </AccordionContent>
       </Accordion>
 
       <Accordion>
-        <AccordionTitle>
+        <AccordionTitle
+          id="offerings-grp-sess-lvl-4-btn"
+          ariaControls="offerings-grp-sess-lvl-4-panel"
+        >
           LEVEL 4 — Serve + receive + “first 3 balls” (play with a plan)
         </AccordionTitle>
-        <AccordionContent>
+        <AccordionContent
+          id="offerings-grp-sess-lvl-4-panel"
+          ariaLabelledBy="offerings-grp-sess-lvl-4-btn"
+        >
           <div class="flex flex-col gap-3">
             <p>
-              <span class="font-semibold">Perfect if:</span> you have good strokes,
-              but points slip away on serve/receive, or you don't know what to do
-              on 3rd/5th ball.
+              <b>Perfect if:</b> you have good strokes, but points slip away on serve/receive,
+              or you don't know what to do on 3rd/5th ball.
             </p>
 
             <div>
-              <span class="font-semibold">We focus on</span>
+              <b>We focus on</b>
               <ul class="list-disc list-inside">
                 <li>Serve quality and variation with a purpose</li>
                 <li>Receive that doesn't gift easy points</li>
@@ -272,7 +293,7 @@ const faqConfig: FaqConfig[] = [
             </div>
 
             <div>
-              <span class="font-semibold">You will learn</span>
+              <b>You will learn</b>
               <ul class="list-disc list-inside">
                 <li>
                   Practical serve fundamentals (contact, control, disguise,
@@ -293,7 +314,7 @@ const faqConfig: FaqConfig[] = [
             </div>
 
             <div>
-              <span class="font-semibold">To move up to Level 5</span>
+              <b>To move up to Level 5</b>
               <ul class="list-disc list-inside">
                 <li>Your serves create predictable returns</li>
                 <li>Your receive stays stable under pressure</li>
@@ -309,25 +330,21 @@ const faqConfig: FaqConfig[] = [
     </AccordionStack>
 
     <div>
-      <p class="mb-2 font-bold text-xl lg:text-2xl">
-        QUICK SELF-CHECK (pick your starting level)
+      <p class="mb-2 text-xl lg:text-2xl">
+        <b>QUICK SELF-CHECK (pick your starting level)</b>
       </p>
       <ul>
         <li>
-          <span class="font-semibold">Level 1:</span> stance/grip basics + consistent
-          simple hits (no spin)
+          <b>Level 1:</b> stance/grip basics + consistent simple hits (no spin)
         </li>
         <li>
-          <span class="font-semibold">Level 2:</span> consistent basics + understand
-          spin, especially on serve/receive
+          <b>Level 2:</b> consistent basics + understand spin, especially on serve/receive
         </li>
         <li>
-          <span class="font-semibold">Level 3:</span> consistent topspin + blocking
-          + longer structured drills
+          <b>Level 3:</b> consistent topspin + blocking + longer structured drills
         </li>
         <li>
-          <span class="font-semibold">Level 4:</span> serve/receive + strong first
-          3 balls and opening attack
+          <b>Level 4:</b> serve/receive + strong first 3 balls and opening attack
         </li>
       </ul>
     </div>

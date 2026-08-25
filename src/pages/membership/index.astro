@@ -26,8 +26,7 @@ const pointConfig = [
 const faqConfig: FaqConfig[] = [
   {
     title: "How do I join?",
-    Content:
-      "You can join our membership at bookwhen.com/flicktt/memberships.",
+    Content: "You can join our membership at bookwhen.com/flicktt/memberships.",
   },
   {
     title: "How long does membership last, and can I cancel?",
@@ -50,15 +49,16 @@ const faqConfig: FaqConfig[] = [
       the club, free entry to our workshops, and{" "}
       <span class="text-flick-yellow">
         a place in one of London's{" "}
-        <b class="font-semibold">friendliest table tennis communities.</b>
+        <b>friendliest table tennis communities.</b>
       </span>
     </DisplayText>
+    <!-- mb-2 on Button to match line height spacing on DisplayText -->
     <Button
       as="a"
       size="lg"
       href="https://bookwhen.com/flicktt/memberships"
       target="_blank"
-      class="m-auto"
+      class="m-auto mb-2"
     >
       Become a member
     </Button>
@@ -71,5 +71,5 @@ const faqConfig: FaqConfig[] = [
     <MembershipTypes />
     <MembershipBenefits />
   </Container>
-  <Faqs faqConfig={faqConfig} />
+  <Faqs headerAs="h2" faqConfig={faqConfig} />
 </PageLayout>

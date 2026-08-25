@@ -26,11 +26,11 @@ const { rows } = Astro.props;
         <tr class="group">
           <td
             class:list={[
-              "m-0 p-4 font-semibold group-hover:bg-white/2",
+              "m-0 p-4 group-hover:bg-white/2",
               { "border-b border-flick-dark": i !== rows.length - 1 },
             ]}
           >
-            {offering}
+            <b>{offering}</b>
           </td>
           <td
             class:list={[

@@ -68,3 +68,13 @@ export type ScheduleDayProps = {
 };
 
 export type ScheduleConfig = ScheduleDayProps[];
+
+export interface MembershipTypeProps {
+  name: string;
+  prices: {
+    monthly: number;
+    quarterly: number;
+    biannual: number;
+    annual: number;
+  };
+}
