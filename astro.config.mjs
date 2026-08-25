@@ -5,6 +5,8 @@ import cloudflare from "@astrojs/cloudflare";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, passthroughImageService } from "astro/config";
 
+import sitemap from "@astrojs/sitemap";
+
 // The same source builds two ways:
 //   - default        (`pnpm build`)                   → Cloudflare Workers, via the @astrojs/cloudflare adapter (unchanged).
 //   - STATIC_BUILD=true (`STATIC_BUILD=true pnpm build`) → a pure static `dist/` for the nginx Docker image the NAS serves.
@@ -13,14 +15,18 @@ const staticBuild = process.env.STATIC_BUILD === "true";
 
 // https://astro.build/config
 export default defineConfig({
-	image: {
-		service: passthroughImageService(),
+  image: {
+      service: passthroughImageService(),
 	},
 
-	vite: {
-		plugins: [tailwindcss()],
+  vite: {
+      plugins: [tailwindcss()],
 	},
 
-	// No adapter in static mode — Astro emits plain HTML/CSS/JS to `dist/` that nginx serves directly.
-	...(staticBuild ? {} : { adapter: cloudflare() }),
+  site: "https://www.flicktt.com",
+
+  // No adapter in static mode — Astro emits plain HTML/CSS/JS to `dist/` that nginx serves directly.
+  ...(staticBuild ? {} : { adapter: cloudflare() }),
+
+  integrations: [sitemap()],
 });
