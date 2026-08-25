@@ -35,29 +35,22 @@ pnpm build
 pnpm preview
 ```
 
-## Docker deployment
+## Deployment
 
-The same source deploys two ways:
+The site deploys as a **Cloudflare Worker** (`flick-tt-web`, routes in `wrangler.jsonc`). CI
+(`.github/workflows/deploy.yml`) builds and deploys on every push to `master`; it needs the
+`CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets.
 
-- **Cloudflare Workers** — the default `pnpm build` (uses the `@astrojs/cloudflare` adapter), unchanged.
-- **Static image for the NAS** — `STATIC_BUILD=true` drops the adapter and emits a pure static `dist/`
-  served by nginx. This is what runs on the Synology NAS.
-
-CI (`.github/workflows/build-and-push.yml`) builds and pushes the image to GHCR on every push to `master`,
-tagged by commit id:
-
-- `ghcr.io/flicktt/public-web:latest` and `:<commit-id>` (short SHA)
-
-Build it locally with:
+Deploy manually with:
 
 ```sh
-docker build -t public-web .
-docker run --rm -p 8080:80 public-web   # http://localhost:8080
+pnpm build
+npx wrangler deploy
 ```
 
 ## Notes
 
-- Uses Astro with Cloudflare adapter (default) + a static/nginx build for Docker, and Tailwind CSS
+- Uses Astro with the Cloudflare adapter, and Tailwind CSS
 - Pages live under `src/pages`
 - Components live under `src/components`
 - Static assets live in `public`

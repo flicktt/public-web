@@ -1,0 +1,45 @@
+name: Deploy
+
+# Builds the Astro site with the @astrojs/cloudflare adapter and deploys it as the `flick-tt-web`
+# Cloudflare Worker (routes are declared in wrangler.jsonc). Every push to master deploys.
+# Requires two repository secrets:
+#   CLOUDFLARE_API_TOKEN  — API token with "Workers Scripts: Edit" (+ "Workers Routes: Edit" for the zone)
+#   CLOUDFLARE_ACCOUNT_ID — the Cloudflare account id
+on:
+  push:
+    branches: [ master ]
+    paths-ignore:
+      - '**.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9   # pinned to the major that produced pnpm-lock.yaml (lockfileVersion 9.0)
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm build
+
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
