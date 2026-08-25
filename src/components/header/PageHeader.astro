@@ -1,13 +1,18 @@
 ---
 import HeaderLayout from "../../layouts/HeaderLayout.astro";
 
-const { title } = Astro.props;
+interface Props {
+  title: string;
+  heading: string;
+}
+
+const { title, heading } = Astro.props;
 ---
 
 <HeaderLayout>
   <h1
     class="font-extrabold text-5xl md:text-8xl lg:text-9xl xl:text-[200px] uppercase text-flick-yellow"
   >
-    {title}
+    {title}<span class="sr-only">: {heading}</span>
   </h1>
 </HeaderLayout>

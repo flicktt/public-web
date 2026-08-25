@@ -11,8 +11,14 @@ export type Page =
   | "coaches";
 
 export type PageConfig = {
+  /** Nav label; also the visible display word in the page header. */
   title: string;
   desc: string;
+  /**
+   * Completes the <h1>. The header shows `title` as the giant display word and appends this
+   * visually-hidden so the heading reads "<title>: <heading>" to search engines and screen readers.
+   */
+  heading: string;
 };
 
 export type FaqConfig = {

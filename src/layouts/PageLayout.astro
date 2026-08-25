@@ -14,30 +14,37 @@ const pageConfig: Record<Page, PageConfig> = {
   home: {
     title: "Home",
     desc: "",
+    heading: "", // the home page renders its own <h1> in src/pages/index.astro
   },
   offerings: {
     title: "Offerings",
     desc: "",
+    heading: "Table tennis coaching, group sessions, open play and table hire in London",
   },
   compete: {
     title: "Compete",
     desc: "",
+    heading: "Table tennis league and tournaments at Flick TT, London",
   },
   kids: {
     title: "Kids",
     desc: "",
+    heading: "Table tennis coaching for children and schools in London",
   },
   membership: {
     title: "Membership",
     desc: "",
+    heading: "Flick TT table tennis club membership, London",
   },
   about: {
     title: "About",
     desc: "",
+    heading: "Flick TT, the table tennis club at Decathlon Surrey Quays, Canada Water",
   },
   coaches: {
     title: "Coaches",
     desc: "",
+    heading: "The table tennis coaches at Flick TT, London",
   },
 };
 
@@ -70,7 +77,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       page === "home" ? (
         <HomeHeader />
       ) : (
-        <PageHeader title={pageConfig[page].title} />
+        <PageHeader
+          title={pageConfig[page].title}
+          heading={pageConfig[page].heading}
+        />
       )
     }
     <slot />
