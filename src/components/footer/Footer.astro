@@ -4,6 +4,8 @@ import footerLogo from "../../assets/logo-club.png";
 import IgLogo from "../../assets/ig-logo.svg";
 import WhatsAppLogo from "../../assets/whatsapp-logo.svg";
 import { CONTACT_CONSTS } from "../../constants";
+
+const year = new Date().getFullYear();
 ---
 
 <footer class="bg-[#111111] p-7.5 text-xl">
@@ -70,7 +72,7 @@ import { CONTACT_CONSTS } from "../../constants";
         {CONTACT_CONSTS.supportEmail}
       </a>
       <ul class="flex flex-col gap-y-1 xl:flex-row xl:justify-between">
-        <li>© 2026 by Flick TT Ltd.</li>
+        <li>© {year} by Flick TT Ltd.</li>
         <li>Website by Siddhartha</li>
         <li>
           <button class="cursor-pointer text-right" id="scroll-to-top">
