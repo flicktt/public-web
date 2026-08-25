@@ -1,0 +1,12 @@
+# Normalise line endings: store LF in the repo and check out LF everywhere,
+# so edits from Windows and WSL/Linux (and the Docker build) never diverge.
+* text=auto eol=lf
+
+# Binary assets
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary

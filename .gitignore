@@ -24,4 +24,8 @@ pnpm-debug.log*
 .idea/
 
 package-lock.json
+
+# wrangler local state / generated deploy config
+.wrangler/
+.dev.vars
 public-web.iml
