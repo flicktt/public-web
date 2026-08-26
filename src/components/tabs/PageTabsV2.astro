@@ -1,0 +1,129 @@
+---
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+import ChevronDown from "../../icons/ChevronDown.svg";
+import ChevronUp from "../../icons/ChevronUp.svg";
+
+type Props = {
+  tabConfig: {
+    label: string;
+    id: string;
+    Content: AstroComponentFactory;
+    href?: string;
+  }[];
+  active: {
+    label: string;
+    id: string;
+    Content: AstroComponentFactory;
+    href?: string;
+  };
+};
+
+const { tabConfig, active } = Astro.props as Props;
+const numOfTabs = tabConfig.length;
+
+console.log("active", active);
+---
+
+<div data-tabs-root>
+  <div class="border-b border-flick-dark overflow-x-auto">
+    <div
+      class="hidden lg:flex flex-row flex-wrap lg:flex-nowrap max-w-full lg:max-w-fit w-full m-auto border-x border-flick-dark"
+      role="tablist"
+      aria-label="Page sections"
+    >
+      {
+        tabConfig.map(({ label, id, href }) => {
+          const isActive = id === active.id;
+
+          return (
+            <a
+              href={href}
+              class:list={[
+                "tab-links flex justify-center items-center w-full lg:w-50 h-12 lg:h-20 p-2 cursor-pointer not-first:border-l border-flick-dark text-center uppercase font-light lg:text-lg transition duration-150 hover:bg-linear-to-b hover:from-flick-black hover:to-[#242424]",
+                {
+                  "lg:w-90": numOfTabs < 4,
+                  "lg:w-60": numOfTabs >= 4,
+                  "text-flick-yellow bg-linear-to-b from-flick-black to-[#242424]":
+                    isActive,
+                },
+              ]}
+              role="tab"
+              id={`${id}-tab`}
+              aria-selected={isActive ? "true" : "false"}
+              aria-controls={id}
+              tabindex={isActive ? "0" : "-1"}
+              data-tab-trigger={id}
+            >
+              {label}
+            </a>
+          );
+        })
+      }
+    </div>
+
+    <div class="lg:hidden">
+      <button
+        type="button"
+        class="tab-links relative flex justify-center items-center w-full h-12 p-2 cursor-pointer border-flick-dark text-center uppercase font-light transition duration-150 hover:bg-linear-to-b hover:from-flick-black hover:to-[#242424] text-flick-yellow bg-linear-to-b from-flick-black to-[#242424]"
+        data-mobile-menu-toggle
+        aria-expanded="false"
+        aria-controls="mobile-tab-list"
+      >
+        <span class="sr-only">Open tabs menu</span>
+        <span data-mobile-button-label>{active?.label}</span>
+        <span class="absolute right-5" data-mobile-icon-down>
+          <ChevronDown class="text-white size-6" />
+        </span>
+        <span class="absolute right-5 hidden" data-mobile-icon-up>
+          <ChevronUp class="text-white size-6" />
+        </span>
+      </button>
+      <div
+        id="mobile-tab-list"
+        class="hidden border-t border-flick-dark"
+        data-mobile-menu
+      >
+        {
+          tabConfig.map(
+            ({ label, id, href }) =>
+              id !== active.id && (
+                <a
+                  href={href}
+                  class="tab-links flex justify-center items-center w-full h-12 p-2 cursor-pointer border-t border-flick-dark text-center uppercase font-light transition duration-150 hover:bg-linear-to-b hover:from-flick-black hover:to-[#242424]"
+                  data-mobile-tab-trigger={id}
+                  aria-selected="false"
+                >
+                  {label}
+                </a>
+              ),
+          )
+        }
+      </div>
+    </div>
+  </div>
+
+  {
+    tabConfig.map(({ id, Content }) => (
+      <section
+        class:list={[
+          "tab-content scroll-mt-24",
+          { hidden: id !== active.id, block: id === active.id },
+        ]}
+        id={id}
+        role="tabpanel"
+        tabindex="0"
+        aria-labelledby={`${id}-tab`}
+        data-tab-panel={id}
+        hidden={id !== active.id}
+      >
+        <Content />
+      </section>
+    ))
+  }
+</div>
+
+<script>
+  import { initializeTabControllersv2 } from "../../utils/tabControllerv2.ts";
+
+  initializeTabControllersv2();
+</script>

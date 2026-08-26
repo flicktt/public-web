@@ -1,0 +1,70 @@
+---
+import Corporate from "../../components/offerings/Corporate.astro";
+import GroupSessions from "../../components/offerings/GroupSessions.astro";
+import OneToOnes from "../../components/offerings/OneToOnes.astro";
+import OpenSessions from "../../components/offerings/OpenSessions.astro";
+import TableBookings from "../../components/offerings/TableBookings.astro";
+import Workshops from "../../components/offerings/Workshops.astro";
+import PageTabsV2 from "../../components/tabs/PageTabsV2.astro";
+import PageLayout from "../../layouts/PageLayout.astro";
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: "group-sessions" } },
+    { params: { slug: "private-coaching" } },
+    { params: { slug: "workshops" } },
+    { params: { slug: "open-sessions" } },
+    { params: { slug: "table-bookings" } },
+    { params: { slug: "corporate" } },
+  ];
+}
+
+const { slug } = Astro.params;
+
+const offeringsConfig = [
+  {
+    label: "Group sessions",
+    id: "group-sessions",
+    Content: GroupSessions,
+  },
+  {
+    label: "Private Coaching",
+    id: "private-coaching",
+    Content: OneToOnes,
+  },
+  {
+    label: "Workshops",
+    id: "workshops",
+    Content: Workshops,
+  },
+  {
+    label: "Open sessions",
+    id: "open-sessions",
+    Content: OpenSessions,
+  },
+  {
+    label: "Table bookings",
+    id: "table-bookings",
+    Content: TableBookings,
+  },
+  {
+    label: "Corporate",
+    id: "corporate",
+    Content: Corporate,
+  },
+];
+
+const tabConfig = offeringsConfig.map(({ label, id, Content }) => ({
+  label,
+  Content,
+  id,
+  href: `/offerings-v2/${id}/`,
+}));
+
+const defaultTab = offeringsConfig[0];
+const activeTab = offeringsConfig.find(({ id }) => slug === id) ?? defaultTab;
+---
+
+<PageLayout page="offerings">
+  <PageTabsV2 tabConfig={tabConfig} active={activeTab} />
+</PageLayout>
