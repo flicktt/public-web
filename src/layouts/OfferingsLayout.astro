@@ -60,7 +60,12 @@ const containerClasses = cn("pt-6 pb-10 lg:pb-14", containerProps?.class);
           href={linkBtn.href}
           class="m-auto mb-2"
           size="lg"
-          {...(linkBtn.external && { target: "_blank" })}
+          {...(linkBtn.external && {
+            target: "_blank",
+            rel: linkBtn.href.includes("bookwhen.com")
+              ? "noopener nofollow"
+              : "noopener",
+          })}
         >
           {linkBtn.label}
         </Button>
