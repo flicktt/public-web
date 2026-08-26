@@ -14,6 +14,7 @@ export default defineConfig({
 	},
 
   site: "https://www.flicktt.com",
+  trailingSlash: "always",
 
   // Images use Astro's default sharp service. Every route is prerendered, so the `compile` image
   // service optimises at build time — the Workers runtime has no sharp and the runtime `/_image`
