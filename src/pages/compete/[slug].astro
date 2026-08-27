@@ -1,0 +1,49 @@
+---
+import CompeteAtFlick from "../../components/compete/CompeteAtFlick.astro";
+import FlickTTLeague from "../../components/compete/league/FlickTTLeague.astro";
+import FlickTTTournament from "../../components/compete/tournament/FlickTTTournament.astro";
+import PageLayout from "../../layouts/PageLayout.astro";
+import PageTabs from "../../components/tabs/PageTabs.astro";
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: "about" } },
+    { params: { slug: "club-league" } },
+    { params: { slug: "tournament" } },
+  ];
+}
+
+const { slug } = Astro.params;
+
+const offeringsConfig = [
+  {
+    label: "Compete at Flick TT",
+    id: "about",
+    Content: CompeteAtFlick,
+  },
+  {
+    label: "Flick TT League",
+    id: "club-league",
+    Content: FlickTTLeague,
+  },
+  {
+    label: "Flick TT Tournament",
+    id: "tournament",
+    Content: FlickTTTournament,
+  },
+];
+
+const tabConfig = offeringsConfig.map(({ label, id, Content }) => ({
+  label,
+  Content,
+  id,
+  href: `/compete/${id}/`,
+}));
+
+const defaultTab = offeringsConfig[0];
+const activeTab = offeringsConfig.find(({ id }) => slug === id) ?? defaultTab;
+---
+
+<PageLayout page="compete">
+  <PageTabs tabConfig={tabConfig} active={activeTab} />
+</PageLayout>

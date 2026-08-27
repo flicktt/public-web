@@ -25,13 +25,13 @@ const year = new Date().getFullYear();
     <div class="order-1 flex flex-col gap-6 text-right sm:order-2">
       <a
         href="/about/#contact-us"
-        class="font-semibold text-3xl hover:underline"
+        class="font-semibold text-3xl w-fit self-end hover:underline"
       >
         Contact
       </a>
       <address>
         <a
-          href="https://maps.app.goo.gl/pxRgqkdwtRLoAZk79"
+          href={CONTACT_CONSTS.gmap}
           target="_blank"
           rel="noopener"
           class="hover:underline"

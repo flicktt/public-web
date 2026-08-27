@@ -11,8 +11,16 @@ import mem2Img from "../assets/mem-02.png";
 import mem3Img from "../assets/mem-03.jpg";
 
 // Background images can't go through <Image>, so optimise them with getImage() at build time.
-const leagueBg = await getImage({ src: FTTLeagueBg, width: 960, format: "webp" });
-const tournamentBg = await getImage({ src: FTTTournamentBg, width: 960, format: "webp" });
+const leagueBg = await getImage({
+  src: FTTLeagueBg,
+  width: 960,
+  format: "webp",
+});
+const tournamentBg = await getImage({
+  src: FTTTournamentBg,
+  width: 960,
+  format: "webp",
+});
 import Schedule from "../components/home/Schedule.astro";
 import Button from "../components/ui/inputs/Button.astro";
 import DisplayText from "../components/ui/text/DisplayText.astro";
@@ -32,7 +40,9 @@ import PageLayout from "../layouts/PageLayout.astro";
             >
               Everybody
             </span>
-            <span class="sr-only">at Flick TT, the table tennis club in Canada Water, London</span>
+            <span class="sr-only">
+              at Flick TT, the table tennis club in Canada Water, London
+            </span>
           </h1>
           <p class="font-medium text-4xl">A TT Club Based In London</p>
         </hgroup>
@@ -66,7 +76,10 @@ import PageLayout from "../layouts/PageLayout.astro";
           <DisplayText>
             From group coached sessions to a league with an Elo rating system,
             there is no shortage of things to take part in at Flick TT.{" "}
-            <a href="/offerings/" class="text-flick-yellow hover:underline">
+            <a
+              href="/offerings/group-sessions/"
+              class="text-flick-yellow hover:underline"
+            >
               Confused about the different levels of group sessions? Interested
               in booking a private 121 session? Find out more about what we
               offer in the <b>Offerings</b> page &#8594;
@@ -89,7 +102,7 @@ import PageLayout from "../layouts/PageLayout.astro";
             tournaments today.
           </p>
         </hgroup>
-        <Button as="a" href="/kids/">Find out more</Button>
+        <Button as="a" href="/kids/group-sessions/">Find out more</Button>
       </Container>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-2">
@@ -113,7 +126,7 @@ import PageLayout from "../layouts/PageLayout.astro";
             for free.
           </p>
         </div>
-        <Button variant="dark" as="a" href="/compete/#club-league">
+        <Button variant="dark" as="a" href="/compete/club-league/">
           Find out more
         </Button>
       </section>
@@ -135,7 +148,7 @@ import PageLayout from "../layouts/PageLayout.astro";
             players per event and a point-based ranking system.
           </p>
         </div>
-        <Button as="a" href="/compete/#tournament">Find out more</Button>
+        <Button as="a" href="/compete/tournament/">Find out more</Button>
       </section>
     </div>
     <div class="bg-flick-dark">

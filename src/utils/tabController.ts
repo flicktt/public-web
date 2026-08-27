@@ -1,117 +1,17 @@
 import { navigateToTab } from "./tabNavigation";
 
-type TabOptions = {
-  updateHash?: boolean;
-  focusTrigger?: boolean;
-};
-
 export const initializeTabController = (root: HTMLElement) => {
   const desktopTriggers = Array.from(
     root.querySelectorAll<HTMLButtonElement>("[data-tab-trigger]"),
-  );
-  const mobileTriggers = Array.from(
-    root.querySelectorAll<HTMLButtonElement>("[data-mobile-tab-trigger]"),
   );
   const mobileMenuToggle = root.querySelector<HTMLButtonElement>(
     "[data-mobile-menu-toggle]",
   );
   const mobileMenu = root.querySelector<HTMLElement>("[data-mobile-menu]");
-  const mobileButtonLabel = root.querySelector<HTMLElement>(
-    "[data-mobile-button-label]",
-  );
   const mobileIconDown = root.querySelector<HTMLElement>(
     "[data-mobile-icon-down]",
   );
   const mobileIconUp = root.querySelector<HTMLElement>("[data-mobile-icon-up]");
-  const panels = Array.from(
-    root.querySelectorAll<HTMLElement>("[data-tab-panel]"),
-  );
-
-  const setActiveTab = (
-    tabId: string | null | undefined,
-    options: TabOptions = {},
-  ) => {
-    const { updateHash = true, focusTrigger = false } = options;
-    const selectedTabId =
-      tabId || panels[0]?.getAttribute("data-tab-panel") || "";
-    const selectedPanel = panels.find(
-      (panel) => panel.getAttribute("data-tab-panel") === selectedTabId,
-    );
-    const selectedDesktopTrigger = desktopTriggers.find(
-      (trigger) => trigger.getAttribute("data-tab-trigger") === selectedTabId,
-    );
-
-    if (!selectedPanel || !selectedDesktopTrigger) {
-      return;
-    }
-
-    panels.forEach((panel) => {
-      const isActive = panel === selectedPanel;
-      panel.hidden = !isActive;
-      panel.classList.toggle("hidden", !isActive);
-      panel.classList.toggle("block", isActive);
-    });
-
-    desktopTriggers.forEach((trigger) => {
-      const isActive = trigger === selectedDesktopTrigger;
-      trigger.setAttribute("aria-selected", isActive ? "true" : "false");
-      trigger.setAttribute("tabindex", isActive ? "0" : "-1");
-      if (isActive) {
-        trigger.setAttribute("data-active", "true");
-      } else {
-        trigger.removeAttribute("data-active");
-      }
-    });
-
-    mobileTriggers.forEach((trigger) => {
-      const isActive =
-        trigger.getAttribute("data-mobile-tab-trigger") === selectedTabId;
-      trigger.hidden = isActive;
-      trigger.classList.toggle("hidden", isActive);
-      if (isActive) {
-        trigger.setAttribute("data-active", "true");
-      } else {
-        trigger.removeAttribute("data-active");
-      }
-    });
-
-    if (mobileMenuToggle) {
-      mobileMenuToggle.setAttribute(
-        "data-active",
-        selectedDesktopTrigger.getAttribute("data-tab-trigger") ===
-          selectedTabId
-          ? "true"
-          : "false",
-      );
-    }
-
-    if (mobileButtonLabel) {
-      mobileButtonLabel.textContent =
-        selectedDesktopTrigger.textContent?.trim() || "";
-    }
-
-    if (mobileMenuToggle) {
-      mobileMenuToggle.setAttribute("aria-expanded", "false");
-    }
-    if (mobileMenu) {
-      mobileMenu.classList.add("hidden");
-      mobileMenu.removeAttribute("data-open");
-    }
-    if (mobileIconDown) {
-      mobileIconDown.classList.remove("hidden");
-    }
-    if (mobileIconUp) {
-      mobileIconUp.classList.add("hidden");
-    }
-
-    if (updateHash) {
-      navigateToTab(selectedTabId);
-    }
-
-    if (focusTrigger) {
-      selectedDesktopTrigger.focus();
-    }
-  };
 
   const handleKeyboardNavigation = (
     event: KeyboardEvent,
@@ -133,45 +33,19 @@ export const initializeTabController = (root: HTMLElement) => {
     } else if (event.key === "End") {
       event.preventDefault();
       nextIndex = desktopTriggers.length - 1;
-    } else if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      setActiveTab(trigger.getAttribute("data-tab-trigger"), {
-        updateHash: true,
-        focusTrigger: true,
-      });
-      return;
     }
 
     if (nextIndex !== currentIndex) {
       const nextTrigger = desktopTriggers[nextIndex];
       if (nextTrigger) {
         nextTrigger.focus();
-        setActiveTab(nextTrigger.getAttribute("data-tab-trigger"), {
-          updateHash: true,
-          focusTrigger: false,
-        });
       }
     }
   };
 
   desktopTriggers.forEach((trigger) => {
-    trigger.addEventListener("click", () => {
-      setActiveTab(trigger.getAttribute("data-tab-trigger"), {
-        updateHash: true,
-        focusTrigger: false,
-      });
-    });
     trigger.addEventListener("keydown", (event) => {
       handleKeyboardNavigation(event, trigger);
-    });
-  });
-
-  mobileTriggers.forEach((trigger) => {
-    trigger.addEventListener("click", () => {
-      setActiveTab(trigger.getAttribute("data-mobile-tab-trigger"), {
-        updateHash: true,
-        focusTrigger: false,
-      });
     });
   });
 
@@ -197,27 +71,6 @@ export const initializeTabController = (root: HTMLElement) => {
       }
     });
   }
-
-  const allTabIds =
-    panels.length &&
-    panels.map((panel) => panel.getAttribute("data-tab-panel"));
-
-  const windowHash = window.location.hash.replace(/^#/, "");
-
-  const initialTabId =
-    (windowHash.length &&
-      (allTabIds as string[])?.includes(windowHash) &&
-      windowHash) ||
-    (allTabIds && allTabIds[0]) ||
-    "";
-  setActiveTab(initialTabId, { updateHash: false, focusTrigger: false });
-
-  window.addEventListener("hashchange", () => {
-    setActiveTab(window.location.hash.replace(/^#/, ""), {
-      updateHash: false,
-      focusTrigger: false,
-    });
-  });
 };
 
 export const initializeTabControllers = (selector = "[data-tabs-root]") => {

@@ -12,7 +12,7 @@ function getBlockValues(dayConfig: ScheduleDayConfig) {
     return {
       label: `Club Table (${dayConfig.isPeak ? "Peak" : "Off-Peak"})${dayConfig.hasRobot ? " / Training Robot" : ""}`,
       bg: "bg-black/15",
-      href: "/offerings/#table-bookings",
+      href: "/offerings/table-bookings/",
     };
   }
 
@@ -21,13 +21,13 @@ function getBlockValues(dayConfig: ScheduleDayConfig) {
       label: `Flick TT League ${dayConfig.matching === "grouped" ? "Grouped" : "Open"} Matching`,
       bg: "bg-flick-yellow",
       color: "text-black",
-      href: "/compete/#club-league",
+      href: "/compete/club-league/",
     };
   }
 
   if (type === "group") {
-    const adultHref = "/offerings/#group-sessions";
-    const kidsHref = "/kids/#group-sessions";
+    const adultHref = "/offerings/group-sessions/";
+    const kidsHref = "/kids/group-sessions/";
     const prefix = "Level";
     const suffix = "Group Session";
 

@@ -1,0 +1,56 @@
+---
+import GroupSessions from "../../components/kids/GroupSessions.astro";
+import OneToOnes from "../../components/kids/OneToOnes.astro";
+import SchoolSessions from "../../components/kids/SchoolSessions.astro";
+import U18Tournament from "../../components/kids/U18Tournament.astro";
+import PageTabs from "../../components/tabs/PageTabs.astro";
+import PageLayout from "../../layouts/PageLayout.astro";
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: "group-sessions" } },
+    { params: { slug: "private-coaching" } },
+    { params: { slug: "u18-tournament" } },
+    { params: { slug: "school-sessions" } },
+  ];
+}
+
+const { slug } = Astro.params;
+
+const kidsConfig = [
+  {
+    label: "Group sessions",
+    id: "group-sessions",
+    Content: GroupSessions,
+  },
+  {
+    label: "Private Coaching",
+    id: "private-coaching",
+    Content: OneToOnes,
+  },
+  {
+    label: "U18 Tournament",
+    id: "u18-tournament",
+    Content: U18Tournament,
+  },
+  {
+    label: "School Sessions",
+    id: "school-sessions",
+    Content: SchoolSessions,
+  },
+];
+
+const tabConfig = kidsConfig.map(({ label, id, Content }) => ({
+  label,
+  Content,
+  id,
+  href: `/kids/${id}/`,
+}));
+
+const defaultTab = kidsConfig[0];
+const activeTab = kidsConfig.find(({ id }) => slug === id) ?? defaultTab;
+---
+
+<PageLayout page="kids">
+  <PageTabs tabConfig={tabConfig} active={activeTab} />
+</PageLayout>

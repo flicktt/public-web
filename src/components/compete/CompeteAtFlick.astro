@@ -4,8 +4,18 @@ import FTTTournamentBg from "../../assets/compete-banner-tournament.png";
 import FTTU18TournamentBg from "../../assets/compete-banner-u18.png";
 import CompeteLisAlbertoImage from "../../assets/compete-lis-alberto.png";
 
-const tournamentBg = await getImage({ src: FTTTournamentBg, width: 1600, quality: 70, format: "webp" });
-const u18Bg = await getImage({ src: FTTU18TournamentBg, width: 1600, quality: 70, format: "webp" });
+const tournamentBg = await getImage({
+  src: FTTTournamentBg,
+  width: 1600,
+  quality: 70,
+  format: "webp",
+});
+const u18Bg = await getImage({
+  src: FTTU18TournamentBg,
+  width: 1600,
+  quality: 70,
+  format: "webp",
+});
 import Container from "../../layouts/Container.astro";
 import SplitLayoutContainer from "../../layouts/splitLayout/SplitLayoutContainer.astro";
 import SplitLayoutLeft from "../../layouts/splitLayout/SplitLayoutLeft.astro";
@@ -49,7 +59,7 @@ import DisplayText from "../ui/text/DisplayText.astro";
           fee (every 3 months) and can book to play on Fridays or Sundays, with
           end-of-league awards for the top 3 players in each category.{" "}
           <a
-            href="#club-league"
+            href="/compete/club-league/"
             data-link-to-tab
             class="text-flick-yellow font-semibold hover:underline"
           >
@@ -97,7 +107,7 @@ import DisplayText from "../ui/text/DisplayText.astro";
       Prizes include cash rewards for top performers, making it the perfect mix
       of competition, skill-building, and fun.
     </p>
-    <Button as="a" href="#tournament" data-link-to-tab>Find out more</Button>
+    <Button as="a" href="/compete/tournament/">Find out more</Button>
   </Container>
 </div>
 <div
@@ -119,12 +129,12 @@ import DisplayText from "../ui/text/DisplayText.astro";
       club sessions. A structured, competitive, and exciting environment for
       junior players to develop and test their skills.
     </p>
-    <Button as="a" href="/kids#u18-tournament"> Find out more </Button>
+    <Button as="a" href="/kids/u18-tournament/">Find out more</Button>
   </Container>
 </div>
 
-<script>
+<!-- <script>
   import { initializeTabLinkHandlers } from "../../utils/tabController.ts";
 
   initializeTabLinkHandlers();
-</script>
+</script> -->

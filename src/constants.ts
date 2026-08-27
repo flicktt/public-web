@@ -1,6 +1,7 @@
 export const CONTACT_CONSTS = {
   supportEmail: "services@flicktt.club",
   whatsapp: "https://wa.me/message/RFAGZD6LY7RWL1",
+  gmap: "https://maps.app.goo.gl/pxRgqkdwtRLoAZk79",
 };
 
 export const COACH_TITLES: Record<

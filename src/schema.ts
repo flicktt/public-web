@@ -31,11 +31,18 @@ export const localBusinessSchema = {
     postalCode: "SE16 7FU",
     addressCountry: "GB",
   },
-  hasMap: "https://maps.app.goo.gl/pxRgqkdwtRLoAZk79",
+  hasMap: CONTACT_CONSTS.gmap,
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ],
       opens: "09:00",
       closes: "20:00",
     },
