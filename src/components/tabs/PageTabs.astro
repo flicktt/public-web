@@ -100,24 +100,16 @@ const numOfTabs = tabConfig.length;
     </div>
   </div>
 
-  {
-    tabConfig.map(({ id, Content }) => (
-      <section
-        class:list={[
-          "tab-content scroll-mt-24",
-          { hidden: id !== active.id, block: id === active.id },
-        ]}
-        id={id}
-        role="tabpanel"
-        tabindex="0"
-        aria-labelledby={`${id}-tab`}
-        data-tab-panel={id}
-        hidden={id !== active.id}
-      >
-        <Content />
-      </section>
-    ))
-  }
+  <main
+    class="tab-content scroll-mt-24"
+    id={active.id}
+    role="tabpanel"
+    tabindex="0"
+    aria-labelledby={`${active.id}-tab`}
+    data-tab-panel={active.id}
+  >
+    <active.Content />
+  </main>
 </div>
 
 <script>
