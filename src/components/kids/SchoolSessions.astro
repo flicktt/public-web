@@ -1,8 +1,9 @@
 ---
 import MainImage from "../../assets/offerings-corporate-main.jpg";
+import { CONTACT_CONSTS } from "../../constants";
 import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
 import type { FaqConfig } from "../../types";
-import Button from "../ui/inputs/Button.astro";
+import PartnershipFaq from "./faq/PartnershipFaq.astro";
 
 const desc =
   "Flick TT brings the game to schools or welcomes students to our premium venue. We currently collaborate with four schools, delivering fully customised sessions tailored to group size, skill level, and location. Coaches design each session to combine skill development, fun, and engagement, ensuring every student gets the right level of challenge and personalised attention.";
@@ -24,8 +25,8 @@ const faqConfig: FaqConfig[] = [
   },
   {
     title: "How do we set up a partnership?",
-    Content:
-      "Email services@flicktt.club and we will arrange a conversation about what your school needs.",
+    Content: PartnershipFaq,
+    answerText: `Email ${CONTACT_CONSTS.supportEmail} and we will arrange a conversation about what your school needs.`,
   },
 ];
 ---
@@ -36,7 +37,7 @@ const faqConfig: FaqConfig[] = [
   desc={desc}
   linkBtn={{
     label: "Contact us",
-    href: "mailto:services@flicktt.club",
+    href: `mailto:${CONTACT_CONSTS.supportEmail}`,
     external: true,
   }}
   faqConfig={faqConfig}

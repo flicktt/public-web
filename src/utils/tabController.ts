@@ -1,5 +1,3 @@
-import { navigateToTab } from "./tabNavigation";
-
 export const initializeTabController = (root: HTMLElement) => {
   const desktopTriggers = Array.from(
     root.querySelectorAll<HTMLButtonElement>("[data-tab-trigger]"),
@@ -77,17 +75,4 @@ export const initializeTabControllers = (selector = "[data-tabs-root]") => {
   document
     .querySelectorAll<HTMLElement>(selector)
     .forEach(initializeTabController);
-};
-
-export const initializeTabLinkHandlers = (
-  selector = "[data-link-to-tab]",
-  options?: { scrollToTop?: boolean },
-) => {
-  document.querySelectorAll<HTMLAnchorElement>(selector).forEach((element) => {
-    element.addEventListener("click", (event) => {
-      event.preventDefault();
-      const targetId = element.getAttribute("href")?.replace(/^#/, "") || "";
-      navigateToTab(targetId, options ?? { scrollToTop: true });
-    });
-  });
 };

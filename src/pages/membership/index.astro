@@ -1,5 +1,7 @@
 ---
 import Faqs from "../../components/faqs/Faqs.astro";
+import HowToJoinFaq from "../../components/membership/faq/HowToJoinFaq.astro";
+import SwitchFaq from "../../components/membership/faq/SwitchFaq.astro";
 import MembershipBenefits from "../../components/membership/MembershipBenefits.astro";
 import MembershipTypes from "../../components/membership/MembershipTypes.astro";
 import PhotoGallery from "../../components/membership/PhotoGallery.astro";
@@ -26,7 +28,9 @@ const pointConfig = [
 const faqConfig: FaqConfig[] = [
   {
     title: "How do I join?",
-    Content: "You can join our membership at bookwhen.com/flicktt/memberships.",
+    Content: HowToJoinFaq,
+    answerText:
+      "You can join our membership at https://www.bookwhen.com/flicktt/memberships.",
   },
   {
     title: "How long does membership last, and can I cancel?",
@@ -35,7 +39,8 @@ const faqConfig: FaqConfig[] = [
   },
   {
     title: "How do I switch membership type or subscription period?",
-    Content:
+    Content: SwitchFaq,
+    answerText:
       "Please contact us through email or WhatsApp and we can sort it out for you.",
   },
 ];

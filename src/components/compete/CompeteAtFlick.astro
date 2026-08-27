@@ -22,6 +22,7 @@ import SplitLayoutLeft from "../../layouts/splitLayout/SplitLayoutLeft.astro";
 import SplitLayoutRight from "../../layouts/splitLayout/SplitLayoutRight.astro";
 import Button from "../ui/inputs/Button.astro";
 import DisplayText from "../ui/text/DisplayText.astro";
+import { CONTACT_CONSTS } from "../../constants";
 ---
 
 <Container class="flex flex-col gap-10 lg:gap-14 py-10 lg:py-14">
@@ -85,7 +86,12 @@ import DisplayText from "../ui/text/DisplayText.astro";
       </div>
     </SplitLayoutRight>
   </SplitLayoutContainer>
-  <Button as="a" class="m-auto" size="lg" href="mailto:services@flicktt.club">
+  <Button
+    as="a"
+    class="m-auto"
+    size="lg"
+    href={`mailto:${CONTACT_CONSTS.supportEmail}`}
+  >
     Contact Us
   </Button>
 </Container>
@@ -133,9 +139,3 @@ import DisplayText from "../ui/text/DisplayText.astro";
     <Button as="a" href="/kids/u18-tournament/">Find out more</Button>
   </Container>
 </div>
-
-<!-- <script>
-  import { initializeTabLinkHandlers } from "../../utils/tabController.ts";
-
-  initializeTabLinkHandlers();
-</script> -->

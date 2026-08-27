@@ -1,7 +1,9 @@
 ---
 import MainImage from "../../assets/offerings-corporate-main.jpg";
+import { CONTACT_CONSTS } from "../../constants";
 import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
 import type { FaqConfig } from "../../types";
+import CorporateQuote from "./faq/CorporateQuote.astro";
 
 const desc =
   "Looking to host a unique corporate event in London? From team-building and client entertainment to wellbeing days and family-friendly sessions, we design table tennis experiences to fit your goals, your people, and your schedule. Join us at our premium venue next to Canada Water station on the Jubilee Line, or let us bring the event directly to your workplace.";
@@ -29,8 +31,8 @@ const faqConfig: FaqConfig[] = [
   },
   {
     title: "How do I get a quote?",
-    Content:
-      "Email services@flicktt.club with your rough numbers, preferred dates and whether you would like the event at our venue or your office, and we will come back with options.",
+    Content: CorporateQuote,
+    answerText: `Email ${CONTACT_CONSTS.supportEmail} with your rough numbers, preferred dates and whether you would like the event at our venue or your office, and we will come back with options.`,
   },
 ];
 ---
@@ -41,7 +43,7 @@ const faqConfig: FaqConfig[] = [
   desc={desc}
   linkBtn={{
     label: "Contact us",
-    href: "mailto:services@flicktt.club",
+    href: `mailto:${CONTACT_CONSTS.supportEmail}`,
     external: true,
   }}
   faqConfig={faqConfig}
