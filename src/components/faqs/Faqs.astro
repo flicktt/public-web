@@ -21,14 +21,18 @@ const faqSchema = {
   mainEntity: faqConfig.flatMap(({ title, Content, answerText }) => {
     const text = typeof Content === "string" ? Content : answerText;
     if (!text) {
-      console.warn(`[Faqs] "${title}" has a component answer but no answerText; omitted from JSON-LD`);
+      console.warn(
+        `[Faqs] "${title}" has a component answer but no answerText; omitted from JSON-LD`,
+      );
       return [];
     }
-    return [{
-      "@type": "Question",
-      name: title,
-      acceptedAnswer: { "@type": "Answer", text },
-    }];
+    return [
+      {
+        "@type": "Question",
+        name: title,
+        acceptedAnswer: { "@type": "Answer", text },
+      },
+    ];
   }),
 };
 ---
@@ -42,16 +46,25 @@ const faqSchema = {
     </HeaderTag>
     <AccordionStack>
       {
-        (faqConfig as FaqConfig[]).map(({ title, Content }) => (
-          <Accordion>
-            <AccordionTitle headerAs={HeaderTag === "h2" ? "h3" : "h4"}>
-              {title}
-            </AccordionTitle>
-            <AccordionContent>
-              {typeof Content === "string" ? <p>{Content}</p> : <Content />}
-            </AccordionContent>
-          </Accordion>
-        ))
+        (faqConfig as FaqConfig[]).map(({ title, Content }, i) => {
+          const titleId = `faq-${i}-btn`;
+          const panelId = `faq-${i}-panel`;
+
+          return (
+            <Accordion>
+              <AccordionTitle
+                headerAs={HeaderTag === "h2" ? "h3" : "h4"}
+                id={titleId}
+                ariaControls={panelId}
+              >
+                {title}
+              </AccordionTitle>
+              <AccordionContent id={panelId} ariaLabelledBy={titleId}>
+                {typeof Content === "string" ? <p>{Content}</p> : <Content />}
+              </AccordionContent>
+            </Accordion>
+          );
+        })
       }
     </AccordionStack>
   </Container>
