@@ -82,9 +82,9 @@ const { includeTitle } = Astro.props;
     </ul>
   )) : (
     <ul>
-    {coachConfig.flatMap(({ title, coaches }) => (coaches.map((coach) => ({ ...coach, title })))).map(({ title, bookingUrl, profile }) => (
-        <CoachRow bookingUrl={bookingUrl} profile={{...profile, title}} />
-    ))}
+      {coachConfig.flatMap(({ title, coaches }) => (coaches.map((coach) => ({ ...coach, title })))).map(({ title, bookingUrl, profile }) => (
+          <CoachRow bookingUrl={bookingUrl} profile={{...profile, title}} />
+      ))}
     </ul>
   )
 }
