@@ -3,6 +3,8 @@ import InfoHighlightLayout from "../../../layouts/InfoHighlightLayout.astro";
 import OfferingsLayout from "../../../layouts/OfferingsLayout.astro";
 import type { FaqConfig } from "../../../types";
 import Button from "../../ui/inputs/Button.astro";
+import RankingPoints from "./RankingPoints.astro";
+import TournamentFormat from "./TournamentFormat.astro";
 
 const faqConfig: FaqConfig[] = [
   {
@@ -21,6 +23,21 @@ const faqConfig: FaqConfig[] = [
       "Entry is £12 for members and £25 for non-members. The winner gets £125, the runner-up gets £75, and third place gets £50. There are also prizes for winners of the consolation draw.",
   },
   {
+    title: "Do I need to play all 5 tournaments to be ranked?",
+    Content:
+      "No — there's no minimum number of tournaments required to appear in the Flick TT Ranking. Every tournament you play contributes points toward your season total, so you can join as many or as few as you like. That said, since all five tournaments count toward your final ranking, playing more gives you more chances to rack up points and improve your standing.",
+  },
+  {
+    title: "How are groups decided?",
+    Content:
+      "To keep the group stage fair and competitive, the 8 highest-ranked players in the Flick TT Ranking are seeded, with one seeded player placed into each group. The remaining players are then allocated based on a combination of Flick TT Ranking, TTE ranking, and playing level as assessed by Flick TT, with the draw conducted randomly within those criteria. The goal is to avoid groups that are overly strong or weak, so every player gets a fair and competitive tournament. Final group composition is determined by the Flick TT tournament organisers, whose decision is final.",
+  },
+  {
+    title: "What if I don't make the final?",
+    Content:
+      "The competition doesn't stop when your last match ends! All players who stay at the venue until the end of the tournament are entered into a prize draw, with prizes including table tennis rubbers, Flick TT kit, vouchers, and other rewards.",
+  },
+  {
     title: "Do I need to bring my own racket?",
     Content: "Yes, you will need your own racket for a Flick TT tournament.",
   },
@@ -34,17 +51,15 @@ const faqConfig: FaqConfig[] = [
   faqConfig={faqConfig}
 >
   <p class="text-3xl md:text-4xl text-flick-yellow text-center">
-    Orci varius natoque penatibus et magnis dis
-    <b>parturient montes</b>, nascetur ridiculus mus. Donec vitae tincidunt
-    nisl.
+    Compete in five open Ranking Tournaments throughout the season for a shot at
+    the <b>Top 32 Finals</b>.
   </p>
   <p class="font-light text-xl lg:text-2xl text-center">
-    Integer tincidunt, ipsum at commodo tempus, enim orci consequat dolor, non
-    sodales velit erat tristique lacus. Integer fermentum convallis orci ac
-    faucibus. Integer sodales at erat ut vestibulum. Suspendisse ultrices sapien
-    sit amet pharetra maximus. Nullam mollis dolor at urna auctor, id feugiat mi
-    porttitor. Donec tincidunt lacinia lectus, id luctus quam dapibus sit amet.
-    In dignissim dapibus nunc, ut semper libero interdum vitae.
+    Each tournament features 48 players in a group stage followed by knockout
+    Main and Consolation Draws, guaranteeing at least 6 matches per player.
+    Points earned across all five tournaments determine your Flick TT Ranking,
+    and the season's top 32 players qualify for the Finals to decide the Flick
+    TT Champion of the Year.
   </p>
   <Button
     as="a"
@@ -72,4 +87,6 @@ const faqConfig: FaqConfig[] = [
       Winner: £125, Runner Up: £75, 3rd Place: £50, plus consolation prizes
     </p>
   </InfoHighlightLayout>
+  <TournamentFormat />
+  <RankingPoints />
 </OfferingsLayout>

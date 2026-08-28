@@ -1,0 +1,36 @@
+---
+import SplitLayoutContainer from "../../../layouts/splitLayout/SplitLayoutContainer.astro";
+import SplitLayoutLeft from "../../../layouts/splitLayout/SplitLayoutLeft.astro";
+import SplitLayoutRight from "../../../layouts/splitLayout/SplitLayoutRight.astro";
+---
+
+<SplitLayoutContainer>
+  <SplitLayoutLeft title="Tournament Format" />
+  <SplitLayoutRight>
+    <div class="flex flex-col gap-4 text-xl">
+      <p>
+        Each Flick TT Tournament features <b>48 players</b>, divided into 8
+        groups of 6 players.
+      </p>
+      <p>
+        Group stage matches are <b>best-of-3</b> sets, with each player playing 5
+        matches against their group opponents.
+      </p>
+      <p>
+        At the end of the group stage, the top 3 players from each group quality
+        for the <b>Main Draw</b>; the bottom 3 players from each group qualify
+        for the
+        <b>Consolation Draw</b>.
+      </p>
+      <p>
+        Both draws then proceed to a knockout format. From this point onwards,
+        all matches are <b>best-of-5 sets</b>, with players advancing through
+        each round until the final two meet in the Grand Final.
+      </p>
+      <p>
+        This structure guarantees every competitor <b>at least 6 matches</b> across
+        the tournament: 5 in the group stage and at least 1 in the knockout rounds.
+      </p>
+    </div>
+  </SplitLayoutRight>
+</SplitLayoutContainer>

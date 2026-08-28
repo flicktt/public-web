@@ -91,10 +91,10 @@ const contacts = [
   <SplitLayoutContainer section>
     <SplitLayoutLeft titleAs="h2" title="What we believe in" />
     <SplitLayoutRight>
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-4 text-xl">
         {
           aboutPoints.map(({ title, desc }) => (
-            <p class="text-xl">
+            <p>
               <b class="text-flick-yellow">{title} &ndash;</b> {desc}
             </p>
           ))

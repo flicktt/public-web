@@ -1,0 +1,44 @@
+---
+interface Props {
+  rows: { position: string; points: number }[];
+}
+
+const { rows } = Astro.props;
+---
+
+<table
+  class="table-auto w-full border border-flick-dark rounded-xl border-separate border-spacing-0"
+>
+  <thead class="text-2xl">
+    <tr>
+      <th class="px-4 py-3 border-b border-flick-dark text-left"
+        >Final Position</th
+      >
+      <th class="w-32 px-4 py-3 border-b border-l border-flick-dark">Points</th>
+    </tr>
+  </thead>
+  <tbody class="text-xl">
+    {
+      rows.map(({ position, points }, i) => (
+        <tr class="group">
+          <td
+            class:list={[
+              "m-0 px-4 py-3 group-hover:bg-white/2",
+              { "border-b border-flick-dark": i !== rows.length - 1 },
+            ]}
+          >
+            <b>{position}</b>
+          </td>
+          <td
+            class:list={[
+              "w-32 m-0 px-4 py-3 text-center border-l group-hover:bg-white/2 border-flick-dark",
+              { "border-b": i !== rows.length - 1 },
+            ]}
+          >
+            {points}
+          </td>
+        </tr>
+      ))
+    }
+  </tbody>
+</table>

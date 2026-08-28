@@ -1,0 +1,59 @@
+---
+import SplitLayoutContainer from "../../../layouts/splitLayout/SplitLayoutContainer.astro";
+import SplitLayoutLeft from "../../../layouts/splitLayout/SplitLayoutLeft.astro";
+import SplitLayoutRight from "../../../layouts/splitLayout/SplitLayoutRight.astro";
+import RankingPointsTable from "./RankingPointsTable.astro";
+
+const mainDrawPoints = [
+  { position: "Champion", points: 48 },
+  { position: "Runner-up", points: 44 },
+  { position: "3rd place", points: 40 },
+  { position: "4th place", points: 36 },
+  { position: "Quarter-final", points: 32 },
+  { position: "Round of 16", points: 28 },
+  { position: "Round of 32", points: 24 },
+];
+
+const consolationDrawPoints = [
+  { position: "Consolation Champion", points: 24 },
+  { position: "Consolation Runner-up", points: 20 },
+  { position: "3rd place", points: 16 },
+  { position: "4th place", points: 12 },
+  { position: "Quarter-final", points: 8 },
+  { position: "Round of 16", points: 4 },
+  { position: "Round of 32", points: 2 },
+];
+---
+
+<SplitLayoutContainer>
+  <SplitLayoutLeft
+    title="Ranking Points"
+    subtitle="Every match you win adds to your season total. Here’s how points are awarded at each stage of the tournament."
+  />
+  <SplitLayoutRight>
+    <div class="flex flex-col gap-6">
+      <div>
+        <h4 class="text-3xl font-bold mb-4">Main Draw</h4>
+        <RankingPointsTable rows={mainDrawPoints} />
+      </div>
+      <div>
+        <h4 class="text-3xl font-bold mb-4">Consolation Draw</h4>
+        <RankingPointsTable rows={consolationDrawPoints} />
+      </div>
+      <div>
+        <h4 class="text-flick-yellow text-3xl font-bold mb-2">
+          The Flick TT Top 32 Finals
+        </h4>
+        <p class="text-xl">
+          Points earned across all five Ranking Tournaments are added together
+          to form your season-long Flick TT Ranking. At the end of the season,
+          the 32 highest-ranked players qualify for the Top 32 Finals, where
+          they compete for the title of <b>Flick TT Champion of the Year</b> — the
+          ultimate test of consistency and performance across the full season. If
+          needed, Flick TT reserves the right to invite additional players to complete
+          the 32-player field.
+        </p>
+      </div>
+    </div>
+  </SplitLayoutRight>
+</SplitLayoutContainer>
