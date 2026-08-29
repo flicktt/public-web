@@ -2,7 +2,10 @@
 	"compatibility_date": "2026-05-21",
 	"compatibility_flags": ["global_fetch_strictly_public"],
 	"name": "flick-tt-web",
-	"routes": [{ "pattern": "preview.flicktt.club/*", "zone_name": "flicktt.club" }],
+	"routes": [
+		{ "pattern": "preview.flicktt.club/*", "zone_name": "flicktt.club" },
+		{ "pattern": "www.flicktt.com/*",      "zone_name": "flicktt.com"  }
+	],
 	"main": "@astrojs/cloudflare/entrypoints/server",
 	"assets": {
 		"directory": "./dist",
