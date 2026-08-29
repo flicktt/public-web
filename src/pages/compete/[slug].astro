@@ -4,6 +4,7 @@ import FlickTTLeague from "../../components/compete/league/FlickTTLeague.astro";
 import FlickTTTournament from "../../components/compete/tournament/FlickTTTournament.astro";
 import PageLayout from "../../layouts/PageLayout.astro";
 import PageTabs from "../../components/tabs/PageTabs.astro";
+import type { Page } from "../../types";
 
 export function getStaticPaths() {
   return [
@@ -44,6 +45,6 @@ const defaultTab = offeringsConfig[0];
 const activeTab = offeringsConfig.find(({ id }) => slug === id) ?? defaultTab;
 ---
 
-<PageLayout page="compete">
+<PageLayout page={`compete-${slug}` as Page}>
   <PageTabs tabConfig={tabConfig} active={activeTab} />
 </PageLayout>

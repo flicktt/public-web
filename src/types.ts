@@ -3,9 +3,19 @@ import type { SvgComponent } from "astro/types";
 
 export type Page =
   | "home"
-  | "offerings"
-  | "compete"
-  | "kids"
+  | "offerings-group-sessions"
+  | "offerings-private-coaching"
+  | "offerings-workshops"
+  | "offerings-open-sessions"
+  | "offerings-table-bookings"
+  | "offerings-corporate"
+  | "kids-group-sessions"
+  | "kids-private-coaching"
+  | "kids-u18-tournament"
+  | "kids-school-sessions"
+  | "compete-about"
+  | "compete-club-league"
+  | "compete-tournament"
   | "membership"
   | "about"
   | "coaches";

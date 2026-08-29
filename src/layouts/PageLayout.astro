@@ -12,45 +12,111 @@ interface Props {
 }
 
 const pageConfig: Record<Page, PageConfig> = {
-  // TODO descriptions need filling out for each page
   home: {
     title: "Home",
-    desc: "",
+    desc: "Flick TT is a table tennis club in Canada Water, London, offering group coaching, private lessons, a ranked league, tournaments and kids sessions for all levels.",
     heading: "", // the home page renders its own <h1> in src/pages/index.astro
   },
-  offerings: {
-    title: "Offerings",
-    desc: "",
-    heading: "Table tennis coaching, group sessions, open play and table hire in London",
+  "offerings-group-sessions": {
+    title: "Group Sessions",
+    desc: "Level-based table tennis group sessions in London at Flick TT: two-hour sessions with drills, personalised coaching and match play for levels 1 to 5.",
+    heading: "Table tennis group sessions in London",
   },
-  compete: {
-    title: "Compete",
-    desc: "",
-    heading: "Table tennis league and tournaments at Flick TT, London",
+  "offerings-private-coaching": {
+    title: "Private Coaching",
+    desc: "Book one-to-one table tennis coaching in London with Flick TT's coaches, combining technique, match strategy and multiball training.",
+    heading: "Table tennis coaching in London",
   },
-  kids: {
-    title: "Kids",
-    desc: "",
+  "offerings-workshops": {
+    title: "Workshops",
+    desc: "Join Flick TT's bi-monthly table tennis workshops in London, free for members, with two-hour deep dives into footwork, serves and other key skills.",
+    heading: "Table tennis workshops in London",
+  },
+  "offerings-open-sessions": {
+    title: "Open Sessions",
+    desc: "Drop into Flick TT's unsupervised open table tennis sessions in London. Sign up individually, get matched with other players and enjoy relaxed social play.",
+    heading: "Table tennis open play in London",
+  },
+  "offerings-table-bookings": {
+    title: "Table Bookings",
+    desc: "Book a table tennis table at Flick TT's London club for practice or casual play on professional flooring, with a training robot available on Saturdays.",
+    heading: "Table tennis table hire in London",
+  },
+  "offerings-corporate": {
+    title: "Corporate",
+    desc: "Host a corporate table tennis event in London with Flick TT: team-building, client entertainment and wellbeing days at our Canada Water venue or your office.",
+    heading: "Table tennis corporate event hire in London",
+  },
+  "kids-group-sessions": {
+    title: "Kids Group Sessions",
+    desc: "Table tennis group sessions for children in London at Flick TT, with a clear pathway from Flick Start beginners to competitive Flick Performance players.",
+    heading: "Table tennis kids group sessions in London",
+  },
+  "kids-private-coaching": {
+    title: "Kids Private Coaching",
+    desc: "Book personalised one-to-one table tennis coaching for children in London with Flick TT's experienced coaches, tailored to your child's goals.",
+    heading: "Table tennis kids coaching in London",
+  },
+  "kids-u18-tournament": {
+    title: "U18 Tournament",
+    desc: "Junior table tennis tournaments in London at Flick TT: U18 events every two months with 48 players, a points ranking system and a season final.",
+    heading: "Table tennis kids tournaments at Flick TT, London",
+  },
+  "kids-school-sessions": {
+    title: "School Sessions",
+    desc: "Flick TT brings table tennis coaching to London schools, or welcomes classes to our venue, with fully customised sessions and DBS-checked coaches.",
     heading: "Table tennis coaching for children and schools in London",
+  },
+  "compete-about": {
+    title: "Compete At Flick TT",
+    desc: "Compete at Flick TT: join our quarterly Flick League, Central London League and British League teams, plus adult and U18 tournaments in London.",
+    heading: "Table tennis tournaments and leagues in London",
+  },
+  "compete-club-league": {
+    title: "Flick TT League",
+    desc: "Join the Flick TT League, a table tennis ladder with an Elo rating system. Play free matching sessions every Friday and Sunday in London.",
+    heading: "Table tennis league competition in London",
+  },
+  "compete-tournament": {
+    title: "Flick TT Tournament",
+    desc: "Enter Flick TT's table tennis tournaments in London: five ranking events a year, 48 players per event, guaranteed matches and a Top 32 season final.",
+    heading: "Table tennis tournaments in London",
   },
   membership: {
     title: "Membership",
-    desc: "",
+    desc: "Become a Flick TT member for discounted table tennis in London, including cheaper group sessions, private coaching, tournaments and free workshops.",
     heading: "Flick TT table tennis club membership, London",
   },
   about: {
     title: "About",
-    desc: "",
-    heading: "Flick TT, the table tennis club at Decathlon Surrey Quays, Canada Water",
+    desc: "About Flick TT: a table tennis club founded in 2023 at Decathlon Surrey Quays, Canada Water, now home to a community of over 250 members.",
+    heading:
+      "Flick TT, the table tennis club at Decathlon Surrey Quays, Canada Water",
   },
   coaches: {
     title: "Coaches",
-    desc: "",
+    desc: "Meet the table tennis coaches at Flick TT London: head coaches Alberto Garrido and Lis Pardo, and club coach Martin Matuzevicius.",
     heading: "The table tennis coaches at Flick TT, London",
   },
 };
 
 const { page } = Astro.props;
+
+const getHeaderTitle = (page: string) => {
+  const titles: Record<string, string> = {
+    offerings: "Offerings",
+    kids: "Kids",
+    compete: "Compete",
+  };
+
+  const parentPage = page.split("-")[0];
+
+  if (titles.hasOwnProperty(parentPage)) {
+    return titles[parentPage];
+  }
+
+  return pageConfig[page as Page].title;
+};
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -73,7 +139,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={pageConfig[page].desc} />
-    <title>{`Flick TT | ${pageConfig[page].title}`}</title>
+    <title>{`${pageConfig[page].title} | Flick TT`}</title>
     <script
       type="application/ld+json"
       set:html={JSON.stringify(localBusinessSchema)}
@@ -85,7 +151,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
         <HomeHeader />
       ) : (
         <PageHeader
-          title={pageConfig[page].title}
+          title={getHeaderTitle(page)}
           heading={pageConfig[page].heading}
         />
       )

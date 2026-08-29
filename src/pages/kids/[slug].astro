@@ -5,6 +5,7 @@ import SchoolSessions from "../../components/kids/SchoolSessions.astro";
 import U18Tournament from "../../components/kids/U18Tournament.astro";
 import PageTabs from "../../components/tabs/PageTabs.astro";
 import PageLayout from "../../layouts/PageLayout.astro";
+import type { Page } from "../../types";
 
 export function getStaticPaths() {
   return [
@@ -51,6 +52,6 @@ const defaultTab = kidsConfig[0];
 const activeTab = kidsConfig.find(({ id }) => slug === id) ?? defaultTab;
 ---
 
-<PageLayout page="kids">
+<PageLayout page={`kids-${slug}` as Page}>
   <PageTabs tabConfig={tabConfig} active={activeTab} />
 </PageLayout>

@@ -7,6 +7,7 @@ import TableBookings from "../../components/offerings/TableBookings.astro";
 import Workshops from "../../components/offerings/Workshops.astro";
 import PageTabs from "../../components/tabs/PageTabs.astro";
 import PageLayout from "../../layouts/PageLayout.astro";
+import type { Page } from "../../types";
 
 export function getStaticPaths() {
   return [
@@ -65,6 +66,6 @@ const defaultTab = offeringsConfig[0];
 const activeTab = offeringsConfig.find(({ id }) => slug === id) ?? defaultTab;
 ---
 
-<PageLayout page="offerings">
+<PageLayout page={`offerings-${slug}` as Page}>
   <PageTabs tabConfig={tabConfig} active={activeTab} />
 </PageLayout>
