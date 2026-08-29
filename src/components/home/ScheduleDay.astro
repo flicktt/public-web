@@ -17,8 +17,12 @@ function getBlockValues(dayConfig: ScheduleDayConfig) {
   }
 
   if (type === "clubLeague") {
+    const label = ["grouped", "open"].includes(dayConfig.matching)
+      ? `Flick TT League ${dayConfig.matching === "grouped" ? "Grouped" : "Open"} Matching`
+      : "Flick TT League Matching Session";
+
     return {
-      label: `Flick TT League ${dayConfig.matching === "grouped" ? "Grouped" : "Open"} Matching`,
+      label,
       bg: "bg-flick-yellow",
       color: "text-black",
       href: "/compete/club-league/",

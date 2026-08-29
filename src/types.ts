@@ -81,7 +81,7 @@ export type ScheduleDayConfig =
     }
   | {
       type: "clubLeague";
-      matching: "open" | "grouped";
+      matching: "open" | "grouped" | "any";
       hours: number;
     };
 
