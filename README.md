@@ -53,9 +53,11 @@ CI (`.github/workflows/deploy.yml`) builds and deploys on every push to either b
 `CLOUDFLARE_ACCOUNT_ID` repository secrets. The preview host sends `X-Robots-Tag: noindex`
 (`public/_headers`).
 
-**Branch flow:** work lands on `dev` (directly or via feature branches). `master` only ever receives
-merge PRs from `dev` — a branch ruleset blocks direct pushes and the `Protect master` workflow
-(`.github/workflows/protect-master.yml`) is a required check that fails for any other source branch.
+**Branch flow:** work lands on `dev` (directly or via feature branches); `master` only ever receives
+commits that are already on `dev`. A branch ruleset on `master` requires the `source-is-dev` status
+check (`.github/workflows/protect-master.yml`), which is only ever produced by pushes to `dev` (and
+by PRs whose source branch is `dev`) — so `git push origin master` after fast-forwarding to `dev`
+works, while anything else is rejected. Wait for the `dev` check to finish before pushing `master`.
 
 Deploy manually with:
 

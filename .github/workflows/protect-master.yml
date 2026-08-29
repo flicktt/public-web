@@ -1,7 +1,13 @@
 name: Protect master
 
-# Required status check on `master` (see the branch ruleset): a PR into master may only come from `dev`.
+# Produces the `source-is-dev` status check that the `master` branch ruleset requires.
+# - On every push to `dev` the check passes, stamping those commits as "came via dev".
+# - A direct push to master is only accepted if its tip commit already carries a passing
+#   `source-is-dev` check, i.e. it was pushed to `dev` first (fast-forward master to dev).
+# - On a PR into master the check only passes when the source branch is `dev`.
 on:
+  push:
+    branches: [ dev ]
   pull_request:
     branches: [ master ]
 
@@ -12,9 +18,10 @@ jobs:
   source-is-dev:
     runs-on: ubuntu-latest
     steps:
-      - name: Only dev may merge into master
+      - name: Only dev may land on master
         run: |
-          if [ "${{ github.head_ref }}" != "dev" ]; then
+          if [ "${{ github.event_name }}" = "pull_request" ] && [ "${{ github.head_ref }}" != "dev" ]; then
             echo "::error::PRs into master must come from 'dev' (got '${{ github.head_ref }}')"
             exit 1
           fi
+          echo "ok: ${{ github.event_name }} on ${{ github.ref_name }}"
