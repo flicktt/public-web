@@ -14,87 +14,104 @@ interface Props {
 const pageConfig: Record<Page, PageConfig> = {
   home: {
     title: "Home",
+    metaTitle: "Table Tennis Club & Coaching in London | Flick TT, Canada Water",
     desc: "Flick TT is a table tennis club in Canada Water, London, offering group coaching, private lessons, a ranked league, tournaments and kids sessions for all levels.",
     heading: "", // the home page renders its own <h1> in src/pages/index.astro
   },
   "offerings-group-sessions": {
     title: "Group Sessions",
+    metaTitle: "Table Tennis Group Sessions in London | Flick TT",
     desc: "Level-based table tennis group sessions in London at Flick TT: two-hour sessions with drills, personalised coaching and match play for levels 1 to 5.",
     heading: "Table tennis group sessions in London",
   },
   "offerings-private-coaching": {
     title: "Private Coaching",
+    metaTitle: "Private Table Tennis Coaching in London | Flick TT",
     desc: "Book one-to-one table tennis coaching in London with Flick TT's coaches, combining technique, match strategy and multiball training.",
     heading: "Table tennis coaching in London",
   },
   "offerings-workshops": {
     title: "Workshops",
+    metaTitle: "Table Tennis Workshops in London | Flick TT",
     desc: "Join Flick TT's bi-monthly table tennis workshops in London, free for members, with two-hour deep dives into footwork, serves and other key skills.",
     heading: "Table tennis workshops in London",
   },
   "offerings-open-sessions": {
     title: "Open Sessions",
+    metaTitle: "Open Table Tennis Sessions in London | Flick TT",
     desc: "Drop into Flick TT's unsupervised open table tennis sessions in London. Sign up individually, get matched with other players and enjoy relaxed social play.",
     heading: "Table tennis open play in London",
   },
   "offerings-table-bookings": {
     title: "Table Bookings",
+    metaTitle: "Table Tennis Table Hire in London | Flick TT",
     desc: "Book a table tennis table at Flick TT's London club for practice or casual play on professional flooring, with a training robot available on Saturdays.",
     heading: "Table tennis table hire in London",
   },
   "offerings-corporate": {
     title: "Corporate",
+    metaTitle: "Corporate Table Tennis Events in London | Flick TT",
     desc: "Host a corporate table tennis event in London with Flick TT: team-building, client entertainment and wellbeing days at our Canada Water venue or your office.",
     heading: "Table tennis corporate event hire in London",
   },
   "kids-group-sessions": {
     title: "Kids Group Sessions",
+    metaTitle: "Kids' Table Tennis Group Sessions in London | Flick TT",
     desc: "Table tennis group sessions for children in London at Flick TT, with a clear pathway from Flick Start beginners to competitive Flick Performance players.",
     heading: "Table tennis kids group sessions in London",
   },
   "kids-private-coaching": {
     title: "Kids Private Coaching",
+    metaTitle: "Kids' Private Table Tennis Coaching in London | Flick TT",
     desc: "Book personalised one-to-one table tennis coaching for children in London with Flick TT's experienced coaches, tailored to your child's goals.",
     heading: "Table tennis kids coaching in London",
   },
   "kids-u18-tournament": {
     title: "U18 Tournament",
+    metaTitle: "U18 Junior Table Tennis Tournament in London | Flick TT",
     desc: "Junior table tennis tournaments in London at Flick TT: U18 events every two months with 48 players, a points ranking system and a season final.",
     heading: "Table tennis kids tournaments at Flick TT, London",
   },
   "kids-school-sessions": {
     title: "School Sessions",
+    metaTitle: "Table Tennis Coaching for Schools in London | Flick TT",
     desc: "Flick TT brings table tennis coaching to London schools, or welcomes classes to our venue, with fully customised sessions and DBS-checked coaches.",
     heading: "Table tennis coaching for children and schools in London",
   },
   "compete-about": {
     title: "Compete At Flick TT",
+    metaTitle: "Table Tennis Leagues & Tournaments in London | Flick TT",
     desc: "Compete at Flick TT: join our quarterly Flick League, Central London League and British League teams, plus adult and U18 tournaments in London.",
     heading: "Table tennis tournaments and leagues in London",
   },
   "compete-club-league": {
     title: "Flick TT League",
+    metaTitle: "Flick TT League: Ranked Table Tennis League in London",
     desc: "Join the Flick TT League, a table tennis ladder with an Elo rating system. Play free matching sessions every Friday and Sunday in London.",
     heading: "Table tennis league competition in London",
   },
   "compete-tournament": {
     title: "Flick TT Tournament",
+    metaTitle: "Flick TT Tournament: Table Tennis Tournaments in London",
     desc: "Enter Flick TT's table tennis tournaments in London: five ranking events a year, 48 players per event, guaranteed matches and a Top 32 season final.",
     heading: "Table tennis tournaments in London",
   },
   membership: {
     title: "Membership",
+    metaTitle: "Table Tennis Club Membership in London | Flick TT",
     desc: "Become a Flick TT member for discounted table tennis in London, including cheaper group sessions, private coaching, tournaments and free workshops.",
     heading: "Flick TT table tennis club membership, London",
   },
   about: {
     title: "About",
+    metaTitle: "About Flick TT | Table Tennis Club at Decathlon Surrey Quays",
     desc: "About Flick TT: a table tennis club founded in 2023 at Decathlon Surrey Quays, Canada Water, now home to a community of over 250 members.",
     heading:
       "Flick TT, the table tennis club at Decathlon Surrey Quays, Canada Water",
   },
   coaches: {
     title: "Coaches",
+    metaTitle: "Our Table Tennis Coaches in London | Flick TT",
     desc: "Meet the table tennis coaches at Flick TT London: head coaches Alberto Garrido and Lis Pardo, and club coach Martin Matuzevicius.",
     heading: "The table tennis coaches at Flick TT, London",
   },
@@ -119,6 +136,9 @@ const getHeaderTitle = (page: string) => {
 };
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const { metaTitle, desc } = pageConfig[page];
+// Static 1200×630 share image generated by scripts/generate-og-image.mjs (`pnpm generate:og`).
+const ogImage = new URL("/og-image.png", Astro.site).href;
 ---
 
 <html lang="en" class="font-briolage-grot bg-flick-black text-white">
@@ -138,8 +158,25 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={pageConfig[page].desc} />
-    <title>{`${pageConfig[page].title} | Flick TT`}</title>
+    <meta name="theme-color" content="#1e1e1e" />
+    <title>{metaTitle}</title>
+    <meta name="description" content={desc} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Flick TT" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:url" content={canonical.href} />
+    <meta property="og:title" content={metaTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Flick TT — Table Tennis Club, London" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={metaTitle} />
+    <meta name="twitter:description" content={desc} />
+    <meta name="twitter:image" content={ogImage} />
     <script
       type="application/ld+json"
       set:html={JSON.stringify(localBusinessSchema)}

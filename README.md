@@ -54,3 +54,4 @@ npx wrangler deploy
 - Pages live under `src/pages`
 - Components live under `src/components`
 - Static assets live in `public`
+- `public/og-image.png` (social share image) is generated from the logo by `pnpm generate:og` — re-run if the logo changes

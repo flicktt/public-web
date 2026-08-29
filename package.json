@@ -11,7 +11,8 @@
 		"preview": "astro preview",
 		"astro": "astro",
 		"generate-types": "wrangler types",
-		"optimize:svg": "svgo -f src/icons -o src/icons && svgo src/assets/ig-logo.svg src/assets/whatsapp-logo.svg"
+		"optimize:svg": "svgo -f src/icons -o src/icons && svgo src/assets/ig-logo.svg src/assets/whatsapp-logo.svg",
+		"generate:og": "node scripts/generate-og-image.mjs"
 	},
 	"dependencies": {
 		"@astrojs/cloudflare": "14.1.3",

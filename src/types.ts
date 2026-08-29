@@ -23,6 +23,8 @@ export type Page =
 export type PageConfig = {
   /** Nav label; also the visible display word in the page header. */
   title: string;
+  /** `<title>` and og:title. Query first, location, brand last; keep under ~60 characters. */
+  metaTitle: string;
   desc: string;
   /**
    * Completes the <h1>. The header shows `title` as the giant display word and appends this
