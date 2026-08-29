@@ -22,12 +22,10 @@ const { tabConfig, active } = Astro.props as Props;
 const numOfTabs = tabConfig.length;
 ---
 
-<div data-tabs-root>
-  <div class="border-b border-flick-dark overflow-x-auto">
+<div data-section-nav-root>
+  <nav class="border-b border-flick-dark overflow-x-auto" aria-label="Page sections">
     <div
       class="hidden lg:flex flex-row flex-wrap lg:flex-nowrap max-w-full lg:max-w-fit w-full m-auto border-x border-flick-dark"
-      role="tablist"
-      aria-label="Page sections"
     >
       {
         tabConfig.map(({ label, id, href }) => {
@@ -45,12 +43,8 @@ const numOfTabs = tabConfig.length;
                     isActive,
                 },
               ]}
-              role="tab"
-              id={`${id}-tab`}
-              aria-selected={isActive ? "true" : "false"}
-              aria-controls={id}
-              tabindex={isActive ? "0" : "-1"}
-              data-tab-trigger={id}
+              aria-current={isActive ? "page" : undefined}
+              data-section-link
             >
               {label}
             </a>
@@ -67,7 +61,7 @@ const numOfTabs = tabConfig.length;
         aria-expanded="false"
         aria-controls="mobile-tab-list"
       >
-        <span class="sr-only">Open tabs menu</span>
+        <span class="sr-only">Open sections menu</span>
         <span data-mobile-button-label>{active?.label}</span>
         <span class="absolute right-5" data-mobile-icon-down>
           <ChevronDown class="text-white size-6" />
@@ -88,8 +82,6 @@ const numOfTabs = tabConfig.length;
                 <a
                   href={href}
                   class="tab-links flex justify-center items-center w-full h-12 p-2 cursor-pointer border-t border-flick-dark text-center uppercase font-light transition duration-150 hover:bg-linear-to-b hover:from-flick-black hover:to-[#242424]"
-                  data-mobile-tab-trigger={id}
-                  aria-selected="false"
                 >
                   {label}
                 </a>
@@ -98,22 +90,15 @@ const numOfTabs = tabConfig.length;
         }
       </div>
     </div>
-  </div>
+  </nav>
 
-  <main
-    class="tab-content scroll-mt-24"
-    id={active.id}
-    role="tabpanel"
-    tabindex="0"
-    aria-labelledby={`${active.id}-tab`}
-    data-tab-panel={active.id}
-  >
+  <main class="tab-content scroll-mt-24" id={active.id}>
     <active.Content />
   </main>
 </div>
 
 <script>
-  import { initializeTabControllers } from "../../utils/tabController.ts";
+  import { initializeSectionNavs } from "../../utils/sectionNav.ts";
 
-  initializeTabControllers();
+  initializeSectionNavs();
 </script>
