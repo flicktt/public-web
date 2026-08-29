@@ -55,3 +55,18 @@ export const localBusinessSchema = {
   ],
   sameAs: ["https://www.instagram.com/flickttlondon/", CONTACT_CONSTS.whatsapp],
 };
+
+/**
+ * BreadcrumbList for the section pages (/offerings/x/, /kids/x/, /compete/x/), so search results
+ * can show "Home › Offerings › Group Sessions" instead of the raw URL. `url`s are site-relative.
+ */
+export const breadcrumbSchema = (items: { name: string; url: string }[]) => ({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: items.map(({ name, url }, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name,
+    item: new URL(url, SITE).href,
+  })),
+});
