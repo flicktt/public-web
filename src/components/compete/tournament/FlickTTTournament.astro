@@ -1,8 +1,8 @@
 ---
-import InfoHighlightLayout from "../../../layouts/InfoHighlightLayout.astro";
 import OfferingsLayout from "../../../layouts/OfferingsLayout.astro";
 import type { FaqConfig } from "../../../types";
 import Button from "../../ui/inputs/Button.astro";
+import NextTournamentInfo from "./NextTournamentInfo.astro";
 import RankingPoints from "./RankingPoints.astro";
 import TournamentFormat from "./TournamentFormat.astro";
 
@@ -71,22 +71,7 @@ const faqConfig: FaqConfig[] = [
   >
     Register Now
   </Button>
-  <InfoHighlightLayout title="Next Tournament" size="md">
-    <div class="flex flex-row gap-1 items-end">
-      <h4 class="font-bold text-2xl">14 June 2026</h4>
-      <p>9:30am - 5pm</p>
-    </div>
-    <p>48 players</p>
-    <p>Group stage, then main & consolation draw</p>
-    <p>
-      <b>Fee:</b>{" "}
-      £12 (Members) / £25 (Non-Members)
-    </p>
-    <p>
-      <b>Prizes:</b>{" "}
-      Winner: £125, Runner Up: £75, 3rd Place: £50, plus consolation prizes
-    </p>
-  </InfoHighlightLayout>
+  <NextTournamentInfo />
   <TournamentFormat />
   <RankingPoints />
 </OfferingsLayout>

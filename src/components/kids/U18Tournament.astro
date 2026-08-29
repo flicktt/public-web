@@ -1,9 +1,8 @@
 ---
 import MainImage from "../../assets/offerings-workshops-main.png";
-import InfoHighlightLayout from "../../layouts/InfoHighlightLayout.astro";
 import OfferingsLayout from "../../layouts/OfferingsLayout.astro";
 import type { FaqConfig } from "../../types";
-import Button from "../ui/inputs/Button.astro";
+import NextU18Tournament from "./NextU18Tournament.astro";
 
 const desc =
   "Our U18 tournaments run every two months, with 48 young players per event competing in a points-based ranking system. The top 16 across the five-tournament series qualify for the final, with prizes including free club sessions. A structured, competitive, and exciting environment for junior players to develop and test their skills.";
@@ -36,20 +35,5 @@ const faqConfig: FaqConfig[] = [
   }}
   faqConfig={faqConfig}
 >
-  <InfoHighlightLayout title="Next Tournament" size="md">
-    <div class="flex flex-row gap-1 items-end">
-      <h4 class="font-bold text-2xl">21 June 2026</h4>
-      <p>9:30am - 1:30pm</p>
-    </div>
-    <p>48 players</p>
-    <p>Group stage, then main & consolation draw</p>
-    <p>
-      <b>Fee:</b>{" "}
-      £8 (Members) / £16 (Non-Members)
-    </p>
-    <p>
-      <b>Prizes:</b>{" "}
-      Winner: £125, Runner Up: £75, 3rd Place: £50, plus consolation prizes
-    </p>
-  </InfoHighlightLayout>
+  <NextU18Tournament />
 </OfferingsLayout>

@@ -1,0 +1,36 @@
+---
+import InfoHighlightLayout from "../../../layouts/InfoHighlightLayout.astro";
+import { getDateString } from "../../../utils";
+
+// 11 oct, 29 nov, 7 feb, 11 apr, 13 jun, 4 jul (top 32)
+const tournamentDates = [
+  "2026-10-11",
+  "2026-11-29",
+  "2027-02-07",
+  "2027-04-11",
+  "2027-06-13",
+];
+
+const date = tournamentDates.find((tDate) => new Date(tDate) > new Date());
+---
+
+<InfoHighlightLayout title="Next Tournament" size="md">
+  {date ? (
+    <div class="flex flex-col">
+      <h4 class="font-bold text-2xl">{getDateString(new Date(date))}</h4>
+      <p>9:30am - 5pm</p>
+    </div>
+    <p>48 players</p>
+    <p>Group stage, then main & consolation draw</p>
+    <p>
+      <b>Fee:</b>{" "}
+      £12 (Members) / £25 (Non-Members)
+    </p>
+    <p>
+      <b>Prizes:</b>{" "}
+      Winner: £125, Runner Up: £75, 3rd Place: £50, plus consolation prizes
+    </p>
+  ) : (
+    <p>Keep your eyes peeled in our social media for any upcoming tournaments!</p>
+  )}
+</InfoHighlightLayout>
