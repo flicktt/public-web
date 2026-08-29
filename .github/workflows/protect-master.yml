@@ -1,0 +1,20 @@
+name: Protect master
+
+# Required status check on `master` (see the branch ruleset): a PR into master may only come from `dev`.
+on:
+  pull_request:
+    branches: [ master ]
+
+permissions:
+  contents: read
+
+jobs:
+  source-is-dev:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Only dev may merge into master
+        run: |
+          if [ "${{ github.head_ref }}" != "dev" ]; then
+            echo "::error::PRs into master must come from 'dev' (got '${{ github.head_ref }}')"
+            exit 1
+          fi

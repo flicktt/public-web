@@ -1,0 +1,4 @@
+# Cloudflare Workers static-assets headers file (copied to dist/ by Astro).
+# Keep the preview host out of search indexes; production (www.flicktt.com) is untouched.
+https://preview.flicktt.club/*
+  X-Robots-Tag: noindex, nofollow

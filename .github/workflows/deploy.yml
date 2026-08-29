@@ -1,13 +1,16 @@
 name: Deploy
 
-# Builds the Astro site with the @astrojs/cloudflare adapter and deploys it as the `flick-tt-web`
-# Cloudflare Worker (routes are declared in wrangler.jsonc). Every push to master deploys.
+# Builds the Astro site with the @astrojs/cloudflare adapter and deploys it as a Cloudflare Worker.
+# Branch → environment (routes are declared in wrangler.jsonc):
+#   master → `flick-tt-web`          (production, www.flicktt.com)
+#   dev    → `flick-tt-web-preview`  (preview, preview.flicktt.club)
 # Requires two repository secrets:
-#   CLOUDFLARE_API_TOKEN  — API token with "Workers Scripts: Edit" (+ "Workers Routes: Edit" for the zone)
+#   CLOUDFLARE_API_TOKEN  — API token with "Workers Scripts: Edit" + "Workers Routes: Edit" for BOTH zones
+#                           (flicktt.com and flicktt.club)
 #   CLOUDFLARE_ACCOUNT_ID — the Cloudflare account id
 on:
   push:
-    branches: [ master ]
+    branches: [ master, dev ]
     paths-ignore:
       - '**.md'
   workflow_dispatch:
@@ -37,6 +40,8 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - run: pnpm build
+        env:
+          CLOUDFLARE_ENV: ${{ github.ref_name == 'dev' && 'preview' || '' }}
 
       - uses: cloudflare/wrangler-action@v3
         with:
