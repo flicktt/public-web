@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+import { STICKERS, type StickerId } from "../../treasureHunt";
+
+interface Props extends astroHTML.JSX.HTMLAttributes {
+  id: StickerId;
+  /** Rendered width in CSS px (source stickers are 512×512). */
+  size?: number;
+}
+
+const { id, size = 48, class: className, ...rest } = Astro.props;
+const { img, alt } = STICKERS[id];
+---
+
+<Image
+  src={img}
+  alt={alt}
+  width={size}
+  height={size}
+  densities={[1, 2]}
+  loading="lazy"
+  data-sticker={id}
+  class:list={["select-none", className]}
+  {...rest}
+/>

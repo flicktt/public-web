@@ -1,5 +1,6 @@
 import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 import type { SvgComponent } from "astro/types";
+import type { StickerId } from "./treasureHunt";
 
 export type Page =
   | "home"
@@ -60,6 +61,8 @@ export type CoachProfileConfig = {
   name: string;
   title: "head" | "coach";
   description: string[];
+  /** Treasure hunt sticker hidden in this coach's profile drawer. */
+  sticker?: StickerId;
 };
 
 export interface ContainerProps extends astroHTML.JSX.HTMLAttributes {
