@@ -18,7 +18,8 @@ export type Page =
   | "compete-tournament"
   | "membership"
   | "about"
-  | "coaches";
+  | "coaches"
+  | "not-found";
 
 export type PageConfig = {
   /** Nav label; also the visible display word in the page header. */

@@ -1,0 +1,52 @@
+---
+import Button from "../components/ui/inputs/Button.astro";
+import DisplayText from "../components/ui/text/DisplayText.astro";
+import Container from "../layouts/Container.astro";
+import PageLayout from "../layouts/PageLayout.astro";
+
+// Served by Cloudflare for any URL that matches no route (dist/404.html). Legacy Wix URLs are
+// covered by the Bulk Redirect list first; this catches whatever slips through.
+const sections = [
+  { name: "Offerings", link: "/offerings/group-sessions/" },
+  { name: "Compete", link: "/compete/about/" },
+  { name: "Kids", link: "/kids/group-sessions/" },
+  { name: "Coaches", link: "/coaches/" },
+  { name: "Membership", link: "/membership/" },
+  { name: "About", link: "/about/" },
+];
+---
+
+<PageLayout page="not-found">
+  <Container main class="flex flex-col gap-10 lg:gap-14 py-10 lg:py-14">
+    <DisplayText class="text-center">
+      Looks like that one went{" "}
+      <span class="text-flick-yellow"><b>into the net</b></span>.
+      <br />
+      The page you were looking for has moved or never existed.
+    </DisplayText>
+    <div class="flex flex-col items-center gap-6">
+      <Button as="a" href="/" size="lg" class="text-center">
+        Back to the home page
+      </Button>
+      <p class="text-xl text-center">Or head straight to one of our sections:</p>
+      <nav aria-label="Site sections" class="w-full max-w-xl">
+        {/* Equal-width buttons: 2 columns on phones, 3 from sm up. */}
+        <ul class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          {
+            sections.map(({ name, link }) => (
+              <li>
+                <Button
+                  as="a"
+                  href={link}
+                  class="block w-full px-4 text-center"
+                >
+                  {name}
+                </Button>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+  </Container>
+</PageLayout>

@@ -5,7 +5,11 @@
 	"main": "@astrojs/cloudflare/entrypoints/server",
 	"assets": {
 		"directory": "./dist",
-		"binding": "ASSETS"
+		"binding": "ASSETS",
+		// Every route is prerendered, so the deployed Worker is assets-only and Cloudflare (not Astro)
+		// answers unmatched URLs. Serve the branded dist/404.html (built from src/pages/404.astro)
+		// with a 404 status instead of the default empty response.
+		"not_found_handling": "404-page"
 	},
 	"observability": {
 		"enabled": true
