@@ -2,15 +2,25 @@ name: Deploy
 
 # Builds the Astro site with the @astrojs/cloudflare adapter and deploys it as a Cloudflare Worker.
 # Branch → environment (routes are declared in wrangler.jsonc):
-#   master → `flick-tt-web`          (production, www.flicktt.com)
-#   dev    → `flick-tt-web-preview`  (preview, preview.flicktt.club)
+#   master               → `flick-tt-web`          (production, www.flicktt.com)
+#   PREVIEW_BRANCH (dev) → `flick-tt-web-preview`  (preview, preview.flicktt.club)
+#
+# The preview host follows whichever branch the PREVIEW_BRANCH repository variable names
+# (Settings → Secrets and variables → Actions → Variables; defaults to `dev` when unset).
+# Pushes to every other branch start a run that skips at the job condition. To point preview at
+# another branch and deploy it immediately:
+#   gh variable set PREVIEW_BRANCH --body my-branch
+#   gh workflow run deploy.yml --ref my-branch
+# A manual run (workflow_dispatch) always deploys the chosen ref: production for master, preview
+# for anything else — even if it is not the PREVIEW_BRANCH.
+#
 # Requires two repository secrets:
 #   CLOUDFLARE_API_TOKEN  — API token with "Workers Scripts: Edit" + "Workers Routes: Edit" for BOTH zones
 #                           (flicktt.com and flicktt.club)
 #   CLOUDFLARE_ACCOUNT_ID — the Cloudflare account id
 on:
   push:
-    branches: [ master, dev ]
+    branches: [ '**' ]
     paths-ignore:
       - '**.md'
   workflow_dispatch:
@@ -18,13 +28,18 @@ on:
 permissions:
   contents: read
 
-concurrency:
-  group: deploy-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   deploy:
+    # master → production; the preview branch (or any manually dispatched ref) → preview.
+    if: >-
+      github.ref_name == 'master' ||
+      github.ref_name == (vars.PREVIEW_BRANCH || 'dev') ||
+      github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
+    # Serialise per target (not per branch) so two branches aimed at preview cannot race.
+    concurrency:
+      group: deploy-${{ github.ref_name == 'master' && 'production' || 'preview' }}
+      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v4
 
@@ -41,7 +56,7 @@ jobs:
 
       - run: pnpm build
         env:
-          CLOUDFLARE_ENV: ${{ github.ref_name == 'dev' && 'preview' || '' }}
+          CLOUDFLARE_ENV: ${{ github.ref_name == 'master' && '' || 'preview' }}
 
       - uses: cloudflare/wrangler-action@v3
         with:

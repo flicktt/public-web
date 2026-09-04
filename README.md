@@ -39,16 +39,30 @@ pnpm preview
 
 The site deploys as a **Cloudflare Worker** with two environments (routes in `wrangler.jsonc`):
 
-| Branch   | Worker                 | URL                            | Build                                    |
-|----------|------------------------|--------------------------------|------------------------------------------|
-| `master` | `flick-tt-web`         | https://www.flicktt.com/       | `astro build`                            |
-| `dev`    | `flick-tt-web-preview` | https://preview.flicktt.club/  | `CLOUDFLARE_ENV=preview astro build`     |
+| Branch                     | Worker                 | URL                            | Build                                    |
+|----------------------------|------------------------|--------------------------------|------------------------------------------|
+| `master`                   | `flick-tt-web`         | https://www.flicktt.com/       | `astro build`                            |
+| `PREVIEW_BRANCH` (default `dev`) | `flick-tt-web-preview` | https://preview.flicktt.club/  | `CLOUDFLARE_ENV=preview astro build`     |
+
+The preview host follows whichever branch the `PREVIEW_BRANCH` repository variable names (GitHub
+Settings → Secrets and variables → Actions → Variables). To preview another branch, point the
+variable at it and run the workflow on that branch so it deploys straight away:
+
+```sh
+gh variable set PREVIEW_BRANCH --body my-branch
+gh workflow run deploy.yml --ref my-branch
+```
+
+Set it back to `dev` when done. A manual run (`gh workflow run deploy.yml --ref <branch>`) always
+deploys its ref to preview (or production for `master`) even if the variable names another branch,
+but the next push to the `PREVIEW_BRANCH` will take preview back.
 
 The Astro Cloudflare adapter resolves the Wrangler environment at **build** time (it emits a flattened
 `dist/client/wrangler.json`), so the environment is picked with `CLOUDFLARE_ENV` when building —
 `wrangler deploy --env` has no effect afterwards.
 
-CI (`.github/workflows/deploy.yml`) builds and deploys on every push to either branch; it needs the
+CI (`.github/workflows/deploy.yml`) runs on every push but only deploys from `master` and the
+`PREVIEW_BRANCH` (other branches skip at the job condition); it needs the
 `CLOUDFLARE_API_TOKEN` (Workers Scripts + Workers Routes edit on both zones) and
 `CLOUDFLARE_ACCOUNT_ID` repository secrets. The preview host sends `X-Robots-Tag: noindex`
 (`public/_headers`).
