@@ -19,6 +19,10 @@ import benSchedule from "./assets/stickers/ben-popout.webp";
 import davidSchedule from "./assets/stickers/david-popout.webp";
 import leenaShake from "./assets/stickers/leena-fall.webp";
 import lisReward from "./assets/stickers/lis-4.webp";
+import leenaHello from "./assets/stickers/leena-hello.webp";
+import mayHello from "./assets/stickers/may-hello.webp";
+import umbertoHello from "./assets/stickers/umberto-1.webp";
+import brandonHello from "./assets/stickers/brandon-4.webp";
 
 /**
  * Treasure hunt stickers (WhatsApp sticker WebP files in src/assets/stickers). Each entry is one
@@ -31,6 +35,7 @@ import lisReward from "./assets/stickers/lis-4.webp";
  * `<FlipSticker id="...">icon</FlipSticker>` flips the content over to reveal one on hover/click;
  * `<ShakeSticker id="..." />` drops one onto the floor when the phone is shaken hard.
  * `<VisitedAllSticker id="..." />` is a dismissible reward pop-up after every page is visited.
+ * `<GreetingSticker greetings={[...]} />` occasionally shows a random captioned greeting.
  */
 export const STICKERS = {
   "alberto-drawer": { img: albertoDrawer, alt: "Treasure hunt sticker: Alberto" },
@@ -62,6 +67,11 @@ export const STICKERS = {
   "leena-shake": { img: leenaShake, alt: "Treasure hunt sticker: Leena" },
   // Reward pop-up once every page has been visited (VisitedAllSticker.astro).
   "lis-reward": { img: lisReward, alt: "Treasure hunt sticker: Lis" },
+  // Random greetings after 20 page loads (GreetingSticker.astro).
+  "leena-hello": { img: leenaHello, alt: "Treasure hunt sticker: Leena" },
+  "may-hello": { img: mayHello, alt: "Treasure hunt sticker: May" },
+  "umberto-hello": { img: umbertoHello, alt: "Treasure hunt sticker: Umberto" },
+  "brandon-hello": { img: brandonHello, alt: "Treasure hunt sticker: Brandon" },
 } as const satisfies Record<string, { img: ImageMetadata; alt: string }>;
 
 export type StickerId = keyof typeof STICKERS;

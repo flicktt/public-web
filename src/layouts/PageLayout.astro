@@ -5,6 +5,7 @@ import Footer from "../components/footer/Footer.astro";
 import HomeHeader from "../components/header/HomeHeader.astro";
 import PageHeader from "../components/header/PageHeader.astro";
 import ShakeSticker from "../components/treasureHunt/ShakeSticker.astro";
+import GreetingSticker from "../components/treasureHunt/GreetingSticker.astro";
 import VisitedAllSticker from "../components/treasureHunt/VisitedAllSticker.astro";
 import "../styles/global.css";
 import type { Page, PageConfig } from "../types";
@@ -244,6 +245,15 @@ const breadcrumbs = SECTION_PARENTS.includes(parentSlug)
       message="You've visited every page on this website! Have a free sticker on us!"
       page={page}
       pages={(Object.keys(pageConfig) as Page[]).filter((p) => p !== "not-found")}
+    />
+    {/* Treasure hunt: after 20 page loads, a 10% chance per load of a passing greeting. */}
+    <GreetingSticker
+      greetings={[
+        { id: "leena-hello", caption: "Hello!" },
+        { id: "may-hello", caption: "Hello!" },
+        { id: "umberto-hello", caption: "Che?" },
+        { id: "brandon-hello", caption: "How you doin'?" },
+      ]}
     />
   </body>
 </html>

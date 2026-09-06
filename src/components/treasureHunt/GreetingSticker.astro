@@ -1,0 +1,80 @@
+---
+import { getImage } from "astro:assets";
+import { STICKERS, type StickerId } from "../../treasureHunt";
+
+/**
+ * Occasional greeting: once the reader has loaded at least `afterLoads` pages (counted in
+ * localStorage), each further page load has a `chance` probability of showing one of the
+ * greetings, picked at random, in a card at the bottom of the screen. It can't be dismissed
+ * and fades out by itself after `holdMs`.
+ */
+interface Props {
+  greetings: readonly { id: StickerId; caption: string }[];
+  /** Page loads needed before greetings can start appearing. */
+  afterLoads?: number;
+  /** Probability (0–1) of a greeting on each eligible page load. */
+  chance?: number;
+  /** How long the greeting stays visible, in ms. */
+  holdMs?: number;
+}
+
+const { greetings, afterLoads = 20, chance = 0.1, holdMs = 3000 } = Astro.props;
+const SIZE = 80;
+
+const candidates = await Promise.all(
+  greetings.map(async ({ id, caption }) => {
+    const { img, alt } = STICKERS[id];
+    const image = await getImage({ src: img, width: SIZE, height: SIZE, densities: [1, 2] });
+    return { id, caption, alt, src: image.src, srcset: image.srcSet.attribute };
+  }),
+);
+---
+
+<div
+  class="fixed inset-x-0 bottom-4 z-50 mx-auto flex w-fit max-w-[calc(100%-2rem)] items-center gap-3 rounded-xl border border-flick-yellow bg-flick-black p-3 pr-5 text-white shadow-[0_0_40px_0_rgba(0,0,0,0.6)] transition-[opacity,translate] duration-500 not-data-shown:pointer-events-none not-data-shown:opacity-0 not-data-shown:translate-y-4 motion-reduce:transition-none"
+  role="status"
+  data-greeting-sticker
+  data-candidates={JSON.stringify(candidates)}
+  data-after-loads={afterLoads}
+  data-chance={chance}
+  data-hold-ms={holdMs}
+>
+  {/* No src server-side: the script fills in the chosen greeting. */}
+  <img width={SIZE} height={SIZE} alt="" class="shrink-0 select-none" />
+  <p class="text-2xl font-semibold whitespace-nowrap"></p>
+</div>
+
+<script>
+  const el = document.querySelector<HTMLElement>("[data-greeting-sticker]");
+  const LOADS_KEY = "hunt:page-loads";
+
+  if (el) {
+    try {
+      const loads = (Number(localStorage.getItem(LOADS_KEY)) || 0) + 1;
+      localStorage.setItem(LOADS_KEY, String(loads));
+
+      if (loads >= Number(el.dataset.afterLoads) && Math.random() < Number(el.dataset.chance)) {
+        const options = JSON.parse(el.dataset.candidates ?? "[]");
+        const pick = options[Math.floor(Math.random() * options.length)];
+        const img = el.querySelector("img")!;
+        img.src = pick.src;
+        img.srcset = pick.srcset;
+        img.alt = pick.alt;
+        img.dataset.sticker = pick.id;
+        el.querySelector("p")!.textContent = pick.caption;
+        delete el.dataset.candidates;
+
+        // Let the initial (hidden) style apply first so the entrance transition plays.
+        setTimeout(() => {
+          // Stack above the visited-every-page reward card if that is showing too.
+          const reward = document.querySelector<HTMLElement>("[data-visited-all][data-shown]");
+          if (reward) el.style.bottom = `${reward.offsetHeight + 32}px`;
+          el.setAttribute("data-shown", "");
+        }, 50);
+        setTimeout(() => el.removeAttribute("data-shown"), Number(el.dataset.holdMs) || 3000);
+      }
+    } catch {
+      // localStorage unavailable: no load tracking, nothing to show.
+    }
+  }
+</script>
