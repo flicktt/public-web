@@ -1,5 +1,6 @@
 ---
 import type { ScheduleConfig } from "../../types";
+import PopoutSticker from "../treasureHunt/PopoutSticker.astro";
 import ScheduleDay from "./ScheduleDay.astro";
 
 const scheduleConfig: ScheduleConfig = [
@@ -242,6 +243,9 @@ const openHours = ["09:00", "12:00", "15:00", "18:00"];
       </div>
     </div>
   </div>
+  {/* Treasure hunt: swiping the schedule to its right/left end pops a sticker in from that side of the screen. */}
+  <PopoutSticker id="ben-schedule" trigger="scroll-edge" edge="right" scrollTarget="#schedule-blocks" />
+  <PopoutSticker id="david-schedule" trigger="scroll-edge" edge="left" scrollTarget="#schedule-blocks" />
 </div>
 
 <script>

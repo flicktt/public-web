@@ -12,6 +12,8 @@ import sidFooter from "./assets/stickers/sid-1.webp";
 import mayWorkshop from "./assets/stickers/may-workshop.webp";
 import brandonTournament from "./assets/stickers/brandon-1.webp";
 import burgerMenu from "./assets/stickers/burger.webp";
+import benSchedule from "./assets/stickers/ben-popout.webp";
+import davidSchedule from "./assets/stickers/david-popout.webp";
 
 /**
  * Treasure hunt stickers (WhatsApp sticker WebP files in src/assets/stickers). Each entry is one
@@ -20,7 +22,7 @@ import burgerMenu from "./assets/stickers/burger.webp";
  * `<RandomSticker ids={[...]} />` places one of several, chosen client-side on each load;
  * `<RevealSticker id="...">word</RevealSticker>` pops one up above a word on hover/click;
  * `<PopoutSticker id="..." />` jumps up from the bottom edge when the page is scrolled to the end
- * (or, with `trigger="parent-dialog"`, when the <dialog> it sits in opens).
+ * (or a scroll container reaches an edge, or the <dialog> it sits in opens; see its props).
  */
 export const STICKERS = {
   "alberto-drawer": { img: albertoDrawer, alt: "Treasure hunt sticker: Alberto" },
@@ -40,6 +42,9 @@ export const STICKERS = {
   "brandon-tournament": { img: brandonTournament, alt: "Treasure hunt sticker: Brandon" },
   // Replaces the hamburger icon on the toggle button inside the open mobile nav menu.
   "burger-menu": { img: burgerMenu, alt: "Treasure hunt sticker: Burger" },
+  // Home page schedule: pop in from the viewport edge when it is swiped to its right/left end.
+  "ben-schedule": { img: benSchedule, alt: "Treasure hunt sticker: Ben" },
+  "david-schedule": { img: davidSchedule, alt: "Treasure hunt sticker: David" },
 } as const satisfies Record<string, { img: ImageMetadata; alt: string }>;
 
 export type StickerId = keyof typeof STICKERS;

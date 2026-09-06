@@ -3,34 +3,59 @@ import type { StickerId } from "../../treasureHunt";
 import Sticker from "./Sticker.astro";
 
 /**
- * A treasure hunt sticker that jumps up from the bottom edge of the viewport, hangs there
- * briefly, then drops back out of sight. Fixed-positioned, so it can sit anywhere in the page's
- * markup. Two triggers:
+ * A treasure hunt sticker that jumps in from an edge of the viewport, hangs there briefly, then
+ * slides back out of sight. Fixed-positioned, so it can sit anywhere in the page's markup.
+ * Triggers:
  *
  * - `page-end` (default): fires when the reader scrolls to the end of the page and re-arms once
  *   they scroll away. Detected with an IntersectionObserver on a zero-height sentinel appended
  *   to <body>, rather than scroll maths: on phones the collapsing browser toolbar and fractional
  *   scroll offsets make innerHeight + scrollY unreliable.
+ * - `scroll-edge`: fires when the horizontally scrollable element matched by `scrollTarget` is
+ *   scrolled to the edge named by `edge` ("left" or "right"), and re-arms when it scrolls away.
+ *   Doesn't fire for the edge the element starts at.
  * - `parent-dialog`: fires every time the closest ancestor <dialog> opens. Place the sticker
  *   inside the dialog: a modal dialog sits in the top layer, so anything outside it is hidden.
  */
 interface Props {
   id: StickerId;
-  trigger?: "page-end" | "parent-dialog";
+  trigger?: "page-end" | "scroll-edge" | "parent-dialog";
+  /** Viewport edge the sticker pops in from. */
+  edge?: "bottom" | "left" | "right";
+  /** CSS selector for the scroll container (`scroll-edge` trigger only). */
+  scrollTarget?: string;
   /** Sticker width in CSS px. */
   size?: number;
   /** How long the sticker stays visible, in ms. */
   holdMs?: number;
 }
 
-const { id, trigger = "page-end", size = 160, holdMs = 3000 } = Astro.props;
+const {
+  id,
+  trigger = "page-end",
+  edge = "bottom",
+  scrollTarget,
+  size = 160,
+  holdMs = 1500,
+} = Astro.props;
+
+const edgeClasses = {
+  bottom: "bottom-0 left-1/2 -translate-x-1/2 translate-y-full data-shown:translate-y-0",
+  left: "left-0 top-1/2 -translate-y-1/2 -translate-x-full data-shown:translate-x-0",
+  right: "right-0 top-1/2 -translate-y-1/2 translate-x-full data-shown:translate-x-0",
+}[edge];
 ---
 
 <Sticker
   id={id}
   size={size}
-  class="fixed bottom-0 left-1/2 z-40 -translate-x-1/2 translate-y-full pointer-events-none transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] data-shown:translate-y-0 motion-reduce:transition-none"
+  class:list={[
+    "fixed z-40 pointer-events-none transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] motion-reduce:transition-none",
+    edgeClasses,
+  ]}
   data-popout-sticker={trigger}
+  data-edge={edge}
+  data-scroll-target={scrollTarget}
   data-hold-ms={holdMs}
 />
 
@@ -44,7 +69,7 @@ const { id, trigger = "page-end", size = 160, holdMs = 3000 } = Astro.props;
       sticker,
       setTimeout(
         () => sticker.removeAttribute("data-shown"),
-        Number(sticker.dataset.holdMs) || 3000,
+        Number(sticker.dataset.holdMs) || 1500,
       ),
     );
   };
@@ -67,6 +92,28 @@ const { id, trigger = "page-end", size = 160, holdMs = 3000 } = Astro.props;
       armed = false;
       pageEnd.forEach(show);
     }).observe(sentinel);
+  }
+
+  for (const sticker of document.querySelectorAll<HTMLElement>(
+    '[data-popout-sticker="scroll-edge"]',
+  )) {
+    const target = document.querySelector<HTMLElement>(sticker.dataset.scrollTarget ?? "");
+    if (!target) continue;
+    // 1px tolerance: scrollLeft can be fractional on phones.
+    const atEdge =
+      sticker.dataset.edge === "left"
+        ? () => target.scrollLeft <= 1
+        : () => target.scrollLeft + target.clientWidth >= target.scrollWidth - 1;
+    let wasAtEdge = atEdge();
+    target.addEventListener(
+      "scroll",
+      () => {
+        const isAtEdge = atEdge();
+        if (isAtEdge && !wasAtEdge) show(sticker);
+        wasAtEdge = isAtEdge;
+      },
+      { passive: true },
+    );
   }
 
   for (const sticker of document.querySelectorAll<HTMLElement>(
