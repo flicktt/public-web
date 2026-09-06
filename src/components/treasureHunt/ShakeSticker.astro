@@ -1,0 +1,117 @@
+---
+import type { StickerId } from "../../treasureHunt";
+import Sticker from "./Sticker.astro";
+
+/**
+ * Shake the phone hard and a treasure hunt sticker drops from the top of the screen onto the
+ * "floor" (bottom edge), then fades away where it landed. Uses
+ * the devicemotion API, so it only does anything on devices with motion sensors over HTTPS.
+ * Android exposes the sensor freely;
+ * iOS Safari requires `DeviceMotionEvent.requestPermission()` from a user gesture, so there the
+ * first tap on the page asks, and a refusal is remembered so the prompt isn't repeated.
+ */
+interface Props {
+  id: StickerId;
+  /** Sticker width in CSS px. */
+  size?: number;
+  /** How long the sticker stays visible, in ms. */
+  holdMs?: number;
+}
+
+const { id, size = 200, holdMs = 3000 } = Astro.props;
+---
+
+{/* data-shown drives the fade; data-landed keeps the sticker on the floor while it fades out. */}
+<div
+  class="fixed inset-x-0 bottom-0 z-50 flex justify-center pointer-events-none opacity-0 transition-opacity duration-500 data-shown:opacity-100 motion-reduce:transition-none"
+  data-shake-sticker
+  data-hold-ms={holdMs}
+>
+  <Sticker
+    id={id}
+    size={size}
+    class="-translate-y-[100vh] in-data-landed:translate-y-0 in-data-shown:transition-transform duration-1000 ease-in-out motion-reduce:transition-none"
+  />
+</div>
+
+<script>
+  const el = document.querySelector<HTMLElement>("[data-shake-sticker]");
+
+  if (el && "DeviceMotionEvent" in window) {
+    // A "hard shake": four strong jolts (> 30 m/s², at least 120 ms apart) within 1.5 s.
+    const JOLT = 30;
+    const JOLT_GAP_MS = 120;
+    const JOLTS_NEEDED = 4;
+    const WINDOW_MS = 1500;
+    const COOLDOWN_MS = 5000;
+    const FADE_MS = 500;
+    const holdMs = Number(el.dataset.holdMs) || 3000;
+
+    let jolts: number[] = [];
+    let coolUntil = 0;
+    let last: { x: number; y: number; z: number } | null = null;
+    let hideTimer: ReturnType<typeof setTimeout> | undefined;
+    let resetTimer: ReturnType<typeof setTimeout> | undefined;
+
+    const show = () => {
+      el.setAttribute("data-landed", "");
+      el.setAttribute("data-shown", "");
+      clearTimeout(hideTimer);
+      clearTimeout(resetTimer);
+      hideTimer = setTimeout(() => {
+        // Fade out in place, then put the sticker back above the screen for next time.
+        el.removeAttribute("data-shown");
+        resetTimer = setTimeout(() => el.removeAttribute("data-landed"), FADE_MS);
+      }, holdMs);
+    };
+
+    const onMotion = (event: DeviceMotionEvent) => {
+      let magnitude: number;
+      const a = event.acceleration;
+      if (a && a.x !== null && a.y !== null && a.z !== null) {
+        // Gravity already removed: the magnitude is the shake itself.
+        magnitude = Math.hypot(a.x, a.y, a.z);
+      } else {
+        // Fall back to the change between samples of the gravity-inclusive reading.
+        const g = event.accelerationIncludingGravity;
+        if (!g || g.x === null || g.y === null || g.z === null) return;
+        magnitude = last ? Math.hypot(g.x - last.x, g.y - last.y, g.z - last.z) : 0;
+        last = { x: g.x, y: g.y, z: g.z };
+      }
+      if (magnitude < JOLT) return;
+
+      const now = Date.now();
+      if (now < coolUntil) return;
+      if (jolts.length && now - jolts[jolts.length - 1] < JOLT_GAP_MS) return;
+      jolts = [...jolts.filter((t) => now - t < WINDOW_MS), now];
+      if (jolts.length >= JOLTS_NEEDED) {
+        jolts = [];
+        coolUntil = now + COOLDOWN_MS;
+        show();
+      }
+    };
+
+    const listen = () => window.addEventListener("devicemotion", onMotion);
+
+    const DME = DeviceMotionEvent as unknown as {
+      requestPermission?: () => Promise<"granted" | "denied">;
+    };
+    if (typeof DME.requestPermission !== "function") {
+      listen();
+    } else if (localStorage.getItem("motion-permission") !== "denied") {
+      // iOS: must be called from a user gesture, so ask on the first tap or click.
+      const ask = () => {
+        window.removeEventListener("touchend", ask);
+        window.removeEventListener("click", ask);
+        DME.requestPermission!()
+          .then((state) => {
+            if (state === "granted") listen();
+            else localStorage.setItem("motion-permission", "denied");
+          })
+          .catch(() => {});
+      };
+      window.addEventListener("touchend", ask, { once: true });
+      window.addEventListener("click", ask, { once: true });
+    }
+  }
+</script>

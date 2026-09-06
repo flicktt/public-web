@@ -15,6 +15,7 @@ import brandonTournament from "./assets/stickers/brandon-1.webp";
 import burgerMenu from "./assets/stickers/burger.webp";
 import benSchedule from "./assets/stickers/ben-popout.webp";
 import davidSchedule from "./assets/stickers/david-popout.webp";
+import leenaShake from "./assets/stickers/leena-fall.webp";
 
 /**
  * Treasure hunt stickers (WhatsApp sticker WebP files in src/assets/stickers). Each entry is one
@@ -24,6 +25,7 @@ import davidSchedule from "./assets/stickers/david-popout.webp";
  * `<RevealSticker id="...">word</RevealSticker>` pops one up above a word on hover/click;
  * `<PopoutSticker id="..." />` jumps up from the bottom edge when the page is scrolled to the end
  * (or a scroll container reaches an edge, or the <dialog> it sits in opens; see its props).
+ * `<ShakeSticker id="..." />` drops one onto the floor when the phone is shaken hard.
  */
 export const STICKERS = {
   "alberto-drawer": { img: albertoDrawer, alt: "Treasure hunt sticker: Alberto" },
@@ -48,6 +50,8 @@ export const STICKERS = {
   // Home page schedule: pop in from the viewport edge when it is swiped to its right/left end.
   "ben-schedule": { img: benSchedule, alt: "Treasure hunt sticker: Ben" },
   "david-schedule": { img: davidSchedule, alt: "Treasure hunt sticker: David" },
+  // Every page: drops onto the floor when the phone is shaken hard (ShakeSticker.astro).
+  "leena-shake": { img: leenaShake, alt: "Treasure hunt sticker: Leena" },
 } as const satisfies Record<string, { img: ImageMetadata; alt: string }>;
 
 export type StickerId = keyof typeof STICKERS;

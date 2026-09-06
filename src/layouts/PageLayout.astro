@@ -4,6 +4,7 @@ import { breadcrumbSchema, localBusinessSchema } from "../schema";
 import Footer from "../components/footer/Footer.astro";
 import HomeHeader from "../components/header/HomeHeader.astro";
 import PageHeader from "../components/header/PageHeader.astro";
+import ShakeSticker from "../components/treasureHunt/ShakeSticker.astro";
 import "../styles/global.css";
 import type { Page, PageConfig } from "../types";
 
@@ -234,5 +235,7 @@ const breadcrumbs = SECTION_PARENTS.includes(parentSlug)
     }
     <slot />
     <Footer />
+    {/* Treasure hunt: on every page, shaking the phone hard drops Leena onto the floor. */}
+    <ShakeSticker id="leena-shake" />
   </body>
 </html>
