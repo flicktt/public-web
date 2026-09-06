@@ -1,0 +1,66 @@
+---
+import type { StickerId } from "../../treasureHunt";
+import Sticker from "./Sticker.astro";
+
+/**
+ * A treasure hunt sticker that jumps up from the bottom edge of the viewport when the reader
+ * scrolls to the end of the page, hangs there briefly, then drops back out of sight. It re-arms
+ * once the reader scrolls away from the bottom, so it can be shown again. Fixed-positioned, so
+ * it can sit anywhere in the page's markup.
+ *
+ * "End of the page" is detected with an IntersectionObserver on a zero-height sentinel appended
+ * to the end of <body>, rather than scroll maths: on phones the collapsing browser toolbar and
+ * fractional scroll offsets make innerHeight + scrollY unreliable.
+ */
+interface Props {
+  id: StickerId;
+  /** Sticker width in CSS px. */
+  size?: number;
+  /** How long the sticker stays visible, in ms. */
+  holdMs?: number;
+}
+
+const { id, size = 160, holdMs = 3000 } = Astro.props;
+---
+
+<Sticker
+  id={id}
+  size={size}
+  class="fixed bottom-0 left-1/2 z-40 -translate-x-1/2 translate-y-full pointer-events-none transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] data-shown:translate-y-0 motion-reduce:transition-none"
+  data-popout-sticker
+  data-hold-ms={holdMs}
+/>
+
+<script>
+  const stickers = document.querySelectorAll<HTMLElement>("[data-popout-sticker]");
+  if (stickers.length) {
+    // Zero-height marker at the very end of the document; visible only when fully scrolled.
+    const sentinel = document.createElement("div");
+    sentinel.setAttribute("aria-hidden", "true");
+    sentinel.style.cssText = "height:1px;margin-top:-1px;pointer-events:none;";
+    document.body.append(sentinel);
+
+    const timers = new WeakMap<HTMLElement, ReturnType<typeof setTimeout>>();
+    let armed = true;
+
+    new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) {
+        armed = true;
+        return;
+      }
+      if (!armed) return;
+      armed = false;
+      for (const sticker of stickers) {
+        sticker.setAttribute("data-shown", "");
+        clearTimeout(timers.get(sticker));
+        timers.set(
+          sticker,
+          setTimeout(
+            () => sticker.removeAttribute("data-shown"),
+            Number(sticker.dataset.holdMs) || 3000,
+          ),
+        );
+      }
+    }).observe(sentinel);
+  }
+</script>

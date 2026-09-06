@@ -1,6 +1,7 @@
 ---
 import OfferingsLayout from "../../../layouts/OfferingsLayout.astro";
 import type { FaqConfig } from "../../../types";
+import PopoutSticker from "../../treasureHunt/PopoutSticker.astro";
 import Button from "../../ui/inputs/Button.astro";
 import NextTournamentInfo from "./NextTournamentInfo.astro";
 import RankingPoints from "./RankingPoints.astro";
@@ -74,4 +75,6 @@ const faqConfig: FaqConfig[] = [
   <NextTournamentInfo />
   <TournamentFormat />
   <RankingPoints />
+  {/* Treasure hunt: pops up from the bottom edge once the reader scrolls to the end. */}
+  <PopoutSticker id="brandon-tournament" />
 </OfferingsLayout>
