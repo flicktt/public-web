@@ -38,46 +38,54 @@ import brandonHello from "./assets/stickers/brandon-4.webp";
  * `<ToggleSticker front="..." back="..." />` flips between two stickers on each click;
  * `<ShakeSticker id="..." />` drops one onto the floor when the phone is shaken hard.
  * `<VisitedAllSticker id="..." />` is a dismissible reward pop-up after every page is visited.
+ * Stickers render with an empty alt on purpose: no name or "treasure hunt" hint in the markup.
  * `<GreetingSticker greetings={[...]} />` occasionally shows a random captioned greeting.
  */
 export const STICKERS = {
-  "alberto-drawer": { img: albertoDrawer, alt: "Treasure hunt sticker: Alberto" },
-  "lis-drawer": { img: lisDrawer, alt: "Treasure hunt sticker: Lis" },
-  "martin-drawer": { img: martinDrawer, alt: "Treasure hunt sticker: Martin" },
+  "alberto-drawer": { img: albertoDrawer },
+  "lis-drawer": { img: lisDrawer },
+  "martin-drawer": { img: martinDrawer },
   // 404 page: one of these is shown per load (see RandomSticker.astro / pages/404.astro).
-  "404-alberto": { img: notFoundAlberto, alt: "Treasure hunt sticker: Alberto" },
-  "404-isaac": { img: notFoundIsaac, alt: "Treasure hunt sticker: Isaac" },
-  "404-jess": { img: notFoundJess, alt: "Treasure hunt sticker: Jess" },
-  "404-leena": { img: notFoundLeena, alt: "Treasure hunt sticker: Leena" },
-  "404-mark": { img: notFoundMark, alt: "Treasure hunt sticker: Mark" },
-  "404-shreyansh": { img: notFoundShreyansh, alt: "Treasure hunt sticker: Shreyansh" },
+  "404-alberto": { img: notFoundAlberto },
+  "404-isaac": { img: notFoundIsaac },
+  "404-jess": { img: notFoundJess },
+  "404-leena": { img: notFoundLeena },
+  "404-mark": { img: notFoundMark },
+  "404-shreyansh": { img: notFoundShreyansh },
   // Revealed by hovering/clicking a word (RevealSticker.astro): footer credit, membership "Free",
   // about page contact name, WhatsApp icon (hover only).
-  "sid-footer": { img: sidFooter, alt: "Treasure hunt sticker: Sid" },
-  "may-workshop": { img: mayWorkshop, alt: "Treasure hunt sticker: May" },
-  "mark-about": { img: markAbout, alt: "Treasure hunt sticker: Mark" },
-  "isaac-whatsapp": { img: isaacWhatsapp, alt: "Treasure hunt sticker: Isaac" },
+  "sid-footer": { img: sidFooter },
+  "may-workshop": { img: mayWorkshop },
+  "mark-about": { img: markAbout },
+  "isaac-whatsapp": { img: isaacWhatsapp },
   // On the back of the membership page smiley icon (FlipSticker.astro).
-  "lis-smiley": { img: lisSmiley, alt: "Treasure hunt sticker: Lis" },
+  "lis-smiley": { img: lisSmiley },
   // League page "Currently Active" box corner; clicking flips between the two (ToggleSticker.astro).
-  "mark-go": { img: markGo, alt: "Treasure hunt sticker: Mark says go" },
-  "mark-stop": { img: markStop, alt: "Treasure hunt sticker: Mark says stop" },
+  "mark-go": { img: markGo },
+  "mark-stop": { img: markStop },
   // Jumps up from the bottom edge when the reader reaches the end of the page (PopoutSticker.astro).
-  "brandon-tournament": { img: brandonTournament, alt: "Treasure hunt sticker: Brandon" },
+  "brandon-tournament": { img: brandonTournament },
   // Replaces the hamburger icon on the toggle button inside the open mobile nav menu.
-  "burger-menu": { img: burgerMenu, alt: "Treasure hunt sticker: Burger" },
+  "burger-menu": { img: burgerMenu },
   // Home page schedule: pop in from the viewport edge when it is swiped to its right/left end.
-  "ben-schedule": { img: benSchedule, alt: "Treasure hunt sticker: Ben" },
-  "david-schedule": { img: davidSchedule, alt: "Treasure hunt sticker: David" },
+  "ben-schedule": { img: benSchedule },
+  "david-schedule": { img: davidSchedule },
   // Every page: drops onto the floor when the phone is shaken hard (ShakeSticker.astro).
-  "leena-shake": { img: leenaShake, alt: "Treasure hunt sticker: Leena" },
+  "leena-shake": { img: leenaShake },
   // Reward pop-up once every page has been visited (VisitedAllSticker.astro).
-  "lis-reward": { img: lisReward, alt: "Treasure hunt sticker: Lis" },
+  "lis-reward": { img: lisReward },
   // Random greetings after 20 page loads (GreetingSticker.astro).
-  "leena-hello": { img: leenaHello, alt: "Treasure hunt sticker: Leena" },
-  "may-hello": { img: mayHello, alt: "Treasure hunt sticker: May" },
-  "umberto-hello": { img: umbertoHello, alt: "Treasure hunt sticker: Umberto" },
-  "brandon-hello": { img: brandonHello, alt: "Treasure hunt sticker: Brandon" },
-} as const satisfies Record<string, { img: ImageMetadata; alt: string }>;
+  "leena-hello": { img: leenaHello },
+  "may-hello": { img: mayHello },
+  "umberto-hello": { img: umbertoHello },
+  "brandon-hello": { img: brandonHello },
+} as const satisfies Record<string, { img: ImageMetadata }>;
 
 export type StickerId = keyof typeof STICKERS;
+
+/**
+ * Pixel width to generate a sticker image at for a given rendered CSS size. Stickers are drawn
+ * small (down to 24px) but readers zoom in on them, so never go below 256px and give larger ones
+ * three times their size, capped at the 512px source. The browser scales it down on the page.
+ */
+export const stickerRenderWidth = (size: number) => Math.min(512, Math.max(size * 3, 256));

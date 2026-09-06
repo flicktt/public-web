@@ -1,6 +1,6 @@
 ---
 import { getImage } from "astro:assets";
-import { STICKERS, type StickerId } from "../../treasureHunt";
+import { STICKERS, stickerRenderWidth, type StickerId } from "../../treasureHunt";
 
 /**
  * Occasional greeting: once the reader has loaded at least `afterLoads` pages (counted in
@@ -23,9 +23,11 @@ const SIZE = 80;
 
 const candidates = await Promise.all(
   greetings.map(async ({ id, caption }) => {
-    const { img, alt } = STICKERS[id];
-    const image = await getImage({ src: img, width: SIZE, height: SIZE, densities: [1, 2] });
-    return { id, caption, alt, src: image.src, srcset: image.srcSet.attribute };
+    const { img } = STICKERS[id];
+    // Generated larger than displayed so the sticker stays sharp when the reader zooms in.
+    const renderWidth = stickerRenderWidth(SIZE);
+    const image = await getImage({ src: img, width: renderWidth, height: renderWidth });
+    return { id, caption, src: image.src };
   }),
 );
 ---
@@ -58,8 +60,6 @@ const candidates = await Promise.all(
         const pick = options[Math.floor(Math.random() * options.length)];
         const img = el.querySelector("img")!;
         img.src = pick.src;
-        img.srcset = pick.srcset;
-        img.alt = pick.alt;
         img.dataset.sticker = pick.id;
         el.querySelector("p")!.textContent = pick.caption;
         delete el.dataset.candidates;

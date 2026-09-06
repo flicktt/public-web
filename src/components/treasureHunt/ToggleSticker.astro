@@ -6,7 +6,7 @@ import Sticker from "./Sticker.astro";
  * Two treasure hunt stickers back to back: each click or tap flips the card over to the other
  * one, indefinitely. Moving the mouse onto it also flips it once, and it stays that way when the
  * mouse leaves, so a click right after hovering flips it back. The card is a square of `size`
- * CSS px.
+ * CSS px. The flip itself is the 2D squash-and-swap in flipCard.ts, which stays sharp on zoom.
  */
 interface Props {
   front: StickerId;
@@ -21,28 +21,28 @@ const { front, back, size, class: className } = Astro.props;
 
 <button
   type="button"
-  class:list={["block cursor-pointer [perspective:800px]", className]}
+  class:list={["block cursor-pointer", className]}
   style={`width:${size}px;height:${size}px`}
   aria-label="Flip"
   data-toggle-sticker
 >
-  <span
-    class="relative block size-full transition-transform duration-500 [transform-style:preserve-3d] in-data-flipped:[transform:rotateY(180deg)] motion-reduce:transition-none"
-  >
-    {/* Each face carries its own transform, and the images hide their backfaces too: without
-        both, desktop Chrome shows the front mirrored through the back sticker's transparent areas. */}
-    <span class="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(0deg)]">
-      <Sticker id={front} size={size} class="[backface-visibility:hidden]" />
-    </span>
-    <span class="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)]">
-      <Sticker id={back} size={size} class="[backface-visibility:hidden]" />
-    </span>
+  <span class="block size-full" data-flip-card>
+    <Sticker id={front} size={size} data-flip-face="front" />
+    <Sticker id={back} size={size} data-flip-face="back" hidden />
   </span>
 </button>
 
 <script>
+  import { flipCard } from "./flipCard";
+
   for (const card of document.querySelectorAll<HTMLElement>("[data-toggle-sticker]")) {
-    const flip = () => card.toggleAttribute("data-flipped");
+    const inner = card.querySelector<HTMLElement>("[data-flip-card]")!;
+    let flipped = false;
+    const flip = () => {
+      flipped = !flipped;
+      card.toggleAttribute("data-flipped", flipped);
+      flipCard(inner, flipped);
+    };
     card.addEventListener("click", flip);
     // Mouse only: on touch, a tap would fire this as well as click and cancel itself out.
     card.addEventListener("pointerenter", (event) => {

@@ -1,6 +1,6 @@
 ---
-import { Image } from "astro:assets";
-import { STICKERS, type StickerId } from "../../treasureHunt";
+import { getImage } from "astro:assets";
+import { STICKERS, stickerRenderWidth, type StickerId } from "../../treasureHunt";
 
 interface Props extends astroHTML.JSX.HTMLAttributes {
   id: StickerId;
@@ -9,16 +9,19 @@ interface Props extends astroHTML.JSX.HTMLAttributes {
 }
 
 const { id, size = 48, class: className, ...rest } = Astro.props;
-const { img, alt } = STICKERS[id];
+const { img } = STICKERS[id];
+// Generated larger than displayed so the sticker stays sharp when the reader zooms in.
+const renderWidth = stickerRenderWidth(size);
+const image = await getImage({ src: img, width: renderWidth, height: renderWidth });
 ---
 
-<Image
-  src={img}
-  alt={alt}
+<img
+  src={image.src}
+  alt=""
   width={size}
   height={size}
-  densities={[1, 2]}
   loading="lazy"
+  decoding="async"
   data-sticker={id}
   class:list={["select-none", className]}
   {...rest}

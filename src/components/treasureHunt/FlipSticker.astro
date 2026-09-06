@@ -4,8 +4,9 @@ import Sticker from "./Sticker.astro";
 
 /**
  * A flip card: the slotted content (e.g. an icon) is the front, a treasure hunt sticker is the
- * back. Hovering flips it over; a click or tap toggles it, so it works on touch and keyboard.
- * The card is a square of `size` CSS px.
+ * back. Hovering shows the back while the mouse is over it; a click or tap toggles it, so it
+ * works on touch and keyboard. The card is a square of `size` CSS px. The flip itself is the
+ * 2D squash-and-swap in flipCard.ts, which stays sharp on zoom.
  */
 interface Props {
   id: StickerId;
@@ -19,31 +20,48 @@ const { id, size, class: className } = Astro.props;
 
 <button
   type="button"
-  class:list={["group/flip block cursor-pointer [perspective:800px]", className]}
+  class:list={["block cursor-pointer", className]}
   style={`width:${size}px;height:${size}px`}
   aria-label="Flip"
   data-flip-sticker
 >
-  <span
-    class="relative block size-full transition-transform duration-500 [transform-style:preserve-3d] group-hover/flip:[transform:rotateY(180deg)] in-data-flipped:[transform:rotateY(180deg)] motion-reduce:transition-none"
-  >
-    {/* Each face carries its own transform, and the sticker hides its backface too: without
-        both, desktop Chrome shows the front mirrored through the sticker's transparent areas. */}
-    <span
-      class="absolute inset-0 grid place-items-center [backface-visibility:hidden] [transform:rotateY(0deg)]"
-    >
+  <span class="block size-full" data-flip-card>
+    <span class="grid size-full place-items-center" data-flip-face="front">
       <slot />
     </span>
-    <span
-      class="absolute inset-0 grid place-items-center [backface-visibility:hidden] [transform:rotateY(180deg)]"
-    >
-      <Sticker id={id} size={size} class="[backface-visibility:hidden]" />
-    </span>
+    <Sticker id={id} size={size} data-flip-face="back" hidden />
   </span>
 </button>
 
 <script>
+  import { flipCard } from "./flipCard";
+
   for (const card of document.querySelectorAll<HTMLElement>("[data-flip-sticker]")) {
-    card.addEventListener("click", () => card.toggleAttribute("data-flipped"));
+    const inner = card.querySelector<HTMLElement>("[data-flip-card]")!;
+    let toggled = false; // set by click/tap
+    let hovering = false; // mouse is over the card
+    let showingBack = false;
+    const update = () => {
+      const showBack = toggled !== hovering;
+      if (showBack === showingBack) return;
+      showingBack = showBack;
+      card.toggleAttribute("data-flipped", showBack);
+      flipCard(inner, showBack);
+    };
+    card.addEventListener("click", () => {
+      toggled = !toggled;
+      update();
+    });
+    // Mouse only: on touch, a tap would fire these as well as click.
+    card.addEventListener("pointerenter", (event) => {
+      if (event.pointerType !== "mouse") return;
+      hovering = true;
+      update();
+    });
+    card.addEventListener("pointerleave", (event) => {
+      if (event.pointerType !== "mouse") return;
+      hovering = false;
+      update();
+    });
   }
 </script>
