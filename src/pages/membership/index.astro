@@ -12,9 +12,9 @@ import FaceSmile from "../../icons/FaceSmile.svg";
 import PercentBadge from "../../icons/PercentBadge.svg";
 import Container from "../../layouts/Container.astro";
 import PageLayout from "../../layouts/PageLayout.astro";
-import type { FaqConfig } from "../../types";
+import type { FaqConfig, PointsRowConfig } from "../../types";
 
-const pointConfig = [
+const pointConfig: PointsRowConfig = [
   {
     Icon: PercentBadge,
     text: "Members get big discounts on all activities, as well as access to free Workshop sessions, held every two months ",
@@ -22,6 +22,8 @@ const pointConfig = [
   {
     Icon: FaceSmile,
     text: "Become part of a huge friendly and passionate table tennis community, dedicated to spreading the love for the sport throughout London",
+    // Treasure hunt: the smiley flips over to reveal the sticker.
+    sticker: "lis-smiley",
   },
 ];
 

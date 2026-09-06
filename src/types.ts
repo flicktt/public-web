@@ -54,6 +54,8 @@ export type PageTabConfig = {
 export type PointsRowConfig = {
   Icon: SvgComponent;
   text: string;
+  /** Treasure hunt sticker on the back of the icon; hovering/clicking flips it over. */
+  sticker?: StickerId;
 }[];
 
 export type CoachProfileConfig = {

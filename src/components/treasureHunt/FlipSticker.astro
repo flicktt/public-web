@@ -1,0 +1,45 @@
+---
+import type { StickerId } from "../../treasureHunt";
+import Sticker from "./Sticker.astro";
+
+/**
+ * A flip card: the slotted content (e.g. an icon) is the front, a treasure hunt sticker is the
+ * back. Hovering flips it over; a click or tap toggles it, so it works on touch and keyboard.
+ * The card is a square of `size` CSS px.
+ */
+interface Props {
+  id: StickerId;
+  /** Card width/height in CSS px. */
+  size: number;
+  class?: string;
+}
+
+const { id, size, class: className } = Astro.props;
+---
+
+<button
+  type="button"
+  class:list={["group/flip block cursor-pointer [perspective:800px]", className]}
+  style={`width:${size}px;height:${size}px`}
+  aria-label="Flip"
+  data-flip-sticker
+>
+  <span
+    class="relative block size-full transition-transform duration-500 [transform-style:preserve-3d] group-hover/flip:[transform:rotateY(180deg)] in-data-flipped:[transform:rotateY(180deg)] motion-reduce:transition-none"
+  >
+    <span class="absolute inset-0 grid place-items-center [backface-visibility:hidden]">
+      <slot />
+    </span>
+    <span
+      class="absolute inset-0 grid place-items-center [backface-visibility:hidden] [transform:rotateY(180deg)]"
+    >
+      <Sticker id={id} size={size} />
+    </span>
+  </span>
+</button>
+
+<script>
+  for (const card of document.querySelectorAll<HTMLElement>("[data-flip-sticker]")) {
+    card.addEventListener("click", () => card.toggleAttribute("data-flipped"));
+  }
+</script>

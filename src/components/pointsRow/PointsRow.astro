@@ -1,5 +1,6 @@
 ---
 import type { PointsRowConfig } from "../../types";
+import FlipSticker from "../treasureHunt/FlipSticker.astro";
 
 interface Props {
 	pointConfig: PointsRowConfig;
@@ -13,9 +14,15 @@ const { pointConfig } = Astro.props;
     class="flex flex-col md:flex-row md:max-w-fit m-auto border-x border-flick-dark"
   >
     {
-      pointConfig.map(({ Icon, text }) => (
+      pointConfig.map(({ Icon, text, sticker }) => (
         <div class="grid grid-rows-1 md:grid-rows-[auto_1fr] gap-6 w-full md:max-w-150 py-10 not-first:border-l not-last:border-b md:not-last:border-b-0 border-flick-dark bg-linear-to-b from-flick-black to-[#242424]">
-          <Icon class="size-20 m-auto" />
+          {sticker ? (
+            <FlipSticker id={sticker} size={80} class="m-auto">
+              <Icon class="size-20" />
+            </FlipSticker>
+          ) : (
+            <Icon class="size-20 m-auto" />
+          )}
           <p
             class:list={[
               "md:max-w-lg px-12 text-center font-light text-xl md:text-2xl",

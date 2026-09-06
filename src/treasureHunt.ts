@@ -12,6 +12,7 @@ import sidFooter from "./assets/stickers/sid-1.webp";
 import mayWorkshop from "./assets/stickers/may-workshop.webp";
 import markAbout from "./assets/stickers/mark-1.webp";
 import isaacWhatsapp from "./assets/stickers/isaac-1.webp";
+import lisSmiley from "./assets/stickers/lis-3.webp";
 import brandonTournament from "./assets/stickers/brandon-1.webp";
 import burgerMenu from "./assets/stickers/burger.webp";
 import benSchedule from "./assets/stickers/ben-popout.webp";
@@ -27,6 +28,7 @@ import lisReward from "./assets/stickers/lis-4.webp";
  * `<RevealSticker id="...">word</RevealSticker>` pops one up above a word on hover/click;
  * `<PopoutSticker id="..." />` jumps up from the bottom edge when the page is scrolled to the end
  * (or a scroll container reaches an edge, or the <dialog> it sits in opens; see its props).
+ * `<FlipSticker id="...">icon</FlipSticker>` flips the content over to reveal one on hover/click;
  * `<ShakeSticker id="..." />` drops one onto the floor when the phone is shaken hard.
  * `<VisitedAllSticker id="..." />` is a dismissible reward pop-up after every page is visited.
  */
@@ -47,6 +49,8 @@ export const STICKERS = {
   "may-workshop": { img: mayWorkshop, alt: "Treasure hunt sticker: May" },
   "mark-about": { img: markAbout, alt: "Treasure hunt sticker: Mark" },
   "isaac-whatsapp": { img: isaacWhatsapp, alt: "Treasure hunt sticker: Isaac" },
+  // On the back of the membership page smiley icon (FlipSticker.astro).
+  "lis-smiley": { img: lisSmiley, alt: "Treasure hunt sticker: Lis" },
   // Jumps up from the bottom edge when the reader reaches the end of the page (PopoutSticker.astro).
   "brandon-tournament": { img: brandonTournament, alt: "Treasure hunt sticker: Brandon" },
   // Replaces the hamburger icon on the toggle button inside the open mobile nav menu.
