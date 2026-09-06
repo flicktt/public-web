@@ -11,6 +11,7 @@ import notFoundShreyansh from "./assets/stickers/404-shreyansh.webp";
 import sidFooter from "./assets/stickers/sid-1.webp";
 import mayWorkshop from "./assets/stickers/may-workshop.webp";
 import brandonTournament from "./assets/stickers/brandon-1.webp";
+import burgerMenu from "./assets/stickers/burger.webp";
 
 /**
  * Treasure hunt stickers (WhatsApp sticker WebP files in src/assets/stickers). Each entry is one
@@ -18,7 +19,8 @@ import brandonTournament from "./assets/stickers/brandon-1.webp";
  * Adding, removing or moving a sticker is a change here plus the one placement.
  * `<RandomSticker ids={[...]} />` places one of several, chosen client-side on each load;
  * `<RevealSticker id="...">word</RevealSticker>` pops one up above a word on hover/click;
- * `<PopoutSticker id="..." />` jumps up from the bottom edge when the page is scrolled to the end.
+ * `<PopoutSticker id="..." />` jumps up from the bottom edge when the page is scrolled to the end
+ * (or, with `trigger="parent-dialog"`, when the <dialog> it sits in opens).
  */
 export const STICKERS = {
   "alberto-drawer": { img: albertoDrawer, alt: "Treasure hunt sticker: Alberto" },
@@ -36,6 +38,8 @@ export const STICKERS = {
   "may-workshop": { img: mayWorkshop, alt: "Treasure hunt sticker: May" },
   // Jumps up from the bottom edge when the reader reaches the end of the page (PopoutSticker.astro).
   "brandon-tournament": { img: brandonTournament, alt: "Treasure hunt sticker: Brandon" },
+  // Replaces the hamburger icon on the toggle button inside the open mobile nav menu.
+  "burger-menu": { img: burgerMenu, alt: "Treasure hunt sticker: Burger" },
 } as const satisfies Record<string, { img: ImageMetadata; alt: string }>;
 
 export type StickerId = keyof typeof STICKERS;

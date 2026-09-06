@@ -1,4 +1,6 @@
 ---
+import Sticker from "../treasureHunt/Sticker.astro";
+
 interface Props {
 	action: "open" | "close";
 }
@@ -19,20 +21,28 @@ const { action } = Astro.props;
 >
   <span class="absolute -inset-0.5"></span>
   <span class="sr-only">Open nav menu</span>
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="1.5"
-    data-slot="icon"
-    aria-hidden="true"
-    class="size-6 in-aria-expanded:hidden"
-  >
-    <path
-      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"></path>
-  </svg>
+  {
+    action === "close" ? (
+      /* Treasure hunt: inside the open menu the hamburger icon is the burger sticker, same 24px box. */
+      <Sticker id="burger-menu" size={24} class="size-6 in-aria-expanded:hidden" />
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        data-slot="icon"
+        aria-hidden="true"
+        class="size-6 in-aria-expanded:hidden"
+      >
+        <path
+          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    )
+  }
   <svg
     viewBox="0 0 24 24"
     fill="none"
