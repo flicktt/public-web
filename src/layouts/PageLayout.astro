@@ -5,6 +5,7 @@ import Footer from "../components/footer/Footer.astro";
 import HomeHeader from "../components/header/HomeHeader.astro";
 import PageHeader from "../components/header/PageHeader.astro";
 import ShakeSticker from "../components/treasureHunt/ShakeSticker.astro";
+import VisitedAllSticker from "../components/treasureHunt/VisitedAllSticker.astro";
 import "../styles/global.css";
 import type { Page, PageConfig } from "../types";
 
@@ -237,5 +238,12 @@ const breadcrumbs = SECTION_PARENTS.includes(parentSlug)
     <Footer />
     {/* Treasure hunt: on every page, shaking the phone hard drops Leena onto the floor. */}
     <ShakeSticker id="leena-shake" />
+    {/* Treasure hunt: a reward pop-up once every real page (all but the 404) has been visited. */}
+    <VisitedAllSticker
+      id="lis-reward"
+      message="You've visited every page on this website! Have a free sticker on us!"
+      page={page}
+      pages={(Object.keys(pageConfig) as Page[]).filter((p) => p !== "not-found")}
+    />
   </body>
 </html>

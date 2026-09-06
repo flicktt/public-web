@@ -1,0 +1,69 @@
+---
+import type { StickerId } from "../../treasureHunt";
+import type { Page } from "../../types";
+import XMark from "../../icons/XMark.svg";
+import Sticker from "./Sticker.astro";
+
+/**
+ * Rewards a reader who has visited every page of the site with a sticker in a pop-up. Visited
+ * pages are remembered in localStorage; once the set is complete the pop-up appears on every
+ * page until the reader dismisses it. Dismissing resets the visited set (to just the current
+ * page), so doing the full round again earns the pop-up again.
+ */
+interface Props {
+  id: StickerId;
+  message: string;
+  /** Id of the page being rendered. */
+  page: Page;
+  /** Every page that counts towards the reward. */
+  pages: readonly Page[];
+}
+
+const { id, message, page, pages } = Astro.props;
+---
+
+<div
+  class="fixed inset-x-4 bottom-4 z-50 mx-auto flex max-w-md items-center gap-4 rounded-xl border border-flick-yellow bg-flick-black p-4 text-white shadow-[0_0_40px_0_rgba(0,0,0,0.6)] transition-[opacity,translate] duration-500 not-data-shown:pointer-events-none not-data-shown:opacity-0 not-data-shown:translate-y-4 motion-reduce:transition-none"
+  role="status"
+  data-visited-all
+  data-page={page}
+  data-pages={JSON.stringify(pages)}
+>
+  <Sticker id={id} size={96} class="shrink-0" />
+  <p class="text-lg font-semibold">{message}</p>
+  <button
+    type="button"
+    class="shrink-0 cursor-pointer self-start rounded-md p-1 hover:bg-white/10"
+    aria-label="Dismiss"
+    data-visited-all-dismiss
+  >
+    <XMark class="size-6" />
+  </button>
+</div>
+
+<script>
+  const el = document.querySelector<HTMLElement>("[data-visited-all]");
+  const VISITED_KEY = "hunt:visited-pages";
+
+  if (el) {
+    try {
+      const page = el.dataset.page;
+      const pages: string[] = JSON.parse(el.dataset.pages ?? "[]");
+      const visited = new Set<string>(JSON.parse(localStorage.getItem(VISITED_KEY) ?? "[]"));
+      if (page) visited.add(page);
+      localStorage.setItem(VISITED_KEY, JSON.stringify([...visited]));
+
+      if (pages.every((p) => visited.has(p))) {
+        // Let the initial (hidden) style apply first so the entrance transition plays.
+        setTimeout(() => el.setAttribute("data-shown", ""), 50);
+        el.querySelector("[data-visited-all-dismiss]")?.addEventListener("click", () => {
+          el.removeAttribute("data-shown");
+          // Start the round again; the page they're on counts as seen.
+          localStorage.setItem(VISITED_KEY, JSON.stringify(page ? [page] : []));
+        });
+      }
+    } catch {
+      // localStorage unavailable (private mode etc.): no reward tracking, nothing to show.
+    }
+  }
+</script>

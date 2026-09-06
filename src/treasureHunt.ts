@@ -16,6 +16,7 @@ import burgerMenu from "./assets/stickers/burger.webp";
 import benSchedule from "./assets/stickers/ben-popout.webp";
 import davidSchedule from "./assets/stickers/david-popout.webp";
 import leenaShake from "./assets/stickers/leena-fall.webp";
+import lisReward from "./assets/stickers/lis-4.webp";
 
 /**
  * Treasure hunt stickers (WhatsApp sticker WebP files in src/assets/stickers). Each entry is one
@@ -26,6 +27,7 @@ import leenaShake from "./assets/stickers/leena-fall.webp";
  * `<PopoutSticker id="..." />` jumps up from the bottom edge when the page is scrolled to the end
  * (or a scroll container reaches an edge, or the <dialog> it sits in opens; see its props).
  * `<ShakeSticker id="..." />` drops one onto the floor when the phone is shaken hard.
+ * `<VisitedAllSticker id="..." />` is a dismissible reward pop-up after every page is visited.
  */
 export const STICKERS = {
   "alberto-drawer": { img: albertoDrawer, alt: "Treasure hunt sticker: Alberto" },
@@ -52,6 +54,8 @@ export const STICKERS = {
   "david-schedule": { img: davidSchedule, alt: "Treasure hunt sticker: David" },
   // Every page: drops onto the floor when the phone is shaken hard (ShakeSticker.astro).
   "leena-shake": { img: leenaShake, alt: "Treasure hunt sticker: Leena" },
+  // Reward pop-up once every page has been visited (VisitedAllSticker.astro).
+  "lis-reward": { img: lisReward, alt: "Treasure hunt sticker: Lis" },
 } as const satisfies Record<string, { img: ImageMetadata; alt: string }>;
 
 export type StickerId = keyof typeof STICKERS;
