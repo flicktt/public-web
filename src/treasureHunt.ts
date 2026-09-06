@@ -8,6 +8,7 @@ import notFoundJess from "./assets/stickers/404-jess.webp";
 import notFoundLeena from "./assets/stickers/404-leena.webp";
 import notFoundMark from "./assets/stickers/404-mark.webp";
 import notFoundShreyansh from "./assets/stickers/404-shreyansh.webp";
+import sidFooter from "./assets/stickers/sid-1.webp";
 
 /**
  * Treasure hunt stickers (WhatsApp sticker WebP files in src/assets/stickers). Each entry is one
@@ -26,6 +27,8 @@ export const STICKERS = {
   "404-leena": { img: notFoundLeena, alt: "Treasure hunt sticker: Leena" },
   "404-mark": { img: notFoundMark, alt: "Treasure hunt sticker: Mark" },
   "404-shreyansh": { img: notFoundShreyansh, alt: "Treasure hunt sticker: Shreyansh" },
+  // Footer: revealed by hovering or clicking the developer credit.
+  "sid-footer": { img: sidFooter, alt: "Treasure hunt sticker: Sid" },
 } as const satisfies Record<string, { img: ImageMetadata; alt: string }>;
 
 export type StickerId = keyof typeof STICKERS;
