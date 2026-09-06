@@ -1,8 +1,10 @@
 ---
 import Button from "../components/ui/inputs/Button.astro";
+import RandomSticker from "../components/treasureHunt/RandomSticker.astro";
 import DisplayText from "../components/ui/text/DisplayText.astro";
 import Container from "../layouts/Container.astro";
 import PageLayout from "../layouts/PageLayout.astro";
+import { STICKERS, type StickerId } from "../treasureHunt";
 
 // Served by Cloudflare for any URL that matches no route (dist/404.html). Legacy Wix URLs are
 // covered by the Bulk Redirect list first; this catches whatever slips through.
@@ -14,16 +16,24 @@ const sections = [
   { name: "Membership", link: "/membership/" },
   { name: "About", link: "/about/" },
 ];
+
+// Treasure hunt: every 404-* sticker is a candidate; one is shown per load.
+const notFoundStickers = (Object.keys(STICKERS) as StickerId[]).filter((id) =>
+  id.startsWith("404-"),
+);
 ---
 
 <PageLayout page="not-found">
   <Container main class="flex flex-col gap-10 lg:gap-14 py-10 lg:py-14">
-    <DisplayText class="text-center">
-      Looks like that one went{" "}
-      <span class="text-flick-yellow"><b>into the net</b></span>.
-      <br />
-      The page you were looking for has moved or never existed.
-    </DisplayText>
+    <div class="flex flex-col items-center gap-6">
+      <RandomSticker ids={notFoundStickers} size={192} />
+      <DisplayText class="text-center">
+        Looks like that one went{" "}
+        <span class="text-flick-yellow"><b>into the net</b></span>.
+        <br />
+        The page you were looking for has moved or never existed.
+      </DisplayText>
+    </div>
     <div class="flex flex-col items-center gap-6">
       <Button as="a" href="/" size="lg" class="text-center">
         Back to the home page

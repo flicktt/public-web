@@ -1,0 +1,47 @@
+---
+import { getImage } from "astro:assets";
+import { STICKERS, type StickerId } from "../../treasureHunt";
+
+/**
+ * Places one treasure hunt sticker out of several, chosen at random on every page load.
+ * Pages are prerendered, so the server can't choose: it emits the optimised URL for every
+ * candidate and a tiny inline script picks one before first paint. The chosen sticker gets the
+ * same `data-sticker` marker and alt text as a `<Sticker />`.
+ */
+interface Props {
+  ids: readonly StickerId[];
+  /** Rendered width/height in CSS px (source stickers are 512×512). */
+  size?: number;
+}
+
+const { ids, size = 48 } = Astro.props;
+
+const candidates = await Promise.all(
+  ids.map(async (id) => {
+    const { img, alt } = STICKERS[id];
+    const image = await getImage({ src: img, width: size, height: size, densities: [1, 2] });
+    return { id, alt, src: image.src, srcset: image.srcSet.attribute };
+  }),
+);
+const domId = `random-sticker-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+{/* No src server-side, so the preload scanner doesn't fetch a sticker the script then replaces. */}
+<img
+  id={domId}
+  width={size}
+  height={size}
+  alt=""
+  class="select-none"
+  data-candidates={JSON.stringify(candidates)}
+/>
+<script is:inline define:vars={{ domId }}>
+  const img = document.getElementById(domId);
+  const options = JSON.parse(img.dataset.candidates);
+  const pick = options[Math.floor(Math.random() * options.length)];
+  img.src = pick.src;
+  img.srcset = pick.srcset;
+  img.alt = pick.alt;
+  img.dataset.sticker = pick.id;
+  delete img.dataset.candidates;
+</script>
