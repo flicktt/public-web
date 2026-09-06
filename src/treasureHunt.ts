@@ -10,6 +10,7 @@ import notFoundMark from "./assets/stickers/404-mark.webp";
 import notFoundShreyansh from "./assets/stickers/404-shreyansh.webp";
 import sidFooter from "./assets/stickers/sid-1.webp";
 import mayWorkshop from "./assets/stickers/may-workshop.webp";
+import markAbout from "./assets/stickers/mark-1.webp";
 import brandonTournament from "./assets/stickers/brandon-1.webp";
 import burgerMenu from "./assets/stickers/burger.webp";
 import benSchedule from "./assets/stickers/ben-popout.webp";
@@ -35,9 +36,11 @@ export const STICKERS = {
   "404-leena": { img: notFoundLeena, alt: "Treasure hunt sticker: Leena" },
   "404-mark": { img: notFoundMark, alt: "Treasure hunt sticker: Mark" },
   "404-shreyansh": { img: notFoundShreyansh, alt: "Treasure hunt sticker: Shreyansh" },
-  // Revealed by hovering/clicking a word (RevealSticker.astro): footer credit, membership "Free".
+  // Revealed by hovering/clicking a word (RevealSticker.astro): footer credit, membership "Free",
+  // about page contact name.
   "sid-footer": { img: sidFooter, alt: "Treasure hunt sticker: Sid" },
   "may-workshop": { img: mayWorkshop, alt: "Treasure hunt sticker: May" },
+  "mark-about": { img: markAbout, alt: "Treasure hunt sticker: Mark" },
   // Jumps up from the bottom edge when the reader reaches the end of the page (PopoutSticker.astro).
   "brandon-tournament": { img: brandonTournament, alt: "Treasure hunt sticker: Brandon" },
   // Replaces the hamburger icon on the toggle button inside the open mobile nav menu.

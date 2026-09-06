@@ -10,8 +10,10 @@ import InfoHighlightLayout from "../../layouts/InfoHighlightLayout.astro";
 import SplitLayoutContainer from "../../layouts/splitLayout/SplitLayoutContainer.astro";
 import SplitLayoutLeft from "../../layouts/splitLayout/SplitLayoutLeft.astro";
 import SplitLayoutRight from "../../layouts/splitLayout/SplitLayoutRight.astro";
+import RevealSticker from "../treasureHunt/RevealSticker.astro";
 import DisplayText from "../ui/text/DisplayText.astro";
 import { CONTACT_CONSTS } from "../../constants";
+import type { StickerId } from "../../treasureHunt";
 import { Image } from "astro:assets";
 
 const aboutPoints = [
@@ -41,7 +43,7 @@ const aboutPoints = [
   },
 ];
 
-const contacts = [
+const contacts: { name: string; title: string; email: string; sticker?: StickerId }[] = [
   {
     name: "General enquiries",
     title: "",
@@ -61,6 +63,8 @@ const contacts = [
     name: "Mark Lee",
     title: "Chairman",
     email: "chair@flicktt.club",
+    // Treasure hunt: the sticker pops up over the name.
+    sticker: "mark-about",
   },
   {
     name: "Astrid McAuliffe",
@@ -181,10 +185,16 @@ const contacts = [
       <SplitLayoutRight>
         <div class="flex flex-col gap-4">
           {
-            contacts.map(({ name, title, email }) => (
+            contacts.map(({ name, title, email, sticker }) => (
               <div>
                 <p class="text-2xl">
-                  <b>{name}</b>
+                  <b>
+                    {sticker ? (
+                      <RevealSticker id={sticker}>{name}</RevealSticker>
+                    ) : (
+                      name
+                    )}
+                  </b>
                 </p>
                 <p class:list={["text-xl", { hidden: title.length === 0 }]}>
                   {title}
