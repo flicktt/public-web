@@ -27,13 +27,17 @@ const { id, size, class: className } = Astro.props;
   <span
     class="relative block size-full transition-transform duration-500 [transform-style:preserve-3d] group-hover/flip:[transform:rotateY(180deg)] in-data-flipped:[transform:rotateY(180deg)] motion-reduce:transition-none"
   >
-    <span class="absolute inset-0 grid place-items-center [backface-visibility:hidden]">
+    {/* Each face carries its own transform, and the sticker hides its backface too: without
+        both, desktop Chrome shows the front mirrored through the sticker's transparent areas. */}
+    <span
+      class="absolute inset-0 grid place-items-center [backface-visibility:hidden] [transform:rotateY(0deg)]"
+    >
       <slot />
     </span>
     <span
       class="absolute inset-0 grid place-items-center [backface-visibility:hidden] [transform:rotateY(180deg)]"
     >
-      <Sticker id={id} size={size} />
+      <Sticker id={id} size={size} class="[backface-visibility:hidden]" />
     </span>
   </span>
 </button>

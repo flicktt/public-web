@@ -13,6 +13,8 @@ import mayWorkshop from "./assets/stickers/may-workshop.webp";
 import markAbout from "./assets/stickers/mark-1.webp";
 import isaacWhatsapp from "./assets/stickers/isaac-1.webp";
 import lisSmiley from "./assets/stickers/lis-3.webp";
+import markGo from "./assets/stickers/mark-go.webp";
+import markStop from "./assets/stickers/mark-stop.webp";
 import brandonTournament from "./assets/stickers/brandon-1.webp";
 import burgerMenu from "./assets/stickers/burger.webp";
 import benSchedule from "./assets/stickers/ben-popout.webp";
@@ -33,6 +35,7 @@ import brandonHello from "./assets/stickers/brandon-4.webp";
  * `<PopoutSticker id="..." />` jumps up from the bottom edge when the page is scrolled to the end
  * (or a scroll container reaches an edge, or the <dialog> it sits in opens; see its props).
  * `<FlipSticker id="...">icon</FlipSticker>` flips the content over to reveal one on hover/click;
+ * `<ToggleSticker front="..." back="..." />` flips between two stickers on each click;
  * `<ShakeSticker id="..." />` drops one onto the floor when the phone is shaken hard.
  * `<VisitedAllSticker id="..." />` is a dismissible reward pop-up after every page is visited.
  * `<GreetingSticker greetings={[...]} />` occasionally shows a random captioned greeting.
@@ -56,6 +59,9 @@ export const STICKERS = {
   "isaac-whatsapp": { img: isaacWhatsapp, alt: "Treasure hunt sticker: Isaac" },
   // On the back of the membership page smiley icon (FlipSticker.astro).
   "lis-smiley": { img: lisSmiley, alt: "Treasure hunt sticker: Lis" },
+  // League page "Currently Active" box corner; clicking flips between the two (ToggleSticker.astro).
+  "mark-go": { img: markGo, alt: "Treasure hunt sticker: Mark says go" },
+  "mark-stop": { img: markStop, alt: "Treasure hunt sticker: Mark says stop" },
   // Jumps up from the bottom edge when the reader reaches the end of the page (PopoutSticker.astro).
   "brandon-tournament": { img: brandonTournament, alt: "Treasure hunt sticker: Brandon" },
   // Replaces the hamburger icon on the toggle button inside the open mobile nav menu.

@@ -7,6 +7,7 @@ import InfoHighlightLayout from "../../../layouts/InfoHighlightLayout.astro";
 import OfferingsLayout from "../../../layouts/OfferingsLayout.astro";
 import type { FaqConfig } from "../../../types";
 import PointsRow from "../../pointsRow/PointsRow.astro";
+import ToggleSticker from "../../treasureHunt/ToggleSticker.astro";
 import Button from "../../ui/inputs/Button.astro";
 import WithSmoothScrollTo from "../../ui/with/WithSmoothScrollTo.astro";
 import EloFaq from "./faq/EloFaq.astro";
@@ -130,7 +131,13 @@ const faqConfig: FaqConfig[] = [
   </div>
   <PointsRow pointConfig={pointConfig} />
   <Container class="flex flex-col gap-8 pt-6">
-    <InfoHighlightLayout title="Currently Active" size="md">
+    <InfoHighlightLayout
+      title="Currently Active"
+      size="md"
+      containerProps={{ class: "relative" }}
+    >
+      {/* Treasure hunt: Mark's go/stop stickers in the corner; each click flips between them. */}
+      <ToggleSticker front="mark-go" back="mark-stop" size={128} class="absolute top-4 right-4" />
       <h4 class="font-bold text-2xl">Season 7</h4>
       <p>1 Sep - 30 Nov</p>
       <p>
