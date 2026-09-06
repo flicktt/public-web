@@ -177,7 +177,9 @@ const contacts: { name: string; title: string; email: string; sticker?: StickerI
           else? Don't hesitate to send us a message.{" "}
           <a href={CONTACT_CONSTS.whatsapp} class="font-bold hover:underline">
             You can also contact us via{" "}
-            <WhatsAppLogo class="inline" width={22} />{" "}
+            <RevealSticker id="isaac-whatsapp" hoverOnly>
+              <WhatsAppLogo class="inline" width={22} />
+            </RevealSticker>{" "}
             WhatsApp.
           </a>
         </p>

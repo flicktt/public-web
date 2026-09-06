@@ -66,7 +66,10 @@ const year = new Date().getFullYear();
             rel="noopener"
             aria-label="WhatsApp"
           >
-            <WhatsAppLogo height={22} width={22} />
+            {/* Treasure hunt: hovering the icon pops the sticker up (hover only: it's a link). */}
+            <RevealSticker id="isaac-whatsapp" hoverOnly align="end" class="flex">
+              <WhatsAppLogo height={22} width={22} />
+            </RevealSticker>
           </a>
         </li>
       </ul>

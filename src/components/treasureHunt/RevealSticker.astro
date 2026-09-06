@@ -5,30 +5,53 @@ import Sticker from "./Sticker.astro";
 /**
  * Wraps a word so a treasure hunt sticker pops up above it on hover. The word is rendered as a
  * button, so a tap (touch devices) or click toggles the sticker for everyone else, keyboard
- * users included. Uses a named group so a surrounding `.group` (e.g. a table row) doesn't
- * trigger it.
+ * users included. With `hoverOnly` the content is wrapped in a plain span instead: use that
+ * inside a link or button, where a nested button would be invalid and a click already does
+ * something; there, touch users reveal it with a long press (which also suppresses the link's
+ * navigation and context menu for that press). Uses a named group so a surrounding `.group`
+ * (e.g. a table row) doesn't trigger it.
  */
 interface Props {
   id: StickerId;
   /** Sticker width/height in CSS px. */
   size?: number;
-  /** Extra classes for the trigger button. */
+  /** Reveal on hover or long press only; no click/tap toggle (for content inside links). */
+  hoverOnly?: boolean;
+  /** Horizontal alignment of the sticker over the trigger; "end" keeps it inside a right edge. */
+  align?: "center" | "end";
+  /** Extra classes for the trigger element. */
   class?: string;
 }
 
-const { id, size = 96, class: className } = Astro.props;
+const { id, size = 96, hoverOnly = false, align = "center", class: className } = Astro.props;
+
+const alignClasses = align === "end" ? "right-0" : "left-1/2 -translate-x-1/2";
 ---
 
 <span class="group/reveal relative inline-block">
   <Sticker
     id={id}
     size={size}
-    class="absolute left-1/2 bottom-full mb-1 -translate-x-1/2 max-w-none pointer-events-none opacity-0 translate-y-2 transition-[opacity,translate] duration-300 group-hover/reveal:opacity-100 group-hover/reveal:translate-y-0 data-shown:opacity-100 data-shown:translate-y-0"
+    class:list={[
+      "absolute bottom-full mb-1 max-w-none pointer-events-none opacity-0 translate-y-2 transition-[opacity,translate] duration-300 group-hover/reveal:opacity-100 group-hover/reveal:translate-y-0 data-shown:opacity-100 data-shown:translate-y-0",
+      alignClasses,
+    ]}
     data-reveal-sticker
   />
-  <button type="button" class:list={["cursor-pointer", className]} data-reveal-toggle>
-    <slot />
-  </button>
+  {
+    hoverOnly ? (
+      <span
+        class:list={["inline-block select-none [-webkit-touch-callout:none]", className]}
+        data-reveal-press
+      >
+        <slot />
+      </span>
+    ) : (
+      <button type="button" class:list={["cursor-pointer", className]} data-reveal-toggle>
+        <slot />
+      </button>
+    )
+  }
 </span>
 
 <script>
@@ -37,6 +60,50 @@ const { id, size = 96, class: className } = Astro.props;
       btn.parentElement
         ?.querySelector("[data-reveal-sticker]")
         ?.toggleAttribute("data-shown");
+    });
+  }
+
+  // Hover-only triggers: a long press (touch/pen) reveals the sticker and swallows the click
+  // that would otherwise follow the link, plus the context menu the press would open.
+  const PRESS_MS = 400;
+  const LINGER_MS = 1500;
+  for (const trigger of document.querySelectorAll<HTMLElement>("[data-reveal-press]")) {
+    const sticker = trigger.parentElement?.querySelector("[data-reveal-sticker]");
+    if (!sticker) continue;
+    let pressTimer: ReturnType<typeof setTimeout> | undefined;
+    let hideTimer: ReturnType<typeof setTimeout> | undefined;
+    let pressing = false; // finger is down, waiting for the long-press delay
+    let pressed = false; // long press happened; sticker is showing
+
+    trigger.addEventListener("pointerdown", (event) => {
+      if (event.pointerType === "mouse") return;
+      clearTimeout(pressTimer);
+      clearTimeout(hideTimer);
+      pressing = true;
+      pressTimer = setTimeout(() => {
+        pressing = false;
+        pressed = true;
+        sticker.setAttribute("data-shown", "");
+      }, PRESS_MS);
+    });
+    const release = () => {
+      clearTimeout(pressTimer);
+      pressing = false;
+      if (pressed) {
+        hideTimer = setTimeout(() => {
+          sticker.removeAttribute("data-shown");
+          pressed = false;
+        }, LINGER_MS);
+      }
+    };
+    trigger.addEventListener("pointerup", release);
+    trigger.addEventListener("pointercancel", release);
+    trigger.addEventListener("pointerleave", release);
+    trigger.addEventListener("click", (event) => {
+      if (pressed) event.preventDefault();
+    });
+    trigger.addEventListener("contextmenu", (event) => {
+      if (pressing || pressed) event.preventDefault();
     });
   }
 </script>
