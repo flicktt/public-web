@@ -6,6 +6,7 @@ import HomeHeader from "../components/header/HomeHeader.astro";
 import PageHeader from "../components/header/PageHeader.astro";
 import ShakeSticker from "../components/treasureHunt/ShakeSticker.astro";
 import GreetingSticker from "../components/treasureHunt/GreetingSticker.astro";
+import HuntBanner from "../components/treasureHunt/HuntBanner.astro";
 import VisitedAllSticker from "../components/treasureHunt/VisitedAllSticker.astro";
 import "../styles/global.css";
 import type { Page, PageConfig } from "../types";
@@ -225,6 +226,8 @@ const breadcrumbs = SECTION_PARENTS.includes(parentSlug)
     }
   </head>
   <body class="flex flex-col min-h-screen">
+    {/* Treasure hunt: dismissible announcement strip above the header. */}
+    <HuntBanner />
     {
       page === "home" ? (
         <HomeHeader />

@@ -1,0 +1,47 @@
+---
+import XMark from "../../icons/XMark.svg";
+
+/**
+ * Small announcement strip above the header telling visitors about the sticker hunt. Dismissing
+ * it is remembered in localStorage. It starts hidden and an inline script shows it before first
+ * paint unless it was dismissed, so returning visitors never see it flash.
+ */
+const message =
+  "In celebration of our new website, we are currently hosting a sticker hunt! You might see some stickers of some of our members and coaches on the website. Don't be alarmed!";
+---
+
+<div
+  class="flex items-start justify-center gap-3 bg-[#ff6f5e] px-4 py-2 text-flick-black"
+  role="region"
+  aria-label="Announcement"
+  data-hunt-banner
+  hidden
+>
+  <p class="text-center text-sm font-bold sm:text-base">{message}</p>
+  <button
+    type="button"
+    class="shrink-0 cursor-pointer rounded-md p-0.5 hover:bg-black/10"
+    aria-label="Dismiss announcement"
+    data-hunt-banner-dismiss
+  >
+    <XMark class="size-5" />
+  </button>
+</div>
+<script is:inline>
+  // Runs synchronously during parsing so the banner's visibility is settled before first paint.
+  try {
+    if (localStorage.getItem("hunt:banner-dismissed") !== "1") {
+      document.querySelector("[data-hunt-banner]").hidden = false;
+    }
+  } catch {}
+</script>
+
+<script>
+  const banner = document.querySelector<HTMLElement>("[data-hunt-banner]");
+  banner?.querySelector("[data-hunt-banner-dismiss]")?.addEventListener("click", () => {
+    banner.hidden = true;
+    try {
+      localStorage.setItem("hunt:banner-dismissed", "1");
+    } catch {}
+  });
+</script>
