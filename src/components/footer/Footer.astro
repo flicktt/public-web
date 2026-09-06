@@ -4,7 +4,7 @@ import footerLogo from "../../assets/logo-club.png";
 import IgLogo from "../../assets/ig-logo.svg";
 import WhatsAppLogo from "../../assets/whatsapp-logo.svg";
 import { CONTACT_CONSTS } from "../../constants";
-import Sticker from "../treasureHunt/Sticker.astro";
+import RevealSticker from "../treasureHunt/RevealSticker.astro";
 
 const year = new Date().getFullYear();
 ---
@@ -80,18 +80,7 @@ const year = new Date().getFullYear();
         <li>© {year} by Flick TT Ltd.</li>
         <li>
           Website by{" "}
-          {/* Treasure hunt: the sticker pops up above the name on hover, or on click/tap for touch and keyboard. */}
-          <span class="group relative inline-block">
-            <Sticker
-              id="sid-footer"
-              size={96}
-              class="absolute left-1/2 bottom-full mb-1 -translate-x-1/2 pointer-events-none opacity-0 translate-y-2 transition-[opacity,translate] duration-300 group-hover:opacity-100 group-hover:translate-y-0 data-shown:opacity-100 data-shown:translate-y-0"
-              data-sticker-reveal
-            />
-            <button type="button" id="sid-sticker-toggle" class="cursor-pointer">
-              Sid Gurung
-            </button>
-          </span>
+          <RevealSticker id="sid-footer">Sid Gurung</RevealSticker>
         </li>
         <li>
           <button class="cursor-pointer text-right" id="scroll-to-top">
@@ -104,12 +93,6 @@ const year = new Date().getFullYear();
 </footer>
 
 <script>
-  const sidToggle = document.getElementById("sid-sticker-toggle");
-  const sidSticker = document.querySelector<HTMLElement>("[data-sticker-reveal]");
-  sidToggle?.addEventListener("click", () => {
-    sidSticker?.toggleAttribute("data-shown");
-  });
-
   const scrollToTopEl = document.getElementById("scroll-to-top");
   scrollToTopEl?.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });

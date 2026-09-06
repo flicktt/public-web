@@ -1,6 +1,17 @@
 ---
+import type { StickerId } from "../../treasureHunt";
+import RevealSticker from "../treasureHunt/RevealSticker.astro";
+
+export interface PricingRow {
+  offering: string;
+  normal: string;
+  member: string;
+  /** Treasure hunt sticker revealed by hovering/clicking the member price. */
+  memberSticker?: StickerId;
+}
+
 interface Props {
-  rows: { offering: string; normal: string; member: string }[];
+  rows: PricingRow[];
 }
 
 const { rows } = Astro.props;
@@ -22,7 +33,7 @@ const { rows } = Astro.props;
   </thead>
   <tbody class="text-2xl">
     {
-      rows.map(({ offering, normal, member }, i) => (
+      rows.map(({ offering, normal, member, memberSticker }, i) => (
         <tr class="group">
           <td
             class:list={[
@@ -47,7 +58,11 @@ const { rows } = Astro.props;
               { "rounded-br-xl": i === rows.length - 1 },
             ]}
           >
-            {member}
+            {memberSticker ? (
+              <RevealSticker id={memberSticker}>{member}</RevealSticker>
+            ) : (
+              member
+            )}
           </td>
         </tr>
       ))

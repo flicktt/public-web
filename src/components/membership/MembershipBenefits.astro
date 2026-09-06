@@ -3,13 +3,14 @@ import SplitLayoutContainer from "../../layouts/splitLayout/SplitLayoutContainer
 import SplitLayoutLeft from "../../layouts/splitLayout/SplitLayoutLeft.astro";
 import SplitLayoutRight from "../../layouts/splitLayout/SplitLayoutRight.astro";
 import PricingCard from "./PricingCard.astro";
-import PricingTable from "./PricingTable.astro";
+import PricingTable, { type PricingRow } from "./PricingTable.astro";
 
-const pricingRows = [
+const pricingRows: PricingRow[] = [
   { offering: "Group session", normal: "£20", member: "£12" },
   { offering: "Open session", normal: "£10", member: "£5" },
   { offering: "Private coaching lesson", normal: "£60", member: "£45" },
-  { offering: "Workshop", normal: "N/A", member: "Free" },
+  // Treasure hunt: the sticker pops up over "Free".
+  { offering: "Workshop", normal: "N/A", member: "Free", memberSticker: "may-workshop" },
   { offering: "Flick TT Tournament entry", normal: "£25", member: "£15" },
   { offering: "Club table", normal: "£5.50 / £9.50", member: "£2 / £3" },
 ];
@@ -19,9 +20,10 @@ const pricingConfig = {
     label: offering,
     price: normal,
   })),
-  members: pricingRows.map(({ offering, member }) => ({
+  members: pricingRows.map(({ offering, member, memberSticker }) => ({
     label: offering,
     price: member,
+    sticker: memberSticker,
   })),
 };
 ---

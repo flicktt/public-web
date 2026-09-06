@@ -9,12 +9,14 @@ import notFoundLeena from "./assets/stickers/404-leena.webp";
 import notFoundMark from "./assets/stickers/404-mark.webp";
 import notFoundShreyansh from "./assets/stickers/404-shreyansh.webp";
 import sidFooter from "./assets/stickers/sid-1.webp";
+import mayWorkshop from "./assets/stickers/may-workshop.webp";
 
 /**
  * Treasure hunt stickers (WhatsApp sticker WebP files in src/assets/stickers). Each entry is one
  * hidden sticker; placing it is a `<Sticker id="..." />` in the component that hides it.
  * Adding, removing or moving a sticker is a change here plus the one placement.
- * `<RandomSticker ids={[...]} />` places one of several, chosen client-side on each load.
+ * `<RandomSticker ids={[...]} />` places one of several, chosen client-side on each load;
+ * `<RevealSticker id="...">word</RevealSticker>` pops one up above a word on hover/click.
  */
 export const STICKERS = {
   "alberto-drawer": { img: albertoDrawer, alt: "Treasure hunt sticker: Alberto" },
@@ -27,8 +29,9 @@ export const STICKERS = {
   "404-leena": { img: notFoundLeena, alt: "Treasure hunt sticker: Leena" },
   "404-mark": { img: notFoundMark, alt: "Treasure hunt sticker: Mark" },
   "404-shreyansh": { img: notFoundShreyansh, alt: "Treasure hunt sticker: Shreyansh" },
-  // Footer: revealed by hovering or clicking the developer credit.
+  // Revealed by hovering/clicking a word (RevealSticker.astro): footer credit, membership "Free".
   "sid-footer": { img: sidFooter, alt: "Treasure hunt sticker: Sid" },
+  "may-workshop": { img: mayWorkshop, alt: "Treasure hunt sticker: May" },
 } as const satisfies Record<string, { img: ImageMetadata; alt: string }>;
 
 export type StickerId = keyof typeof STICKERS;

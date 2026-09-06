@@ -1,0 +1,42 @@
+---
+import type { StickerId } from "../../treasureHunt";
+import Sticker from "./Sticker.astro";
+
+/**
+ * Wraps a word so a treasure hunt sticker pops up above it on hover. The word is rendered as a
+ * button, so a tap (touch devices) or click toggles the sticker for everyone else, keyboard
+ * users included. Uses a named group so a surrounding `.group` (e.g. a table row) doesn't
+ * trigger it.
+ */
+interface Props {
+  id: StickerId;
+  /** Sticker width/height in CSS px. */
+  size?: number;
+  /** Extra classes for the trigger button. */
+  class?: string;
+}
+
+const { id, size = 96, class: className } = Astro.props;
+---
+
+<span class="group/reveal relative inline-block">
+  <Sticker
+    id={id}
+    size={size}
+    class="absolute left-1/2 bottom-full mb-1 -translate-x-1/2 max-w-none pointer-events-none opacity-0 translate-y-2 transition-[opacity,translate] duration-300 group-hover/reveal:opacity-100 group-hover/reveal:translate-y-0 data-shown:opacity-100 data-shown:translate-y-0"
+    data-reveal-sticker
+  />
+  <button type="button" class:list={["cursor-pointer", className]} data-reveal-toggle>
+    <slot />
+  </button>
+</span>
+
+<script>
+  for (const btn of document.querySelectorAll<HTMLElement>("[data-reveal-toggle]")) {
+    btn.addEventListener("click", () => {
+      btn.parentElement
+        ?.querySelector("[data-reveal-sticker]")
+        ?.toggleAttribute("data-shown");
+    });
+  }
+</script>
