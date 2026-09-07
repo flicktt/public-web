@@ -16,6 +16,7 @@ import lisSmiley from "./assets/stickers/lis-3.webp";
 import markGo from "./assets/stickers/mark-go.webp";
 import markStop from "./assets/stickers/mark-stop.webp";
 import brandonLevel1 from "./assets/stickers/brandon-2.webp";
+import charlesChristmas from "./assets/stickers/charles-1.webp";
 import brandonTournament from "./assets/stickers/brandon-1.webp";
 import burgerMenu from "./assets/stickers/burger.webp";
 import benSchedule from "./assets/stickers/ben-popout.webp";
@@ -41,6 +42,7 @@ import brandonHello from "./assets/stickers/brandon-4.webp";
  * `<VisitedAllSticker id="..." />` is a dismissible reward pop-up after every page is visited.
  * Stickers render with an empty alt on purpose: no name or "treasure hunt" hint in the markup.
  * `<GreetingSticker greetings={[...]} />` occasionally shows a random captioned greeting.
+ * `<ClockSticker id="..." hour12={..} minute={..} />` is a dismissible card at a given time of day.
  */
 export const STICKERS = {
   "alberto-drawer": { img: albertoDrawer },
@@ -66,6 +68,8 @@ export const STICKERS = {
   "mark-stop": { img: markStop },
   // Group sessions page: inside the Level 1 accordion panel, right side.
   "brandon-level1": { img: brandonLevel1 },
+  // Every page: dismissible card for anyone loading a page at 12:25 am/pm (ClockSticker.astro).
+  "charles-christmas": { img: charlesChristmas },
   // Jumps up from the bottom edge when the reader reaches the end of the page (PopoutSticker.astro).
   "brandon-tournament": { img: brandonTournament },
   // Replaces the hamburger icon on the toggle button inside the open mobile nav menu.

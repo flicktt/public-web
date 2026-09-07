@@ -5,6 +5,7 @@ import Footer from "../components/footer/Footer.astro";
 import HomeHeader from "../components/header/HomeHeader.astro";
 import PageHeader from "../components/header/PageHeader.astro";
 import ShakeSticker from "../components/treasureHunt/ShakeSticker.astro";
+import ClockSticker from "../components/treasureHunt/ClockSticker.astro";
 import GreetingSticker from "../components/treasureHunt/GreetingSticker.astro";
 import HuntBanner from "../components/treasureHunt/HuntBanner.astro";
 import VisitedAllSticker from "../components/treasureHunt/VisitedAllSticker.astro";
@@ -248,6 +249,13 @@ const breadcrumbs = SECTION_PARENTS.includes(parentSlug)
       message="You've visited every page on this website! Have a free sticker on us!"
       page={page}
       pages={(Object.keys(pageConfig) as Page[]).filter((p) => p !== "not-found")}
+    />
+    {/* Treasure hunt: Charles in his Santa hat for anyone loading a page at 12:25 am or pm. */}
+    <ClockSticker
+      id="charles-christmas"
+      hour12={12}
+      minute={25}
+      message="It's not Christmas yet, but it's {time}. Close enough."
     />
     {/* Treasure hunt: after 20 page loads, a 10% chance per load of a passing greeting. */}
     <GreetingSticker

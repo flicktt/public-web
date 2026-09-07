@@ -1,8 +1,7 @@
 ---
 import type { StickerId } from "../../treasureHunt";
 import type { Page } from "../../types";
-import XMark from "../../icons/XMark.svg";
-import Sticker from "./Sticker.astro";
+import StickerCard from "./StickerCard.astro";
 
 /**
  * Rewards a reader who has visited every page of the site with a sticker in a pop-up. Visited
@@ -22,24 +21,14 @@ interface Props {
 const { id, message, page, pages } = Astro.props;
 ---
 
-<div
-  class="fixed inset-x-4 bottom-4 z-50 mx-auto flex max-w-md items-center gap-4 rounded-xl border border-flick-yellow bg-flick-black p-4 text-white shadow-[0_0_40px_0_rgba(0,0,0,0.6)] transition-[opacity,translate] duration-500 not-data-shown:pointer-events-none not-data-shown:opacity-0 not-data-shown:translate-y-4 motion-reduce:transition-none"
-  role="status"
+<StickerCard
+  id={id}
+  message={message}
+  dismissible
   data-visited-all
   data-page={page}
   data-pages={JSON.stringify(pages)}
->
-  <Sticker id={id} size={96} class="shrink-0" />
-  <p class="text-lg font-semibold">{message}</p>
-  <button
-    type="button"
-    class="shrink-0 cursor-pointer self-start rounded-md p-1 hover:bg-white/10"
-    aria-label="Dismiss"
-    data-visited-all-dismiss
-  >
-    <XMark class="size-6" />
-  </button>
-</div>
+/>
 
 <script>
   const el = document.querySelector<HTMLElement>("[data-visited-all]");
@@ -56,7 +45,7 @@ const { id, message, page, pages } = Astro.props;
       if (pages.every((p) => visited.has(p))) {
         // Let the initial (hidden) style apply first so the entrance transition plays.
         setTimeout(() => el.setAttribute("data-shown", ""), 50);
-        el.querySelector("[data-visited-all-dismiss]")?.addEventListener("click", () => {
+        el.querySelector("[data-card-dismiss]")?.addEventListener("click", () => {
           el.removeAttribute("data-shown");
           // Start the round again; the page they're on counts as seen.
           localStorage.setItem(VISITED_KEY, JSON.stringify(page ? [page] : []));

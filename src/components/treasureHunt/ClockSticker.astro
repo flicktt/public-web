@@ -1,0 +1,64 @@
+---
+import type { StickerId } from "../../treasureHunt";
+import StickerCard from "./StickerCard.astro";
+
+/**
+ * A dismissible sticker card for readers who load a page at a particular minute of the day
+ * (local time), e.g. 12:25 am or pm. Dismissing hides it for that occurrence; it comes back
+ * at the next matching time. `message` may contain `{time}`, replaced with e.g. "12:25 pm".
+ */
+interface Props {
+  id: StickerId;
+  message: string;
+  /** Hour on a 12-hour clock (1–12); matches both am and pm. */
+  hour12: number;
+  minute: number;
+}
+
+const { id, message, hour12, minute } = Astro.props;
+---
+
+<StickerCard
+  id={id}
+  dismissible
+  data-clock-sticker
+  data-hour12={hour12}
+  data-minute={minute}
+  data-message={message}
+/>
+
+<script>
+  const el = document.querySelector<HTMLElement>("[data-clock-sticker]");
+  const DISMISSED_KEY = "hunt:clock-dismissed";
+
+  if (el) {
+    const now = new Date();
+    const hour12 = now.getHours() % 12 || 12;
+    const ampm = now.getHours() < 12 ? "am" : "pm";
+    const minute = now.getMinutes();
+    const matches = hour12 === Number(el.dataset.hour12) && minute === Number(el.dataset.minute);
+    // One key per occurrence (date + am/pm), so a dismissal only covers this one.
+    const occurrence = `${now.toDateString()} ${ampm}`;
+
+    let dismissed = false;
+    try {
+      dismissed = localStorage.getItem(DISMISSED_KEY) === occurrence;
+    } catch {}
+
+    if (matches && !dismissed) {
+      const time = `${hour12}:${String(minute).padStart(2, "0")} ${ampm}`;
+      el.querySelector("[data-card-message]")!.textContent = (el.dataset.message ?? "").replace(
+        "{time}",
+        time,
+      );
+      // Let the initial (hidden) style apply first so the entrance transition plays.
+      setTimeout(() => el.setAttribute("data-shown", ""), 50);
+      el.querySelector("[data-card-dismiss]")?.addEventListener("click", () => {
+        el.removeAttribute("data-shown");
+        try {
+          localStorage.setItem(DISMISSED_KEY, occurrence);
+        } catch {}
+      });
+    }
+  }
+</script>
