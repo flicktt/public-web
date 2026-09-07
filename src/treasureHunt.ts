@@ -15,6 +15,7 @@ import isaacWhatsapp from "./assets/stickers/isaac-1.webp";
 import lisSmiley from "./assets/stickers/lis-3.webp";
 import markGo from "./assets/stickers/mark-go.webp";
 import markStop from "./assets/stickers/mark-stop.webp";
+import brandonLevel1 from "./assets/stickers/brandon-2.webp";
 import brandonTournament from "./assets/stickers/brandon-1.webp";
 import burgerMenu from "./assets/stickers/burger.webp";
 import benSchedule from "./assets/stickers/ben-popout.webp";
@@ -63,6 +64,8 @@ export const STICKERS = {
   // League page "Currently Active" box corner; clicking flips between the two (ToggleSticker.astro).
   "mark-go": { img: markGo },
   "mark-stop": { img: markStop },
+  // Group sessions page: inside the Level 1 accordion panel, right side.
+  "brandon-level1": { img: brandonLevel1 },
   // Jumps up from the bottom edge when the reader reaches the end of the page (PopoutSticker.astro).
   "brandon-tournament": { img: brandonTournament },
   // Replaces the hamburger icon on the toggle button inside the open mobile nav menu.

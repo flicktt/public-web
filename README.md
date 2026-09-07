@@ -85,5 +85,6 @@ CLOUDFLARE_ENV=preview pnpm build && npx wrangler deploy   # preview
 - Uses Astro with the Cloudflare adapter, and Tailwind CSS
 - Pages live under `src/pages`; `src/pages/404.astro` is the branded not-found page. Every route is prerendered, so the deployed Worker is assets-only and Cloudflare serves `dist/404.html` for unmatched URLs via `assets.not_found_handling: "404-page"` in `wrangler.jsonc` (no Astro code runs at request time)
 - Components live under `src/components`
+- The treasure hunt stickers (every file in `src/assets/stickers`), where each one is placed and how to trigger it are listed in [`docs/treasure-hunt.md`](docs/treasure-hunt.md)
 - Static assets live in `public`
 - `public/og-image.png` (social share image) is generated from the logo by `pnpm generate:og` — re-run if the logo changes

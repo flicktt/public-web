@@ -7,6 +7,7 @@ import Accordion from "../accordion/Accordion.astro";
 import AccordionContent from "../accordion/AccordionContent.astro";
 import AccordionStack from "../accordion/AccordionStack.astro";
 import AccordionTitle from "../accordion/AccordionTitle.astro";
+import Sticker from "../treasureHunt/Sticker.astro";
 
 const desc =
   "Our level-based group sessions are structured to balance quality coaching, focused training, and match play. Each two-hour session includes a 15-minute warm-up, 1 hour 15 minutes of drill practice, and 30 minutes of match play. Coaches provide personalised feedback to every player, with groups organised by level to ensure the right challenge and steady improvement.";
@@ -90,7 +91,14 @@ const faqConfig: FaqConfig[] = [
           id="offerings-grp-sess-lvl-1-panel"
           ariaLabelledBy="offerings-grp-sess-lvl-1-btn"
         >
-          <div class="flex flex-col gap-3">
+          {/* Treasure hunt: Brandon "knows what he's doing" floated top-right of the Level 1 panel
+              with the text wrapping around him (block flow rather than a flex column so it can). */}
+          <div class="space-y-3">
+            <Sticker
+              id="brandon-level1"
+              size={128}
+              class="float-right w-20 md:w-32 h-auto ml-4"
+            />
             <p>
               <b>Perfect if:</b> you're new, returning after a break, or you can rally
               “sometimes” but don't feel in control.
