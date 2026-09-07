@@ -7,6 +7,7 @@ import PageHeader from "../components/header/PageHeader.astro";
 import ShakeSticker from "../components/treasureHunt/ShakeSticker.astro";
 import ClockSticker from "../components/treasureHunt/ClockSticker.astro";
 import GreetingSticker from "../components/treasureHunt/GreetingSticker.astro";
+import MilestoneSticker from "../components/treasureHunt/MilestoneSticker.astro";
 import HuntBanner from "../components/treasureHunt/HuntBanner.astro";
 import VisitedAllSticker from "../components/treasureHunt/VisitedAllSticker.astro";
 import "../styles/global.css";
@@ -256,6 +257,12 @@ const breadcrumbs = SECTION_PARENTS.includes(parentSlug)
       hour12={12}
       minute={25}
       message="It's not Christmas yet, but it's {time}. Close enough."
+    />
+    {/* Treasure hunt: Lis applauds every 100th page load. */}
+    <MilestoneSticker
+      id="lis-milestone"
+      every={100}
+      message="You have loaded {count} pages on the website!"
     />
     {/* Treasure hunt: after 20 page loads, a 10% chance per load of a passing greeting. */}
     <GreetingSticker

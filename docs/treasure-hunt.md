@@ -37,6 +37,7 @@ visited pages, page-load count) lives in the visitor's `localStorage`, so it is 
 | <img src="../src/assets/stickers/leena-fall.webp" width="64" alt="leena-fall"> | `leena-fall` | `leena-shake` | Every page | Shake the phone hard (four strong jolts within 1.5 s); slides down from the top and fades after 3 s. Android works as is; iOS asks for motion permission on the first tap. |
 | <img src="../src/assets/stickers/lis-4.webp" width="64" alt="lis-4"> | `lis-4` | `lis-reward` | Every page | Visit every page of the site (all 17, not the 404); a card with the sticker appears at the bottom and follows you until dismissed. Dismissing resets the count so the round can be done again. |
 | <img src="../src/assets/stickers/charles-1.webp" width="64" alt="charles-1"> | `charles-1` | `charles-christmas` | Every page | Load any page at 12:25 am or pm (local time): a dismissible card saying it's not Christmas yet, but close enough. Dismissing covers that occurrence only. |
+| <img src="../src/assets/stickers/lis-clap.webp" width="64" alt="lis-clap"> | `lis-clap` | `lis-milestone` | Every page | On every 100th page load in that browser (100, 200, ...): a dismissible card saying how many pages have been loaded. |
 | <img src="../src/assets/stickers/leena-hello.webp" width="64" alt="leena-hello"> | `leena-hello` | `leena-hello` | Every page | From the 20th page load on, each load has a 10% chance of a greeting card ("Hello!") that fades after 3 s. |
 | <img src="../src/assets/stickers/may-hello.webp" width="64" alt="may-hello"> | `may-hello` | `may-hello` | Every page | As above ("Hello!"). |
 | <img src="../src/assets/stickers/umberto-1.webp" width="64" alt="umberto-1"> | `umberto-1` | `umberto-hello` | Every page | As above ("Che?"). |
@@ -60,7 +61,6 @@ visited pages, page-load count) lives in the visitor's `localStorage`, so it is 
 | <img src="../src/assets/stickers/jess-2.webp" width="64" alt="jess-2"> | `jess-2` | |
 | <img src="../src/assets/stickers/lis-1.webp" width="64" alt="lis-1"> | `lis-1` | |
 | <img src="../src/assets/stickers/lis-5.webp" width="64" alt="lis-5"> | `lis-5` | |
-| <img src="../src/assets/stickers/lis-clap.webp" width="64" alt="lis-clap"> | `lis-clap` | |
 | <img src="../src/assets/stickers/mark-2.webp" width="64" alt="mark-2"> | `mark-2` | |
 | <img src="../src/assets/stickers/martin-1.webp" width="64" alt="martin-1"> | `martin-1` | |
 | <img src="../src/assets/stickers/may-1.webp" width="64" alt="may-1"> | `may-1` | |
@@ -88,6 +88,7 @@ Each placement is one of these components (all in `src/components/treasureHunt/`
 | `ShakeSticker` | Drops from the top when the phone is shaken hard. |
 | `VisitedAllSticker` | Dismissible reward card once every page has been visited. |
 | `ClockSticker` | Dismissible card for anyone loading a page at a given minute of the day. |
+| `MilestoneSticker` | Dismissible card on every N-th page load. |
 | `StickerCard` | The shared card markup behind the two above. |
 | `GreetingSticker` | Occasional random captioned greeting after a number of page loads. |
 | `HuntBanner` | The announcement strip above the header. |

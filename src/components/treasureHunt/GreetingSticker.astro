@@ -4,7 +4,7 @@ import { STICKERS, stickerRenderWidth, type StickerId } from "../../treasureHunt
 
 /**
  * Occasional greeting: once the reader has loaded at least `afterLoads` pages (counted in
- * localStorage), each further page load has a `chance` probability of showing one of the
+ * localStorage by pageLoads.ts), each further page load has a `chance` probability of showing one of the
  * greetings, picked at random, in a card at the bottom of the screen. It can't be dismissed
  * and fades out by itself after `holdMs`.
  */
@@ -47,13 +47,13 @@ const candidates = await Promise.all(
 </div>
 
 <script>
+  import { pageLoadCount } from "./pageLoads";
+
   const el = document.querySelector<HTMLElement>("[data-greeting-sticker]");
-  const LOADS_KEY = "hunt:page-loads";
 
   if (el) {
     try {
-      const loads = (Number(localStorage.getItem(LOADS_KEY)) || 0) + 1;
-      localStorage.setItem(LOADS_KEY, String(loads));
+      const loads = pageLoadCount();
 
       if (loads >= Number(el.dataset.afterLoads) && Math.random() < Number(el.dataset.chance)) {
         const options = JSON.parse(el.dataset.candidates ?? "[]");

@@ -1,0 +1,40 @@
+---
+import type { StickerId } from "../../treasureHunt";
+import StickerCard from "./StickerCard.astro";
+
+/**
+ * A dismissible sticker card on every `every`-th page load (100th, 200th, ...), counted per
+ * browser by pageLoads.ts. `message` may contain `{count}`, replaced with the load count.
+ */
+interface Props {
+  id: StickerId;
+  message: string;
+  every?: number;
+}
+
+const { id, message, every = 100 } = Astro.props;
+---
+
+<StickerCard id={id} dismissible data-milestone-sticker data-every={every} data-message={message} />
+
+<script>
+  import { pageLoadCount } from "./pageLoads";
+
+  const el = document.querySelector<HTMLElement>("[data-milestone-sticker]");
+
+  if (el) {
+    const loads = pageLoadCount();
+    const every = Number(el.dataset.every) || 100;
+    if (loads > 0 && loads % every === 0) {
+      el.querySelector("[data-card-message]")!.textContent = (el.dataset.message ?? "").replace(
+        "{count}",
+        String(loads),
+      );
+      // Let the initial (hidden) style apply first so the entrance transition plays.
+      setTimeout(() => el.setAttribute("data-shown", ""), 50);
+      el.querySelector("[data-card-dismiss]")?.addEventListener("click", () =>
+        el.removeAttribute("data-shown"),
+      );
+    }
+  }
+</script>
