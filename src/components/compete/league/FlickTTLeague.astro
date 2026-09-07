@@ -5,7 +5,7 @@ import Trophy from "../../../icons/Trophy.svg";
 import Container from "../../../layouts/Container.astro";
 import InfoHighlightLayout from "../../../layouts/InfoHighlightLayout.astro";
 import OfferingsLayout from "../../../layouts/OfferingsLayout.astro";
-import type { FaqConfig } from "../../../types";
+import type { FaqConfig, PointsRowConfig } from "../../../types";
 import PointsRow from "../../pointsRow/PointsRow.astro";
 import ToggleSticker from "../../treasureHunt/ToggleSticker.astro";
 import Button from "../../ui/inputs/Button.astro";
@@ -31,7 +31,7 @@ const embedBtns = [
   },
 ];
 
-const pointConfig = [
+const pointConfig: PointsRowConfig = [
   {
     Icon: TableCells,
     text: "Elo rating system with rankings and divisions",
@@ -39,6 +39,8 @@ const pointConfig = [
   {
     Icon: Trophy,
     text: "Three month seasons with awards for division winners as well as other categories",
+    // Treasure hunt: the trophy flips over to reveal the sticker.
+    sticker: "charles-trophy",
   },
   {
     Icon: CalendarDays,

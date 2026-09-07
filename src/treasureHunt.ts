@@ -13,6 +13,7 @@ import mayWorkshop from "./assets/stickers/may-workshop.webp";
 import markAbout from "./assets/stickers/mark-1.webp";
 import isaacWhatsapp from "./assets/stickers/isaac-1.webp";
 import lisSmiley from "./assets/stickers/lis-3.webp";
+import charlesTrophy from "./assets/stickers/charles-3.webp";
 import markGo from "./assets/stickers/mark-go.webp";
 import markStop from "./assets/stickers/mark-stop.webp";
 import brandonLevel1 from "./assets/stickers/brandon-2.webp";
@@ -65,6 +66,8 @@ export const STICKERS = {
   "isaac-whatsapp": { img: isaacWhatsapp },
   // On the back of the membership page smiley icon (FlipSticker.astro).
   "lis-smiley": { img: lisSmiley },
+  // On the back of the league page trophy icon (FlipSticker.astro).
+  "charles-trophy": { img: charlesTrophy },
   // League page "Currently Active" box corner; clicking flips between the two (ToggleSticker.astro).
   "mark-go": { img: markGo },
   "mark-stop": { img: markStop },

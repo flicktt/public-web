@@ -27,6 +27,7 @@ visited pages, page-load count) lives in the visitor's `localStorage`, so it is 
 | <img src="../src/assets/stickers/mark-1.webp" width="64" alt="mark-1"> | `mark-1` | `mark-about` | About | Hover or click/tap "Mark Lee" in the contacts list. |
 | <img src="../src/assets/stickers/isaac-1.webp" width="64" alt="isaac-1"> | `isaac-1` | `isaac-whatsapp` | Every page (footer) and About | Hover the WhatsApp icon, or long-press it on touch (the press doesn't open WhatsApp). |
 | <img src="../src/assets/stickers/lis-3.webp" width="64" alt="lis-3"> | `lis-3` | `lis-smiley` | Membership | Hover the smiley-face icon in the points row to flip it over; click/tap toggles it. |
+| <img src="../src/assets/stickers/charles-3.webp" width="64" alt="charles-3"> | `charles-3` | `charles-trophy` | Compete › Club League | Hover the trophy icon in the points row to flip it over; click/tap toggles it. |
 | <img src="../src/assets/stickers/mark-go.webp" width="64" alt="mark-go"> | `mark-go` | `mark-go` | Compete › Club League | Front of the card in the top-right corner of the "Currently Active" box. |
 | <img src="../src/assets/stickers/mark-stop.webp" width="64" alt="mark-stop"> | `mark-stop` | `mark-stop` | Compete › Club League | Back of that card: each click flips it; moving the mouse onto it flips it once too. |
 | <img src="../src/assets/stickers/brandon-1.webp" width="64" alt="brandon-1"> | `brandon-1` | `brandon-tournament` | Compete › Tournament | Scroll to the very bottom of the page; springs up from the bottom edge for 1.5 s. Re-arms after scrolling away. |
@@ -52,7 +53,6 @@ visited pages, page-load count) lives in the visitor's `localStorage`, so it is 
 | <img src="../src/assets/stickers/alberto-3.webp" width="64" alt="alberto-3"> | `alberto-3` | |
 | <img src="../src/assets/stickers/brandon-3.webp" width="64" alt="brandon-3"> | `brandon-3` | |
 | <img src="../src/assets/stickers/charles-2.webp" width="64" alt="charles-2"> | `charles-2` | |
-| <img src="../src/assets/stickers/charles-3.webp" width="64" alt="charles-3"> | `charles-3` | |
 | <img src="../src/assets/stickers/chips.webp" width="64" alt="chips"> | `chips` | Pairs naturally with `burger`. |
 | <img src="../src/assets/stickers/david-1.webp" width="64" alt="david-1"> | `david-1` | |
 | <img src="../src/assets/stickers/isaac-2.webp" width="64" alt="isaac-2"> | `isaac-2` | |
