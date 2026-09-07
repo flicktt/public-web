@@ -254,9 +254,15 @@ const breadcrumbs = SECTION_PARENTS.includes(parentSlug)
     {/* Treasure hunt: Charles in his Santa hat for anyone loading a page at 12:25 am or pm. */}
     <ClockSticker
       id="charles-christmas"
-      hour12={12}
-      minute={25}
+      at={{ hour12: 12, minute: 25 }}
       message="It's not Christmas yet, but it's {time}. Close enough."
+    />
+    {/* Treasure hunt: Shreyansh questions anyone browsing between 2am and 6am; dismiss lasts the day. */}
+    <ClockSticker
+      id="shreyansh-nightowl"
+      between={{ from: 2, to: 6 }}
+      timeFormat="compact"
+      message="It's {time}. Why are you still awake?"
     />
     {/* Treasure hunt: Lis applauds every 100th page load. */}
     <MilestoneSticker

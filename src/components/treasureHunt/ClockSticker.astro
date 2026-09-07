@@ -3,62 +3,79 @@ import type { StickerId } from "../../treasureHunt";
 import StickerCard from "./StickerCard.astro";
 
 /**
- * A dismissible sticker card for readers who load a page at a particular minute of the day
- * (local time), e.g. 12:25 am or pm. Dismissing hides it for that occurrence; it comes back
- * at the next matching time. `message` may contain `{time}`, replaced with e.g. "12:25 pm".
+ * A dismissible sticker card for readers who load a page at a particular time of day (local
+ * time). Two modes:
+ *
+ * - `at`: an exact minute on a 12-hour clock, matching both am and pm (e.g. 12:25). Dismissing
+ *   hides it for that occurrence (that date, am or pm); it comes back at the next one.
+ * - `between`: a window of 24-hour hours, `from` inclusive to `to` exclusive (e.g. 2 to 6 for
+ *   2:00–5:59 am). Dismissing hides it for the rest of that day.
+ *
+ * `message` may contain `{time}`, replaced with the current time, e.g. "12:25 pm" or "2:00am"
+ * depending on `timeFormat`.
  */
 interface Props {
   id: StickerId;
   message: string;
-  /** Hour on a 12-hour clock (1–12); matches both am and pm. */
-  hour12: number;
-  minute: number;
+  at?: { hour12: number; minute: number };
+  between?: { from: number; to: number };
+  timeFormat?: "spaced" | "compact";
 }
 
-const { id, message, hour12, minute } = Astro.props;
+const { id, message, at, between, timeFormat = "spaced" } = Astro.props;
+if (!at && !between) throw new Error("ClockSticker needs `at` or `between`");
 ---
 
 <StickerCard
   id={id}
   dismissible
   data-clock-sticker
-  data-hour12={hour12}
-  data-minute={minute}
+  data-at={at && JSON.stringify(at)}
+  data-between={between && JSON.stringify(between)}
+  data-time-format={timeFormat}
   data-message={message}
 />
 
 <script>
-  const el = document.querySelector<HTMLElement>("[data-clock-sticker]");
-  const DISMISSED_KEY = "hunt:clock-dismissed";
-
-  if (el) {
+  for (const el of document.querySelectorAll<HTMLElement>("[data-clock-sticker]")) {
     const now = new Date();
-    const hour12 = now.getHours() % 12 || 12;
-    const ampm = now.getHours() < 12 ? "am" : "pm";
+    const hour24 = now.getHours();
+    const hour12 = hour24 % 12 || 12;
     const minute = now.getMinutes();
-    const matches = hour12 === Number(el.dataset.hour12) && minute === Number(el.dataset.minute);
-    // One key per occurrence (date + am/pm), so a dismissal only covers this one.
-    const occurrence = `${now.toDateString()} ${ampm}`;
+    const ampm = hour24 < 12 ? "am" : "pm";
 
+    let matches = false;
+    let occurrence = now.toDateString();
+    if (el.dataset.at) {
+      const at = JSON.parse(el.dataset.at);
+      matches = hour12 === at.hour12 && minute === at.minute;
+      occurrence += ` ${ampm}`;
+    } else if (el.dataset.between) {
+      const { from, to } = JSON.parse(el.dataset.between);
+      matches = hour24 >= from && hour24 < to;
+    }
+    if (!matches) continue;
+
+    // One dismissal key per card and occurrence, so dismissing only covers that one.
+    const dismissedKey = `hunt:clock-dismissed:${el.dataset.at ?? el.dataset.between}`;
     let dismissed = false;
     try {
-      dismissed = localStorage.getItem(DISMISSED_KEY) === occurrence;
+      dismissed = localStorage.getItem(dismissedKey) === occurrence;
     } catch {}
+    if (dismissed) continue;
 
-    if (matches && !dismissed) {
-      const time = `${hour12}:${String(minute).padStart(2, "0")} ${ampm}`;
-      el.querySelector("[data-card-message]")!.textContent = (el.dataset.message ?? "").replace(
-        "{time}",
-        time,
-      );
-      // Let the initial (hidden) style apply first so the entrance transition plays.
-      setTimeout(() => el.setAttribute("data-shown", ""), 50);
-      el.querySelector("[data-card-dismiss]")?.addEventListener("click", () => {
-        el.removeAttribute("data-shown");
-        try {
-          localStorage.setItem(DISMISSED_KEY, occurrence);
-        } catch {}
-      });
-    }
+    const time = `${hour12}:${String(minute).padStart(2, "0")}${el.dataset.timeFormat === "compact" ? "" : " "}${ampm}`;
+    el.querySelector("[data-card-message]")!.textContent = (el.dataset.message ?? "").replace(
+      "{time}",
+      time,
+    );
+    // Let the initial (hidden) style apply first so the entrance transition plays.
+    setTimeout(() => el.setAttribute("data-shown", ""), 50);
+    el.querySelector("[data-card-dismiss]")?.addEventListener("click", () => {
+      el.removeAttribute("data-shown");
+      try {
+        localStorage.setItem(dismissedKey, occurrence);
+      } catch {}
+    });
   }
 </script>

@@ -18,6 +18,7 @@ import markGo from "./assets/stickers/mark-go.webp";
 import markStop from "./assets/stickers/mark-stop.webp";
 import brandonLevel1 from "./assets/stickers/brandon-2.webp";
 import charlesChristmas from "./assets/stickers/charles-1.webp";
+import shreyanshNightOwl from "./assets/stickers/shreyansh-4.webp";
 import lisMilestone from "./assets/stickers/lis-clap.webp";
 import brandonTournament from "./assets/stickers/brandon-1.webp";
 import burgerMenu from "./assets/stickers/burger.webp";
@@ -44,7 +45,7 @@ import brandonHello from "./assets/stickers/brandon-4.webp";
  * `<VisitedAllSticker id="..." />` is a dismissible reward pop-up after every page is visited.
  * Stickers render with an empty alt on purpose: no name or "treasure hunt" hint in the markup.
  * `<GreetingSticker greetings={[...]} />` occasionally shows a random captioned greeting.
- * `<ClockSticker id="..." hour12={..} minute={..} />` is a dismissible card at a given time of day.
+ * `<ClockSticker id="..." at={..} />` / `between={..}` is a dismissible card at a time of day.
  * `<MilestoneSticker id="..." every={100} />` is a dismissible card on every 100th page load.
  */
 export const STICKERS = {
@@ -75,6 +76,8 @@ export const STICKERS = {
   "brandon-level1": { img: brandonLevel1 },
   // Every page: dismissible card for anyone loading a page at 12:25 am/pm (ClockSticker.astro).
   "charles-christmas": { img: charlesChristmas },
+  // Every page: dismissible card between 2am and 6am (ClockSticker.astro).
+  "shreyansh-nightowl": { img: shreyanshNightOwl },
   // Every page: dismissible card on every 100th page load (MilestoneSticker.astro).
   "lis-milestone": { img: lisMilestone },
   // Jumps up from the bottom edge when the reader reaches the end of the page (PopoutSticker.astro).

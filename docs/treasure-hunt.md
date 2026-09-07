@@ -38,6 +38,7 @@ visited pages, page-load count) lives in the visitor's `localStorage`, so it is 
 | <img src="../src/assets/stickers/leena-fall.webp" width="64" alt="leena-fall"> | `leena-fall` | `leena-shake` | Every page | Shake the phone hard (four strong jolts within 1.5 s); slides down from the top and fades after 3 s. Android works as is; iOS asks for motion permission on the first tap. |
 | <img src="../src/assets/stickers/lis-4.webp" width="64" alt="lis-4"> | `lis-4` | `lis-reward` | Every page | Visit every page of the site (all 17, not the 404); a card with the sticker appears at the bottom and follows you until dismissed. Dismissing resets the count so the round can be done again. |
 | <img src="../src/assets/stickers/charles-1.webp" width="64" alt="charles-1"> | `charles-1` | `charles-christmas` | Every page | Load any page at 12:25 am or pm (local time): a dismissible card saying it's not Christmas yet, but close enough. Dismissing covers that occurrence only. |
+| <img src="../src/assets/stickers/shreyansh-4.webp" width="64" alt="shreyansh-4"> | `shreyansh-4` | `shreyansh-nightowl` | Every page | Load any page between 2:00 and 5:59 am (local time): a dismissible card asking why you're still awake, with the current time. Dismissing covers the rest of that day. |
 | <img src="../src/assets/stickers/lis-clap.webp" width="64" alt="lis-clap"> | `lis-clap` | `lis-milestone` | Every page | On every 100th page load in that browser (100, 200, ...): a dismissible card saying how many pages have been loaded. |
 | <img src="../src/assets/stickers/leena-hello.webp" width="64" alt="leena-hello"> | `leena-hello` | `leena-hello` | Every page | From the 20th page load on, each load has a 10% chance of a greeting card ("Hello!") that fades after 3 s. |
 | <img src="../src/assets/stickers/may-hello.webp" width="64" alt="may-hello"> | `may-hello` | `may-hello` | Every page | As above ("Hello!"). |
@@ -69,7 +70,6 @@ visited pages, page-load count) lives in the visitor's `localStorage`, so it is 
 | <img src="../src/assets/stickers/shreyansh-1.webp" width="64" alt="shreyansh-1"> | `shreyansh-1` | |
 | <img src="../src/assets/stickers/shreyansh-2.webp" width="64" alt="shreyansh-2"> | `shreyansh-2` | |
 | <img src="../src/assets/stickers/shreyansh-3.webp" width="64" alt="shreyansh-3"> | `shreyansh-3` | |
-| <img src="../src/assets/stickers/shreyansh-4.webp" width="64" alt="shreyansh-4"> | `shreyansh-4` | |
 | <img src="../src/assets/stickers/sid-2.webp" width="64" alt="sid-2"> | `sid-2` | |
 | <img src="../src/assets/stickers/sid-3.webp" width="64" alt="sid-3"> | `sid-3` | |
 
@@ -87,7 +87,7 @@ Each placement is one of these components (all in `src/components/treasureHunt/`
 | `PopoutSticker` | Fixed to a viewport edge, slides in on a trigger: `page-end`, `scroll-edge` (a horizontal scroller reaching an edge) or `parent-dialog` (its `<dialog>` opening). |
 | `ShakeSticker` | Drops from the top when the phone is shaken hard. |
 | `VisitedAllSticker` | Dismissible reward card once every page has been visited. |
-| `ClockSticker` | Dismissible card for anyone loading a page at a given minute of the day. |
+| `ClockSticker` | Dismissible card for anyone loading a page at a given minute, or within a window of hours, of the day. |
 | `MilestoneSticker` | Dismissible card on every N-th page load. |
 | `StickerCard` | The shared card markup behind the two above. |
 | `GreetingSticker` | Occasional random captioned greeting after a number of page loads. |
