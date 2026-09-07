@@ -5,10 +5,18 @@ import Container from "../layouts/Container.astro";
 import PageLayout from "../layouts/PageLayout.astro";
 
 // Treasure hunt decoy for anyone who guesses /stickers/ hoping for a gallery. Not linked from
-// anywhere; noindex/nofollow and out of the sitemap via PageLayout's hidden-page handling.
+// anywhere. Passed to PageLayout as a hidden page: noindex/nofollow, no canonical, and not part of
+// the page registry; astro.config.mjs keeps it out of the sitemap.
 ---
 
-<PageLayout page="stickers">
+<PageLayout
+  hidden={{
+    title: "Stickers",
+    metaTitle: "Stickers | Flick TT",
+    desc: "Nice try.",
+    heading: "Stickers",
+  }}
+>
   <Container main class="flex flex-col items-center gap-6 py-10 lg:py-14">
     <Sticker id="mark-stickers-page" size={192} />
     <DisplayText class="text-center text-5xl sm:text-6xl font-bold">Seriously?</DisplayText>

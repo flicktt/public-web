@@ -12,8 +12,8 @@ import StickerCard from "./StickerCard.astro";
 interface Props {
   id: StickerId;
   message: string;
-  /** Id of the page being rendered. */
-  page: Page;
+  /** Id of the page being rendered; omit on hidden pages, which then don't count. */
+  page?: Page;
   /** Every page that counts towards the reward. */
   pages: readonly Page[];
 }
