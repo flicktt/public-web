@@ -20,7 +20,8 @@ export type Page =
   | "membership"
   | "about"
   | "coaches"
-  | "not-found";
+  | "not-found"
+  | "stickers";
 
 export type PageConfig = {
   /** Nav label; also the visible display word in the page header. */

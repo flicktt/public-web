@@ -1,0 +1,19 @@
+---
+import Sticker from "../components/treasureHunt/Sticker.astro";
+import DisplayText from "../components/ui/text/DisplayText.astro";
+import Container from "../layouts/Container.astro";
+import PageLayout from "../layouts/PageLayout.astro";
+
+// Treasure hunt decoy for anyone who guesses /stickers/ hoping for a gallery. Not linked from
+// anywhere; noindex/nofollow and out of the sitemap via PageLayout's hidden-page handling.
+---
+
+<PageLayout page="stickers">
+  <Container main class="flex flex-col items-center gap-6 py-10 lg:py-14">
+    <Sticker id="mark-stickers-page" size={192} />
+    <DisplayText class="text-center text-5xl sm:text-6xl font-bold">Seriously?</DisplayText>
+    <DisplayText class="text-center">
+      Did you really think we would put all the stickers into a single page?
+    </DisplayText>
+  </Container>
+</PageLayout>

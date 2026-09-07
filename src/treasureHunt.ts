@@ -19,6 +19,7 @@ import markStop from "./assets/stickers/mark-stop.webp";
 import brandonLevel1 from "./assets/stickers/brandon-2.webp";
 import charlesChristmas from "./assets/stickers/charles-1.webp";
 import shreyanshNightOwl from "./assets/stickers/shreyansh-4.webp";
+import markStickersPage from "./assets/stickers/mark-2.webp";
 import lisMilestone from "./assets/stickers/lis-clap.webp";
 import brandonTournament from "./assets/stickers/brandon-1.webp";
 import burgerMenu from "./assets/stickers/burger.webp";
@@ -78,6 +79,8 @@ export const STICKERS = {
   "charles-christmas": { img: charlesChristmas },
   // Every page: dismissible card between 2am and 6am (ClockSticker.astro).
   "shreyansh-nightowl": { img: shreyanshNightOwl },
+  // The /stickers/ page: a decoy for anyone hoping for a gallery.
+  "mark-stickers-page": { img: markStickersPage },
   // Every page: dismissible card on every 100th page load (MilestoneSticker.astro).
   "lis-milestone": { img: lisMilestone },
   // Jumps up from the bottom edge when the reader reaches the end of the page (PopoutSticker.astro).

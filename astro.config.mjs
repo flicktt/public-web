@@ -21,5 +21,10 @@ export default defineConfig({
   // endpoint would 404.
   adapter: cloudflare({ imageService: "compile" }),
 
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // /stickers/ is a treasure hunt easter egg: noindex, and kept out of the sitemap.
+      filter: (page) => !page.endsWith("/stickers/"),
+    }),
+  ],
 });
